@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent-gradient: linear-gradient(
+    45deg,
+    theme('colors.accent'),
+    theme('colors.accent-light') 30%,
+    theme('colors.white') 60%
+  );
+}
+
+html {
+  @apply bg-dark font-sans text-white text-base select-none desktop:overscroll-none;
+}
+
+body {
+  @apply min-h-screen flex flex-col justify-between;
+}
+
+main {
+  @apply flex-1;
+}
+
+h1 {
+  @apply font-bold text-4xl leading-tight;
+}
+
+a {
+  @apply text-white hover:text-accent-light;
+}
+
+code {
+  @apply font-mono;
+}
+
+.container {
+  @apply w-full laptop:max-w-screen-laptop desktop:max-w-screen-desktop mx-auto px-4;
+}
+
+.text-gradient {
+  background-image: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400%;
+  background-position: 0%;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.text-gradient:hover {
+  background-size: 100%;
+}

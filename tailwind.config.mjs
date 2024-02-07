@@ -1,8 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
-	theme: {
-		extend: {},
-	},
-	plugins: [],
-}
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
+  theme: {
+    screens: {
+      tablet: '768px',
+      laptop: '1024px',
+      desktop: '1400px'
+    },
+    extend: {
+      colors: {
+        dark: '#13151a',
+        medium: '#23262d',
+        accent: '#883aea',
+        'accent-light': '#e0ccfa',
+        'accent-dark': '#310a65'
+      }
+    }
+  },
+  plugins: []
+};
