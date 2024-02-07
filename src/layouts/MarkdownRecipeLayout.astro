@@ -1,0 +1,32 @@
+---
+import MainNav from '../components/MainNav.astro';
+import MainFooter from '../components/MainFooter.astro';
+import '../styles/base.css';
+interface Props {
+  title: string;
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='description'
+      content="David's Place includes projects, blogs, and ideas related to web development and other interests held by David Weid II."
+    />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{frontmatter.title} | David's Place</title>
+  </head>
+  <body>
+    <MainNav />
+    <main>
+      <slot />
+    </main>
+    <MainFooter />
+  </body>
+</html>

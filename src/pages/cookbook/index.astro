@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+
+const allCookbookRecipes = await getCollection('cookbook');
+---
+
+<Layout title='Cookbook Home'>
+  <ul
+    role='list'
+    class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-4 tablet:gap-6 laptop:gap-8'
+  >
+    {
+      allCookbookRecipes.map((recipe) => (
+        <Card
+          href={`/cookbook/recipes/${recipe.slug}`}
+          title={recipe.data.title}
+          body='View this recipe.'
+        />
+      ))
+    }
+  </ul>
+</Layout>
