@@ -1,7 +1,10 @@
 ---
 import Layout from './Layout.astro';
 interface Props {
-  title: string;
+  frontmatter: {
+    title: string;
+    Content: any;
+  };
 }
 
 const { frontmatter } = Astro.props;
@@ -9,5 +12,5 @@ const { frontmatter } = Astro.props;
 
 <Layout title={frontmatter.title}>
   <h1>{frontmatter.title}</h1>
-  <p>Some content</p>
+  <slot />
 </Layout>

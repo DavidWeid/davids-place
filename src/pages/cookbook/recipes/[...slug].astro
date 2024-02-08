@@ -14,6 +14,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<MarkdownRecipeLayout title={entry.data.title}>
+<MarkdownRecipeLayout frontmatter={entry.data}>
   <Content />
 </MarkdownRecipeLayout>
