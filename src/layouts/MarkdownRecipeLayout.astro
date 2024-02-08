@@ -1,16 +1,41 @@
 ---
 import Layout from './Layout.astro';
+import Hero from '../components/Hero.astro';
 interface Props {
   frontmatter: {
     title: string;
-    Content: any;
+    pubDate: Date;
+    description: string;
+    author: string;
+    image: {
+      url: string;
+      alt: string;
+    };
+    tags: string[];
+    ingredients: string[];
+    instructions: string[];
   };
 }
 
 const { frontmatter } = Astro.props;
+const {
+  title,
+  pubDate,
+  description,
+  author,
+  image,
+  tags,
+  ingredients,
+  instructions
+} = frontmatter;
+const heroTitle = title;
+const heroDescription = description;
 ---
 
-<Layout title={frontmatter.title}>
-  <h1>{frontmatter.title}</h1>
-  <slot />
+<Layout title={title}>
+  <Hero title={heroTitle} description={heroDescription} />
+
+  <section class='container'>
+    <slot />
+  </section>
 </Layout>

@@ -24,7 +24,7 @@ const heroDescription = '';
           <Card
             href={`/cookbook/recipes/${recipe.slug}`}
             title={recipe.data.title}
-            body='View this recipe.'
+            body={recipe.data.description}
           />
         ))
       }
