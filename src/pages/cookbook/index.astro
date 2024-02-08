@@ -1,24 +1,33 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
 import Card from '../../components/Card.astro';
 
 const allCookbookRecipes = await getCollection('cookbook');
+
+const pageTitle = 'Cookbook Home';
+const heroTitle = "<span class='text-gradient'>David's Cookbook</span>";
+const heroDescription = '';
 ---
 
-<Layout title='Cookbook Home'>
-  <ul
-    role='list'
-    class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-4 tablet:gap-6 laptop:gap-8'
-  >
-    {
-      allCookbookRecipes.map((recipe) => (
-        <Card
-          href={`/cookbook/recipes/${recipe.slug}`}
-          title={recipe.data.title}
-          body='View this recipe.'
-        />
-      ))
-    }
-  </ul>
+<Layout title={pageTitle}>
+  <section class='container'>
+    <Hero title={heroTitle} description={heroDescription} />
+
+    <ul
+      role='list'
+      class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-4 tablet:gap-6 laptop:gap-8'
+    >
+      {
+        allCookbookRecipes.map((recipe) => (
+          <Card
+            href={`/cookbook/recipes/${recipe.slug}`}
+            title={recipe.data.title}
+            body='View this recipe.'
+          />
+        ))
+      }
+    </ul>
+  </section>
 </Layout>

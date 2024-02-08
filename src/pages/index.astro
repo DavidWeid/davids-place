@@ -1,29 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 import NoteBlock from '../components/NoteBlock.astro';
 import Card from '../components/Card.astro';
+
+const pageTitle = 'Portfolio Home';
+const heroTitle = "Welcome to <span class='text-gradient'>David's Place</span>";
+const heroDescription =
+  "<strong>David's Place</strong> is for me to showcase my work and share my thoughts and interests. <br />I have been a web developer since 2019 and currently work at <strong>Datadog</strong>, based in New York City.";
 ---
 
-<Layout title='Portfolio Home'>
+<Layout title={pageTitle}>
   <section class='container'>
-    <span class='block pb-8'></span>
-
-    <h1 class='text-center'>
-      Welcome to <span class='text-gradient'>David's Place</span>
-    </h1>
-
-    <span class='block pb-8'></span>
-
-    <p class='text-center text-xl'>
-      <strong>David's Place</strong> is for me to showcase my work and share my thoughts
-      and interests.
-      <br />
-      I have been a web developer since 2019 and currently work at <strong
-        >Datadog</strong
-      >, based in New York City.
-    </p>
-
-    <span class='block pb-8'></span>
+    <Hero title={heroTitle} description={heroDescription} />
 
     <NoteBlock>
       This website is a practice site for me to learn <strong>Astro</strong>,

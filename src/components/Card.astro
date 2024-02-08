@@ -6,7 +6,8 @@ interface Props {
 }
 
 const { href, title, body } = Astro.props;
-let target = href.startsWith('http') ? '_blank' : '_self';
+let target =
+  href.startsWith('http') || href.includes('mailto') ? '_blank' : '_self';
 ---
 
 <li
@@ -17,9 +18,34 @@ let target = href.startsWith('http') ? '_blank' : '_self';
     target={target}
     class='w-full rounded-lg bg-medium opacity-80 transition-colors duration-500'
   >
-    <h2 class='text-xl'>
+    <h2 class='text-xl flex items-center gap-2'>
       {title}
-      <span>&rarr;</span>
+      {
+        target === '_blank' ? (
+          <svg
+            width='24px'
+            height='24px'
+            viewBox='0 0 24 24'
+            aria-hidden='true'
+            focusable='false'
+            fill='none'
+          >
+            <g
+              stroke-width='2.1'
+              stroke='#666'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+            >
+              <>
+                <polyline points='17 13.5 17 19.5 5 19.5 5 7.5 11 7.5' />
+                <path d='M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5' />
+              </>
+            </g>
+          </svg>
+        ) : (
+          <span>&rarr;</span>
+        )
+      }
     </h2>
     <span class='block pb-4'></span>
     <p>
