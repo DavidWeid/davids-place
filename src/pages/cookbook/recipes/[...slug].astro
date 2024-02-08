@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../../layouts/Layout.astro';
+import MarkdownRecipeLayout from '../../../layouts/MarkdownRecipeLayout.astro';
 
 export async function getStaticPaths() {
   const cookbookEntries = await getCollection('cookbook');
@@ -14,6 +14,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.title}>
+<MarkdownRecipeLayout title={entry.data.title}>
   <Content />
-</Layout>
+</MarkdownRecipeLayout>

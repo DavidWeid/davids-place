@@ -16,7 +16,8 @@ const cookbookCollection = defineCollection({
       })
       .optional(),
     tags: z.array(z.string()).optional(),
-    ingredients: z.array(z.string()).optional()
+    ingredients: z.array(z.string()).optional(),
+    instructions: z.array(z.string()).optional()
   })
 });
 
