@@ -6,8 +6,9 @@ const cookbookCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    pubDate: z.nullable(z.date()),
     description: z.nullable(z.string()),
+    source: z.nullable(z.string()),
+    pubDate: z.nullable(z.date()),
     author: z.nullable(z.string()),
     image: z.nullable(
       z.object({
@@ -16,6 +17,10 @@ const cookbookCollection = defineCollection({
       })
     ),
     tags: z.nullable(z.array(z.string())),
+    servings: z.nullable(z.string()),
+    prepTime: z.nullable(z.string()),
+    cookTime: z.nullable(z.string()),
+    totalTime: z.nullable(z.string()),
     ingredients: z.nullable(z.array(z.string())),
     instructions: z.nullable(z.array(z.string()))
   })
