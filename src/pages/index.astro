@@ -8,12 +8,13 @@ const pageTitle = 'Portfolio Home';
 const heroTitle = "Welcome to <span class='text-gradient'>David's Place</span>";
 const heroDescription =
   "<strong>David's Place</strong> is for me to showcase my work and share my thoughts and interests. <br />I have been a web developer since 2019 and currently work at <strong>Datadog</strong>, based in New York City.";
+const cardTags = null;
 ---
 
 <Layout title={pageTitle}>
-  <section class='container'>
-    <Hero title={heroTitle} description={heroDescription} />
+  <Hero title={heroTitle} description={heroDescription} />
 
+  <section class='container'>
     <NoteBlock>
       This website is a practice site for me to learn <strong>Astro</strong>,
       using <strong>TailwindCSS</strong>, and <strong>AlpineJS</strong>, but I
@@ -30,22 +31,28 @@ const heroDescription =
         href='https://github.com/DavidWeid/'
         title='GitHub Profile'
         body='View my GitHub profile for an idea of my code cadences.'
+        tags={cardTags}
       />
       <Card
         href='https://www.linkedin.com/in/david-weid/'
         title='LinkedIn Profile'
         body='View my LinkedIn profile for an idea of my professional background.'
+        tags={cardTags}
       />
       <Card
         href='mailto:david.weid.2@gmail.com'
         title='Contact Me'
         body='Email me directly if that is your preference.'
+        tags={cardTags}
       />
       <Card
         href='/cookbook/'
         title='Cookbook'
         body='A collection of recipes I have enjoyed.'
+        tags={cardTags}
       />
     </ul>
+
+    <span class="block pb-16"></span>
   </section>
 </Layout>

@@ -1,11 +1,14 @@
 ---
+import Badge from './Badge.astro';
+
 interface Props {
   title: string;
   body: string | null;
   href: string;
+  tags: string[] | null;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, body, tags } = Astro.props;
 let target =
   href.startsWith('http') || href.includes('mailto') ? '_blank' : '_self';
 ---
@@ -16,41 +19,57 @@ let target =
   <a
     href={href}
     target={target}
-    class='w-full rounded-lg bg-medium opacity-80 transition-colors duration-500'
+    class='w-full rounded-lg bg-medium opacity-80 transition-colors duration-500 flex flex-col justify-between'
   >
-    <h2 class='text-xl flex items-center gap-2'>
-      {title}
-      {
-        target === '_blank' ? (
-          <svg
-            width='24px'
-            height='24px'
-            viewBox='0 0 24 24'
-            aria-hidden='true'
-            focusable='false'
-            fill='none'
-          >
-            <g
-              stroke-width='2.1'
-              stroke='#666'
-              stroke-linecap='round'
-              stroke-linejoin='round'
+    <div>
+      <h2 class='text-xl flex items-center gap-2'>
+        {title}
+        {
+          target === '_blank' ? (
+            <svg
+              width='24px'
+              height='24px'
+              viewBox='0 0 24 24'
+              aria-hidden='true'
+              focusable='false'
+              fill='none'
             >
-              <>
-                <polyline points='17 13.5 17 19.5 5 19.5 5 7.5 11 7.5' />
-                <path d='M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5' />
-              </>
-            </g>
-          </svg>
-        ) : (
-          <span>&rarr;</span>
-        )
-      }
-    </h2>
-    <span class='block pb-4'></span>
-    <p>
-      {body}
-    </p>
+              <g
+                stroke-width='2.1'
+                stroke='#666'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              >
+                <>
+                  <polyline points='17 13.5 17 19.5 5 19.5 5 7.5 11 7.5' />
+                  <path d='M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5' />
+                </>
+              </g>
+            </svg>
+          ) : (
+            <span>&rarr;</span>
+          )
+        }
+      </h2>
+      <span class='block pb-4'></span>
+      <p>
+        {body}
+      </p>
+    </div>
+    {
+      tags && tags.length > 0 ? (
+        <>
+          <span class='block pb-4' />
+          <div class='flex flex-wrap gap-2.5'>
+            {tags.slice(0, 4).map((tag) => (
+              <Badge tag={tag} clickable={false} />
+            ))}
+          </div>
+        </>
+      ) : (
+        ''
+      )
+    }
   </a>
 </li>
 

@@ -4,14 +4,19 @@ import Hero from '../components/Hero.astro';
 interface Props {
   frontmatter: {
     title: string;
-    pubDate: Date;
     description: string;
+    source: string;
+    pubDate: Date;
     author: string;
     image: {
       url: string;
       alt: string;
     };
     tags: string[];
+    servings: string;
+    prepTime: string;
+    cookTime: string;
+    totalTime: string;
     ingredients: string[];
     instructions: string[];
   };
@@ -20,11 +25,16 @@ interface Props {
 const { frontmatter } = Astro.props;
 const {
   title,
-  pubDate,
   description,
+  source,
+  pubDate,
   author,
   image,
   tags,
+  servings,
+  prepTime,
+  cookTime,
+  totalTime,
   ingredients,
   instructions
 } = frontmatter;
@@ -33,9 +43,44 @@ const heroDescription = description;
 ---
 
 <Layout title={title}>
-  <Hero title={heroTitle} description={heroDescription} />
+  <Hero title={heroTitle} description={heroDescription}>
+    <span class='block pb-4'></span>
+    <div class='flex flex-wrap justify-center gap-8'>
+      <span class='flex flex-col gap-0.5 items-center'>
+        <span class='text-gradient font-bold text-lg'>PREP TIME</span>
+        {prepTime}
+      </span>
+      <span class='flex flex-col gap-0.5 items-center'>
+        <span class='text-gradient font-bold text-lg'>TOTAL TIME</span>
+        {totalTime}
+      </span>
+      <span class='flex flex-col gap-0.5 items-center'>
+        <span class='text-gradient font-bold text-lg'>SERVINGS</span>
+        {servings}
+      </span>
+    </div>
+  </Hero>
+
+  <hr class='container border-accent' />
 
   <section class='container'>
+    <span class='block pb-8'></span>
+
+    {
+      ingredients && (
+        <div>
+          <h2 class='text-2xl font-bold'>Ingredients</h2>
+          <ul class='list-disc pl-8'>
+            {ingredients.map((ingredient) => (
+              <li>{ingredient}</li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <span class='block pb-8'></span>
     <slot />
+    <span class="block pb-16"></span>
   </section>
 </Layout>

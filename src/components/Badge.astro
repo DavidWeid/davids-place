@@ -1,0 +1,17 @@
+---
+interface Props {
+  tag: string;
+  clickable: boolean;
+}
+
+const { tag, clickable } = Astro.props;
+const classList: string = clickable
+  ? 'hover:bg-accent-dark hover:text-accent-light transition-all duration-500'
+  : '';
+---
+
+<span
+  class=`px-2 py-1 text-xs bg-accent-light text-accent-dark rounded-full uppercase ${classList}`
+>
+  {tag}
+</span>
