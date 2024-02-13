@@ -66,21 +66,39 @@ const heroDescription = description;
   <section class='container'>
     <span class='block pb-8'></span>
 
-    {
-      ingredients && (
-        <div>
-          <h2 class='text-2xl font-bold'>Ingredients</h2>
-          <ul class='list-disc pl-8'>
-            {ingredients.map((ingredient) => (
-              <li>{ingredient}</li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
+    <div class='grid grid-cols-1 laptop:grid-cols-3 gap-8'>
+      {
+        ingredients && (
+          <div>
+            <h2 class='text-2xl font-bold'>Ingredients</h2>
+            <ul class='list-disc pl-4'>
+              {ingredients.map((ingredient) => (
+                <li>{ingredient}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      {
+        instructions && (
+          <div class='laptop:col-span-2'>
+            <h2 class='text-2xl font-bold'>Instructions</h2>
+            <ol class='flex flex-col gap-4'>
+              {instructions.map((instruction, index) => (
+                <li class='flex flex-col gap-2 border-b'>
+                  <span>Step {index + 1}</span>
+                  {instruction}
+                </li>
+              ))}
+            </ol>
+          </div>
+        )
+      }
+    </div>
 
     <span class='block pb-8'></span>
     <slot />
-    <span class="block pb-16"></span>
+    <span class='block pb-16'></span>
   </section>
 </Layout>
