@@ -61,44 +61,54 @@ const heroDescription = description;
     </div>
   </Hero>
 
-  <hr class='container border-accent' />
+  <hr class='border-accent' />
 
-  <section class='container'>
-    <span class='block pb-8'></span>
+  <div class='bg-medium'>
+    <section class='container'>
+      <span class='block pb-8'></span>
 
-    <div class='grid grid-cols-1 laptop:grid-cols-3 gap-8'>
-      {
-        ingredients && (
-          <div>
-            <h2 class='text-2xl font-bold'>Ingredients</h2>
-            <ul class='list-disc pl-4'>
-              {ingredients.map((ingredient) => (
-                <li>{ingredient}</li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
+      <div class='grid grid-cols-1 laptop:grid-cols-3 gap-8 relative'>
+        {
+          ingredients && (
+            <fieldset class='laptop:overflow-scroll laptop:max-h-screen laptop:sticky laptop:top-0'>
+              <legend class='text-2xl font-bold'>Ingredients</legend>
+              <span class='block pb-8' />
+              <div class='flex flex-col gap-2'>
+                {ingredients.map((ingredient, index) => (
+                  <div class="hover:text-accent-light">
+                    <input id=`ingredient-${index}` type="checkbox" class="sr-only peer">
+                    <label for=`ingredient-${index}` class="peer-checked:text-white/40">{ingredient}</label>
+                  </div>
+                ))}
+              </div>
+            </fieldset>
+          )
+        }
 
-      {
-        instructions && (
-          <div class='laptop:col-span-2'>
-            <h2 class='text-2xl font-bold'>Instructions</h2>
-            <ol class='flex flex-col gap-4'>
-              {instructions.map((instruction, index) => (
-                <li class='flex flex-col gap-2 border-b'>
-                  <span>Step {index + 1}</span>
-                  {instruction}
-                </li>
-              ))}
-            </ol>
-          </div>
-        )
-      }
-    </div>
+        {
+          instructions && (
+            <div class='laptop:col-span-2'>
+              <h2 class='text-2xl font-bold'>Instructions</h2>
+              <span class='block pb-8' />
+              <ol class='flex flex-col gap-6'>
+                {instructions.map((instruction, index) => (
+                  <li class='flex flex-col gap-2'>
+                    <span class='text-lg font-bold tracking-wider text-white/85'>
+                      Step {index + 1}
+                    </span>
+                    <span class='leading-7'>{instruction}</span>
+                    <hr class='border-accent/40 w-1/4' />
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )
+        }
+      </div>
 
-    <span class='block pb-8'></span>
-    <slot />
-    <span class='block pb-16'></span>
-  </section>
+      <span class='block pb-8'></span>
+      <slot />
+      <span class='block pb-16'></span>
+    </section>
+  </div>
 </Layout>
