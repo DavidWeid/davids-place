@@ -1,9 +1,48 @@
-<nav class='py-4 bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all'>
+---
+interface NavigationLinks {
+  [key: string]: string;
+}
+
+const obj: NavigationLinks = {
+  home: '/',
+  cookbook: '/cookbook/'
+};
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<nav
+  class='py-4 bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all'
+>
   <div class='container flex justify-between items-center'>
     <span class='flex items-center'
-      ><a href='/' class='px-4 py-2 hover:scale-110 transition-all' aria-label="David's Place Homepage"
-        >David's Place</a
+      ><a
+        href='/'
+        class={pathname === '/'
+          ? 'px-4 py-2 hover:text-white hover:cursor-default'
+          : 'px-4 py-2 hover:scale-110 transition-all'}
+        aria-label="David's Place Homepage">David's Place</a
       ></span
     >
+    <div>
+      <ul class='flex items-center gap-4'>
+        {
+          Object.keys(obj).map((key) => (
+            <li class='flex items-center'>
+              <a
+                href={obj[key]}
+                class={
+                  pathname === obj[key]
+                    ? 'text-white/60 hover:text-white/60 hover:cursor-default px-4 py-2 uppercase text-sm'
+                    : 'px-4 py-2 hover:scale-110 transition-all uppercase text-sm'
+                }
+              >
+                {key}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </nav>
