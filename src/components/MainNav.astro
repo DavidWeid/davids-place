@@ -12,19 +12,19 @@ const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <nav
-  class='py-4 bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all'
+  class='py-4 bg-dark text-white bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all'
 >
   <div class='container flex justify-between items-center'>
     <span class='flex items-center'
       ><a
         href='/'
         class={pathname === '/'
-          ? 'px-4 py-2 hover:text-white hover:cursor-default'
-          : 'px-4 py-2 hover:scale-110 transition-all'}
+          ? 'px-4 py-2 text-white hover:text-white dark:text-white dark:hover:text-white hover:cursor-default'
+          : 'px-4 py-2 text-white hover:text-accent-light dark:text-white dark:hover:text-accent-light hover:scale-110 transition-all'}
         aria-label="David's Place Homepage">David's Place</a
       ></span
     >
-    <div>
+    <div class='flex items-center gap-4'>
       <ul class='flex items-center gap-4'>
         {
           Object.keys(obj).map((key) => (
@@ -33,8 +33,8 @@ const pathname = new URL(Astro.request.url).pathname;
                 href={obj[key]}
                 class={
                   pathname === obj[key]
-                    ? 'text-white/60 hover:text-white/60 hover:cursor-default px-4 py-2 uppercase text-sm'
-                    : 'px-4 py-2 hover:scale-110 transition-all uppercase text-sm'
+                    ? 'text-white/60 hover:text-white/60 dark:text-white/60 dark:hover:text-white/60 hover:cursor-default px-4 py-2 uppercase text-sm'
+                    : 'px-4 py-2 text-white hover:text-accent-light hover:scale-110 transition-all uppercase text-sm'
                 }
               >
                 {key}
@@ -43,6 +43,66 @@ const pathname = new URL(Astro.request.url).pathname;
           ))
         }
       </ul>
+      <fieldset>
+        <legend class='sr-only'>Select Dark Mode:</legend>
+        <input
+          type='checkbox'
+          role='switch'
+          id='darkmodeSwitch'
+          class="transition-all before:transition-all duration-500 before:duration-700 relative appearance-none w-16 h-8 rounded-full bg-accent-light hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-accent-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-accent-dark checked:before:bg-accent-light checked:before:left-9"
+        />
+        <label for='darkmodeSwitch' class='sr-only'>Dark Mode Switch</label>
+      </fieldset>
     </div>
   </div>
 </nav>
+
+<script>
+  const darkmodeSwitch = document.getElementById(
+    'darkmodeSwitch'
+  ) as HTMLInputElement | null;
+
+  const darkMode = () => {
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const toggleDarkMode = () => {
+    if (darkMode()) {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+      darkmodeSwitch ? (darkmodeSwitch.checked = false) : null;
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+      darkmodeSwitch ? (darkmodeSwitch.checked = true) : null;
+    }
+  };
+
+  const initDarkMode = () => {
+    if (darkMode()) {
+      document.documentElement.classList.add('dark');
+      darkmodeSwitch ? (darkmodeSwitch.checked = true) : null;
+    }
+  };
+
+  const removeDarkModePreference = () => {
+    localStorage.removeItem('theme');
+  };
+
+  const darkmodeSwitchHandler = () => {
+    darkmodeSwitch?.addEventListener('change', () => {
+      toggleDarkMode();
+    });
+  };
+
+  initDarkMode();
+  darkmodeSwitchHandler();
+</script>

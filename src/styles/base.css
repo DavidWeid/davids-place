@@ -12,7 +12,11 @@
 }
 
 html {
-  @apply bg-dark font-sans text-white text-base select-none desktop:overscroll-none;
+  @apply bg-light   text-dark  font-sans text-base select-none desktop:overscroll-y-none scroll-smooth;
+}
+
+html.dark {
+  @apply bg-dark text-white;
 }
 
 body {
@@ -28,7 +32,7 @@ h1 {
 }
 
 a {
-  @apply text-white hover:text-accent-light;
+  @apply text-accent-dark hover:text-accent dark:text-white dark:hover:text-accent-light;
 }
 
 code {

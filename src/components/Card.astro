@@ -14,12 +14,12 @@ let target =
 ---
 
 <li
-  class='link-card flex p-px rounded-lg shadow-inner bg-medium bg-none bg-[size:400%] bg-[100%] transition-[background-position] duration-500'
+  class='link-card flex p-px rounded-lg shadow-inner bg-accent dark:bg-medium bg-none bg-[size:400%] bg-[100%] transition-[background-position] duration-500'
 >
   <a
     href={href}
     target={target}
-    class='w-full rounded-lg bg-medium opacity-80 transition-colors duration-500 flex flex-col justify-between'
+    class='w-full rounded-lg text-dark bg-light/90 dark:text-white dark:bg-medium opacity-80 transition-colors duration-500 flex flex-col justify-between'
   >
     <div>
       <h2 class='text-xl flex items-center gap-2'>
@@ -47,7 +47,7 @@ let target =
               </g>
             </svg>
           ) : (
-            <span>&rarr;</span>
+            <span class='text-accent-dark dark:text-light'>&rarr;</span>
           )
         }
       </h2>
@@ -82,6 +82,10 @@ let target =
     background-image: var(--accent-gradient);
   }
   .link-card:is(:hover, :focus-within) h2 {
+    color: theme(colors.accent-dark);
+  }
+
+  .link-card:is(.dark, :hover, :focus-within) h2 {
     color: theme(colors.accent-light);
   }
 </style>

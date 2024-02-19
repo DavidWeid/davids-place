@@ -63,7 +63,7 @@ const heroDescription = description;
 
   <hr class='border-accent' />
 
-  <div class='bg-medium'>
+  <div class='bg-white dark:bg-medium'>
     <section class='container'>
       <span class='block pb-8'></span>
 
@@ -75,9 +75,9 @@ const heroDescription = description;
               <span class='block pb-8' />
               <div class='flex flex-col gap-2'>
                 {ingredients.map((ingredient, index) => (
-                  <div class="hover:text-accent-light">
+                  <div class="hover:text-accent dark:hover:text-accent-light">
                     <input id=`ingredient-${index}` type="checkbox" class="sr-only peer">
-                    <label for=`ingredient-${index}` class="peer-checked:text-white/40">{ingredient}</label>
+                    <label for=`ingredient-${index}` class="peer-checked:text-accent/40 dark:peer-checked:text-white/40">{ingredient}</label>
                   </div>
                 ))}
               </div>
@@ -93,7 +93,7 @@ const heroDescription = description;
               <ol class='flex flex-col gap-6'>
                 {instructions.map((instruction, index) => (
                   <li class='flex flex-col gap-2'>
-                    <span class='text-lg font-bold tracking-wider text-white/85'>
+                    <span class='text-lg font-bold tracking-wider text-dark/75 dark:text-white/85'>
                       Step {index + 1}
                     </span>
                     <span class='leading-7'>{instruction}</span>
@@ -106,9 +106,11 @@ const heroDescription = description;
         }
       </div>
 
-      <span class='block pb-8'></span>
+      <span class='block pb-16'></span>
       <slot />
       <span class='block pb-16'></span>
     </section>
   </div>
+
+  <hr class='border-accent' />
 </Layout>
