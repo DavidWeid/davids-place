@@ -48,21 +48,19 @@ const pathname = new URL(Astro.request.url).pathname;
         <input
           type='checkbox'
           role='switch'
-          id='darkmodeSwitch'
+          id='darkModeSwitch'
           class="transition-all before:transition-all duration-500 before:duration-700 relative appearance-none w-16 h-8 rounded-full bg-accent-light hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-accent-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-accent-dark checked:before:bg-accent-light checked:before:left-9"
         />
-        <label for='darkmodeSwitch' class='sr-only'>Dark Mode Switch</label>
+        <label for='darkModeSwitch' class='sr-only'>Dark Mode Switch</label>
       </fieldset>
     </div>
   </div>
 </nav>
 
-<script>
-  const darkmodeSwitch = document.getElementById(
-    'darkmodeSwitch'
-  ) as HTMLInputElement | null;
+<script is:inline>
+  const darkModeSwitch = document.getElementById('darkModeSwitch');
 
-  const darkMode = () => {
+  const isDarkMode = () => {
     if (
       localStorage.theme === 'dark' ||
       (!('theme' in localStorage) &&
@@ -75,34 +73,34 @@ const pathname = new URL(Astro.request.url).pathname;
   };
 
   const toggleDarkMode = () => {
-    if (darkMode()) {
+    if (isDarkMode()) {
       document.documentElement.classList.remove('dark');
       localStorage.theme = 'light';
-      darkmodeSwitch ? (darkmodeSwitch.checked = false) : null;
+      darkModeSwitch ? (darkModeSwitch.checked = false) : null;
     } else {
       document.documentElement.classList.add('dark');
       localStorage.theme = 'dark';
-      darkmodeSwitch ? (darkmodeSwitch.checked = true) : null;
+      darkModeSwitch ? (darkModeSwitch.checked = true) : null;
     }
   };
 
   const initDarkMode = () => {
-    if (darkMode()) {
+    if (isDarkMode()) {
       document.documentElement.classList.add('dark');
-      darkmodeSwitch ? (darkmodeSwitch.checked = true) : null;
+      darkModeSwitch ? (darkModeSwitch.checked = true) : null;
     }
   };
 
-  const removeDarkModePreference = () => {
-    localStorage.removeItem('theme');
-  };
+  // const removeDarkModePreference = () => {
+  //   localStorage.removeItem('theme');
+  // };
 
-  const darkmodeSwitchHandler = () => {
-    darkmodeSwitch?.addEventListener('change', () => {
+  const darkModeSwitchHandler = () => {
+    darkModeSwitch?.addEventListener('change', () => {
       toggleDarkMode();
     });
   };
 
   initDarkMode();
-  darkmodeSwitchHandler();
+  darkModeSwitchHandler();
 </script>

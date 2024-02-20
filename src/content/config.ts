@@ -6,23 +6,23 @@ const cookbookCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    description: z.nullable(z.string()),
+    description: z.string(),
     source: z.nullable(z.string()),
     pubDate: z.nullable(z.date()),
-    author: z.nullable(z.string()),
+    author: z.string(),
     image: z.nullable(
       z.object({
         url: z.nullable(z.string()),
         alt: z.nullable(z.string())
       })
     ),
-    tags: z.nullable(z.array(z.string())),
-    servings: z.nullable(z.string()),
-    prepTime: z.nullable(z.string()),
-    cookTime: z.nullable(z.string()),
-    totalTime: z.nullable(z.string()),
-    ingredients: z.nullable(z.array(z.string())),
-    instructions: z.nullable(z.array(z.string()))
+    tags: z.array(z.string()),
+    servings: z.string(),
+    prepTime: z.string(),
+    cookTime: z.string(),
+    totalTime: z.string(),
+    ingredients: z.array(z.string()),
+    instructions: z.array(z.string())
   })
 });
 
