@@ -47,7 +47,6 @@ const pathname = new URL(Astro.request.url).pathname;
         <legend class='sr-only'>Select Dark Mode:</legend>
         <input
           type='checkbox'
-          role='switch'
           id='darkModeSwitch'
           class="transition-all before:transition-all duration-500 before:duration-700 relative appearance-none w-16 h-8 rounded-full bg-accent-light hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-accent-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-accent-dark checked:before:bg-accent-light checked:before:left-9"
         />
@@ -58,7 +57,13 @@ const pathname = new URL(Astro.request.url).pathname;
 </nav>
 
 <script is:inline>
-  const darkModeSwitch = document.getElementById('darkModeSwitch');
+  const handleDarkModeSwitchState = (boolean) => {
+    const darkModeSwitch = document.getElementById('darkModeSwitch');
+    if (darkModeSwitch) {
+      darkModeSwitch.checked = boolean;
+      darkModeSwitch.setAttribute('aria-checked', boolean);
+    }
+  };
 
   const isDarkMode = () => {
     if (
@@ -76,24 +81,21 @@ const pathname = new URL(Astro.request.url).pathname;
     if (isDarkMode()) {
       document.documentElement.classList.remove('dark');
       localStorage.theme = 'light';
-      darkModeSwitch ? (darkModeSwitch.checked = false) : null;
     } else {
       document.documentElement.classList.add('dark');
       localStorage.theme = 'dark';
-      darkModeSwitch ? (darkModeSwitch.checked = true) : null;
     }
+
+    handleDarkModeSwitchState(isDarkMode());
   };
 
   const initDarkMode = () => {
     if (isDarkMode()) {
       document.documentElement.classList.add('dark');
-      darkModeSwitch ? (darkModeSwitch.checked = true) : null;
     }
-  };
 
-  // const removeDarkModePreference = () => {
-  //   localStorage.removeItem('theme');
-  // };
+    handleDarkModeSwitchState(isDarkMode());
+  };
 
   const darkModeSwitchHandler = () => {
     darkModeSwitch?.addEventListener('change', () => {
