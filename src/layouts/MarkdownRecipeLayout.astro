@@ -60,14 +60,10 @@ const heroDescription = description;
         {servings}
       </span>
     </div>
-    <span class="block pb-8"></span>
+    <span class='block pb-8'></span>
     {
       image && (
-        <Image
-          src={image.url}
-          alt={image.alt}
-          class='h-96 object-cover'
-        />
+        <Image src={image.url} alt={image.alt} class='h-96 object-cover' />
       )
     }
   </Hero>
@@ -75,10 +71,10 @@ const heroDescription = description;
   <hr class='border-accent' />
 
   <div class='bg-white dark:bg-medium'>
-    <section class='container'>
+    <div class='container'>
       <span class='block pb-8'></span>
 
-      <div class='grid grid-cols-1 laptop:grid-cols-3 gap-8 relative'>
+      <section class='grid grid-cols-1 laptop:grid-cols-3 gap-8 relative'>
         {
           ingredients && (
             <fieldset class='laptop:overflow-scroll laptop:max-h-screen laptop:sticky laptop:top-8'>
@@ -124,12 +120,15 @@ const heroDescription = description;
             </div>
           )
         }
-        <span class='block pb-16'></span>
-      </div>
-      
-      <slot />
+      </section>
       <span class='block pb-16'></span>
-    </section>
+
+      <section class='markdownify-cookbook'>
+        <slot />
+      </section>
+
+      <span class='block pb-16'></span>
+    </div>
   </div>
 
   <hr class='border-accent' />
