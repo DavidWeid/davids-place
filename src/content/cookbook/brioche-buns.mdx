@@ -8,8 +8,6 @@ pubDate:
 author: Zijin
 
 image:
-  url:
-  alt:
 
 tags:
   - bread
@@ -45,3 +43,14 @@ instructions:
   - Brush with egg wash and again when oven is ready
   - Bake for 13-15 minutes, rotating halfway through
 ---
+
+import { Image } from 'astro:assets';
+import briocheBuns from '../../images/cookbook/brioche-buns/brioche-buns.png';
+
+<Image
+  src={briocheBuns}
+  alt='Brioche buns made from this recipe'
+  width={briocheBuns.width / 2}
+  densities={[1.5, 2]}
+  class='max-w-screen-tablet mx-auto rounded-lg border-2 border-medium/80'
+/>

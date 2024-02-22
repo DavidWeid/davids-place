@@ -39,6 +39,10 @@ code {
   @apply font-mono;
 }
 
+img {
+  @apply w-full h-auto;
+}
+
 .container {
   @apply w-full laptop:max-w-screen-laptop desktop:max-w-screen-desktop mx-auto px-4;
 }

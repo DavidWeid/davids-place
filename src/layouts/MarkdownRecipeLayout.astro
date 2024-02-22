@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import Hero from '../components/Hero.astro';
+import { Image } from 'astro:assets';
 interface Props {
   frontmatter: {
     title: string;
@@ -59,6 +60,16 @@ const heroDescription = description;
         {servings}
       </span>
     </div>
+    <span class="block pb-8"></span>
+    {
+      image && (
+        <Image
+          src={image.url}
+          alt={image.alt}
+          class='h-96 object-cover'
+        />
+      )
+    }
   </Hero>
 
   <hr class='border-accent' />
@@ -113,9 +124,9 @@ const heroDescription = description;
             </div>
           )
         }
+        <span class='block pb-16'></span>
       </div>
-
-      <span class='block pb-16'></span>
+      
       <slot />
       <span class='block pb-16'></span>
     </section>

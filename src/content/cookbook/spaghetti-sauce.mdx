@@ -8,8 +8,8 @@ pubDate:
 author: David
 
 image:
-  url:
-  alt:
+  url: ../../images/cookbook/spaghetti-sauce/spaghetti-sauce.png
+  alt: Spaghetti sauce made from this recipe
 
 tags:
   - sauce
@@ -49,3 +49,14 @@ instructions:
   - Stir in beef and simmer for 1 hour. Add water or broth as needed.
   - Add parsley and simmer for 30 minutes.
 ---
+
+import { Image } from 'astro:assets';
+import spaghettiSauce from '../../images/cookbook/spaghetti-sauce/spaghetti-sauce.png';
+
+<Image
+  src={spaghettiSauce}
+  alt='Brioche buns made from this recipe'
+  width={spaghettiSauce.width / 2}
+  densities={[1.5, 2]}
+  class='max-w-screen-tablet mx-auto rounded-lg border-2 border-medium/80'
+/>
