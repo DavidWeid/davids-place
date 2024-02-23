@@ -78,7 +78,7 @@ const heroDescription = description;
         {
           ingredients && (
             <fieldset class='laptop:overflow-scroll laptop:max-h-screen laptop:sticky laptop:top-8'>
-              <legend class='text-2xl font-bold'>Ingredients</legend>
+              <legend class='text-2xl font-bold'>Ingredients<br/><span class="text-xs opacity-75 tracking-wide font-normal">Click to check off</span></legend>
               <span class='block pb-8' />
               <div class='flex flex-col gap-2'>
                 {ingredients.map((ingredient, index) => (
@@ -128,6 +128,26 @@ const heroDescription = description;
       </section>
 
       <span class='block pb-16'></span>
+
+      {
+        source && (
+          <>
+            <section class='opacity-90'>
+              <h2 class='text-lg font-bold'>See the original recipe</h2>
+              <span class='block pb-4' />
+              <a
+                href={source}
+                target='_blank'
+                rel='noopener noreferrer'
+                class='text-sm'
+              >
+                {source}
+              </a>
+            </section>
+            <span class='block pb-16' />
+          </>
+        )
+      }
     </div>
   </div>
 
