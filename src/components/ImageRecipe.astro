@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 
 const { src, ...attrs } = Astro.props;
+
+const classes = attrs.class ? attrs.class : 'max-w-screen-tablet mx-auto rounded-lg border-2 border-medium/80';
 ---
 
 <Image
@@ -9,5 +11,5 @@ const { src, ...attrs } = Astro.props;
   {...attrs}
   width={src.width / 2}
   densities={[1.5, 2]}
-  class='max-w-screen-tablet mx-auto rounded-lg border-2 border-medium/80'
+  class={classes}
 />

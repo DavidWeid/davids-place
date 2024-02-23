@@ -1,7 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import Hero from '../components/Hero.astro';
-import { Image } from 'astro:assets';
+import ImageRecipe from '../components/ImageRecipe.astro';
 interface Props {
   frontmatter: {
     title: string;
@@ -63,7 +63,7 @@ const heroDescription = description;
     <span class='block pb-8'></span>
     {
       image && (
-        <Image src={image.url} alt={image.alt} class='h-96 object-cover' />
+        <ImageRecipe src={image.url} alt={image.alt} class='h-96 object-cover' />
       )
     }
   </Hero>
@@ -77,7 +77,7 @@ const heroDescription = description;
       <section class='grid grid-cols-1 laptop:grid-cols-3 gap-8 relative'>
         {
           ingredients && (
-            <fieldset class='laptop:overflow-scroll laptop:max-h-screen laptop:sticky laptop:top-8'>
+            <fieldset class='laptop:overflow-scroll laptop:max-h-screen laptop:sticky laptop:top-32'>
               <legend class='text-2xl font-bold'>Ingredients<br/><span class="text-xs opacity-75 tracking-wide font-normal">Click to check off</span></legend>
               <span class='block pb-8' />
               <div class='flex flex-col gap-2'>
