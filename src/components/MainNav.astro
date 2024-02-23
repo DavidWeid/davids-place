@@ -12,7 +12,7 @@ const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <nav
-  class='py-4 bg-dark text-white bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all'
+  class='z-10 py-4 bg-dark text-white bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all desktop:sticky desktop:top-0'
 >
   <div class='container flex justify-between items-center'>
     <span class='flex items-center'
@@ -51,8 +51,9 @@ const pathname = new URL(Astro.request.url).pathname;
           id='darkModeSwitch'
           class="transition-all before:transition-all duration-500 before:duration-700 relative appearance-none w-16 h-8 rounded-full bg-accent-light hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-accent-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-accent-dark checked:before:bg-accent-light checked:before:left-9"
         />
-        <label for='darkModeSwitch' class='text-xs text- opacity-50'
-          >Dark Mode</label
+        <label
+          for='darkModeSwitch'
+          class='text-xs opacity-50 hover:cursor-pointer'>Dark Mode</label
         >
       </fieldset>
     </div>
@@ -85,9 +86,11 @@ const pathname = new URL(Astro.request.url).pathname;
 <script is:inline>
   const handleDarkModeSwitchState = (boolean) => {
     const darkModeSwitch = document.getElementById('darkModeSwitch');
+    const darkModeLabel = document.querySelector('label[for="darkModeSwitch"]');
     if (darkModeSwitch) {
       darkModeSwitch.checked = boolean;
       darkModeSwitch.setAttribute('aria-checked', boolean);
+      darkModeLabel.textContent = boolean ? 'Dark Mode' : 'Light Mode';
     }
   };
 
