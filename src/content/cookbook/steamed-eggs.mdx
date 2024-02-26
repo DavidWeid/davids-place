@@ -42,15 +42,22 @@ instructions:
   - Top with sesame oil, scallions and white pepper to taste.
 ---
 
+import ImageRecipe from '../../components/ImageRecipe.astro';
+import tofuTikkaMasala from '../../images/cookbook/steamed-eggs/steamed-eggs.png';
+import VideoPlayerYouTube from '../../components/VideoPlayerYouTube.astro';
+
 ## Notes
 
 - It's important that the water is warm to the touch, but not hot. This is important for the eggs to come out smooth.
 - You can tell the eggs are done when they are semi-set and jiggle a bit when you shake the bowl.
 
-import ImageRecipe from '../../components/ImageRecipe.astro';
-import tofuTikkaMasala from '../../images/cookbook/steamed-eggs/steamed-eggs.png';
-
 <ImageRecipe
   src={tofuTikkaMasala}
   alt='Tofu tikka masala made from this recipe'
 />
+
+## Video Recipe
+
+Check out this YouTube video for a visual guide on how to make these steamed eggs.
+
+<VideoPlayerYouTube src='https://www.youtube-nocookie.com/embed/JAo99RBfmT4?si=OEhPwwzVPm2h7gOH&rel=0' />
