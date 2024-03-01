@@ -7,6 +7,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/900.css';
 import '@fontsource-variable/roboto-mono';
+import generalOGImage from '../images/og/og-davids-place.png';
 import { ViewTransitions } from 'astro:transitions';
 import MainNav from '../components/MainNav.astro';
 import MainFooter from '../components/MainFooter.astro';
@@ -15,21 +16,51 @@ interface Props {
   title: string;
 }
 
+interface generalOGImage {
+  src: string;
+  width: number;
+  height: number;
+}
+
+const urlString: string = new URL(Astro.request.url).href;
 const { title } = Astro.props;
+const metaTitle: string = title ? `${title} | David's Place` : "David's Place";
+const metaDescription: string =
+  "David's Place includes projects, blogs, and ideas related to web development and other interests held by David Weid II.";
 ---
 
 <!doctype html>
-<html lang='en' class="dark">
+<html lang='en' class='dark'>
   <head>
     <meta charset='UTF-8' />
-    <meta
-      name='description'
-      content="David's Place includes projects, blogs, and ideas related to web development and other interests held by David Weid II."
-    />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
-    <title>{title} | David's Place</title>
+    <link rel='canonical' href={urlString} />
+
+    <title>{metaTitle}</title>
+    <meta name='description' content={metaDescription} />
+    <meta property='og:locale' content='en_US' />
+    <meta property='og:title' content={metaTitle} />
+    <meta property='og:description' content={metaDescription} />
+    <meta property='og:url' content={urlString} />
+    <meta
+      property='og:site_name'
+      content="Portfolio Project Focused on Web Development | David's Place"
+    />
+    <meta property='og:type' content='website' />
+    <meta property='og:image' content={generalOGImage.src} />
+    <meta property='og:image:width' content=`${generalOGImage.width}` />
+    <meta property='og:image:height' content=`${generalOGImage.height}` />
+    <meta
+      property='og:image:alt'
+      content="Social Media Open Graph Illustration for David's Place"
+    />
+    <meta property='og:image:type' content='image/png' />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content={metaTitle} />
+    <meta name='twitter:description' content={metaDescription} />
+    <meta name='twitter:image' content={generalOGImage.src} />
 
     <ViewTransitions />
   </head>
