@@ -1,7 +1,9 @@
 ---
+import '../styles/base.css';
+import { ViewTransitions } from 'astro:transitions';
 import MainNav from '../components/MainNav.astro';
 import MainFooter from '../components/MainFooter.astro';
-import '../styles/base.css';
+
 interface Props {
   title: string;
 }
@@ -21,6 +23,8 @@ const { title } = Astro.props;
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
     <title>{title} | David's Place</title>
+
+    <ViewTransitions />
   </head>
   <body>
     <MainNav />

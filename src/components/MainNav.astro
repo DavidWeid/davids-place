@@ -93,20 +93,6 @@ const navItems: string[] = Object.keys(obj).map(
     }
   };
 
-  const toggleDarkMode = () => {
-    const initialDarkModeState = isDarkMode();
-
-    if (initialDarkModeState === true) {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-    }
-
-    setDarkModeSwitchState(!initialDarkModeState);
-  };
-
   const initDarkMode = () => {
     if (isDarkMode()) {
       document.documentElement.classList.add('dark');
@@ -117,14 +103,34 @@ const navItems: string[] = Object.keys(obj).map(
     setDarkModeSwitchState(isDarkMode());
   };
 
-  const addChangeListenerToSwitch = () => {
-    const darkModeSwitch = document.getElementById('darkModeSwitch');
+  document.addEventListener('astro:page-load', () => {
+    const toggleDarkMode = () => {
+      const initialDarkModeState = isDarkMode();
 
-    darkModeSwitch?.addEventListener('change', () => {
-      toggleDarkMode();
-    });
-  };
+      if (initialDarkModeState === true) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
 
-  initDarkMode();
-  addChangeListenerToSwitch();
+      setDarkModeSwitchState(!initialDarkModeState);
+    };
+
+    const addChangeListenerToSwitch = () => {
+      const darkModeSwitch = document.getElementById('darkModeSwitch');
+
+      darkModeSwitch?.addEventListener('change', () => {
+        toggleDarkMode();
+      });
+    };
+
+    initDarkMode();
+    addChangeListenerToSwitch();
+  });
+
+  document.addEventListener('astro:after-swap', () => {
+    initDarkMode();
+  });
 </script>
