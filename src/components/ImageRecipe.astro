@@ -1,6 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 
+interface Props {
+  src: any;
+  class?: string;
+  alt: string;
+}
+
+interface Image {
+  src: any;
+  width: number;
+  densities: number[];
+  class?: string;
+}
+
 const { src, ...attrs } = Astro.props;
 
 const classes: string = attrs.class
