@@ -53,6 +53,7 @@ const navItems: string[] = Object.keys(obj).map(
         <input
           type='checkbox'
           id='darkModeSwitch'
+          checked='true'
           class="transition-all before:transition-all duration-500 before:duration-700 relative appearance-none w-16 h-8 rounded-full bg-accent-light hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-accent-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-accent-dark checked:before:bg-accent-light checked:before:left-9"
         />
         <label
@@ -103,6 +104,12 @@ const navItems: string[] = Object.keys(obj).map(
     setDarkModeSwitchState(isDarkMode());
   };
 
+  initDarkMode();
+
+  document.addEventListener('astro:after-swap', () => {
+    initDarkMode();
+  });
+
   document.addEventListener('astro:page-load', () => {
     const toggleDarkMode = () => {
       const initialDarkModeState = isDarkMode();
@@ -128,9 +135,5 @@ const navItems: string[] = Object.keys(obj).map(
 
     initDarkMode();
     addChangeListenerToSwitch();
-  });
-
-  document.addEventListener('astro:after-swap', () => {
-    initDarkMode();
   });
 </script>
