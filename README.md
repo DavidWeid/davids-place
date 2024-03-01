@@ -8,6 +8,8 @@ This project allows me to showcase my work and share my thoughts in interests (e
 - mdx
 - typescript
 
+This site is deployed here using GitHub Pages: https://davidweid.github.io/astro-project-1/
+
 ## 🚀 Project Structure
 
 Inside this Astro project, you'll see the following folders and files:
