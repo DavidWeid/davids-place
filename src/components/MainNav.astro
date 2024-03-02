@@ -3,15 +3,17 @@ interface NavigationLinks {
   [key: string]: string;
 }
 
+const baseURL = import.meta.env.BASE_URL;
+
 const obj: NavigationLinks = {
-  home: '/',
-  cookbook: '/cookbook/'
+  home: `${baseURL}`,
+  cookbook: `${baseURL}cookbook/`
 };
 
-const pathname: string = new URL(Astro.request.url).pathname;
+const pathname: string = `${new URL(Astro.request.url).pathname}`;
 
 // If on homepage, don't include the 'href' attribute on the link element
-const homepageLinkAttributes = pathname === '/' ? {} : { href: '/' };
+const homepageLinkAttributes = pathname === baseURL ? {} : { href: baseURL };
 
 const navItems: string[] = Object.keys(obj).map(
   (key) =>
@@ -37,9 +39,9 @@ const navItems: string[] = Object.keys(obj).map(
     <span class='flex items-center'
       ><a
         role='link'
-        aria-disabled={pathname === '/'}
+        aria-disabled={pathname === baseURL}
         {...homepageLinkAttributes}
-        class={pathname === '/'
+        class={pathname === baseURL
           ? 'px-4 py-2 text-white hover:text-white dark:text-white dark:hover:text-white hover:cursor-default'
           : 'px-4 py-2 text-white hover:text-accent-light dark:text-white dark:hover:text-accent-light hover:scale-110 transition-all'}
         aria-label="David's Place Homepage">David's Place</a

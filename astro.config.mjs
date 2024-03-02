@@ -6,8 +6,8 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://davidweid.github.io',
-  base: '/astro-project-1',
-  trailingSlash: 'never',
+  base: '/davids-place',
+  trailingSlash: 'always',
   prefetch: {
     prefetchAll: true
   },

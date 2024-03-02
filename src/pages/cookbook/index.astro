@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
 import Card from '../../components/Card.astro';
 
+const baseURL = import.meta.env.BASE_URL;
 const allCookbookRecipes = await getCollection('cookbook');
 
 const pageTitle = 'Cookbook Home';
@@ -22,7 +23,7 @@ const heroDescription = '';
       {
         allCookbookRecipes.map((recipe) => (
           <Card
-            href={`/cookbook/recipes/${recipe.slug}`}
+            href={`${baseURL}cookbook/recipes/${recipe.slug}/`}
             title={recipe.data.title}
             body={recipe.data.description}
             tags={recipe.data.tags}

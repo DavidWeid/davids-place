@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import NoteBlock from '../components/NoteBlock.astro';
 import Card from '../components/Card.astro';
 
+const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'Portfolio Home';
 const heroTitle = "Welcome to <span class='text-gradient'>David's Place</span>";
 const heroDescription =
@@ -46,7 +47,7 @@ const cardTags = null;
         tags={cardTags}
       />
       <Card
-        href='/cookbook/'
+        href=`${baseURL}cookbook/`
         title='Cookbook'
         body='A collection of recipes I have enjoyed.'
         tags={cardTags}
