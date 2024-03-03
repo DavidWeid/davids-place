@@ -14,6 +14,7 @@ import MainFooter from '../components/MainFooter.astro';
 
 interface Props {
   title: string;
+  indexForSearch?: boolean;
 }
 
 interface generalOGImage {
@@ -25,10 +26,13 @@ interface generalOGImage {
 const baseURL = import.meta.env.BASE_URL;
 const pathname: string = `${baseURL}${new URL(Astro.request.url).pathname}`;
 const urlString: string = new URL(Astro.request.url).href;
-const { title } = Astro.props;
+const { title, indexForSearch } = Astro.props;
 const metaTitle: string = title ? `${title} | David's Place` : "David's Place";
 const metaDescription: string =
   "David's Place includes projects, blogs, and ideas related to web development and other interests held by David Weid II.";
+
+const mainElementAttributes =
+  indexForSearch === false ? {} : { 'data-pagefind-body': true };
 ---
 
 <!doctype html>
@@ -68,7 +72,7 @@ const metaDescription: string =
   </head>
   <body>
     <MainNav />
-    <main>
+    <main {...mainElementAttributes}>
       <slot />
     </main>
     <MainFooter />
