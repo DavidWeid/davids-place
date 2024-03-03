@@ -6,8 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "postbuild": "pagefind --site dist",
-    "preview": "npm run build && npm run postbuild && astro preview",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
@@ -24,7 +23,6 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "pagefind": "^1.0.4"
+    "@tailwindcss/typography": "^0.5.10"
   }
 }
