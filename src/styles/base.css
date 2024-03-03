@@ -39,7 +39,8 @@ code {
   @apply font-mono;
 }
 
-img, video {
+img,
+video {
   @apply w-full h-auto;
 }
 
@@ -60,4 +61,24 @@ img, video {
 
 .text-gradient:hover {
   background-size: 100%;
+}
+
+/* Pagefind Styles */
+.pagefind-ui {
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: theme('colors.accent');
+  --pagefind-ui-text: theme('colors.dark');
+  --pagefind-ui-background: theme('colors.light');
+  --pagefind-ui-border: theme('colors.gray.300');
+  --pagefind-ui-tag: theme('colors.white');
+  --pagefind-ui-border-width: theme(borderWidth.2);
+  --pagefind-ui-border-radius: theme(borderRadius.lg);
+  --pagefind-ui-image-border-radius: theme(borderRadius.lg);
+  --pagefind-ui-image-box-ratio: theme(aspectRatio.video);
+  --pagefind-ui-font: theme(fontFamily.sans);
+}
+
+html.dark .pagefind-ui {
+  --pagefind-ui-text: theme('colors.light');
+  --pagefind-ui-background: theme('colors.medium');
 }
