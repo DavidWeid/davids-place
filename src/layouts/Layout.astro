@@ -23,6 +23,7 @@ interface generalOGImage {
 }
 
 const baseURL = import.meta.env.BASE_URL;
+const pathname: string = `${baseURL}${new URL(Astro.request.url).pathname}`;
 const urlString: string = new URL(Astro.request.url).href;
 const { title } = Astro.props;
 const metaTitle: string = title ? `${title} | David's Place` : "David's Place";
@@ -31,7 +32,7 @@ const metaDescription: string =
 ---
 
 <!doctype html>
-<html lang='en' class='dark'>
+<html lang='en' class='dark' data-pagefind-meta=`url[${pathname}]`>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />

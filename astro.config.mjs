@@ -12,9 +12,6 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true
   },
-  build: {
-    format: 'file'
-  },
   integrations: [
     pagefind(),
     alpinejs(),
