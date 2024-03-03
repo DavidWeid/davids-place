@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
-import Search from "astro-pagefind/components/Search";
+import Search from 'astro-pagefind/components/Search';
 import Card from '../../components/Card.astro';
 
 const baseURL = import.meta.env.BASE_URL;
@@ -16,7 +16,11 @@ const heroDescription = '';
 <Layout title={pageTitle} indexForSearch={false}>
   <Hero title={heroTitle} description={heroDescription} />
 
-  <Search id="search" className="pagefind-ui" uiOptions={{ showImages: false }}/>
+  <Search
+    id='search'
+    className='pagefind-ui'
+    uiOptions={{ showImages: false }}
+  />
 
   <section class='container'>
     <ul
@@ -35,6 +39,6 @@ const heroDescription = '';
       }
     </ul>
 
-    <span class="block pb-16"></span>
+    <span class='block pb-16'></span>
   </section>
 </Layout>

@@ -31,8 +31,12 @@ const metaTitle: string = title ? `${title} | David's Place` : "David's Place";
 const metaDescription: string =
   "David's Place includes projects, blogs, and ideas related to web development and other interests held by David Weid II.";
 
-const mainElementAttributes =
-  indexForSearch === false ? {} : { 'data-pagefind-body': true };
+const mainElementAttributes = {};
+indexForSearch === false
+  ? null
+  : ((mainElementAttributes as { 'data-pagefind-body': boolean })[
+      'data-pagefind-body'
+    ] = true);
 ---
 
 <!doctype html>
