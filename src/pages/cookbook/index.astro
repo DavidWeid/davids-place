@@ -2,10 +2,13 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import Search from "astro-pagefind/components/Search";
 import Card from '../../components/Card.astro';
 
 const baseURL = import.meta.env.BASE_URL;
 const allCookbookRecipes = await getCollection('cookbook');
+export const prerender = false;
+const q = Astro.url.searchParams.get("q") ?? undefined;
 
 const pageTitle = 'Cookbook Home';
 const heroTitle = "<span class='text-gradient'>David's Cookbook</span>";
@@ -14,6 +17,8 @@ const heroDescription = '';
 
 <Layout title={pageTitle}>
   <Hero title={heroTitle} description={heroDescription} />
+
+  <Search id="search" className="pagefind-ui" uiOptions={{ showImages: false }} query={q}/>
 
   <section class='container'>
     <ul

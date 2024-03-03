@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import pagefind from 'astro-pagefind';
 import alpinejs from '@astrojs/alpinejs';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
@@ -11,5 +12,13 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true
   },
-  integrations: [alpinejs(), tailwind({ applyBaseStyles: false }), mdx()]
+  build: {
+    format: 'file'
+  },
+  integrations: [
+    pagefind(),
+    alpinejs(),
+    tailwind({ applyBaseStyles: false }),
+    mdx()
+  ]
 });
