@@ -2,39 +2,28 @@
 
 <div id='results'></div>
 
-<script>
-  const baseURL = import.meta.env.BASE_URL;
-  document
-    .querySelector('#search')
-    ?.addEventListener('input', async (e: { target: any }) => {
-      if (e.target.dataset.loaded !== 'true') {
-        e.target.dataset.loaded = 'true';
-        (window as any).pagefind = await import(
-          `${baseURL}pagefind/pagefind-ui.js`
-        );
-      }
+<script is:inline>
+  document.querySelector('#search')?.addEventListener('input', async (e) => {
+    if (e.target.dataset.loaded !== 'true') {
+      e.target.dataset.loaded = 'true';
+      window.pagefind = await import('/davids-place/pagefind/pagefind-ui.js');
+    }
 
-      const search = await (window as any).pagefind.search(e.target.value);
+    const search = await window.pagefind.search(e.target.value);
 
-      const resultsElement = document.querySelector('#results');
-      if (resultsElement) {
-        resultsElement.innerHTML = '';
-      }
+    document.querySelector('#results').innerHTML = '';
 
-      for (const result of search.results) {
-        const data = await result.data();
+    for (const result of search.results) {
+      const data = await result.data();
 
-        const resultsElement = document.querySelector('#results');
-        if (resultsElement) {
-          resultsElement.innerHTML += `
+      document.querySelector('#results').innerHTML += `
                 <a href="${data.url}">
                     <h3>${data.meta.title}</h3>
                     <p>${data.excerpt}</p>
                 </a>
             `;
-        }
-      }
-    });
+    }
+  });
 </script>
 
 <style is:global>
