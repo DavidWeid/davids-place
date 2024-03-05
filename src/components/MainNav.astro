@@ -36,11 +36,12 @@ const navItems: string[] = Object.keys(obj).map(
 ---
 
 <nav
-  class='z-10 py-4 bg-dark text-white bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all laptop:sticky desktop:top-0'
+  class='z-30 py-4 bg-dark text-white bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all laptop:sticky desktop:top-0'
 >
   <div class='container flex justify-between items-center'>
     <div class='flex items-center'>
       <Image
+        loading="eager"
         src={davidsPlaceLogo}
         alt="David's Place Logo"
         width={56}

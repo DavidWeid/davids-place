@@ -1,0 +1,42 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<pagefind-search data-id={id}>
+  <div id={id}></div>
+</pagefind-search>
+
+<script>
+  class Search extends HTMLElement {
+    constructor() {
+      super();
+
+      const id = this.dataset.id;
+
+      document.addEventListener('astro:page-load', () => {
+        const initPagefind = () => {
+          const searchContainer = document.querySelector(`#${id}`);
+          const pagefind = searchContainer?.hasChildNodes();
+
+          if (searchContainer && !pagefind) {
+            // @ts-ignore
+            new PagefindUI({
+              element: `#${id}`,
+              showSubResults: true,
+              showImages: false,
+              resetStyles: false
+            });
+          }
+        };
+
+        initPagefind();
+      });
+    }
+  }
+
+  customElements.define('pagefind-search', Search);
+</script>

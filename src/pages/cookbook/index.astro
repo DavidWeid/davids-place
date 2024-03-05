@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import Search from '../../components/Search.astro';
 import Card from '../../components/Card.astro';
 
 const baseURL = import.meta.env.BASE_URL;
@@ -12,8 +13,14 @@ const heroTitle = "<span class='text-gradient'>David's Cookbook</span>";
 const heroDescription = '';
 ---
 
-<Layout title={pageTitle} indexForSearch={false}>
+<Layout title={pageTitle} indexForSearch={false} includeSearchComponent={true}>
   <Hero title={heroTitle} description={heroDescription} />
+
+  <div class='container'>
+    <Search id='search' />
+  </div>
+
+  <span class="block pb-8"></span>
 
   <section class='container'>
     <ul
