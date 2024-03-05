@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "start-search": "npm run build && npm run start",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -20,7 +19,6 @@
     "@types/alpinejs": "^3.13.6",
     "alpinejs": "^3.13.5",
     "astro": "^4.3.3",
-    "astro-pagefind": "^1.4.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },
