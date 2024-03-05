@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --accent-gradient: linear-gradient(
+    45deg,
+    theme('colors.accent'),
+    theme('colors.accent-light') 30%,
+    theme('colors.white') 60%
+  );
+}
+
 html {
   @apply bg-light   text-dark  font-sans text-base select-none desktop:overscroll-y-none scroll-smooth;
 }
@@ -23,7 +32,7 @@ h1 {
 }
 
 a {
-  @apply text-accent-dark hover:text-accent dark:text-white dark:hover:text-accent-light;
+  @apply text-accent-dark hover:text-accent dark:text-white dark:hover:text-accent-light no-underline;
 }
 
 code {
@@ -35,6 +44,14 @@ video {
   @apply w-full h-auto;
 }
 
+mark {
+  @apply px-1.5 py-0.5 rounded font-medium tracking-wide bg-accent/30 text-dark dark:bg-accent/50 dark:text-light/95;
+}
+
+input {
+  @apply focus-visible:ring-1 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:outline-none;
+}
+
 .container {
   @apply w-full laptop:max-w-screen-laptop desktop:max-w-screen-desktop mx-auto px-4;
 }
@@ -42,4 +59,28 @@ video {
 .text-gradient {
   -webkit-text-fill-color: transparent;
   @apply bg-clip-text bg-[size:200%] bg-[position:0%] transition-all ease-in-out duration-200 bg-gradient-to-br from-accent to-accent-dark dark:to-light from-10% to-75% hover:bg-[size:100%];
+}
+
+/* Pagefind Styles (Search) */
+.pagefind-ui .pagefind-ui__form .pagefind-ui__search-input {
+  @apply border-gray-300 focus-visible:border-transparent font-normal text-lg;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__results-area {
+  @apply px-4 rounded-lg border border-dark dark:border-light bg-light dark:bg-medium text-dark dark:text-white;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__result {
+  @apply border-y border-accent/50 pb-6 pt-3;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__result:last-of-type {
+  @apply border-b-0;
+}
+
+.pagefind-ui
+  .pagefind-ui__form
+  .pagefind-ui__result-title
+  .pagefind-ui__result-link {
+  @apply text-accent-dark hover:text-accent dark:text-accent-light dark:hover:text-accent hover:no-underline;
 }
