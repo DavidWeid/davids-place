@@ -48,28 +48,33 @@ indexForSearch === false
     <meta name='generator' content={Astro.generator} />
     <link rel='canonical' href={urlString} />
 
+    <link rel='icon' type='image/ico' href=`${baseURL}favicon.ico` />
     <link
       rel='apple-touch-icon'
       sizes='180x180'
-      href={`${baseURL}apple-touch-icon.png`}
+      href={`${baseURL}apple-touch-icon.png?v=1`}
     />
     <link
       rel='icon'
       type='image/png'
       sizes='32x32'
-      href={`${baseURL}favicon-32x32.png`}
+      href={`${baseURL}favicon-32x32.png?v=1`}
     />
     <link
       rel='icon'
       type='image/png'
       sizes='16x16'
-      href={`${baseURL}favicon-16x16.png`}
+      href={`${baseURL}favicon-16x16.png?v=1`}
     />
-    <link rel='manifest' href={`${baseURL}site.webmanifest`} />
+    <link rel='manifest' href={`${baseURL}site.webmanifest?v=1`} />
     <link
       rel='mask-icon'
-      href={`${baseURL}safari-pinned-tab.svg" color="#310a65`}
+      href={`${baseURL}safari-pinned-tab.svg?v=1`}
+      color='#310a65'
     />
+    <link rel='shortcut icon' href={`${baseURL}favicon.ico?v=1`} />
+    <meta name='apple-mobile-web-app-title' content="David's Place" />
+    <meta name='application-name' content="David's Place" />
     <meta name='msapplication-TileColor' content='#603cba' />
     <meta name='theme-color' content='#310a65' />
 
