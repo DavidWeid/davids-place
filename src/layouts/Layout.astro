@@ -41,13 +41,37 @@ indexForSearch === false
 ---
 
 <!doctype html>
-<html lang='en' class='dark' data-pagefind-meta=`url[${pathname}]`>
+<html lang='en' class='dark' data-pagefind-meta={`url[${pathname}]`}>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href=`${baseURL}favicon.svg` />
     <meta name='generator' content={Astro.generator} />
     <link rel='canonical' href={urlString} />
+
+    <link
+      rel='apple-touch-icon'
+      sizes='180x180'
+      href={`${baseURL}apple-touch-icon.png`}
+    />
+    <link
+      rel='icon'
+      type='image/png'
+      sizes='32x32'
+      href={`${baseURL}favicon-32x32.png`}
+    />
+    <link
+      rel='icon'
+      type='image/png'
+      sizes='16x16'
+      href={`${baseURL}favicon-16x16.png`}
+    />
+    <link rel='manifest' href={`${baseURL}site.webmanifest`} />
+    <link
+      rel='mask-icon'
+      href={`${baseURL}safari-pinned-tab.svg" color="#310a65`}
+    />
+    <meta name='msapplication-TileColor' content='#603cba' />
+    <meta name='theme-color' content='#310a65' />
 
     <title>{metaTitle}</title>
     <meta name='description' content={metaDescription} />
@@ -61,8 +85,8 @@ indexForSearch === false
     />
     <meta property='og:type' content='website' />
     <meta property='og:image' content={generalOGImage.src} />
-    <meta property='og:image:width' content=`${generalOGImage.width}` />
-    <meta property='og:image:height' content=`${generalOGImage.height}` />
+    <meta property='og:image:width' content={`${generalOGImage.width}`} />
+    <meta property='og:image:height' content={`${generalOGImage.height}`} />
     <meta
       property='og:image:alt'
       content="Social Media Open Graph Illustration for David's Place"
@@ -76,11 +100,8 @@ indexForSearch === false
     {
       includeSearchComponent && (
         <>
-          <link
-            href=`${baseURL}pagefind/pagefind-ui.css`
-            rel='stylesheet'
-          />
-          <script is:inline src=`${baseURL}pagefind/pagefind-ui.js` />
+          <link href={`${baseURL}pagefind/pagefind-ui.css`} rel='stylesheet' />
+          <script is:inline src={`${baseURL}pagefind/pagefind-ui.js`} />
         </>
       )
     }
