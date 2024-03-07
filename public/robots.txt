@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot-Image
+Disallow: /
+
+Sitemap: https://davidweid.github.io/davids-place/sitemap-index.xml

@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import alpinejs from '@astrojs/alpinejs';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,5 +12,12 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true
   },
-  integrations: [alpinejs(), tailwind({ applyBaseStyles: false }), mdx()]
+  integrations: [
+    alpinejs(),
+    tailwind({
+      applyBaseStyles: false
+    }),
+    mdx(),
+    sitemap()
+  ]
 });
