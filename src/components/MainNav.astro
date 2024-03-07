@@ -39,22 +39,22 @@ const navItems: string[] = Object.keys(obj).map(
   class='z-30 py-4 bg-dark text-white bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all laptop:sticky desktop:top-0'
 >
   <div class='container flex justify-between items-center'>
-    <div class='flex items-center'>
+    <div class='flex items-center group'>
       <Image
-        loading="eager"
+        loading='eager'
         src={davidsPlaceLogo}
         alt="David's Place Logo"
-        width={56}
-        height={56}
-        class='w-14 h-14'
+        class={pathname === baseURL
+          ? 'h-14 w-auto'
+          : 'h-14 w-auto group-hover:-rotate-12 transition-all'}
       />
       <a
         role='link'
         aria-disabled={pathname === baseURL}
         {...homepageLinkAttributes}
         class={pathname === baseURL
-          ? 'px-4 py-2 text-white hover:text-white dark:text-white dark:hover:text-white hover:cursor-default'
-          : 'px-4 py-2 text-white hover:text-accent-light dark:text-white dark:hover:text-accent-light hover:scale-110 transition-all'}
+          ? 'px-4 py-2 text-white group-hover:text-white dark:text-white dark:group-hover:text-white group-hover:cursor-default'
+          : 'px-4 py-2 text-white group-hover:text-accent-light dark:text-white dark:group-hover:text-accent-light group-hover:scale-110 transition-all'}
         aria-label="David's Place Homepage">David's Place</a
       >
     </div>
