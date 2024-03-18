@@ -22,7 +22,9 @@ const cookbookCollection = defineCollection({
       prepTime: z.string(),
       cookTime: z.string(),
       totalTime: z.string(),
-      ingredients: z.array(z.string()),
+      ingredients: z.array(
+        z.object({ category: z.string(), items: z.array(z.string()) })
+      ),
       instructions: z.array(z.string())
     })
 });

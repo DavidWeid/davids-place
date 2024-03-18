@@ -18,7 +18,7 @@ interface Props {
     prepTime: string;
     cookTime: string;
     totalTime: string;
-    ingredients: string[];
+    ingredients: { category: string; items: string[] }[];
     instructions: string[];
   };
 }
@@ -74,7 +74,11 @@ const heroDescription = description;
 
   <hr class='border-accent' />
 
-  <div data-tags={`| tags: ${tags.join(', ')}`} data-pagefind-index-attrs="data-tags" class='bg-white dark:bg-medium'>
+  <div
+    data-tags={`| tags: ${tags.join(', ')}`}
+    data-pagefind-index-attrs='data-tags'
+    class='bg-white dark:bg-medium'
+  >
     <div class='container'>
       <span class='block pb-8'></span>
 
@@ -82,7 +86,7 @@ const heroDescription = description;
         {
           ingredients && (
             <fieldset class='laptop:overflow-scroll laptop:max-h-screen laptop:sticky laptop:top-32'>
-              <legend data-pagefind-ignore="all" class='text-2xl font-bold'>
+              <legend data-pagefind-ignore='all' class='text-2xl font-bold'>
                 Ingredients
                 <>
                   <br />
@@ -93,21 +97,35 @@ const heroDescription = description;
               </legend>
               <span class='block pb-8' />
               <div class='flex flex-col gap-2'>
-                {ingredients.map((ingredient, index) => (
-                  <div>
-                    <input
-                      id={'ingredient-' + index}
-                      type='checkbox'
-                      class='sr-only peer'
-                    />
-                    <label
-                      for={'ingredient-' + index}
-                      class='peer-checked:text-accent/40 dark:peer-checked:text-white/40 hover:cursor-pointer hover:text-accent dark:hover:text-accent-light'
-                    >
-                      {ingredient}
-                    </label>
-                  </div>
-                ))}
+                {ingredients.map((data) => {
+                  const { category, items } = data;
+                  return (
+                    <div>
+                      <span>{category.toUpperCase()}</span>{' '}
+                      {items.map((ingredient, index) => {
+                        return (
+                          <div>
+                            <input
+                              id={
+                                category.toLowerCase() + '-ingredient-' + index
+                              }
+                              type='checkbox'
+                              class='sr-only peer'
+                            />
+                            <label
+                              for={
+                                category.toLowerCase() + '-ingredient-' + index
+                              }
+                              class='peer-checked:text-accent/40 dark:peer-checked:text-white/40 hover:cursor-pointer hover:text-accent dark:hover:text-accent-light'
+                            >
+                              {ingredient}
+                            </label>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
               </div>
             </fieldset>
           )
