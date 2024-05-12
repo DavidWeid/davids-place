@@ -85,15 +85,15 @@ const heroDescription = description;
       <section class='grid grid-cols-1 laptop:grid-cols-3 gap-8 relative'>
         {
           ingredients && (
-            <fieldset class='laptop:overflow-scroll laptop:max-h-[75vh] laptop:sticky laptop:top-28'>
+            <fieldset class='laptop:overflow-scroll laptop:max-h-[75vh] laptop:sticky laptop:top-28 rounded-lg'>
               <legend data-pagefind-ignore='all'>
                 <h2>Ingredients</h2>
-                <span class='text-xs opacity-75 tracking-wide'>
+                <span class='block text-xs opacity-75 tracking-wide pl-1 pb-2'>
                   Click to check off
                 </span>
               </legend>
               <span class='block pb-8' />
-              <div>
+              <div class='flex flex-col gap-8 p-4 bg-accent-light/30 dark:bg-accent-dark/30 rounded-lg'>
                 {ingredients.map((data) => {
                   const { category, items } = data;
                   return (
