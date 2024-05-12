@@ -86,22 +86,20 @@ const heroDescription = description;
         {
           ingredients && (
             <fieldset class='laptop:overflow-scroll laptop:max-h-[75vh] laptop:sticky laptop:top-24'>
-              <legend data-pagefind-ignore='all' class='text-2xl font-bold'>
-                Ingredients
-                <>
-                  <br />
-                  <span class='text-xs opacity-75 tracking-wide font-normal'>
-                    Click to check off
-                  </span>
-                </>
+              <legend data-pagefind-ignore='all'>
+                <h2>Ingredients</h2>
+                <span class='text-xs opacity-75 tracking-wide'>
+                  Click to check off
+                </span>
               </legend>
               <span class='block pb-8' />
-              <div class='flex flex-col gap-2'>
+              <div>
                 {ingredients.map((data) => {
                   const { category, items } = data;
                   return (
-                    <div>
-                      <span>{category.toUpperCase()}</span>{' '}
+                    <div class='flex flex-col gap-2'>
+                      <h3>{category.toUpperCase()}</h3>
+                      <hr class='border-accent/40 w-1/4' />
                       {items.map((ingredient, index) => {
                         return (
                           <div>
@@ -134,7 +132,7 @@ const heroDescription = description;
         {
           instructions && (
             <div class='laptop:col-span-2'>
-              <h2 class='text-2xl font-bold'>Instructions</h2>
+              <h2>Instructions</h2>
               <span class='block pb-8' />
               <ol class='flex flex-col gap-6'>
                 {instructions.map((instruction, index) => (
@@ -164,7 +162,7 @@ const heroDescription = description;
         source && (
           <>
             <section class='opacity-90'>
-              <h2 class='text-lg font-bold'>See the original recipe</h2>
+              <h2>See the original recipe</h2>
               <span class='block pb-4' />
               <a
                 href={source}
