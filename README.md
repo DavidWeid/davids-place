@@ -75,10 +75,10 @@ For the content files, specifically `cookbook` files, images are rendered on the
 - In this case we import the component `ImageRecipe` as well as the image itself from `/images/` and pass this imported image into the component. `alt` is also required
 
 ```js
-import ImageRecipe from '../../components/ImageRecipe.astro';
-import imageName from '../../images/cookbook/recipe-name/image-name.png';
+import ImageRecipe from "../../components/ImageRecipe.astro";
+import imageName from "../../images/cookbook/recipe-name/image-name.png";
 
-<ImageRecipe src={imageName} alt='Image for the food made from this recipe' />;
+<ImageRecipe src={imageName} alt="Image for the food made from this recipe" />;
 ```
 
 2. Through the front matter portion of the MDX file
@@ -97,22 +97,22 @@ Note: To use the value of the `image` paramater from the front matter, the conte
 
 ```ts
 // 1. Import utilities from `astro:content`
-import { z, defineCollection } from 'astro:content';
+import { z, defineCollection } from "astro:content";
 
 // 2. Use "image" helper
 const cookbookCollection = defineCollection({
-  type: 'content',
+  type: "content",
   schema: ({ image }) =>
     z.object({
       // ...
       image: z.nullable(
         z.object({
           url: image(),
-          alt: z.string()
-        })
-      )
+          alt: z.string(),
+        }),
+      ),
       // ...
-    })
+    }),
 });
 ```
 

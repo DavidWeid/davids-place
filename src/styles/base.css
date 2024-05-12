@@ -5,14 +5,14 @@
 :root {
   --accent-gradient: linear-gradient(
     45deg,
-    theme('colors.accent'),
-    theme('colors.accent-light') 30%,
-    theme('colors.white') 60%
+    theme("colors.accent"),
+    theme("colors.accent-light") 30%,
+    theme("colors.white") 60%
   );
 }
 
 html {
-  @apply bg-light   text-dark  font-sans text-base select-none desktop:overscroll-y-none scroll-smooth;
+  @apply bg-light   text-dark  font-sans text-base desktop:text-lg select-none desktop:overscroll-y-none scroll-smooth;
 }
 
 html.dark {
