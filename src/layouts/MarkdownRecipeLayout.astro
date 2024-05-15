@@ -1,5 +1,5 @@
 ---
-import Layout from './Layout.astro';
+import Base from './Base.astro';
 import Hero from '../components/Hero.astro';
 import ImageRecipe from '../components/ImageRecipe.astro';
 interface Props {
@@ -43,7 +43,7 @@ const heroTitle = title;
 const heroDescription = description;
 ---
 
-<Layout title={title}>
+<Base title={title}>
   <Hero title={heroTitle} description={heroDescription}>
     <span class='block pb-4'></span>
     <div class='flex flex-wrap justify-center gap-8'>
@@ -181,4 +181,4 @@ const heroDescription = description;
   </div>
 
   <hr class='border-accent' />
-</Layout>
+</Base>

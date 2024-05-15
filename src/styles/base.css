@@ -5,14 +5,14 @@
 :root {
   --accent-gradient: linear-gradient(
     45deg,
-    theme("colors.accent"),
-    theme("colors.accent-light") 30%,
-    theme("colors.white") 60%
+    theme("colors.blue.dark"),
+    theme("colors.blue.dark") 30%,
+    theme("colors.blue.light") 60%
   );
 }
 
 html {
-  @apply bg-light   text-dark  font-sans text-base desktop:text-lg select-none desktop:overscroll-y-none scroll-smooth;
+  @apply bg-light text-dark font-sans text-base desktop:text-lg select-none desktop:overscroll-y-none scroll-smooth;
 }
 
 html.dark {
@@ -54,9 +54,9 @@ h6 {
   @apply text-lg;
 }
 
-a {
+/* a {
   @apply text-accent-dark hover:text-accent dark:text-white dark:hover:text-accent-light no-underline;
-}
+} */
 
 code {
   @apply font-mono;
@@ -81,7 +81,7 @@ input {
 
 .text-gradient {
   -webkit-text-fill-color: transparent;
-  @apply bg-clip-text bg-[size:200%] bg-[position:0%] transition-all ease-in-out duration-200 bg-gradient-to-br from-accent to-accent-dark dark:to-light from-10% to-75% hover:bg-[size:100%];
+  @apply bg-clip-text bg-[size:150%] bg-[position:0%] transition-all ease-in-out duration-300 bg-gradient-to-br from-blue-dark to-green-emerald dark:from-green-emerald dark:to-blue-light from-10% to-75% hover:bg-[size:300%];
 }
 
 /* Pagefind Styles (Search) */

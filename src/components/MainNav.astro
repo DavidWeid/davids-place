@@ -28,7 +28,7 @@ const navItems: string[] = Object.keys(obj).map(
       class="${
         pathname === obj[key]
           ? 'text-white/60 hover:text-white/60 dark:text-white/60 dark:hover:text-white/60 hover:cursor-default px-4 py-2 uppercase text-sm'
-          : 'px-4 py-2 text-white hover:text-accent-light hover:scale-110 transition-all uppercase text-sm'
+          : 'px-4 py-2 text-white hover:text-green-emerald hover:scale-110 transition-all uppercase text-sm'
       }"
     >${key}</a>
   </li>`
@@ -36,7 +36,7 @@ const navItems: string[] = Object.keys(obj).map(
 ---
 
 <nav
-  class='z-30 py-4 bg-dark text-white bg-gradient-to-tr from-accent-dark/60 to-accent-dark/10 hover:from-accent-dark/80 transition-all laptop:sticky laptop:top-0'
+  class='z-30 py-4 bg-dark text-white bg-gradient-to-tr from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 transition-all laptop:sticky laptop:top-0'
 >
   <div class='container flex justify-between items-center'>
     <div class='flex items-center group'>
@@ -53,8 +53,8 @@ const navItems: string[] = Object.keys(obj).map(
         aria-disabled={pathname === baseURL}
         {...homepageLinkAttributes}
         class={pathname === baseURL
-          ? 'px-4 py-2 text-white group-hover:text-white dark:text-white dark:group-hover:text-white group-hover:cursor-default'
-          : 'px-4 py-2 text-white group-hover:text-accent-light dark:text-white dark:group-hover:text-accent-light group-hover:scale-110 transition-all'}
+          ? 'px-4 py-2 group-hover:cursor-default'
+          : 'px-4 py-2 group-hover:text-green-emerald group-hover:scale-110 transition-all'}
         aria-label="David's Place Homepage">David's Place</a
       >
     </div>
@@ -67,11 +67,11 @@ const navItems: string[] = Object.keys(obj).map(
           type='checkbox'
           id='darkModeSwitch'
           checked='true'
-          class="transition-all before:transition-all duration-500 before:duration-700 relative appearance-none w-16 h-8 rounded-full bg-accent-light hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-accent-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-accent-dark checked:before:bg-accent-light checked:before:left-9"
+          class="transition-all before:transition-all duration-500 before:duration-700 relative appearance-none w-16 h-8 rounded-full bg-white/75 hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-blue-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-blue-dark checked:before:bg-accent-light checked:before:left-9"
         />
         <label
           for='darkModeSwitch'
-          class='text-xs opacity-50 hover:cursor-pointer'>Dark Mode</label
+          class='text-xs opacity-75 hover:cursor-pointer'>Dark Mode</label
         >
       </fieldset>
     </div>
@@ -79,7 +79,7 @@ const navItems: string[] = Object.keys(obj).map(
 
   <!-- Nav items visible on mobile only -->
   <div class='container tablet:hidden'>
-    <span class='block my-4 border-t border-t-accent/75'></span>
+    <span class='block my-4 border-t border-t-green-emerald'></span>
     <ul class='flex justify-center items-center gap-4' set:html={navItems} />
   </div>
 </nav>

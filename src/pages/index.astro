@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import NoteBlock from '../components/NoteBlock.astro';
 import Card from '../components/Card.astro';
@@ -12,7 +12,7 @@ const heroDescription =
 const cardTags = null;
 ---
 
-<Layout title={pageTitle} indexForSearch={false}>
+<Base title={pageTitle} indexForSearch={false}>
   <Hero title={heroTitle} description={heroDescription} />
 
   <section class='container'>
@@ -56,4 +56,4 @@ const cardTags = null;
 
     <span class='block pb-16'></span>
   </section>
-</Layout>
+</Base>

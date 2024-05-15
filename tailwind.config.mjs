@@ -37,6 +37,17 @@ export default {
         accent: "#883aea",
         "accent-light": "#e0ccfa",
         "accent-dark": "#310a65",
+        red: {
+          dark: "#C84B44",
+          light: "#F8756A",
+        },
+        blue: {
+          dark: "#3844C6",
+          light: "#5C68F3",
+        },
+        green: {
+          emerald: "#50C878",
+        },
       },
     },
   },
