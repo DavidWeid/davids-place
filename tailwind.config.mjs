@@ -46,7 +46,9 @@ export default {
           light: "#5C68F3",
         },
         green: {
+          light: "#9fdeb0",
           emerald: "#50C878",
+          dark: "#2e9c51",
         },
       },
     },
