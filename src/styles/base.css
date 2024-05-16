@@ -5,9 +5,9 @@
 :root {
   --accent-gradient: linear-gradient(
     45deg,
-    theme("colors.blue.dark"),
+    theme("colors.blue.light"),
     theme("colors.blue.dark") 30%,
-    theme("colors.blue.light") 60%
+    theme("colors.green.emerald") 60%
   );
 }
 
