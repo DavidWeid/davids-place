@@ -54,10 +54,6 @@ h6 {
   @apply text-lg;
 }
 
-/* a {
-  @apply text-accent-dark hover:text-accent dark:text-white dark:hover:text-accent-light no-underline;
-} */
-
 code {
   @apply font-mono;
 }
@@ -68,11 +64,11 @@ video {
 }
 
 mark {
-  @apply px-1.5 py-0.5 rounded font-medium tracking-wide bg-accent/30 text-dark dark:bg-accent/50 dark:text-light/95;
+  @apply px-1.5 py-0.5 rounded font-medium tracking-wide bg-green-light dark:bg-blue-dark/75 dark:text-white;
 }
 
 input {
-  @apply focus-visible:ring-1 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:outline-none;
+  @apply focus-visible:ring-1 focus-visible:ring-green-emerald focus-visible:ring-offset-0 focus-visible:outline-none;
 }
 
 .container {
@@ -82,6 +78,39 @@ input {
 .text-gradient {
   -webkit-text-fill-color: transparent;
   @apply bg-clip-text bg-[size:150%] bg-[position:0%] transition-all ease-in-out duration-300 bg-gradient-to-br from-blue-dark to-green-emerald dark:from-green-emerald dark:to-blue-light from-10% to-75% hover:bg-[size:300%];
+}
+
+.content-link {
+  @apply text-blue-dark hover:text-green-dark no-underline;
+}
+
+.content-link-gradient {
+  padding-bottom: 4px;
+  background: linear-gradient(
+      to right,
+      theme("colors.blue.dark"),
+      theme("colors.blue.dark")
+    ),
+    linear-gradient(
+      to right,
+      theme("colors.green.dark"),
+      theme("colors.green.emerald"),
+      theme("colors.green.light")
+    );
+  background-size:
+    100% 2px,
+    0 2px;
+  background-position:
+    100% 100%,
+    0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+.content-link-gradient:hover {
+  background-size:
+    0 2px,
+    100% 2px;
 }
 
 /* Pagefind Styles (Search) */
@@ -94,7 +123,7 @@ input {
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__result {
-  @apply border-y border-accent/50 pb-6 pt-3;
+  @apply border-t border-medium dark:border-light pb-6 pt-3;
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__result:last-of-type {
@@ -105,5 +134,5 @@ input {
   .pagefind-ui__form
   .pagefind-ui__result-title
   .pagefind-ui__result-link {
-  @apply text-accent-dark hover:text-accent dark:text-accent-light dark:hover:text-accent hover:no-underline;
+  @apply text-blue-dark hover:text-green-dark dark:text-green-light dark:hover:text-green-emerald hover:no-underline;
 }
