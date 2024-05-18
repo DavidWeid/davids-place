@@ -1,0 +1,59 @@
+---
+import { Debug } from 'astro:components';
+
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+
+const pageTitle = 'Gaming Center';
+const heroTitle = "<span class='text-gradient'>David's Gaming Center</span>";
+const heroDescription = '';
+
+const games = [
+  {
+    title: 'Helldivers 2',
+    id: 553850
+  },
+  {
+    title: 'Chivalry 2',
+    id: 1824220
+  },
+  {
+    title: 'Timberborn',
+    id: 1062090
+  },
+  {
+    title: 'Farthest Frontier',
+    id: 1044720
+  },
+  {
+    title: 'The Planet Crafter',
+    id: 1284190
+  }
+];
+
+const steamApiKey = import.meta.env.STEAM_API_KEY;
+const steamUserId = import.meta.env.PUBLIC_STEAM_USER_ID;
+
+const responseGameNews = await fetch(
+  `https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=553850&count=3&maxlength=500&format=json`
+);
+const dataGameNews = await responseGameNews.json();
+
+const responsePlayerData = await fetch(
+  `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamApiKey}&steamids=${steamUserId}`
+);
+const dataPlayerData = await responsePlayerData.json();
+---
+
+<Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
+  <Hero title={heroTitle} description={heroDescription} />
+
+  <span class='block pb-8'></span>
+
+  <section class='container'>
+    <Debug {dataGameNews} />
+    <Debug {dataPlayerData} />
+
+    <span class='block pb-16'></span>
+  </section>
+</Base>
