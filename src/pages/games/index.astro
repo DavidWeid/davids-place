@@ -39,20 +39,20 @@ const steamUserId = import.meta.env.PUBLIC_STEAM_USER_ID;
 console.log("Steam User ID: ");
 console.log(steamUserId);
 
-const responseGameNews = await fetch(
-  `https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=553850&count=3&maxlength=500&format=json`
-);
-const dataGameNews = await responseGameNews.json();
+// const responseGameNews = await fetch(
+//   `https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=553850&count=3&maxlength=500&format=json`
+// );
+// const dataGameNews = await responseGameNews.json();
 
-const responsePlayerData = await fetch(
-  `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamApiKey}&steamids=${steamUserId}`
-);
-const dataPlayerData = await responsePlayerData.json();
+// const responsePlayerData = await fetch(
+//   `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamApiKey}&steamids=${steamUserId}`
+// );
+// const dataPlayerData = await responsePlayerData.json();
 
-const responseOwnedGames = await fetch(
-  `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`
-);
-const dataOwnedGames = await responseOwnedGames.json();
+// const responseOwnedGames = await fetch(
+//   `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`
+// );
+// const dataOwnedGames = await responseOwnedGames.json();
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
