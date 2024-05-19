@@ -9,8 +9,8 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   output: "server",
   adapter: awsAmplify(),
-  site: "https://davidweid.github.io",
-  base: "/davids-place",
+  // site: "https://davidweid.github.io",
+  // base: "/davids-place",
   trailingSlash: "always",
   prefetch: {
     prefetchAll: true,
