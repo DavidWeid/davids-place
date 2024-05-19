@@ -1,9 +1,5 @@
 name: Deploy to GitHub Pages
 
-env:
-  STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
-  PUBLIC_STEAM_USER_ID: ${{ secrets.PUBLIC_STEAM_USER_ID }}
-
 on:
   # Trigger the workflow every time you push to the `main` branch
   push:
@@ -19,6 +15,9 @@ permissions:
 
 jobs:
   build:
+    env:
+      STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+      PUBLIC_STEAM_USER_ID: ${{ secrets.PUBLIC_STEAM_USER_ID }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
