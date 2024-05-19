@@ -36,6 +36,9 @@ console.log(games);
 const steamApiKey = import.meta.env.STEAM_API_KEY || process.env.STEAM_API_KEY;
 const steamUserId = import.meta.env.PUBLIC_STEAM_USER_ID || process.env.PUBLIC_STEAM_USER_ID;
 
+console.log(steamApiKey);
+console.log(steamUserId);
+
 const responseGameNews = await fetch(
   `https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=553850&count=3&maxlength=500&format=json`
 );
