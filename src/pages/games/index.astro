@@ -44,15 +44,15 @@ const responseGameNews = await fetch(
 );
 const dataGameNews = await responseGameNews.json();
 
-// const responsePlayerData = await fetch(
-//   `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamApiKey}&steamids=${steamUserId}`
-// );
-// const dataPlayerData = await responsePlayerData.json();
+const responsePlayerData = await fetch(
+  `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamApiKey}&steamids=${steamUserId}`
+);
+const dataPlayerData = await responsePlayerData.json();
 
-// const responseOwnedGames = await fetch(
-//   `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`
-// );
-// const dataOwnedGames = await responseOwnedGames.json();
+const responseOwnedGames = await fetch(
+  `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`
+);
+const dataOwnedGames = await responseOwnedGames.json();
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
@@ -62,8 +62,8 @@ const dataGameNews = await responseGameNews.json();
 
   <section class='container'>
     <Debug {dataGameNews} />
-    <!-- <Debug {dataPlayerData} />
-    <Debug {dataOwnedGames} /> -->
+    <Debug {dataPlayerData} />
+    <Debug {dataOwnedGames} />
     <span class='block pb-16'></span>
   </section>
 </Base>
