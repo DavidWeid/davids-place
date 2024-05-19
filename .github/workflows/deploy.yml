@@ -13,12 +13,15 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+  PUBLIC_STEAM_USER_ID: ${{ secrets.PUBLIC_STEAM_USER_ID }}
+
 jobs:
   build:
-    env:
-      STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
-      PUBLIC_STEAM_USER_ID: ${{ secrets.PUBLIC_STEAM_USER_ID }}
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
