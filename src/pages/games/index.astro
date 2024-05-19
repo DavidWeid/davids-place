@@ -2,10 +2,10 @@
 import { Debug } from 'astro:components';
 
 import Base from '../../layouts/Base.astro';
-import Hero from '../../components/Hero.astro';
+import HeroBackground from '../../components/HeroBackground.astro';
 
 const pageTitle = 'Gaming Center';
-const heroTitle = "<span class='text-gradient'>David's Gaming Center</span>";
+const heroTitle = "<span class='text-gradient'>Gaming Center</span>";
 const heroDescription = '';
 
 const games = [
@@ -43,17 +43,28 @@ const responsePlayerData = await fetch(
   `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamApiKey}&steamids=${steamUserId}`
 );
 const dataPlayerData = await responsePlayerData.json();
+
+const responseOwnedGames = await fetch(
+  `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`
+);
+const dataOwnedGames = await responseOwnedGames.json();
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
-  <Hero title={heroTitle} description={heroDescription} />
+  <HeroBackground title={heroTitle} description={heroDescription} />
 
   <span class='block pb-8'></span>
 
   <section class='container'>
     <Debug {dataGameNews} />
     <Debug {dataPlayerData} />
-
+    <Debug {dataOwnedGames} />
     <span class='block pb-16'></span>
   </section>
 </Base>
+
+<style>
+  .container {
+    @apply select-text;
+  }
+</style>
