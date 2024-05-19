@@ -3,15 +3,17 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm ci
+        - yarn install
+        - yarn add sharp --ignore-engines
     build:
       commands:
-        - npm run build
+        - env >> .env
+        - yarn run build
         - mv node_modules ./.amplify-hosting/compute/default
   artifacts:
     baseDirectory: .amplify-hosting
     files:
-      - "**/*"
+      - '**/*'
   cache:
     paths:
       - node_modules/**/*
