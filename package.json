@@ -21,7 +21,7 @@
     "@fontsource/roboto": "^5.0.13",
     "@types/alpinejs": "^3.13.10",
     "alpinejs": "^3.13.10",
-    "astro": "^4.8.2",
+    "astro": "^4.8.6",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },
@@ -33,9 +33,6 @@
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "pretty-quick": "^4.0.0"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.17.2"
   },
   "lint-staged": {
     "*.{js,mjs,ts,json,css,astro,html,mdx,md}": "prettier --write"
