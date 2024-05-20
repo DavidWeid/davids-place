@@ -8,12 +8,8 @@
     "build": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "npx prettier --write ."
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "format": "npx prettier --write .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.0",
@@ -32,8 +28,14 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",
     "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "pagefind": "^1.1.0",
     "prettier": "3.2.5",
     "pretty-quick": "^4.0.0"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
+
+
