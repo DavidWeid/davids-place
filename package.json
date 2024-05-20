@@ -30,10 +30,11 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "pagefind": "^1.1.0",
-    "prettier": "3.2.5",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
     "pretty-quick": "^4.0.0"
   },
   "lint-staged": {
-    "*.{js,mjs,ts,json,css,html,mdx,md}": "prettier --write"
+    "*.{js,mjs,ts,json,css,astro,html,mdx,md}": "prettier --write"
   }
 }
