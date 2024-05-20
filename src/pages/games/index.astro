@@ -8,7 +8,6 @@ const pageTitle = 'Gaming Center';
 const heroTitle = "<span class='text-gradient'>Gaming Center</span>";
 const heroDescription = '';
 
-
 const steamApiKey = import.meta.env.STEAM_API_KEY;
 const steamUserId = import.meta.env.PUBLIC_STEAM_USER_ID;
 
@@ -34,7 +33,6 @@ const games = [
     id: 1284190
   }
 ];
-
 
 const responseGameNews = await fetch(
   `https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=553850&count=3&maxlength=500&format=json`
