@@ -19,19 +19,15 @@ const pathname: string = `${new URL(Astro.request.url).pathname}`;
 // If on homepage, don't include the 'href' attribute on the link element
 const homepageLinkAttributes = pathname === baseURL ? {} : { href: baseURL };
 
+const nonLinkClasses =
+  'text-white/60 hover:text-white/60 dark:text-white/60 dark:hover:text-white/60 w-max px-4 py-2 uppercase text-sm';
+const linkClasses =
+  'text-white hover:text-green-emerald hover:scale-110 transition-all w-max px-4 py-2 uppercase text-sm';
+
 const navItems: string[] = Object.keys(obj).map(
   (key) =>
     `<li class='flex items-center'>
-    <a
-      role="link"
-      aria-disabled="${pathname === obj[key]}"
-      ${pathname === obj[key] ? '' : `href="${obj[key]}"`}
-      class="${
-        pathname === obj[key]
-          ? 'text-white/60 hover:text-white/60 dark:text-white/60 dark:hover:text-white/60 hover:cursor-default w-max px-4 py-2 uppercase text-sm'
-          : 'text-white hover:text-green-emerald hover:scale-110 transition-all w-max px-4 py-2 uppercase text-sm'
-      }"
-    >${key}</a>
+      ${pathname === obj[key] ? `<span class="${nonLinkClasses}">${key}</span>` : `<a role="link" href="${obj[key]}" class="${linkClasses}">${key}</a>`}
   </li>`,
 );
 ---
@@ -49,15 +45,20 @@ const navItems: string[] = Object.keys(obj).map(
           ? 'h-14 w-auto'
           : 'h-14 w-auto group-hover:-rotate-12 transition-all'}
       />
-      <a
-        role="link"
-        aria-disabled={pathname === baseURL}
-        {...homepageLinkAttributes}
-        class={pathname === baseURL
-          ? 'px-4 py-2 group-hover:cursor-default'
-          : 'px-4 py-2 group-hover:text-green-emerald group-hover:scale-110 transition-all'}
-        aria-label="David's Place Homepage">David's Place</a
-      >
+      {
+        pathname === baseURL ? (
+          <span class="px-4 py-2">David's Place</span>
+        ) : (
+          <a
+            role="link"
+            {...homepageLinkAttributes}
+            class="px-4 py-2 group-hover:text-green-emerald group-hover:scale-110 transition-all"
+            aria-label="David's Place Homepage"
+          >
+            David's Place
+          </a>
+        )
+      }
     </div>
     <div class="flex items-center gap-4">
       <!-- Nav items visible on tablet+ -->
