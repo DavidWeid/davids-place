@@ -12,23 +12,23 @@ const { title, description } = Astro.props;
 
 <section>
   <!-- <Image src={heroImage} alt='Gaming Center' class='w-full h-auto' /> -->
-  <div class='container'>
-    <span class='block pb-8'></span>
+  <div class="container">
+    <span class="block pb-8"></span>
 
-    <h1 set:html={title} class='text-center' />
+    <h1 set:html={title} class="text-center" />
 
     {
       description ? (
         <>
-          <span class='block pb-8' />
-          <p set:html={description} class='text-center text-xl' />
+          <span class="block pb-8" />
+          <p set:html={description} class="text-center text-xl" />
           <slot />
-          <span class='block pb-8' />
+          <span class="block pb-8" />
         </>
       ) : (
         <>
           <slot />
-          <span class='block pb-8' />
+          <span class="block pb-8" />
         </>
       )
     }

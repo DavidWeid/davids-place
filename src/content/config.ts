@@ -1,9 +1,9 @@
 // 1. Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
+import { z, defineCollection } from 'astro:content';
 
 // 2. Define a `type` and `schema` for each collection
 const cookbookCollection = defineCollection({
-  type: "content",
+  type: 'content',
   schema: ({ image }) =>
     z.object({
       title: z.string(),

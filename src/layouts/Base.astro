@@ -1,16 +1,16 @@
 ---
-import "@styles/base.css";
-import "@fontsource/roboto/100.css";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import "@fontsource/roboto/900.css";
-import "@fontsource-variable/roboto-mono";
-import generalOGImage from "@images/og/og-davids-place.png";
-import { ViewTransitions } from "astro:transitions";
-import MainNav from "@components/MainNav.astro";
-import MainFooter from "@components/MainFooter.astro";
+import '@styles/base.css';
+import '@fontsource/roboto/100.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import '@fontsource/roboto/900.css';
+import '@fontsource-variable/roboto-mono';
+import generalOGImage from '@images/og/og-davids-place.png';
+import { ViewTransitions } from 'astro:transitions';
+import MainNav from '@components/MainNav.astro';
+import MainFooter from '@components/MainFooter.astro';
 
 interface Props {
   title: string;
@@ -35,8 +35,8 @@ const metaDescription: string =
 const mainElementAttributes = {};
 indexForSearch === false
   ? null
-  : ((mainElementAttributes as { "data-pagefind-body": boolean })[
-      "data-pagefind-body"
+  : ((mainElementAttributes as { 'data-pagefind-body': boolean })[
+      'data-pagefind-body'
     ] = true);
 ---
 

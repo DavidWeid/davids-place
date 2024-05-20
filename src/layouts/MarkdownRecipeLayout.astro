@@ -37,7 +37,7 @@ const {
   cookTime,
   totalTime,
   ingredients,
-  instructions
+  instructions,
 } = frontmatter;
 const heroTitle = title;
 const heroDescription = description;
@@ -45,61 +45,61 @@ const heroDescription = description;
 
 <Base title={title}>
   <Hero title={heroTitle} description={heroDescription}>
-    <span class='block pb-4'></span>
-    <div class='flex flex-wrap justify-center gap-8'>
-      <span class='flex flex-col gap-0.5 items-center'>
-        <span class='text-gradient font-bold text-lg'>PREP TIME</span>
+    <span class="block pb-4"></span>
+    <div class="flex flex-wrap justify-center gap-8">
+      <span class="flex flex-col gap-0.5 items-center">
+        <span class="text-gradient font-bold text-lg">PREP TIME</span>
         {prepTime}
       </span>
-      <span class='flex flex-col gap-0.5 items-center'>
-        <span class='text-gradient font-bold text-lg'>TOTAL TIME</span>
+      <span class="flex flex-col gap-0.5 items-center">
+        <span class="text-gradient font-bold text-lg">TOTAL TIME</span>
         {totalTime}
       </span>
-      <span class='flex flex-col gap-0.5 items-center'>
-        <span class='text-gradient font-bold text-lg'>SERVINGS</span>
+      <span class="flex flex-col gap-0.5 items-center">
+        <span class="text-gradient font-bold text-lg">SERVINGS</span>
         {servings}
       </span>
     </div>
-    <span class='block pb-8'></span>
+    <span class="block pb-8"></span>
     {
       image && (
         <ImageRecipe
           src={image.url}
           alt={image.alt}
-          class='h-96 object-cover'
+          class="h-96 object-cover"
         />
       )
     }
   </Hero>
 
-  <hr class='border-green-emerald' />
+  <hr class="border-green-emerald" />
 
   <div
     data-tags={`| tags: ${tags.join(', ')}`}
-    data-pagefind-index-attrs='data-tags'
-    class='bg-white dark:bg-medium'
+    data-pagefind-index-attrs="data-tags"
+    class="bg-white dark:bg-medium"
   >
-    <div class='container'>
-      <span class='block pb-8'></span>
+    <div class="container">
+      <span class="block pb-8"></span>
 
-      <section class='grid grid-cols-1 laptop:grid-cols-3 gap-8 relative'>
+      <section class="grid grid-cols-1 laptop:grid-cols-3 gap-8 relative">
         {
           ingredients && (
-            <fieldset class='laptop:overflow-scroll laptop:max-h-[75vh] laptop:sticky laptop:top-28 rounded-lg'>
-              <legend data-pagefind-ignore='all'>
+            <fieldset class="laptop:overflow-scroll laptop:max-h-[75vh] laptop:sticky laptop:top-28 rounded-lg">
+              <legend data-pagefind-ignore="all">
                 <h2>Ingredients</h2>
-                <span class='block text-xs opacity-75 tracking-wide pl-1 pb-2'>
+                <span class="block text-xs opacity-75 tracking-wide pl-1 pb-2">
                   Click to check off
                 </span>
               </legend>
-              <span class='block pb-8' />
-              <div class='flex flex-col gap-8 p-4 bg-light/90 dark:bg-dark/50 rounded-lg'>
+              <span class="block pb-8" />
+              <div class="flex flex-col gap-8 p-4 bg-light/90 dark:bg-dark/50 rounded-lg">
                 {ingredients.map((data) => {
                   const { category, items } = data;
                   return (
-                    <div class='flex flex-col gap-2'>
+                    <div class="flex flex-col gap-2">
                       <h3>{category.toUpperCase()}</h3>
-                      <hr class='border-green-emerald w-1/4' />
+                      <hr class="border-green-emerald w-1/4" />
                       {items.map((ingredient, index) => {
                         return (
                           <div>
@@ -107,14 +107,14 @@ const heroDescription = description;
                               id={
                                 category.toLowerCase() + '-ingredient-' + index
                               }
-                              type='checkbox'
-                              class='sr-only peer'
+                              type="checkbox"
+                              class="sr-only peer"
                             />
                             <label
                               for={
                                 category.toLowerCase() + '-ingredient-' + index
                               }
-                              class='peer-checked:text-blue-dark/50 dark:peer-checked:text-white/40 hover:cursor-pointer hover:text-blue-dark dark:hover:text-green-emerald'
+                              class="peer-checked:text-blue-dark/50 dark:peer-checked:text-white/40 hover:cursor-pointer hover:text-blue-dark dark:hover:text-green-emerald"
                             >
                               {ingredient}
                             </label>
@@ -131,78 +131,78 @@ const heroDescription = description;
 
         {
           instructions && (
-            <div class='laptop:col-span-2'>
+            <div class="laptop:col-span-2">
               <h2>Instructions</h2>
               {/* TODO: Add collapsable item functionality */}
-              <span class='block text-xs opacity-75 tracking-wide pl-1 pb-2 invisible'>
+              <span class="block text-xs opacity-75 tracking-wide pl-1 pb-2 invisible">
                 Click to collapse
               </span>
-              <span class='block pb-8' />
-              <ol class='flex flex-col gap-6'>
+              <span class="block pb-8" />
+              <ol class="flex flex-col gap-6">
                 {instructions.map((instruction, index) => (
-                  <li class='flex flex-col gap-2'>
-                    <span class='text-xl font-bold tracking-wider text-dark/75 dark:text-white/85'>
+                  <li class="flex flex-col gap-2">
+                    <span class="text-xl font-bold tracking-wider text-dark/75 dark:text-white/85">
                       Step {index + 1}
                     </span>
-                    <span class='leading-7 max-w-prose'>{instruction}</span>
-                    <hr class='border-green-emerald w-1/4' />
+                    <span class="leading-7 max-w-prose">{instruction}</span>
+                    <hr class="border-green-emerald w-1/4" />
                   </li>
                 ))}
               </ol>
             </div>
           )
         }
-        <span class='block pb-8'></span>
+        <span class="block pb-8"></span>
       </section>
-      <span class='block pb-8'></span>
+      <span class="block pb-8"></span>
 
       <section>
         <slot />
       </section>
 
-      <span class='block pb-16'></span>
+      <span class="block pb-16"></span>
 
       {
         source && (
           <>
-            <section class='opacity-90'>
+            <section class="opacity-90">
               <h2>See the original recipe</h2>
-              <span class='block pb-4' />
+              <span class="block pb-4" />
               <a
                 href={source}
-                target='_blank'
-                rel='noopener noreferrer'
-                class='content-link-gradient text-sm flex items-center gap-1 w-fit'
+                target="_blank"
+                rel="noopener noreferrer"
+                class="content-link-gradient text-sm flex items-center gap-1 w-fit"
               >
                 <svg
-                  width='16px'
-                  height='16px'
-                  viewBox='0 0 24 24'
-                  aria-hidden='true'
-                  focusable='false'
-                  fill='none'
+                  width="16px"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  fill="none"
                 >
                   <g
-                    stroke-width='2.1'
-                    stroke='#666'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
+                    stroke-width="2.1"
+                    stroke="#666"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   >
                     <>
-                      <polyline points='17 13.5 17 19.5 5 19.5 5 7.5 11 7.5' />
-                      <path d='M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5' />
+                      <polyline points="17 13.5 17 19.5 5 19.5 5 7.5 11 7.5" />
+                      <path d="M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5" />
                     </>
                   </g>
                 </svg>
                 {source}
               </a>
             </section>
-            <span class='block pb-16' />
+            <span class="block pb-16" />
           </>
         )
       }
     </div>
   </div>
 
-  <hr class='border-green-emerald' />
+  <hr class="border-green-emerald" />
 </Base>

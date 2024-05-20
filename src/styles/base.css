@@ -5,9 +5,9 @@
 :root {
   --accent-gradient: linear-gradient(
     45deg,
-    theme("colors.blue.light"),
-    theme("colors.blue.dark") 30%,
-    theme("colors.green.emerald") 60%
+    theme('colors.blue.light'),
+    theme('colors.blue.dark') 30%,
+    theme('colors.green.emerald') 60%
   );
 }
 
@@ -88,14 +88,14 @@ input {
   padding-bottom: 4px;
   background: linear-gradient(
       to right,
-      theme("colors.blue.dark"),
-      theme("colors.blue.dark")
+      theme('colors.blue.dark'),
+      theme('colors.blue.dark')
     ),
     linear-gradient(
       to right,
-      theme("colors.green.dark"),
-      theme("colors.green.emerald"),
-      theme("colors.green.light")
+      theme('colors.green.dark'),
+      theme('colors.green.emerald'),
+      theme('colors.green.light')
     );
   background-size:
     100% 2px,

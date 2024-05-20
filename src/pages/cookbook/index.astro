@@ -16,16 +16,16 @@ const heroDescription = '';
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={true}>
   <Hero title={heroTitle} description={heroDescription} />
 
-  <div class='container'>
-    <Search id='search' />
+  <div class="container">
+    <Search id="search" />
   </div>
 
   <span class="block pb-8"></span>
 
-  <section class='container'>
+  <section class="container">
     <ul
-      role='list'
-      class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8'
+      role="list"
+      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
     >
       {
         allCookbookRecipes.map((recipe) => (
@@ -39,6 +39,6 @@ const heroDescription = '';
       }
     </ul>
 
-    <span class='block pb-16'></span>
+    <span class="block pb-16"></span>
   </section>
 </Base>

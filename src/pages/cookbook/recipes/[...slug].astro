@@ -15,7 +15,7 @@ export async function getStaticPaths() {
   const cookbookEntries = await getCollection('cookbook');
   return cookbookEntries.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry }
+    props: { entry },
   }));
 }
 

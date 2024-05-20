@@ -14,44 +14,46 @@ let target =
 ---
 
 <li
-  class='link-card min-h-[150px] flex p-0.5 rounded-xl shadow-inner bg-green-emerald dark:bg-medium bg-none bg-[size:200%] bg-[100%] transition-[background-position] duration-500 group'
+  class="link-card min-h-[150px] flex p-0.5 rounded-xl shadow-inner bg-green-emerald dark:bg-medium bg-none bg-[size:200%] bg-[100%] transition-[background-position] duration-500 group"
 >
   <a
     href={href}
     target={target}
-    class='w-full rounded-xl text-dark bg-light dark:text-white dark:bg-medium transition-colors duration-500 flex flex-col justify-between'
+    class="w-full rounded-xl text-dark bg-light dark:text-white dark:bg-medium transition-colors duration-500 flex flex-col justify-between"
   >
     <div>
-      <h2 class='flex items-center justify-between gap-2'>
+      <h2 class="flex items-center justify-between gap-2">
         {title}
         {
           target === '_blank' ? (
             <svg
-              width='24px'
-              height='24px'
-              viewBox='0 0 24 24'
-              aria-hidden='true'
-              focusable='false'
-              fill='none'
+              width="24px"
+              height="24px"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+              fill="none"
             >
               <g
-                stroke-width='2.1'
-                stroke='#666'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                stroke-width="2.1"
+                stroke="#666"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
                 <>
-                  <polyline points='17 13.5 17 19.5 5 19.5 5 7.5 11 7.5' />
-                  <path d='M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5' />
+                  <polyline points="17 13.5 17 19.5 5 19.5 5 7.5 11 7.5" />
+                  <path d="M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5" />
                 </>
               </g>
             </svg>
           ) : (
-            <span class='text-accent-dark dark:text-light group-hover:translate-x-1.5 transition-transform duration-500'>&rarr;</span>
+            <span class="text-accent-dark dark:text-light group-hover:translate-x-1.5 transition-transform duration-500">
+              &rarr;
+            </span>
           )
         }
       </h2>
-      <span class='block pb-4'></span>
+      <span class="block pb-4"></span>
       <p>
         {body}
       </p>
@@ -59,8 +61,8 @@ let target =
     {
       tags && tags.length > 0 ? (
         <>
-          <span class='block pb-4' />
-          <div class='flex flex-wrap gap-2.5'>
+          <span class="block pb-4" />
+          <div class="flex flex-wrap gap-2.5">
             {tags.slice(0, 4).map((tag) => (
               <Badge tag={tag} clickable={false} />
             ))}
