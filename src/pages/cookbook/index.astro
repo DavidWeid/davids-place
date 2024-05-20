@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import Hero from '../../components/Hero.astro';
-import Search from '../../components/Search.astro';
-import Card from '../../components/Card.astro';
+import Base from '@layouts/Base.astro';
+import Hero from '@components/Hero.astro';
+import Search from '@components/Search.astro';
+import Card from '@components/Card.astro';
 
 const baseURL = import.meta.env.BASE_URL;
 const allCookbookRecipes = await getCollection('cookbook');

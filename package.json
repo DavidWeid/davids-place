@@ -34,6 +34,6 @@
     "pretty-quick": "^4.0.0"
   },
   "lint-staged": {
-    "*.{js,css,md,json,mjs,astro,ts}": "prettier --write"
+    "*.{js,mjs,ts,json,css,html,mdx,md}": "prettier --write"
   }
 }

@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import davidsPlaceLogo from '../images/astro/astro-6.svg';
+import davidsPlaceLogo from '@images/astro/astro-6.svg';
 
 interface NavigationLinks {
   [key: string]: string;
@@ -11,7 +11,7 @@ const baseURL = import.meta.env.BASE_URL;
 const obj: NavigationLinks = {
   home: `${baseURL}`,
   cookbook: `${baseURL}cookbook/`,
-  'gaming center': `${baseURL}games/`,
+  'gaming': `${baseURL}games/`,
 };
 
 const pathname: string = `${new URL(Astro.request.url).pathname}`;
