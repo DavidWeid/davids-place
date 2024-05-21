@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string;
+  description: string | null;
+}
+
+const { title, description } = Astro.props;
+
+function randomNumber(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const starCount = 150;
+let boxShadowClass = '';
+
+for (let i = 0; i < starCount; i++) {
+  boxShadowClass += `${randomNumber(-50, 50)}vw ${randomNumber(-50, 50)}vh ${randomNumber(0, 4)}px ${randomNumber(0, 1)}px white,`;
+}
+
+boxShadowClass = boxShadowClass.slice(0, -1);
+---
+
+<style define:vars={{ boxShadowClass }}>
+  .background-space {
+    @apply relative h-96;
+  }
+
+  .star {
+    @apply absolute top-1/2 left-1/2 w-0.5 h-0.5 bg-white rounded-full;
+    box-shadow: var(--boxShadowClass);
+    animation: zoom 10s alternate infinite;
+  }
+
+  @keyframes zoom {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.25);
+    }
+  }
+</style>
+
+<section class="background-space overflow-hidden">
+  <span class="star"></span>
+  <div class="container">
+    <span class="block pb-8"></span>
+
+    <h1 set:html={title} class="text-center" />
+
+    {
+      description ? (
+        <>
+          <span class="block pb-8" />
+          <p set:html={description} class="text-center text-xl" />
+          <slot />
+          <span class="block pb-8" />
+        </>
+      ) : (
+        <>
+          <slot />
+          <span class="block pb-8" />
+        </>
+      )
+    }
+  </div>
+</section>

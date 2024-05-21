@@ -2,7 +2,7 @@
 import { Debug } from 'astro:components';
 
 import Base from '@layouts/Base.astro';
-import HeroBackground from '@components/HeroBackground.astro';
+import HeroBackground from '@components/HeroSpace.astro';
 
 const pageTitle = 'Gaming Center';
 const heroTitle = "<span class='text-gradient'>Gaming Center</span>";
@@ -61,9 +61,9 @@ if (steamApiKey && steamUserId) {
   <span class="block pb-8"></span>
 
   <section class="container">
-    <Debug {dataGameNews} />
+    <!-- <Debug {dataGameNews} />
     <Debug {dataPlayerData} />
-    <Debug {dataOwnedGames} />
+    <Debug {dataOwnedGames} /> -->
     <span class="block pb-16"></span>
   </section>
 </Base>

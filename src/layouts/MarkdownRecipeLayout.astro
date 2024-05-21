@@ -39,11 +39,12 @@ const {
   ingredients,
   instructions,
 } = frontmatter;
+const pageTitle = `Cookbook Recipe: ${title}`;
 const heroTitle = title;
 const heroDescription = description;
 ---
 
-<Base title={title}>
+<Base title={pageTitle}>
   <Hero title={heroTitle} description={heroDescription}>
     <span class="block pb-4"></span>
     <div class="flex flex-wrap justify-center gap-8">
