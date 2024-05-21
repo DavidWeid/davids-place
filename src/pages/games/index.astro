@@ -161,6 +161,7 @@ switch (playerState) {
         <span class="block pb-4"></span>
 
         <Image
+          loading="eager"
           src={playerOneData.avatarfull}
           alt="Steam profile avatar"
           width={144}
@@ -184,7 +185,7 @@ switch (playerState) {
           !currentlyPlaying && mostRecentPlayedGame && (
             <p class="uppercase text-sm text-center">
               Most Recently Seen
-              <span class="block mt-1.5 py-1 px-2 bg-light/40 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
+              <span class="block mt-1.5 py-1 px-2 bg-light/25 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
                 {mostRecentPlayedGame}
               </span>
             </p>
