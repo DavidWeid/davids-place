@@ -20,9 +20,9 @@ const pathname: string = `${new URL(Astro.request.url).pathname}`;
 const homepageLinkAttributes = pathname === baseURL ? {} : { href: baseURL };
 
 const nonLinkClasses =
-  'text-white/60 hover:text-white/60 dark:text-white/60 dark:hover:text-white/60 w-max px-4 py-2 uppercase text-sm';
+  'text-white/60 hover:text-white/60 dark:text-white/60 dark:hover:text-white/60 w-max px-3 py-2 uppercase text-sm';
 const linkClasses =
-  'text-white hover:text-green-emerald hover:scale-110 transition-all w-max px-4 py-2 uppercase text-sm';
+  'text-white hover:text-green-emerald hover:scale-110 transition-all w-max px-3 py-2 uppercase text-sm';
 
 const navItems: string[] = Object.keys(obj).map(
   (key) =>
@@ -41,6 +41,7 @@ const navItems: string[] = Object.keys(obj).map(
         loading="eager"
         src={davidsPlaceLogo}
         alt="David's Place Logo"
+        title="David's Place Logo - An astronaut"
         class={pathname === baseURL
           ? 'h-14 w-auto'
           : 'h-14 w-auto group-hover:-rotate-12 transition-all'}
@@ -62,21 +63,19 @@ const navItems: string[] = Object.keys(obj).map(
     </div>
     <div class="flex items-center gap-4">
       <!-- Nav items visible on tablet+ -->
-      <ul
-        class="hidden tablet:flex items-center gap-3 tablet:gap-4"
-        set:html={navItems}
-      />
-      <fieldset class="flex flex-col gap-1">
+      <ul class="hidden tablet:flex items-center gap-3" set:html={navItems} />
+      <fieldset class="flex flex-col gap-1 items-center">
         <legend class="sr-only">Select Dark Mode:</legend>
         <input
           type="checkbox"
           id="darkModeSwitch"
           checked="true"
-          class="transition-all before:transition-all duration-500 before:duration-700 relative appearance-none w-16 h-8 rounded-full bg-white/75 hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-blue-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-blue-dark checked:before:bg-accent-light checked:before:left-9"
+          class="transition-all before:transition-all duration-500 before:duration-700 relative appearance-none w-12 h-6 rounded-full bg-white/75 hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-4 before:h-4 before:rounded-full before:bg-blue-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-blue-dark checked:before:bg-accent-light checked:before:left-7"
         />
         <label
           for="darkModeSwitch"
-          class="text-xs opacity-75 hover:cursor-pointer">Dark Mode</label
+          class="text-center text-xs opacity-75 hover:cursor-pointer w-[70px]"
+          >Dark Mode</label
         >
       </fieldset>
     </div>

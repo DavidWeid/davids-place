@@ -7,14 +7,16 @@ const year: number = new Date().getFullYear();
 >
   <div class="container flex justify-between items-center">
     <span class="flex items-center text-white">David {year}</span>
-    <ul role="list" class="flex items-center gap-6">
-      <li>
+    <ul role="list" class="flex items-center gap-3">
+      <li role="listitem">
         <a
           href="https://github.com/DavidWeid/"
           title="GitHub Profile"
           class="px-2 py-2 block group"
         >
-          <span class="sr-only">GitHub Profile</span>
+          <span class="sr-only"
+            >View my GitHub Profile (Redirects to GitHub.com)</span
+          >
           <svg
             width="24"
             height="24"
@@ -30,13 +32,15 @@ const year: number = new Date().getFullYear();
         </a>
       </li>
 
-      <li>
+      <li role="listitem">
         <a
           href="https://www.linkedin.com/in/david-weid/"
           title="LinkedIn Profile"
           class="px-2 py-2 block group"
         >
-          <span class="sr-only">LinkedIn Profile</span>
+          <span class="sr-only"
+            >View my LinkedIn Profile (Redirects to LinkedIn.com)</span
+          >
           <svg
             width="24"
             height="24"
@@ -52,13 +56,15 @@ const year: number = new Date().getFullYear();
         </a>
       </li>
 
-      <li>
+      <li role="listitem">
         <a
           href="mailto:david.weid.2@gmail.com"
           title="Email Contact"
           class="px-2 py-2 block group"
         >
-          <span class="sr-only">Email Contact</span>
+          <span class="sr-only"
+            >Send me an email (Open email via OS settings)</span
+          >
           <svg
             width="24"
             height="24"
@@ -90,7 +96,7 @@ const year: number = new Date().getFullYear();
       >Coding icon created by justicon - Flaticon</a
     >
 
-    <span class="opacity-50">|</span>
+    <span class="opacity-50" aria-hidden="true">|</span>
 
     <a
       href="https://www.canva.com/p/dedy-izhams-images/"

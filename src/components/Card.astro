@@ -14,6 +14,7 @@ let target =
 ---
 
 <li
+  role="listitem"
   class="link-card min-h-[150px] flex p-0.5 rounded-xl shadow-inner bg-green-emerald dark:bg-medium bg-none bg-[size:200%] bg-[100%] transition-[background-position] duration-500 group"
 >
   <a
@@ -47,7 +48,10 @@ let target =
               </g>
             </svg>
           ) : (
-            <span class="text-accent-dark dark:text-light group-hover:translate-x-1.5 transition-transform duration-500">
+            <span
+              class="text-accent-dark dark:text-light group-hover:translate-x-1.5 transition-transform duration-500"
+              aria-hidden="true"
+            >
               &rarr;
             </span>
           )
@@ -63,11 +67,19 @@ let target =
         <>
           <span class="block pb-4" />
           <div class="flex flex-wrap gap-2.5">
+            <span class="sr-only">Tags include:</span>
             {tags.slice(0, 4).map((tag) => (
               <Badge tag={tag} clickable={false} />
             ))}
           </div>
         </>
+      ) : (
+        ''
+      )
+    }
+    {
+      target === '_blank' ? (
+        <span class="sr-only">(Opens in a new tab)</span>
       ) : (
         ''
       )
