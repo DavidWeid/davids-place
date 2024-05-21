@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
-import davidsPlaceLogo from '@images/astro/astro-6.svg';
+import astroLogoSpread from '@images/astro/astro-9.svg';
+import astroLogoBook from '@images/astro/astro-6.svg';
+import astroLogoGame from '@images/astro/astro-10.svg';
 
 interface NavigationLinks {
   [key: string]: string;
@@ -13,6 +15,14 @@ const obj: NavigationLinks = {
   cookbook: `${baseURL}cookbook/`,
   gaming: `${baseURL}games/`,
 };
+
+let astroLogo = astroLogoSpread;
+
+if (new URL(Astro.request.url).pathname.includes('cookbook')) {
+  astroLogo = astroLogoBook;
+} else if (new URL(Astro.request.url).pathname.includes('games')) {
+  astroLogo = astroLogoGame;
+}
 
 const pathname: string = `${new URL(Astro.request.url).pathname}`;
 
@@ -39,8 +49,8 @@ const navItems: string[] = Object.keys(obj).map(
     <div class="flex items-center group">
       <Image
         loading="eager"
-        src={davidsPlaceLogo}
-        alt="David's Place Logo"
+        src={astroLogo}
+        alt="David's Place Logo - An astronaut"
         title="David's Place Logo - An astronaut"
         class={pathname === baseURL
           ? 'h-12 w-auto'

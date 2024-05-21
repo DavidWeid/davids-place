@@ -10,7 +10,7 @@ function randomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const starCount = 200;
+const starCount = 300;
 let boxShadowClass = '';
 
 for (let i = 0; i < starCount; i++) {
@@ -22,7 +22,7 @@ boxShadowClass = boxShadowClass.slice(0, -1);
 
 <style define:vars={{ boxShadowClass }}>
   .background-space {
-    @apply relative h-96;
+    @apply relative h-96 bg-dark;
   }
 
   .star {
