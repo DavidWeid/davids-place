@@ -56,6 +56,43 @@ if (steamApiKey && steamUserId) {
 }
 
 const playerOneData = dataPlayerData.response.players[0];
+// For player state, 0 - Offline, 1 - Online, 2 - Busy, 3 - Away, 4 - Snooze, 5 - looking to trade, 6 - looking to play
+const playerState = playerOneData.personastate;
+let playerStateText = '';
+let playerStateClasses = '';
+
+switch (playerState) {
+  case 0:
+    playerStateText = 'Offline';
+    playerStateClasses = 'bg-gray-500';
+    break;
+  case 1:
+    playerStateText = 'Online';
+    playerStateClasses = 'bg-green-emerald';
+    break;
+  case 2:
+    playerStateText = 'Busy';
+    playerStateClasses = 'bg-red-500';
+    break;
+  case 3:
+    playerStateText = 'Away';
+    playerStateClasses = 'bg-yellow-500';
+    break;
+  case 4:
+    playerStateText = 'Snooze';
+    playerStateClasses = 'bg-blue-500';
+    break;
+  case 5:
+    playerStateText = 'Looking to trade';
+    playerStateClasses = 'bg-purple-500';
+    break;
+  case 6:
+    playerStateText = 'Looking to play';
+    playerStateClasses = 'bg-green-500';
+    break;
+  default:
+    break;
+}
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
@@ -63,47 +100,62 @@ const playerOneData = dataPlayerData.response.players[0];
 
   <span class="block pb-8"></span>
 
-  <section class="container">
-    <div>
-      <h2>
-        <a
-          href={playerOneData.profileurl}
-          target="_blank"
-          class="flex gap-2 items-center w-max hover:text-green-emerald"
-        >
-          {playerOneData.personaname}
-          <span class="sr-only">View Steam profile (Opens in a new tab)</span>
-          <svg
-            width="24px"
-            height="24px"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            focusable="false"
-            fill="none"
+  <section class="container relative">
+    <div class="h-screen"></div>
+    <div class="absolute -top-[120px] bottom-0 left-0 right-0 m-auto w-fit">
+      <div
+        class="text-white bg-blue-dark dark:bg-medium py-6 px-12 rounded-lg flex flex-col items-center"
+      >
+        <h2>
+          <a
+            href={playerOneData.profileurl}
+            target="_blank"
+            class="relative flex items-center w-max hover:text-green-emerald"
           >
-            <g
-              stroke-width="2.1"
-              stroke="#666"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+            {playerOneData.personaname}
+            <span class="sr-only">View Steam profile (Opens in a new tab)</span>
+            <svg
+              class="absolute -right-8"
+              width="24px"
+              height="24px"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+              fill="none"
             >
-              <>
-                <polyline points="17 13.5 17 19.5 5 19.5 5 7.5 11 7.5"
-                ></polyline>
-                <path d="M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5"></path>
-              </>
-            </g>
-          </svg>
-        </a>
-      </h2>
+              <g
+                stroke-width="2.1"
+                stroke="#666"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <>
+                  <polyline points="17 13.5 17 19.5 5 19.5 5 7.5 11 7.5"
+                  ></polyline>
+                  <path d="M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5"></path>
+                </>
+              </g>
+            </svg>
+          </a>
+        </h2>
 
-      <Image
-        src={playerOneData.avatarfull}
-        alt="Steam profile avatar"
-        width={144}
-        height={144}
-        class="w-36 h-w-36 rounded-full"
-      />
+        <p
+          class="flex gap-2 items-center uppercase text-xs tracking-wide font-mono"
+        >
+          Status<span class={`block w-3 h-3 rounded-full ${playerStateClasses}`}
+          ></span>
+        </p>
+
+        <span class="block pb-2"></span>
+
+        <Image
+          src={playerOneData.avatarfull}
+          alt="Steam profile avatar"
+          width={144}
+          height={144}
+          class="w-36 h-w-36 rounded-full"
+        />
+      </div>
     </div>
   </section>
 
