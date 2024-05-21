@@ -4,7 +4,6 @@ This project allows me to showcase my work and share my thoughts in interests (e
 
 - astro
 - [tailwindcss](https://tailwindcss.com/)
-- [alpinejs](https://alpinejs.dev/)
 - mdx
 - typescript
 
@@ -46,7 +45,7 @@ Files in the `src/content/` directory are not automatically built as routes in t
 
 ### 🔧 Astro
 
-Astro's configuration file is `astro.config.mjs`. Here we import alpinejs, tailwind, and mdx as our site integrations. We set the tailwind integration to also include `applyBaseStyles` to `false` to give us more control (see the next section "Styling").
+Astro's configuration file is `astro.config.mjs`. Here we import tailwind, and mdx as our site integrations. We set the tailwind integration to also include `applyBaseStyles` to `false` to give us more control (see the next section "Styling").
 
 We also set `prefetch.prefetchAll` to `true`. This will prefetch all links according to the value of `prefetch.defaultStrategy`, which is not explicitly set in this case and so by default is set to `hover`.
 
