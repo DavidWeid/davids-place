@@ -116,7 +116,7 @@ input {
 .vibrate {
   transform: scale(1);
   box-shadow: 0 0 0 rgba(0, 0, 0, 1);
-  animation: vibrate 2s infinite;
+  animation: vibrate 4s infinite;
 }
 
 @media (prefers-reduced-motion) {
@@ -133,7 +133,7 @@ input {
 
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 0.6rem rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0.8rem rgba(0, 0, 0, 0);
   }
 
   100% {
