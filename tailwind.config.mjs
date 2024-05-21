@@ -51,6 +51,11 @@ export default {
           dark: '#2e9c51',
         },
       },
+      boxShadow: {
+        sharp: '12px 12px 2px 1px rgba(0, 0, 0, 0.2)',
+        deep: '0 22px 70px 4px rgba(0, 0, 0, 0.6)',
+        shallow: '0 11px 35px 2px rgba(0, 0, 0, 0.3)',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

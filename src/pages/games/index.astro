@@ -42,6 +42,7 @@ const dataGameNews = await responseGameNews.json();
 
 let dataPlayerData: any = {};
 let dataOwnedGames: any = {};
+let dataRecentlyPlayedGames: any = {};
 
 if (steamApiKey && steamUserId) {
   const responsePlayerData = await fetch(
@@ -53,11 +54,17 @@ if (steamApiKey && steamUserId) {
     `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`,
   );
   dataOwnedGames = await responseOwnedGames.json();
+
+  const responseRecentlyPlayedGames = await fetch(
+    `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`,
+  );
+  dataRecentlyPlayedGames = await responseRecentlyPlayedGames.json();
 }
 
-const playerOneData = dataPlayerData.response.players[0];
-const playerState = playerOneData.personastate;
-const currentlyPlaying = playerOneData.gameextrainfo;
+const playerOneData = dataPlayerData?.response.players[0];
+const playerState = playerOneData?.personastate;
+const currentlyPlaying = playerOneData?.gameextrainfo;
+const mostRecentPlayedGame = dataRecentlyPlayedGames?.response.games[0].name;
 
 let playerStateText = '';
 let playerStateClasses = '';
@@ -102,10 +109,12 @@ switch (playerState) {
   <span class="block pb-8"></span>
 
   <section class="container relative">
-    <div class="h-screen"></div>
-    <div class="absolute -top-[120px] bottom-0 left-0 right-0 m-auto w-fit">
+    <div class="h-[500px]"></div>
+    <div
+      class="absolute -top-[120px] bottom-0 left-0 right-0 m-auto w-fit min-w-[300px]"
+    >
       <div
-        class="text-white bg-blue-dark dark:bg-medium py-6 px-12 rounded-lg flex flex-col items-center"
+        class="text-white bg-blue-dark dark:bg-medium py-6 px-12 rounded-lg flex flex-col items-center transition-shadow duration-500 shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark"
       >
         <h2>
           <a
@@ -143,7 +152,7 @@ switch (playerState) {
         <p
           class="flex gap-2 items-center uppercase text-xs tracking-wide font-mono"
         >
-          Status <span class="sr-only">{playerStateText}</span>
+          Status <span class="sr-only"> {playerStateText}</span>
           <span
             class={`block w-3 h-3 rounded-full shadow-2xl shadow-black ${playerStateClasses}`}
           ></span>
@@ -171,6 +180,16 @@ switch (playerState) {
             </p>
           )
         }
+        {
+          !currentlyPlaying && mostRecentPlayedGame && (
+            <p class="uppercase text-sm text-center">
+              Most Recently Seen
+              <span class="block mt-1.5 py-1 px-2 bg-light/40 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                {mostRecentPlayedGame}
+              </span>
+            </p>
+          )
+        }
       </div>
     </div>
   </section>
@@ -179,6 +198,7 @@ switch (playerState) {
     <Debug {dataGameNews} />
     <Debug {playerOneData} />
     <!-- <Debug {dataOwnedGames} /> -->
+    <Debug {dataRecentlyPlayedGames} />
     <span class="block pb-16"></span>
   </section>
 </Base>
