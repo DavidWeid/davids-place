@@ -48,17 +48,29 @@ if (steamApiKey && steamUserId) {
   const responsePlayerData = await fetch(
     `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamApiKey}&steamids=${steamUserId}`,
   );
-  dataPlayerData = await responsePlayerData.json();
+  try {
+    dataPlayerData = await responsePlayerData.json();
+  } catch (error) {
+    console.error('Error fetching player data', error);
+  }
 
   const responseOwnedGames = await fetch(
     `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`,
   );
-  dataOwnedGames = await responseOwnedGames.json();
+  try {
+    dataOwnedGames = await responseOwnedGames.json();
+  } catch (error) {
+    console.error('Error fetching owned games', error);
+  }
 
   const responseRecentlyPlayedGames = await fetch(
     `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`,
   );
-  dataRecentlyPlayedGames = await responseRecentlyPlayedGames.json();
+  try {
+    dataRecentlyPlayedGames = await responseRecentlyPlayedGames.json();
+  } catch (error) {
+    console.error('Error fetching recently played games', error);
+  }
 }
 
 const playerOneData = dataPlayerData?.response.players[0];
@@ -109,7 +121,7 @@ switch (playerState) {
   <span class="block pb-8"></span>
 
   <section class="container relative">
-    <div class="h-[500px]"></div>
+    <div class="h-[400px]"></div>
     <div
       class="absolute -top-[120px] bottom-0 left-0 right-0 m-auto w-fit min-w-[300px]"
     >
@@ -118,11 +130,11 @@ switch (playerState) {
       >
         <h2>
           <a
-            href={playerOneData.profileurl}
+            href={playerOneData?.profileurl}
             target="_blank"
             class="relative flex items-center w-max hover:text-green-emerald"
           >
-            {playerOneData.personaname}
+            {playerOneData?.personaname}
             <span class="sr-only">View Steam profile (Opens in a new tab)</span>
             <svg
               class="absolute -right-8"
@@ -154,6 +166,7 @@ switch (playerState) {
         >
           Status <span class="sr-only"> {playerStateText}</span>
           <span
+            title={playerStateText}
             class={`block w-3 h-3 rounded-full shadow-2xl shadow-black ${playerStateClasses}`}
           ></span>
         </p>
@@ -162,50 +175,58 @@ switch (playerState) {
 
         <Image
           loading="eager"
-          src={playerOneData.avatarfull}
+          src={playerOneData?.avatarfull}
           alt="Steam profile avatar"
           width={144}
           height={144}
           class="vibrate w-36 h-w-36 rounded-full"
         />
 
-        <span class="block pb-4"></span>
-
         {
           currentlyPlaying && (
-            <p class="uppercase text-sm text-center">
-              In game
-              <span class="block mt-1.5 py-1 px-2 bg-green-dark rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
-                {currentlyPlaying}
-              </span>
-            </p>
+            <>
+              <span class="block pb-4" />
+              <p class="uppercase text-sm text-center">
+                In game
+                <span class="block mt-1.5 py-1 px-2 bg-green-dark rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                  {currentlyPlaying}
+                </span>
+              </p>
+            </>
           )
         }
         {
           !currentlyPlaying && mostRecentPlayedGame && (
-            <p class="uppercase text-sm text-center">
-              Most Recently Seen
-              <span class="block mt-1.5 py-1 px-2 bg-light/25 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
-                {mostRecentPlayedGame}
-              </span>
-            </p>
+            <>
+              <span class="block pb-4" />
+              <p class="uppercase text-sm text-center">
+                Most Recently Seen
+                <span class="block mt-1.5 py-1 px-2 bg-light/25 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                  {mostRecentPlayedGame}
+                </span>
+              </p>
+            </>
           )
         }
+
+        <div class="w-full group">
+          <hr
+            class="my-4 border-green-emerald transition-transform duration-500 group-hover:scale-125"
+          />
+
+          <button class="w-full">
+            <span>View Full Profile</span>
+          </button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="container">
-    <!-- <Debug {dataGameNews} /> -->
-    <!-- <Debug {playerOneData} /> -->
-    <!-- <Debug {dataOwnedGames} /> -->
-    <!-- <Debug {dataRecentlyPlayedGames} /> -->
-    <span class="block pb-16"></span>
-  </section>
+  <!-- <section class='container'> -->
+  <!-- <Debug {dataGameNews} /> -->
+  <!-- <Debug {playerOneData} /> -->
+  <!-- <Debug {dataOwnedGames} /> -->
+  <!-- <Debug {dataRecentlyPlayedGames} /> -->
+  <!-- <span class='block pb-16'></span> -->
+  <!-- </section> -->
 </Base>
-
-<style>
-  .container {
-    @apply select-text;
-  }
-</style>
