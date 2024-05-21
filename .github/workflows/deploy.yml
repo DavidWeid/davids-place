@@ -16,11 +16,11 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     env:
       STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
       PUBLIC_STEAM_USER_ID: ${{ secrets.PUBLIC_STEAM_USER_ID }}
-    environment:
-      name: github-pages
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
