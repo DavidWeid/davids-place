@@ -6,7 +6,8 @@ import HeroBackground from '@components/HeroSpace.astro';
 import { Image } from 'astro:assets';
 
 const pageTitle = 'Gaming Center';
-const heroTitle = "<span class='text-gradient'>Gaming Center</span>";
+const heroTitle =
+  "<span class='text-gradient block pb-10'>Gaming Center</span>";
 const heroDescription = '';
 
 const steamApiKey = import.meta.env.STEAM_API_KEY;
@@ -121,11 +122,11 @@ switch (playerState) {
   <span class="block pb-8"></span>
 
   <section class="container relative">
-    <div class="h-[400px]"></div>
     <div
-      class="absolute -top-[120px] bottom-0 left-0 right-0 m-auto w-fit min-w-[300px]"
+      class="relative -top-[120px] bottom-0 left-0 right-0 m-auto w-fit min-w-[300px]"
     >
       <div
+        id="player-card"
         class="text-white bg-blue-dark dark:bg-medium py-6 px-12 rounded-lg flex flex-col items-center transition-shadow duration-500 shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark"
       >
         <h2>
@@ -211,11 +212,18 @@ switch (playerState) {
 
         <div class="w-full group">
           <hr
-            class="my-4 border-green-emerald transition-transform duration-500 group-hover:scale-125"
+            class="mt-4 border-green-emerald transition-transform duration-500 group-hover:scale-125"
           />
 
-          <button class="w-full">
-            <span>View Full Profile</span>
+          <button
+            class="flex items-center justify-center gap-2 py-4 w-full text-sm font-mono uppercase hover:font-bold"
+          >
+            <span
+              class="group-hover:translate-y-1.5 transition-transform duration-500"
+            >
+              VIEW FULL PROFILE
+              <span aria-hidden="true"> &darr; </span>
+            </span>
           </button>
         </div>
       </div>
