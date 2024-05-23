@@ -36,14 +36,19 @@ const games = [
   },
 ];
 
-const responseGameNews = await fetch(
-  `https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=553850&count=3&maxlength=500&format=json`,
-);
-const dataGameNews = await responseGameNews.json();
-
+let dataGameNews: any = {};
 let dataPlayerData: any = {};
 let dataOwnedGames: any = {};
 let dataRecentlyPlayedGames: any = {};
+
+const responseGameNews = await fetch(
+  `https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=553850&count=3&maxlength=500&format=json`,
+);
+try {
+  dataGameNews = await responseGameNews.json();
+} catch (error) {
+  console.log('Error fetching game news data', error);
+}
 
 if (steamApiKey && steamUserId) {
   const responsePlayerData = await fetch(
@@ -123,7 +128,8 @@ switch (playerState) {
 
   <section class="container relative">
     <div
-      class="relative -top-[120px] bottom-0 left-0 right-0 m-auto w-fit min-w-[300px]"
+      id="player-card-holder"
+      class="card-collapsed relative -top-[120px] bottom-0 left-0 right-0 m-auto w-full"
     >
       <div
         id="player-card"
@@ -212,29 +218,158 @@ switch (playerState) {
 
         <div class="w-full group">
           <hr
-            class="mt-4 border-green-emerald transition-transform duration-500 group-hover:scale-125"
+            class="mt-4 border-green-emerald transition-transform duration-500 group-hover:scale-105"
           />
 
           <button
+            id="view-full-profile"
             class="flex items-center justify-center gap-2 py-4 w-full text-sm font-mono uppercase hover:font-bold"
           >
             <span
               class="group-hover:translate-y-1.5 transition-transform duration-500"
             >
-              VIEW FULL PROFILE
-              <span aria-hidden="true"> &darr; </span>
+              <span id="button-text">VIEW FULL PROFILE</span>
+              <span id="button-icon" aria-hidden="true"> &darr; </span>
             </span>
           </button>
         </div>
+
+        <!-- Profile Details -->
+        <section id="profile-details" class="collapsed">
+          <nav id="profile-nav" class="w-full overflow-x-scroll">
+            <ul class="flex justify-center gap-6 w-max mx-auto">
+              <li class="whitespace-nowrap">
+                <button
+                  id="button--bio"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 active"
+                >
+                  BIO
+                </button>
+              </li>
+              <li class="whitespace-nowrap">
+                <button
+                  id="button--stats"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500"
+                  >STATS</button
+                >
+              </li>
+              <li class="whitespace-nowrap">
+                <button
+                  id="button--friends"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500"
+                  >FRIENDS</button
+                >
+              </li>
+              <li class="whitespace-nowrap">
+                <button
+                  id="button--recent-games"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500"
+                  >RECENT GAMES</button
+                >
+              </li>
+              <li class="whitespace-nowrap">
+                <button
+                  id="button--owned-games"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500"
+                  >OWNED GAMES</button
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <div id="profile-panel" class="py-6">
+            <div id="panel--bio" class="">BIO</div>
+            <div id="panel--stats" class="hidden">STATS</div>
+            <div id="panel--friends" class="hidden">FRIENDS</div>
+            <div id="panel--recent-games" class="hidden">RECENT GAMES</div>
+            <div id="panel--owned-games" class="hidden">OWNED GAMES</div>
+          </div>
+        </section>
       </div>
     </div>
   </section>
 
-  <!-- <section class='container'> -->
   <!-- <Debug {dataGameNews} /> -->
   <!-- <Debug {playerOneData} /> -->
   <!-- <Debug {dataOwnedGames} /> -->
   <!-- <Debug {dataRecentlyPlayedGames} /> -->
-  <!-- <span class='block pb-16'></span> -->
-  <!-- </section> -->
+
+  <span class="block pb-16"></span>
+
+  <style>
+    #player-card-holder {
+      @apply transition-[max-width] duration-500;
+    }
+    .card-expanded {
+      max-width: 100%;
+    }
+
+    .card-collapsed {
+      max-width: 350px;
+    }
+
+    button.active {
+      @apply border-b-green-emerald;
+    }
+
+    #profile-details {
+      @apply transition-opacity duration-500;
+    }
+
+    #profile-details.collapsed {
+      @apply opacity-0 w-0 h-0;
+    }
+
+    #profile-details.collapsed * {
+      @apply hidden;
+    }
+
+    #profile-details.expanded {
+      @apply opacity-100 w-full laptop:w-max h-full;
+    }
+  </style>
+
+  <script>
+    const playerCardHolder = document.getElementById('player-card-holder');
+    const viewFullProfileButton = document.getElementById('view-full-profile');
+    const viewProfileButtonText =
+      viewFullProfileButton?.querySelector('#button-text');
+    const viewProfileButtonIcon =
+      viewFullProfileButton?.querySelector('#button-icon');
+    const profileDetails = document.getElementById('profile-details');
+    const profileNavButtons = document.querySelectorAll('#profile-nav button');
+    const profilePanels = document.querySelectorAll(
+      '#profile-panel div[id^="panel--"]',
+    );
+
+    viewFullProfileButton?.addEventListener('click', () => {
+      if (playerCardHolder?.classList.contains('card-collapsed')) {
+        playerCardHolder?.classList.replace('card-collapsed', 'card-expanded');
+        if (viewProfileButtonText)
+          viewProfileButtonText.textContent = 'HIDE PROFILE DETAILS';
+        if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&uarr;';
+        profileDetails?.classList.replace('collapsed', 'expanded');
+      } else {
+        playerCardHolder?.classList.replace('card-expanded', 'card-collapsed');
+        if (viewProfileButtonText)
+          viewProfileButtonText.textContent = 'VIEW FULL PROFILE';
+        if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&darr;';
+        profileDetails?.classList.replace('expanded', 'collapsed');
+      }
+    });
+
+    profileNavButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        profileNavButtons.forEach((button) =>
+          button.classList.remove('active'),
+        );
+        button.classList.add('active');
+
+        profilePanels.forEach((panel) => panel.classList.add('hidden'));
+        const panelId = button.id.replace('button--', 'panel--');
+        const panelToShow = document.getElementById(panelId);
+        if (panelToShow) panelToShow.classList.remove('hidden');
+      });
+    });
+  </script>
 </Base>
