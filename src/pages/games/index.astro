@@ -330,45 +330,56 @@ switch (playerState) {
   </style>
 
   <script>
-    const playerCardHolder = document.getElementById('player-card-holder');
-    const viewFullProfileButton = document.getElementById('view-full-profile');
-    const viewProfileButtonText =
-      viewFullProfileButton?.querySelector('#button-text');
-    const viewProfileButtonIcon =
-      viewFullProfileButton?.querySelector('#button-icon');
-    const profileDetails = document.getElementById('profile-details');
-    const profileNavButtons = document.querySelectorAll('#profile-nav button');
-    const profilePanels = document.querySelectorAll(
-      '#profile-panel div[id^="panel--"]',
-    );
+    document.addEventListener('astro:page-load', () => {
+      const playerCardHolder = document.getElementById('player-card-holder');
+      const viewFullProfileButton =
+        document.getElementById('view-full-profile');
+      const viewProfileButtonText =
+        viewFullProfileButton?.querySelector('#button-text');
+      const viewProfileButtonIcon =
+        viewFullProfileButton?.querySelector('#button-icon');
+      const profileDetails = document.getElementById('profile-details');
+      const profileNavButtons = document.querySelectorAll(
+        '#profile-nav button',
+      );
+      const profilePanels = document.querySelectorAll(
+        '#profile-panel div[id^="panel--"]',
+      );
 
-    viewFullProfileButton?.addEventListener('click', () => {
-      if (playerCardHolder?.classList.contains('card-collapsed')) {
-        playerCardHolder?.classList.replace('card-collapsed', 'card-expanded');
-        if (viewProfileButtonText)
-          viewProfileButtonText.textContent = 'HIDE PROFILE DETAILS';
-        if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&uarr;';
-        profileDetails?.classList.replace('collapsed', 'expanded');
-      } else {
-        playerCardHolder?.classList.replace('card-expanded', 'card-collapsed');
-        if (viewProfileButtonText)
-          viewProfileButtonText.textContent = 'VIEW FULL PROFILE';
-        if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&darr;';
-        profileDetails?.classList.replace('expanded', 'collapsed');
-      }
-    });
+      viewFullProfileButton?.addEventListener('click', () => {
+        if (playerCardHolder?.classList.contains('card-collapsed')) {
+          playerCardHolder?.classList.replace(
+            'card-collapsed',
+            'card-expanded',
+          );
+          if (viewProfileButtonText)
+            viewProfileButtonText.textContent = 'HIDE PROFILE DETAILS';
+          if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&uarr;';
+          profileDetails?.classList.replace('collapsed', 'expanded');
+        } else {
+          playerCardHolder?.classList.replace(
+            'card-expanded',
+            'card-collapsed',
+          );
+          if (viewProfileButtonText)
+            viewProfileButtonText.textContent = 'VIEW FULL PROFILE';
+          if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&darr;';
+          profileDetails?.classList.replace('expanded', 'collapsed');
+        }
+      });
 
-    profileNavButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        profileNavButtons.forEach((button) =>
-          button.classList.remove('active'),
-        );
-        button.classList.add('active');
+      profileNavButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          profileNavButtons.forEach((button) =>
+            button.classList.remove('active'),
+          );
+          button.classList.add('active');
 
-        profilePanels.forEach((panel) => panel.classList.add('hidden'));
-        const panelId = button.id.replace('button--', 'panel--');
-        const panelToShow = document.getElementById(panelId);
-        if (panelToShow) panelToShow.classList.remove('hidden');
+          profilePanels.forEach((panel) => panel.classList.add('hidden'));
+          const panelId = button.id.replace('button--', 'panel--');
+          const panelToShow = document.getElementById(panelId);
+          if (panelToShow) panelToShow.classList.remove('hidden');
+        });
       });
     });
   </script>
