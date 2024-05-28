@@ -282,36 +282,77 @@ switch (playerState) {
 
           <div id="profile-panel" class="py-6">
             <div id="panel--about" class="panel">
-              <div class="grid grid-cols-3 gap-6">
+              <div
+                class="grid grid-cols-3 gap-6 bg-medium dark:bg-blue-dark/50 px-3 pt-3 pb-4 rounded-3xl"
+              >
                 <div class="col-span-1">
-                  <h3 class="uppercase">ANIMAL</h3>
-                  <Image
-                    src={catIcon}
-                    alt="Cat"
-                    width={500}
-                    height={500}
-                    class="rounded-full w-[75px] h-[75px]"
-                  />
+                  <p
+                    class="uppercase text-center pb-3 font-bold text-sm tracking-wider"
+                  >
+                    ANIMAL
+                  </p>
+                  <div
+                    class="flex flex-col tablet:flex-row gap-3 items-center justify-center"
+                  >
+                    <Image
+                      src={catIcon}
+                      alt="Cat"
+                      width={500}
+                      height={500}
+                      class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
+                    />
+                    <p
+                      class="text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-white"
+                    >
+                      CAT
+                    </p>
+                  </div>
                 </div>
                 <div class="col-span-1">
-                  <h3 class="uppercase">DRINK</h3>
-                  <Image
-                    src={drinkIcon}
-                    alt="Drink"
-                    width={500}
-                    height={500}
-                    class="rounded-full w-[75px] h-[75px]"
-                  />
+                  <p
+                    class="uppercase text-center pb-3 font-bold text-sm tracking-wider"
+                  >
+                    DRINK
+                  </p>
+                  <div
+                    class="flex flex-col tablet:flex-row gap-3 items-center justify-center"
+                  >
+                    <Image
+                      src={drinkIcon}
+                      alt="Drink"
+                      width={500}
+                      height={500}
+                      class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
+                    />
+                    <p
+                      class="text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-white"
+                    >
+                      MATCHA LATTE
+                    </p>
+                  </div>
                 </div>
                 <div class="col-span-1">
-                  <h3 class="uppercase">BIRTHDAY</h3>
-                  <Image
-                    src={cupcakeIcon}
-                    alt="Cupcake"
-                    width={500}
-                    height={500}
-                    class="rounded-full w-[75px] h-[75px]"
-                  />
+                  <p
+                    class="uppercase text-center pb-3 font-bold text-sm tracking-wider"
+                  >
+                    BIRTHDAY
+                  </p>
+                  <div
+                    class="flex flex-col tablet:flex-row gap-3 items-center justify-center"
+                  >
+                    <Image
+                      src={cupcakeIcon}
+                      alt="Cupcake"
+                      width={500}
+                      height={500}
+                      class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
+                    />
+                    <p
+                      class="text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-white"
+                    >
+                      JAN 10
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
