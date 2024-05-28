@@ -1,9 +1,12 @@
 ---
 import { Debug } from 'astro:components';
 
+import { Image } from 'astro:assets';
 import Base from '@layouts/Base.astro';
 import HeroBackground from '@components/HeroSpace.astro';
-import { Image } from 'astro:assets';
+import catIcon from '@images/games/cat-500.png';
+import drinkIcon from '@images/games/drink-500.png';
+import cupcakeIcon from '@images/games/cupcake-500.png';
 
 const pageTitle = 'Gaming Center';
 const heroTitle =
@@ -171,7 +174,7 @@ switch (playerState) {
         <p
           class="flex gap-2 items-center uppercase text-xs tracking-wide font-mono"
         >
-          Status <span class="sr-only"> {playerStateText}</span>
+          Status <span class="sr-only">{playerStateText}</span>
           <span
             title={playerStateText}
             class={`block w-3 h-3 rounded-full shadow-2xl shadow-black ${playerStateClasses}`}
@@ -240,37 +243,37 @@ switch (playerState) {
             <ul class="flex justify-center gap-6 w-max mx-auto">
               <li class="whitespace-nowrap">
                 <button
-                  id="button--bio"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 active"
+                  id="button--about"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase active"
                 >
-                  BIO
+                  ABOUT
                 </button>
               </li>
               <li class="whitespace-nowrap">
                 <button
                   id="button--stats"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
                   >STATS</button
                 >
               </li>
               <li class="whitespace-nowrap">
                 <button
                   id="button--friends"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
                   >FRIENDS</button
                 >
               </li>
               <li class="whitespace-nowrap">
                 <button
                   id="button--recent-games"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
                   >RECENT GAMES</button
                 >
               </li>
               <li class="whitespace-nowrap">
                 <button
                   id="button--owned-games"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500"
+                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
                   >OWNED GAMES</button
                 >
               </li>
@@ -278,109 +281,107 @@ switch (playerState) {
           </nav>
 
           <div id="profile-panel" class="py-6">
-            <div id="panel--bio" class="">BIO</div>
-            <div id="panel--stats" class="hidden">STATS</div>
-            <div id="panel--friends" class="hidden">FRIENDS</div>
-            <div id="panel--recent-games" class="hidden">RECENT GAMES</div>
-            <div id="panel--owned-games" class="hidden">OWNED GAMES</div>
+            <div id="panel--about" class="panel">
+              <div class="grid grid-cols-3 gap-6"></div>
+            </div>
+            <div id="panel--stats" class="panel hidden">STATS</div>
+            <div id="panel--friends" class="panel hidden">FRIENDS</div>
+            <div id="panel--recent-games" class="panel hidden">
+              RECENT GAMES
+            </div>
+            <div id="panel--owned-games" class="panel hidden">OWNED GAMES</div>
           </div>
+
+          <!-- <Debug {dataGameNews} /> -->
+          <!-- <Debug {playerOneData} /> -->
+          <!-- <Debug {dataOwnedGames} /> -->
+          <!-- <Debug {dataRecentlyPlayedGames} /> -->
+
+          <span class="block pb-16"></span>
         </section>
       </div>
     </div>
   </section>
+</Base>
 
-  <!-- <Debug {dataGameNews} /> -->
-  <!-- <Debug {playerOneData} /> -->
-  <!-- <Debug {dataOwnedGames} /> -->
-  <!-- <Debug {dataRecentlyPlayedGames} /> -->
+<style>
+  #player-card-holder {
+    @apply transition-[max-width] duration-500;
+  }
+  .card-expanded {
+    max-width: 100%;
+  }
 
-  <span class="block pb-16"></span>
+  .card-collapsed {
+    max-width: 350px;
+  }
 
-  <style>
-    #player-card-holder {
-      @apply transition-[max-width] duration-500;
-    }
-    .card-expanded {
-      max-width: 100%;
-    }
+  button.active {
+    @apply border-b-green-emerald;
+  }
 
-    .card-collapsed {
-      max-width: 350px;
-    }
+  #profile-details {
+    @apply transition-opacity duration-500;
+  }
 
-    button.active {
-      @apply border-b-green-emerald;
-    }
+  #profile-details.collapsed {
+    @apply opacity-0 w-0 h-0;
+  }
 
-    #profile-details {
-      @apply transition-opacity duration-500;
-    }
+  #profile-details.collapsed * {
+    @apply hidden;
+  }
 
-    #profile-details.collapsed {
-      @apply opacity-0 w-0 h-0;
-    }
+  #profile-details.expanded {
+    @apply opacity-100 w-full laptop:w-max h-full;
+  }
 
-    #profile-details.collapsed * {
-      @apply hidden;
-    }
+  .panel {
+  }
+</style>
 
-    #profile-details.expanded {
-      @apply opacity-100 w-full laptop:w-max h-full;
-    }
-  </style>
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const playerCardHolder = document.getElementById('player-card-holder');
+    const viewFullProfileButton = document.getElementById('view-full-profile');
+    const viewProfileButtonText =
+      viewFullProfileButton?.querySelector('#button-text');
+    const viewProfileButtonIcon =
+      viewFullProfileButton?.querySelector('#button-icon');
+    const profileDetails = document.getElementById('profile-details');
+    const profileNavButtons = document.querySelectorAll('#profile-nav button');
+    const profilePanels = document.querySelectorAll(
+      '#profile-panel div[id^="panel--"]',
+    );
 
-  <script>
-    document.addEventListener('astro:page-load', () => {
-      const playerCardHolder = document.getElementById('player-card-holder');
-      const viewFullProfileButton =
-        document.getElementById('view-full-profile');
-      const viewProfileButtonText =
-        viewFullProfileButton?.querySelector('#button-text');
-      const viewProfileButtonIcon =
-        viewFullProfileButton?.querySelector('#button-icon');
-      const profileDetails = document.getElementById('profile-details');
-      const profileNavButtons = document.querySelectorAll(
-        '#profile-nav button',
-      );
-      const profilePanels = document.querySelectorAll(
-        '#profile-panel div[id^="panel--"]',
-      );
+    viewFullProfileButton?.addEventListener('click', () => {
+      if (playerCardHolder?.classList.contains('card-collapsed')) {
+        playerCardHolder?.classList.replace('card-collapsed', 'card-expanded');
+        if (viewProfileButtonText)
+          viewProfileButtonText.textContent = 'HIDE PROFILE DETAILS';
+        if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&uarr;';
+        profileDetails?.classList.replace('collapsed', 'expanded');
+      } else {
+        playerCardHolder?.classList.replace('card-expanded', 'card-collapsed');
+        if (viewProfileButtonText)
+          viewProfileButtonText.textContent = 'VIEW FULL PROFILE';
+        if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&darr;';
+        profileDetails?.classList.replace('expanded', 'collapsed');
+      }
+    });
 
-      viewFullProfileButton?.addEventListener('click', () => {
-        if (playerCardHolder?.classList.contains('card-collapsed')) {
-          playerCardHolder?.classList.replace(
-            'card-collapsed',
-            'card-expanded',
-          );
-          if (viewProfileButtonText)
-            viewProfileButtonText.textContent = 'HIDE PROFILE DETAILS';
-          if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&uarr;';
-          profileDetails?.classList.replace('collapsed', 'expanded');
-        } else {
-          playerCardHolder?.classList.replace(
-            'card-expanded',
-            'card-collapsed',
-          );
-          if (viewProfileButtonText)
-            viewProfileButtonText.textContent = 'VIEW FULL PROFILE';
-          if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&darr;';
-          profileDetails?.classList.replace('expanded', 'collapsed');
-        }
-      });
+    profileNavButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        profileNavButtons.forEach((button) =>
+          button.classList.remove('active'),
+        );
+        button.classList.add('active');
 
-      profileNavButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          profileNavButtons.forEach((button) =>
-            button.classList.remove('active'),
-          );
-          button.classList.add('active');
-
-          profilePanels.forEach((panel) => panel.classList.add('hidden'));
-          const panelId = button.id.replace('button--', 'panel--');
-          const panelToShow = document.getElementById(panelId);
-          if (panelToShow) panelToShow.classList.remove('hidden');
-        });
+        profilePanels.forEach((panel) => panel.classList.add('hidden'));
+        const panelId = button.id.replace('button--', 'panel--');
+        const panelToShow = document.getElementById(panelId);
+        if (panelToShow) panelToShow.classList.remove('hidden');
       });
     });
-  </script>
-</Base>
+  });
+</script>
