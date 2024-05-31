@@ -411,6 +411,15 @@ switch (playerState) {
       @apply opacity-100 w-full laptop:w-max h-full;
     }
 
+    #profile-nav::-webkit-scrollbar {
+      @apply hidden;
+    }
+
+    #profile-nav {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
     .panel {
     }
   </style>
