@@ -4,6 +4,7 @@ import { Debug } from 'astro:components';
 import { Image } from 'astro:assets';
 import Base from '@layouts/Base.astro';
 import HeroBackground from '@components/HeroSpace.astro';
+import avatarDefault from '@images/games/avatar-default.png';
 import catIcon from '@images/games/cat-500.png';
 import drinkIcon from '@images/games/drink-500.png';
 import cupcakeIcon from '@images/games/cupcake-500.png';
@@ -82,10 +83,10 @@ if (steamApiKey && steamUserId) {
   }
 }
 
-const playerOneData = dataPlayerData?.response.players[0];
+const playerOneData = dataPlayerData?.response?.players[0];
 const playerState = playerOneData?.personastate;
 const currentlyPlaying = playerOneData?.gameextrainfo;
-const mostRecentPlayedGame = dataRecentlyPlayedGames?.response.games[0].name;
+const mostRecentPlayedGame = dataRecentlyPlayedGames?.response?.games[0].name;
 
 let playerStateText = '';
 let playerStateClasses = '';
@@ -120,6 +121,8 @@ switch (playerState) {
     playerStateClasses = 'bg-green-500';
     break;
   default:
+    playerStateText = 'Offline';
+    playerStateClasses = 'bg-gray-500';
     break;
 }
 ---
@@ -140,11 +143,11 @@ switch (playerState) {
       >
         <h2>
           <a
-            href={playerOneData?.profileurl}
+            href={playerOneData ? playerOneData.profileurl : '#'}
             target="_blank"
             class="relative flex items-center w-max hover:text-green-emerald"
           >
-            {playerOneData?.personaname}
+            {playerOneData ? playerOneData.personaname : 'Player One'}
             <span class="sr-only">View Steam profile (Opens in a new tab)</span>
             <svg
               class="absolute -right-8"
@@ -185,11 +188,11 @@ switch (playerState) {
 
         <Image
           loading="eager"
-          src={playerOneData?.avatarfull}
+          src={playerOneData ? playerOneData.avatarfull : avatarDefault}
           alt="Steam profile avatar"
-          width={144}
-          height={144}
-          class="vibrate w-36 h-w-36 rounded-full"
+          width={playerOneData ? 184 : avatarDefault.width}
+          height={playerOneData ? 184 : avatarDefault.height}
+          class="vibrate w-36 h-w-36 rounded-full border border-green-emerald"
         />
 
         {
