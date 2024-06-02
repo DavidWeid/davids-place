@@ -211,7 +211,7 @@ switch (playerState) {
               <span class="block pb-4" />
               <p class="uppercase text-sm text-center">
                 Most Recently Seen
-                <span class="block mt-1.5 py-1 px-2 bg-light/25 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                <span class="block mt-1.5 py-1 px-2 bg-medium/75 dark:bg-light/25 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
                   {mostRecentPlayedGame}
                 </span>
               </p>
@@ -285,18 +285,19 @@ switch (playerState) {
               <div
                 class="grid grid-cols-3 gap-6 bg-medium dark:bg-blue-dark/50 px-3 pt-3 pb-4 rounded-3xl"
               >
-                <div class="col-span-1">
+                <div class="col-span-1 flex flex-col justify-between">
                   <p
                     class="uppercase text-center pb-3 font-bold text-sm tracking-wider"
                   >
                     ANIMAL
                   </p>
                   <div
-                    class="flex flex-col tablet:flex-row gap-3 items-center justify-center"
+                    class="h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center"
                   >
                     <Image
                       src={catIcon}
                       alt="Cat"
+                      loading="lazy"
                       width={500}
                       height={500}
                       class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
@@ -308,18 +309,19 @@ switch (playerState) {
                     </p>
                   </div>
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-1 flex flex-col justify-between">
                   <p
                     class="uppercase text-center pb-3 font-bold text-sm tracking-wider"
                   >
                     DRINK
                   </p>
                   <div
-                    class="flex flex-col tablet:flex-row gap-3 items-center justify-center"
+                    class="h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center"
                   >
                     <Image
                       src={drinkIcon}
                       alt="Drink"
+                      loading="lazy"
                       width={500}
                       height={500}
                       class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
@@ -331,18 +333,19 @@ switch (playerState) {
                     </p>
                   </div>
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-1 flex flex-col justify-between">
                   <p
                     class="uppercase text-center pb-3 font-bold text-sm tracking-wider"
                   >
                     BIRTHDAY
                   </p>
                   <div
-                    class="flex flex-col tablet:flex-row gap-3 items-center justify-center"
+                    class="h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center"
                   >
                     <Image
                       src={cupcakeIcon}
                       alt="Cupcake"
+                      loading="lazy"
                       width={500}
                       height={500}
                       class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
@@ -354,6 +357,33 @@ switch (playerState) {
                     </p>
                   </div>
                 </div>
+              </div>
+
+              <span class="block pb-12"></span>
+
+              <div class="p-2 flex gap-6 items-center">
+                <p
+                  class="uppercase text-center font-bold text-sm tracking-wider"
+                >
+                  Abilities:
+                </p>
+                <p class="font-mono text-sm tablet:text-base tablet:leading-5">
+                  Technologist, Web developer, Gamer, Cat parent
+                </p>
+              </div>
+
+              <span class="block pb-10"></span>
+
+              <div class="p-2">
+                <p class="italic text-sm">
+                  "Lord Arbiter", a Capricorn also known as "David", thrives on
+                  the web and in the gaming world, but loves spending time with
+                  his husband and two cats. He also enjoys gaming with friends,
+                  building websites, learning new technologies, and drinking
+                  matcha lattes. David excels in front-end development and has a
+                  passion for creating beautiful, accessible, and functional
+                  websites.
+                </p>
               </div>
             </div>
 
@@ -405,10 +435,11 @@ switch (playerState) {
     }
 
     #profile-details.expanded {
-      @apply opacity-100 w-full laptop:w-max h-full;
+      @apply opacity-100 w-full laptop:w-max laptop:max-w-full h-full;
     }
 
     .panel {
+      @apply max-w-screen-tablet mx-auto;
     }
   </style>
 
