@@ -1,0 +1,39 @@
+---
+// The main prop is the svg name, which is relative to this directory: `/src/images/`. The output is an svg element with any added classnames.
+import { parse } from 'node-html-parser';
+
+interface Props {
+  svg: string;
+  className?: string;
+  id?: string;
+}
+
+function getSVG(name: string) {
+  const filepath: string = `/src/images/**/${name}.svg`;
+  const svgFiles: any = import.meta.glob('/src/images/**/*.svg', {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  });
+
+  if (!(filepath in svgFiles)) {
+    throw new Error(`Svg "${filepath}" not found in the images directory`);
+  }
+
+  const root: any = parse(svgFiles[filepath]);
+  const svg: HTMLElement = root.querySelector('svg');
+  const { attributes, innerHTML } = svg;
+
+  return {
+    attributes,
+    innerHTML,
+  };
+}
+
+const { svg, ...attributes }: Props = Astro.props;
+const { attributes: baseAttributes, innerHTML } = getSVG(svg);
+
+const svgAttributes = { ...baseAttributes, ...attributes };
+---
+
+<svg {...svgAttributes} set:html={innerHTML} />
