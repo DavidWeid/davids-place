@@ -1,12 +1,55 @@
 ---
 import Base from '@layouts/Base.astro';
 import HeroBackground from '@components/HeroSpace.astro';
+import NoteBlock from '../components/NoteBlock.astro';
+import Card from '../components/Card.astro';
 
 const pageTitle = '404: Not Found';
-const heroTitle = '404: Not Found';
-const heroDescription = 'Sorry, the page you are looking for does not exist.';
+const heroTitle =
+  '<span class="block font-mono">Error: <code class="dark-background">404 Not Found</code></span>';
+const heroDescription = 'This is not the page you are looking for.';
+const baseURL = import.meta.env.BASE_URL;
+const cardTags = null;
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
   <HeroBackground title={heroTitle} description={heroDescription} />
+
+  <section class="container">
+    <span class="block pb-8"></span>
+
+    <NoteBlock>
+      The URL you are trying to access does not exist. Please check the URL and
+      try again, or use the links below to naviagte to a different part of the
+      site.
+    </NoteBlock>
+
+    <span class="block pb-8"></span>
+
+    <ul
+      role="list"
+      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
+    >
+      <Card
+        href={`${baseURL}`}
+        title="Homepage"
+        body="Visit the homepage."
+        tags={cardTags}
+      />
+      <Card
+        href={`${baseURL}cookbook/`}
+        title="Cookbook"
+        body="A collection of recipes I have enjoyed."
+        tags={cardTags}
+      />
+      <Card
+        href={`${baseURL}games/`}
+        title="Gaming Center"
+        body="My gamified personal portfolio and bio."
+        tags={cardTags}
+      />
+    </ul>
+
+    <span class="block pb-16"></span>
+  </section>
 </Base>

@@ -58,6 +58,10 @@ code {
   @apply font-mono;
 }
 
+code.dark-background {
+  @apply px-2 rounded-lg bg-white text-medium;
+}
+
 img,
 video {
   @apply w-full h-auto;

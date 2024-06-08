@@ -4,7 +4,7 @@ interface Props {
   description: string | null;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 
 function randomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -49,9 +49,20 @@ boxShadowClass = boxShadowClass.slice(0, -1);
 
 <section class="background-space overflow-hidden">
   <span class="star"></span>
-  <div class="container h-full flex justify-center items-center text-center">
-    <span class="block pb-8"></span>
-
+  <div
+    class="container h-full flex flex-col justify-center items-center text-center text-white"
+  >
     <h1 set:html={title} />
+
+    {
+      description ? (
+        <>
+          <span class="block pb-8" />
+          <p set:html={description} class="text-center text-xl" />
+        </>
+      ) : (
+        ''
+      )
+    }
   </div>
 </section>
