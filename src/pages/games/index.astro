@@ -1,10 +1,14 @@
 ---
-import { Debug } from 'astro:components';
+import {
+  getGameNews,
+  getPlayerData,
+  getOwnedGames,
+  getRecentGames,
+} from 'src/utilities/steam';
 
 import Base from '@layouts/Base.astro';
 import HeroBackground from '@components/HeroSpace.astro';
 import { Image } from 'astro:assets';
-import avatarDefault from '@images/games/avatar-default.png';
 import catIcon from '@images/games/cat-500.png';
 import drinkIcon from '@images/games/drink-500.png';
 import cupcakeIcon from '@images/games/cupcake-500.png';
@@ -14,117 +18,11 @@ const heroTitle =
   "<span class='text-gradient block pb-10'>Gaming Center</span>";
 const heroDescription = '';
 
-const steamApiKey = import.meta.env.STEAM_API_KEY;
-const steamUserId = import.meta.env.PUBLIC_STEAM_USER_ID;
-
-const games = [
-  {
-    title: 'Helldivers 2',
-    id: 553850,
-  },
-  {
-    title: 'Chivalry 2',
-    id: 1824220,
-  },
-  {
-    title: 'Timberborn',
-    id: 1062090,
-  },
-  {
-    title: 'Farthest Frontier',
-    id: 1044720,
-  },
-  {
-    title: 'The Planet Crafter',
-    id: 1284190,
-  },
-];
-
-let dataGameNews: any = {};
-let dataPlayerData: any = {};
-let dataOwnedGames: any = {};
-let dataRecentlyPlayedGames: any = {};
-
-const responseGameNews = await fetch(
-  `https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=553850&count=3&maxlength=500&format=json`,
-);
-try {
-  dataGameNews = await responseGameNews.json();
-} catch (error) {
-  console.log('Error fetching game news data', error);
-}
-
-if (steamApiKey && steamUserId) {
-  const responsePlayerData = await fetch(
-    `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamApiKey}&steamids=${steamUserId}`,
-  );
-  try {
-    dataPlayerData = await responsePlayerData.json();
-  } catch (error) {
-    console.error('Error fetching player data', error);
-  }
-
-  const responseOwnedGames = await fetch(
-    `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`,
-  );
-  try {
-    dataOwnedGames = await responseOwnedGames.json();
-  } catch (error) {
-    console.error('Error fetching owned games', error);
-  }
-
-  const responseRecentlyPlayedGames = await fetch(
-    `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamUserId}&format=json`,
-  );
-  try {
-    dataRecentlyPlayedGames = await responseRecentlyPlayedGames.json();
-  } catch (error) {
-    console.error('Error fetching recently played games', error);
-  }
-}
-
-const playerOneData = dataPlayerData?.response?.players[0];
-const playerState = playerOneData?.personastate;
-const currentlyPlaying = playerOneData?.gameextrainfo;
-const mostRecentPlayedGame = dataRecentlyPlayedGames?.response?.games[0].name;
-
-let playerStateText = '';
-let playerStateClasses = '';
-
-switch (playerState) {
-  case 0:
-    playerStateText = 'Offline';
-    playerStateClasses = 'bg-gray-500';
-    break;
-  case 1:
-    playerStateText = 'Online';
-    playerStateClasses = 'bg-green-emerald';
-    break;
-  case 2:
-    playerStateText = 'Busy';
-    playerStateClasses = 'bg-red-500';
-    break;
-  case 3:
-    playerStateText = 'Away';
-    playerStateClasses = 'bg-yellow-500';
-    break;
-  case 4:
-    playerStateText = 'Snooze';
-    playerStateClasses = 'bg-blue-500';
-    break;
-  case 5:
-    playerStateText = 'Looking to trade';
-    playerStateClasses = 'bg-purple-500';
-    break;
-  case 6:
-    playerStateText = 'Looking to play';
-    playerStateClasses = 'bg-green-500';
-    break;
-  default:
-    playerStateText = 'Offline';
-    playerStateClasses = 'bg-gray-500';
-    break;
-}
+const gameNews = await getGameNews('1284190', 3, 500);
+const playerData = await getPlayerData();
+const ownedGames = await getOwnedGames();
+const mostRecentGames = await getRecentGames();
+const mostRecentPlayedGame = mostRecentGames[0]?.name;
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
@@ -143,11 +41,11 @@ switch (playerState) {
       >
         <h2>
           <a
-            href={playerOneData ? playerOneData.profileurl : '#'}
+            href={playerData.profileurl}
             target="_blank"
             class="relative flex items-center w-max hover:text-green-emerald"
           >
-            {playerOneData ? playerOneData.personaname : 'Player One'}
+            {playerData.personaname}
             <span class="sr-only">View Steam profile (Opens in a new tab)</span>
             <svg
               class="absolute -right-8"
@@ -177,10 +75,10 @@ switch (playerState) {
         <p
           class="flex gap-2 items-center uppercase text-xs tracking-wide font-mono"
         >
-          Status <span class="sr-only">{playerStateText}</span>
+          Status <span class="sr-only">{playerData.stateText}</span>
           <span
-            title={playerStateText}
-            class={`block w-3 h-3 rounded-full shadow-2xl shadow-black ${playerStateClasses}`}
+            title={playerData.stateText}
+            class={`block w-3 h-3 rounded-full shadow-2xl shadow-black ${playerData.stateClasses}`}
           ></span>
         </p>
 
@@ -188,28 +86,32 @@ switch (playerState) {
 
         <Image
           loading="eager"
-          src={playerOneData ? playerOneData.avatarfull : avatarDefault}
-          alt="Steam profile avatar"
-          width={playerOneData ? 184 : avatarDefault.width}
-          height={playerOneData ? 184 : avatarDefault.height}
+          src={playerData.avatarfull}
+          alt="Profile avatar"
+          width={playerData.avatarfull.width
+            ? playerData.avatarfull.width
+            : 184}
+          height={playerData.avatarfull.height
+            ? playerData.avatarfull.height
+            : 184}
           class="vibrate w-36 h-w-36 rounded-full border border-green-emerald"
         />
 
         {
-          currentlyPlaying && (
+          playerData.gameextrainfo && (
             <>
               <span class="block pb-4" />
               <p class="uppercase text-sm text-center">
                 In game
                 <span class="block mt-1.5 py-1 px-2 bg-green-dark rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
-                  {currentlyPlaying}
+                  {playerData.gameextrainfo}
                 </span>
               </p>
             </>
           )
         }
         {
-          !currentlyPlaying && mostRecentPlayedGame && (
+          !playerData.gameextrainfo && mostRecentPlayedGame && (
             <>
               <span class="block pb-4" />
               <p class="uppercase text-sm text-center">
@@ -409,11 +311,6 @@ switch (playerState) {
       </div>
     </div>
   </section>
-
-  <!-- <Debug {dataGameNews} /> -->
-  <!-- <Debug {playerOneData} /> -->
-  <!-- <Debug {dataOwnedGames} /> -->
-  <!-- <Debug {dataRecentlyPlayedGames} /> -->
 
   <style>
     #player-card-holder {
