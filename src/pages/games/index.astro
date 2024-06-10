@@ -23,6 +23,33 @@ const playerData = await getPlayerData();
 const ownedGames = await getOwnedGames();
 const mostRecentGames = await getRecentGames();
 const mostRecentPlayedGame = mostRecentGames[0]?.name;
+
+const staticStats = [
+  {
+    attribute: 'strength',
+    value: 10,
+  },
+  {
+    attribute: 'dexterity',
+    value: 16,
+  },
+  {
+    attribute: 'constitution',
+    value: 9,
+  },
+  {
+    attribute: 'intelligence',
+    value: 19,
+  },
+  {
+    attribute: 'wisdom',
+    value: 20,
+  },
+  {
+    attribute: 'charisma',
+    value: 11,
+  },
+];
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
@@ -293,11 +320,20 @@ const mostRecentPlayedGame = mostRecentGames[0]?.name;
             </div>
 
             <div id="panel--stats" class="panel hidden">
-              <div class="grid grid-cols-5">
-                <div class="col-span-1">HP</div>
-                <div class="col-span-1">30</div>
-                <div class="col-span-3 w-[30%] bg-green-emerald"></div>
-              </div>
+              {
+                staticStats.map((stat) => (
+                  <div id={stat.attribute} class="grid grid-cols-5 gap-2">
+                    <div class="col-span-1">{stat.attribute}</div>
+                    <div class="col-span-1">{stat.value}</div>
+                    <div class="col-span-3 flex items-center">
+                      <span
+                        class="block h-2/3 bg-green-emerald"
+                        style={`width: ${(stat.value / 20) * 100}%`}
+                      />
+                    </div>
+                  </div>
+                ))
+              }
             </div>
             <div id="panel--friends" class="panel hidden">FRIENDS</div>
             <div id="panel--recent-games" class="panel hidden">
