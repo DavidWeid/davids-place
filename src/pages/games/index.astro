@@ -3,7 +3,7 @@ import {
   getGameNews,
   getPlayerData,
   getOwnedGames,
-  getRecentGames,
+  getRecentGames
 } from 'src/utilities/steam';
 
 import Base from '@layouts/Base.astro';
@@ -27,72 +27,72 @@ const mostRecentPlayedGame = mostRecentGames[0]?.name;
 const staticStats = [
   {
     attribute: 'strength',
-    value: 10,
+    value: 10
   },
   {
     attribute: 'dexterity',
-    value: 16,
+    value: 16
   },
   {
     attribute: 'constitution',
-    value: 9,
+    value: 9
   },
   {
     attribute: 'intelligence',
-    value: 19,
+    value: 19
   },
   {
     attribute: 'wisdom',
-    value: 20,
+    value: 20
   },
   {
     attribute: 'charisma',
-    value: 11,
-  },
+    value: 11
+  }
 ];
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
   <HeroBackground title={heroTitle} description={heroDescription} />
 
-  <span class="block pb-8"></span>
+  <span class='block pb-8'></span>
 
-  <section class="container relative">
+  <section class='container relative'>
     <div
-      id="player-card-holder"
-      class="card-collapsed relative -top-[120px] bottom-0 left-0 right-0 m-auto w-full"
+      id='player-card-holder'
+      class='card-collapsed relative -top-[120px] bottom-0 left-0 right-0 m-auto w-full'
     >
       <div
-        id="player-card"
-        class="text-white bg-blue-dark dark:bg-medium py-6 px-12 rounded-lg flex flex-col items-center transition-shadow duration-500 shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark"
+        id='player-card'
+        class='text-white bg-blue-dark dark:bg-medium py-6 px-12 rounded-lg flex flex-col items-center transition-shadow duration-500 shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark'
       >
         <h2>
           <a
             href={playerData.profileurl}
-            target="_blank"
-            class="relative flex items-center w-max hover:text-green-emerald"
+            target='_blank'
+            class='relative flex items-center w-max hover:text-green-emerald'
           >
             {playerData.personaname}
-            <span class="sr-only">View Steam profile (Opens in a new tab)</span>
+            <span class='sr-only'>View Steam profile (Opens in a new tab)</span>
             <svg
-              class="absolute -right-8"
-              width="24px"
-              height="24px"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-              fill="none"
+              class='absolute -right-8'
+              width='24px'
+              height='24px'
+              viewBox='0 0 24 24'
+              aria-hidden='true'
+              focusable='false'
+              fill='none'
             >
               <g
-                stroke-width="2.1"
-                stroke="#666"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                stroke-width='2.1'
+                stroke='#666'
+                stroke-linecap='round'
+                stroke-linejoin='round'
               >
                 <>
-                  <polyline points="17 13.5 17 19.5 5 19.5 5 7.5 11 7.5"
+                  <polyline points='17 13.5 17 19.5 5 19.5 5 7.5 11 7.5'
                   ></polyline>
-                  <path d="M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5"></path>
+                  <path d='M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5'></path>
                 </>
               </g>
             </svg>
@@ -100,37 +100,37 @@ const staticStats = [
         </h2>
 
         <p
-          class="flex gap-2 items-center uppercase text-xs tracking-wide font-mono"
+          class='flex gap-2 items-center uppercase text-xs tracking-wide font-mono'
         >
-          Status <span class="sr-only">{playerData.stateText}</span>
+          Status <span class='sr-only'>{playerData.stateText}</span>
           <span
             title={playerData.stateText}
             class={`block w-3 h-3 rounded-full shadow-2xl shadow-black ${playerData.stateClasses}`}
           ></span>
         </p>
 
-        <span class="block pb-4"></span>
+        <span class='block pb-4'></span>
 
         <Image
-          loading="eager"
+          loading='eager'
           src={playerData.avatarfull}
-          alt="Profile avatar"
+          alt='Profile avatar'
           width={playerData.avatarfull.width
             ? playerData.avatarfull.width
             : 184}
           height={playerData.avatarfull.height
             ? playerData.avatarfull.height
             : 184}
-          class="vibrate w-36 h-w-36 rounded-full border border-green-emerald"
+          class='vibrate w-36 h-w-36 rounded-full border border-green-emerald'
         />
 
         {
           playerData.gameextrainfo && (
             <>
-              <span class="block pb-4" />
-              <p class="uppercase text-sm text-center">
+              <span class='block pb-4' />
+              <p class='uppercase text-sm text-center'>
                 In game
-                <span class="block mt-1.5 py-1 px-2 bg-green-dark rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                <span class='block mt-1.5 py-1 px-2 bg-green-dark rounded text-xs tracking-wide font-mono shadow-2xl shadow-black'>
                   {playerData.gameextrainfo}
                 </span>
               </p>
@@ -140,10 +140,10 @@ const staticStats = [
         {
           !playerData.gameextrainfo && mostRecentPlayedGame && (
             <>
-              <span class="block pb-4" />
-              <p class="uppercase text-sm text-center">
+              <span class='block pb-4' />
+              <p class='uppercase text-sm text-center'>
                 Most Recently Seen
-                <span class="block mt-1.5 py-1 px-2 bg-medium/75 dark:bg-light/25 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                <span class='block mt-1.5 py-1 px-2 bg-medium/75 dark:bg-light/25 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black'>
                   {mostRecentPlayedGame}
                 </span>
               </p>
@@ -151,139 +151,139 @@ const staticStats = [
           )
         }
 
-        <div class="w-full group">
+        <div class='w-full group'>
           <hr
-            class="mt-4 border-green-emerald transition-transform duration-500 group-hover:scale-105"
+            class='mt-4 border-green-emerald transition-transform duration-500 group-hover:scale-105'
           />
 
           <button
-            id="view-full-profile"
-            class="flex items-center justify-center gap-2 py-4 w-full text-sm font-mono uppercase hover:font-bold"
+            id='view-full-profile'
+            class='flex items-center justify-center gap-2 py-4 w-full text-sm font-mono uppercase hover:font-bold'
           >
             <span
-              class="group-hover:translate-y-1.5 transition-transform duration-500"
+              class='group-hover:translate-y-1.5 transition-transform duration-500'
             >
-              <span id="button-text">VIEW FULL PROFILE</span>
-              <span id="button-icon" aria-hidden="true"> &darr; </span>
+              <span id='button-text'>VIEW FULL PROFILE</span>
+              <span id='button-icon' aria-hidden='true'> &darr; </span>
             </span>
           </button>
         </div>
 
         <!-- Profile Details -->
-        <section id="profile-details" class="collapsed">
-          <nav id="profile-nav" class="w-full overflow-x-scroll">
-            <ul class="flex justify-center gap-6 w-max mx-auto">
-              <li class="whitespace-nowrap">
+        <section id='profile-details' class='collapsed'>
+          <nav id='profile-nav' class='w-full overflow-x-scroll'>
+            <ul class='flex justify-center gap-6 w-max mx-auto'>
+              <li class='whitespace-nowrap'>
                 <button
-                  id="button--about"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase active"
+                  id='button--about'
+                  class='px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase active'
                 >
                   ABOUT
                 </button>
               </li>
-              <li class="whitespace-nowrap">
+              <li class='whitespace-nowrap'>
                 <button
-                  id="button--stats"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
+                  id='button--stats'
+                  class='px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase'
                   >STATS</button
                 >
               </li>
-              <li class="whitespace-nowrap">
+              <li class='whitespace-nowrap'>
                 <button
-                  id="button--friends"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
+                  id='button--friends'
+                  class='px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase'
                   >FRIENDS</button
                 >
               </li>
-              <li class="whitespace-nowrap">
+              <li class='whitespace-nowrap'>
                 <button
-                  id="button--recent-games"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
+                  id='button--recent-games'
+                  class='px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase'
                   >RECENT GAMES</button
                 >
               </li>
-              <li class="whitespace-nowrap">
+              <li class='whitespace-nowrap'>
                 <button
-                  id="button--owned-games"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
+                  id='button--owned-games'
+                  class='px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase'
                   >OWNED GAMES</button
                 >
               </li>
             </ul>
           </nav>
 
-          <div id="profile-panel" class="py-6">
-            <div id="panel--about" class="panel">
+          <div id='profile-panel' class='py-6'>
+            <div id='panel--about' class='panel'>
               <div
-                class="grid grid-cols-3 gap-6 bg-medium dark:bg-blue-dark/50 px-3 pt-3 pb-4 rounded-3xl"
+                class='grid grid-cols-3 gap-6 bg-medium dark:bg-blue-dark/50 px-3 pt-3 pb-4 rounded-3xl'
               >
-                <div class="col-span-1 flex flex-col justify-between">
+                <div class='col-span-1 flex flex-col justify-between'>
                   <p
-                    class="uppercase text-center pb-3 font-bold text-sm tracking-wider"
+                    class='uppercase text-center pb-3 font-bold text-sm tracking-wider'
                   >
                     SPIRIT ANIMAL
                   </p>
                   <div
-                    class="h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center"
+                    class='h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center'
                   >
                     <Image
                       src={catIcon}
-                      alt="Cat"
-                      loading="lazy"
+                      alt='Cat'
+                      loading='lazy'
                       width={500}
                       height={500}
-                      class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
+                      class='rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]'
                     />
                     <p
-                      class="text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-white"
+                      class='text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-white'
                     >
                       CAT
                     </p>
                   </div>
                 </div>
-                <div class="col-span-1 flex flex-col justify-between">
+                <div class='col-span-1 flex flex-col justify-between'>
                   <p
-                    class="uppercase text-center pb-3 font-bold text-sm tracking-wider"
+                    class='uppercase text-center pb-3 font-bold text-sm tracking-wider'
                   >
                     FAVORITE DRINK
                   </p>
                   <div
-                    class="h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center"
+                    class='h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center'
                   >
                     <Image
                       src={drinkIcon}
-                      alt="Drink"
-                      loading="lazy"
+                      alt='Drink'
+                      loading='lazy'
                       width={500}
                       height={500}
-                      class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
+                      class='rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]'
                     />
                     <p
-                      class="text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-white"
+                      class='text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-white'
                     >
                       MATCHA LATTE
                     </p>
                   </div>
                 </div>
-                <div class="col-span-1 flex flex-col justify-between">
+                <div class='col-span-1 flex flex-col justify-between'>
                   <p
-                    class="uppercase text-center pb-3 font-bold text-sm tracking-wider"
+                    class='uppercase text-center pb-3 font-bold text-sm tracking-wider'
                   >
                     BIRTHDAY
                   </p>
                   <div
-                    class="h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center"
+                    class='h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center'
                   >
                     <Image
                       src={cupcakeIcon}
-                      alt="Cupcake"
-                      loading="lazy"
+                      alt='Cupcake'
+                      loading='lazy'
                       width={500}
                       height={500}
-                      class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
+                      class='rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]'
                     />
                     <p
-                      class="text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-white"
+                      class='text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-white'
                     >
                       JAN 10
                     </p>
@@ -291,23 +291,23 @@ const staticStats = [
                 </div>
               </div>
 
-              <span class="block pb-12"></span>
+              <span class='block pb-12'></span>
 
-              <div class="p-2 flex gap-6 items-center">
+              <div class='p-2 flex gap-6 items-center'>
                 <p
-                  class="uppercase text-center font-bold text-sm tracking-wider"
+                  class='uppercase text-center font-bold text-sm tracking-wider'
                 >
                   Abilities:
                 </p>
-                <p class="font-mono text-sm tablet:text-base tablet:leading-5">
+                <p class='font-mono text-sm tablet:text-base tablet:leading-5'>
                   Technologist, Web developer, Gamer, Cat parent
                 </p>
               </div>
 
-              <span class="block pb-10"></span>
+              <span class='block pb-10'></span>
 
-              <div class="p-2">
-                <p class="italic text-sm">
+              <div class='p-2'>
+                <p class='italic text-sm'>
                   "Lord Arbiter", a Capricorn also known as "David", thrives on
                   the web and in the gaming world, but loves spending time with
                   his husband and two cats. He also enjoys gaming with friends,
@@ -319,15 +319,15 @@ const staticStats = [
               </div>
             </div>
 
-            <div id="panel--stats" class="panel hidden">
+            <div id='panel--stats' class='panel hidden'>
               {
                 staticStats.map((stat) => (
-                  <div id={stat.attribute} class="grid grid-cols-5 gap-2">
-                    <div class="col-span-1">{stat.attribute}</div>
-                    <div class="col-span-1">{stat.value}</div>
-                    <div class="col-span-3 flex items-center">
+                  <div id={stat.attribute} class='grid grid-cols-5 gap-2'>
+                    <div class='col-span-1'>{stat.attribute}</div>
+                    <div class='col-span-1'>{stat.value}</div>
+                    <div class='col-span-3 flex items-center'>
                       <span
-                        class="block h-2/3 bg-green-emerald"
+                        class='block h-2/3 green-shimmer'
                         style={`width: ${(stat.value / 20) * 100}%`}
                       />
                     </div>
@@ -335,13 +335,13 @@ const staticStats = [
                 ))
               }
             </div>
-            <div id="panel--friends" class="panel hidden">FRIENDS</div>
-            <div id="panel--recent-games" class="panel hidden">
+            <div id='panel--friends' class='panel hidden'>FRIENDS</div>
+            <div id='panel--recent-games' class='panel hidden'>
               RECENT GAMES
             </div>
-            <div id="panel--owned-games" class="panel hidden">OWNED GAMES</div>
+            <div id='panel--owned-games' class='panel hidden'>OWNED GAMES</div>
 
-            <span class="block pb-16"></span>
+            <span class='block pb-16'></span>
           </div>
         </section>
       </div>
@@ -405,17 +405,23 @@ const staticStats = [
         viewFullProfileButton?.querySelector('#button-icon');
       const profileDetails = document.getElementById('profile-details');
       const profileNavButtons = document.querySelectorAll(
-        '#profile-nav button',
+        '#profile-nav button'
       );
       const profilePanels = document.querySelectorAll(
-        '#profile-panel div[id^="panel--"]',
+        '#profile-panel div[id^="panel--"]'
       );
+      const greenBars = document.querySelectorAll('.green-shimmer');
+
+      greenBars.forEach((bar) => {
+        const time = Math.random() * 2 + 1;
+        bar.style.setProperty('--randomized-animation-time', `${time}s`);
+      });
 
       viewFullProfileButton?.addEventListener('click', () => {
         if (playerCardHolder?.classList.contains('card-collapsed')) {
           playerCardHolder?.classList.replace(
             'card-collapsed',
-            'card-expanded',
+            'card-expanded'
           );
           if (viewProfileButtonText)
             viewProfileButtonText.textContent = 'HIDE PROFILE DETAILS';
@@ -424,7 +430,7 @@ const staticStats = [
         } else {
           playerCardHolder?.classList.replace(
             'card-expanded',
-            'card-collapsed',
+            'card-collapsed'
           );
           if (viewProfileButtonText)
             viewProfileButtonText.textContent = 'VIEW FULL PROFILE';
@@ -436,7 +442,7 @@ const staticStats = [
       profileNavButtons.forEach((button) => {
         button.addEventListener('click', () => {
           profileNavButtons.forEach((button) =>
-            button.classList.remove('active'),
+            button.classList.remove('active')
           );
           button.classList.add('active');
 

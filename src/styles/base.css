@@ -9,6 +9,8 @@
     theme('colors.blue.dark') 30%,
     theme('colors.green.emerald') 60%
   );
+
+  --randomized-animation-time: 0.5s;
 }
 
 html {
@@ -143,6 +145,24 @@ input {
   100% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.green-shimmer {
+  background: linear-gradient(
+    -45deg,
+    theme('colors.green.emerald') 40%,
+    theme('colors.green.light') 50%,
+    theme('colors.green.emerald') 60%
+  );
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer var(--randomized-animation-time) infinite linear;
+}
+
+@keyframes shimmer {
+  to {
+    background-position-x: 0%;
   }
 }
 
