@@ -414,7 +414,10 @@ const staticStats = [
 
       greenBars.forEach((bar) => {
         const time = Math.random() * 2 + 1;
-        bar.style.setProperty('--randomized-animation-time', `${time}s`);
+        (bar as HTMLElement).style.setProperty(
+          '--randomized-animation-time',
+          `${time}s`
+        );
       });
 
       viewFullProfileButton?.addEventListener('click', () => {
