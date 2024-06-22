@@ -82,10 +82,11 @@ export const getOwnedGames = async (
   if (!steamKey || !userId) return staticOwnedGames;
 
   const responseOwnedGames = await fetch(
-    `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamKey}&steamid=${userId}&format=json`,
+    `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${steamKey}&steamid=${userId}&format=json&include_appinfo=1&include_played_free_games=1`,
   );
   try {
-    return await responseOwnedGames.json();
+    const response = await responseOwnedGames.json();
+    return response.response.games.filter((game: any) => game.playtime_forever > 60);
   } catch (error) {
     console.error('Error fetching owned games', error);
     return staticOwnedGames;

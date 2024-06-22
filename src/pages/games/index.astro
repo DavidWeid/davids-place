@@ -24,6 +24,12 @@ const ownedGames = await getOwnedGames();
 const mostRecentGames = await getRecentGames();
 const mostRecentPlayedGame = mostRecentGames[0]?.name;
 
+// console.log(ownedGames);
+
+// mostRecentGames = [{ appid, name, playtime_2weeks, playtime_forever, img_icon_url, playtime_deck_forever }, ...]
+
+// playtime is in minutes
+
 const staticStats = [
   {
     attribute: 'strength',
@@ -117,11 +123,11 @@ const staticStats = [
           alt='Profile avatar'
           width={playerData.avatarfull.width
             ? playerData.avatarfull.width
-            : 184}
+            : 144}
           height={playerData.avatarfull.height
             ? playerData.avatarfull.height
-            : 184}
-          class='vibrate w-36 h-w-36 rounded-full border border-green-emerald'
+            : 144}
+          class='vibrate w-36 h-36 rounded-full border border-green-emerald'
         />
 
         {
@@ -322,10 +328,18 @@ const staticStats = [
             <div id='panel--stats' class='panel hidden'>
               {
                 staticStats.map((stat) => (
-                  <div id={stat.attribute} class='grid grid-cols-5 gap-2'>
-                    <div class='col-span-1'>{stat.attribute}</div>
-                    <div class='col-span-1'>{stat.value}</div>
-                    <div class='col-span-3 flex items-center'>
+                  <div id={stat.attribute} class='grid grid-cols-6 gap-2'>
+                    <div class='col-span-2 tablet:col-span-1'>
+                      <p class='font-mono text-xs tablet:text-sm uppercase'>
+                        {stat.attribute}
+                      </p>
+                    </div>
+                    <div class='col-span-1'>
+                      <p class='text-xs tablet:text-sm uppercase text-right'>
+                        {stat.value}
+                      </p>
+                    </div>
+                    <div class='col-span-3 tablet:col-span-4 flex items-center'>
                       <span
                         class='block h-2/3 green-shimmer'
                         style={`width: ${(stat.value / 20) * 100}%`}
@@ -337,7 +351,14 @@ const staticStats = [
             </div>
             <div id='panel--friends' class='panel hidden'>FRIENDS</div>
             <div id='panel--recent-games' class='panel hidden'>
-              RECENT GAMES
+              <Image
+                loading='lazy'
+                src={`http://media.steampowered.com/steamcommunity/public/images/apps/${mostRecentGames[1].appid}/${mostRecentGames[1].img_icon_url}.jpg`}
+                alt='Game icon'
+                width={40}
+                height={40}
+                class='vibrate w-10 h-10 rounded-full border border-green-emerald'
+              />
             </div>
             <div id='panel--owned-games' class='panel hidden'>OWNED GAMES</div>
 
