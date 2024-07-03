@@ -66,7 +66,7 @@ let target =
       tags && tags.length > 0 ? (
         <>
           <span class="block pb-4" />
-          <div class="flex flex-wrap gap-2.5">
+          <div class="flex gap-2.5 overflow-x-scroll">
             <span class="sr-only">Tags include:</span>
             {tags.slice(0, 4).map((tag) => (
               <Badge tag={tag} clickable={false} />
