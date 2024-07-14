@@ -180,7 +180,7 @@ input {
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__result:last-of-type {
-  @apply border-b-0;
+  @apply !border-b-0;
 }
 
 .pagefind-ui
