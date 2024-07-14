@@ -9,6 +9,17 @@ export default {
       tablet: '768px',
       laptop: '1024px',
       desktop: '1440px',
+      desktopxl: '1920px',
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        tablet: '2rem',
+        laptop: '2.25rem',
+        desktop: '2.5rem',
+        desktopxl: '3rem',
+      },
     },
     fontWeight: {
       thin: 100,

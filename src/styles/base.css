@@ -78,7 +78,7 @@ input {
 }
 
 .container {
-  @apply w-full laptop:max-w-screen-laptop desktop:max-w-screen-desktop mx-auto px-4;
+  @apply w-full !max-w-full desktopxl:!max-w-screen-desktopxl;
 }
 
 .text-gradient {
