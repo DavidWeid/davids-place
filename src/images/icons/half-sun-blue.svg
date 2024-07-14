@@ -1,0 +1,22 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg aria-hidden="true" focusable="false" width="800px" height="800px" viewBox="0 0 24 24" id="half-sun" xmlns="http://www.w3.org/2000/svg" class="icon multi-color" fill="#000000">
+
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+<g id="SVGRepo_iconCarrier">
+
+<title style="stroke-width: 2;">half sun</title>
+
+<path id="tertiary-fill" d="M21,12a9,9,0,0,1-9,9,9.36,9.36,0,0,1-2-.22A9,9,0,0,0,10,3.22,9.36,9.36,0,0,1,12,3,9,9,0,0,1,21,12Z" style="fill: #b7b7b7; stroke-width: 2;"/>
+
+<circle id="primary-stroke" cx="12" cy="12" r="9" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
+
+<path id="secondary-fill" d="M12,6a6,6,0,0,0,0,12,1,1,0,0,0,1-1V7A1,1,0,0,0,12,6Z" style="fill: #5C68F3; stroke-width: 2;"/>
+
+</g>
+
+</svg>

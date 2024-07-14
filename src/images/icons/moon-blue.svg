@@ -1,0 +1,20 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg aria-hidden="true" focusable="false" fill="#000000" width="800px" height="800px" viewBox="0 0 24 24" id="moon" xmlns="http://www.w3.org/2000/svg" class="icon multi-color">
+
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+<g id="SVGRepo_iconCarrier">
+
+<title style="stroke-width: 2;">moon</title>
+
+<path id="secondary-fill" d="M9,9a3,3,0,1,0,3,3A3,3,0,0,0,9,9Zm0,4a1,1,0,1,1,1-1A1,1,0,0,1,9,13ZM12,3a8.8,8.8,0,0,0-3,.52,9,9,0,0,0,0,17A8.8,8.8,0,0,0,12,21,9,9,0,0,0,12,3ZM10.41,19.84a8,8,0,0,1,0-15.68,9,9,0,0,1,0,15.68Z" style="fill: #3844C6; stroke-width: 2;"/>
+
+<path id="primary-stroke" d="M11,12a2,2,0,1,1-2-2A2,2,0,0,1,11,12Zm5.5,1a.5.5,0,1,0,.5.5A.5.5,0,0,0,16.5,13ZM12,3a9,9,0,1,0,9,9A9,9,0,0,0,12,3Z" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
+
+</g>
+
+</svg>
