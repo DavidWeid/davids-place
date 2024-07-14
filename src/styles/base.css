@@ -70,7 +70,7 @@ video {
 }
 
 mark {
-  @apply px-1.5 py-0.5 rounded font-medium tracking-wide bg-green-light dark:bg-blue-dark/75 dark:text-white;
+  @apply inline-flex justify-center px-1.5 py-0.5 rounded font-medium tracking-wide bg-green-light dark:bg-blue-dark/75 dark:text-white;
 }
 
 input {
@@ -167,8 +167,17 @@ input {
 }
 
 /* Pagefind Styles (Search) */
+.pagefind-ui .pagefind-ui__form::before {
+  @apply bg-green-dark dark:bg-blue-dark opacity-100 h-5 w-5;
+  top: calc(20px * var(--pagefind-ui-scale));
+}
+
 .pagefind-ui .pagefind-ui__form .pagefind-ui__search-input {
-  @apply border-gray-300 focus-visible:border-transparent font-normal text-lg;
+  @apply border-gray-300 focus-visible:border-transparent font-normal text-lg text-green-dark dark:text-blue-dark;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__search-input::placeholder {
+  @apply text-green-dark dark:text-blue-dark opacity-80;
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__results-area {
@@ -188,4 +197,9 @@ input {
   .pagefind-ui__result-title
   .pagefind-ui__result-link {
   @apply text-blue-dark hover:text-green-dark dark:text-green-light dark:hover:text-green-emerald hover:no-underline;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__button {
+  @apply bg-green-dark dark:bg-blue-dark text-white border-green-emerald dark:border-blue-light hover:border-blue-dark dark:hover:border-green-dark h-12 w-max px-10 mx-auto transition-all duration-500 text-sm uppercase;
+  margin-bottom: calc(40px * var(--pagefind-ui-scale));
 }

@@ -29,6 +29,11 @@ const { id } = Astro.props;
               showSubResults: true,
               showImages: false,
               resetStyles: false,
+              translations: {
+                placeholder:
+                  'Search recipes by name, description, tag, and more...',
+                zero_results: 'No results found for [SEARCH_TERM]'
+              }
             });
           }
         };
