@@ -9,7 +9,7 @@ interface Props {
 }
 
 function getSVG(name: string) {
-  const filepath: string = `/src/images/**/${name}.svg`;
+  const filepath: string = `/src/images/${name}.svg`;
   const svgFiles: any = import.meta.glob('/src/images/**/*.svg', {
     query: '?raw',
     import: 'default',

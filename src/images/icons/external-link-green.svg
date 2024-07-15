@@ -1,7 +1,4 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg aria-hidden="true" focusable="false" width="800px" height="800px" viewBox="0 0 24 24" id="share-alt-3" xmlns="http://www.w3.org/2000/svg" class="icon multi-color" fill="#000000">
+<svg aria-hidden="true" focusable="false" width="800px" height="800px" viewBox="0 0 24 24" id="share-alt-3" xmlns="http://www.w3.org/2000/svg">
 
 <g id="SVGRepo_bgCarrier" stroke-width="0"/>
 
@@ -11,12 +8,10 @@
 
 <path id="tertiary-fill" d="M3,17H21a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V17A0,0,0,0,1,3,17Z" style="fill: #2e9c51; stroke-width: 2;"/>
 
-<line id="secondary-stroke" x1="20.84" y1="3.16" x2="12" y2="12" style="fill: none; stroke: #2e9c51; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
+<line id="secondary-stroke" x1="20.84" y1="3.16" x2="12" y2="12" style="stroke: #2e9c51; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
 
 <path id="primary-stroke" d="M21,12v8a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V4A1,1,0,0,1,4,3h8" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
 
-<path id="primary-stroke-2" data-name="primary-stroke" d="M21,8V3.56A.56.56,0,0,0,20.44,3H16" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
-
+<path id="primary-stroke-2" data-name="primary-stroke" d="M21,8V3.56A.56.56,0,0,0,20.44,3H16" style="fill: none; stroke: #2e9c51; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
 </g>
-
 </svg>

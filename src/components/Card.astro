@@ -1,5 +1,6 @@
 ---
 import Badge from '@components/Badge.astro';
+import SvgGenerator from '@components/SvgGenerator.astro';
 
 interface Props {
   title: string;
@@ -27,33 +28,27 @@ let target =
         {title}
         {
           target === '_blank' ? (
-            <svg
-              width='24px'
-              height='24px'
-              viewBox='0 0 24 24'
-              aria-hidden='true'
-              focusable='false'
-              fill='none'
-            >
-              <g
-                stroke-width='2.1'
-                stroke='#666'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-              >
-                <>
-                  <polyline points='17 13.5 17 19.5 5 19.5 5 7.5 11 7.5' />
-                  <path d='M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5' />
-                </>
-              </g>
-            </svg>
+            <>
+              <SvgGenerator
+                svg='icons/external-link-blue'
+                className='hidden dark:block w-6 h-6 group-hover:scale-[1.2] transition-transform duration-500'
+              />
+              <SvgGenerator
+                svg='icons/external-link-green'
+                className='block dark:hidden w-6 h-6 group-hover:scale-[1.2] transition-transform duration-500'
+              />
+            </>
           ) : (
-            <span
-              class='text-accent-dark dark:text-light group-hover:translate-x-1.5 transition-transform duration-500'
-              aria-hidden='true'
-            >
-              &rarr;
-            </span>
+            <>
+              <SvgGenerator
+                svg='icons/arrow-bubbles-right-blue'
+                className='block dark:hidden w-6 h-6 group-hover:scale-125 group-hover:translate-x-2 transition-transform duration-500'
+              />
+              <SvgGenerator
+                svg='icons/arrow-bubbles-right-green'
+                className='hidden dark:block w-6 h-6 group-hover:scale-125 group-hover:translate-x-2 transition-transform duration-500'
+              />
+            </>
           )
         }
       </h2>
