@@ -12,6 +12,7 @@ import { Image } from 'astro:assets';
 import catIcon from '@images/games/cat-500.png';
 import drinkIcon from '@images/games/drink-500.png';
 import cupcakeIcon from '@images/games/cupcake-500.png';
+import SvgGenerator from '@components/SvgGenerator.astro';
 
 const pageTitle = 'Gaming Center';
 const heroTitle =
@@ -76,32 +77,14 @@ const staticStats = [
           <a
             href={playerData.profileurl}
             target='_blank'
-            class='relative flex items-center w-max hover:text-green-emerald'
+            class='relative flex items-center gap-2 w-max hover:text-green-emerald'
           >
             {playerData.personaname}
             <span class='sr-only'>View Steam profile (Opens in a new tab)</span>
-            <svg
-              class='absolute -right-8'
-              width='24px'
-              height='24px'
-              viewBox='0 0 24 24'
-              aria-hidden='true'
-              focusable='false'
-              fill='none'
-            >
-              <g
-                stroke-width='2.1'
-                stroke='#666'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-              >
-                <>
-                  <polyline points='17 13.5 17 19.5 5 19.5 5 7.5 11 7.5'
-                  ></polyline>
-                  <path d='M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5'></path>
-                </>
-              </g>
-            </svg>
+            <SvgGenerator
+                svg='icons/external-link-blue'
+                className='w-6 h-6'
+              />
           </a>
         </h2>
 
@@ -169,8 +152,12 @@ const staticStats = [
             <span
               class='group-hover:translate-y-1.5 transition-transform duration-500'
             >
-              <span id='button-text'>VIEW FULL PROFILE</span>
-              <span id='button-icon' aria-hidden='true'> &darr; </span>
+              <span id='button-text' class="mr-1">VIEW FULL PROFILE</span>
+              <SvgGenerator
+              id="button-icon"
+              svg='icons/arrow-bubbles-right-green'
+              className='inline w-4 h-4 rotate-90 group-hover:scale-125 transition-transform duration-500'
+            />
             </span>
           </button>
         </div>
@@ -449,7 +436,7 @@ const staticStats = [
           );
           if (viewProfileButtonText)
             viewProfileButtonText.textContent = 'HIDE PROFILE DETAILS';
-          if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&uarr;';
+          if (viewProfileButtonIcon) viewProfileButtonIcon.classList.replace('rotate-90', '-rotate-90');
           profileDetails?.classList.replace('collapsed', 'expanded');
         } else {
           playerCardHolder?.classList.replace(
@@ -458,7 +445,7 @@ const staticStats = [
           );
           if (viewProfileButtonText)
             viewProfileButtonText.textContent = 'VIEW FULL PROFILE';
-          if (viewProfileButtonIcon) viewProfileButtonIcon.innerHTML = '&darr;';
+          if (viewProfileButtonIcon) viewProfileButtonIcon.classList.replace('-rotate-90', 'rotate-90');
           profileDetails?.classList.replace('expanded', 'collapsed');
         }
       });
