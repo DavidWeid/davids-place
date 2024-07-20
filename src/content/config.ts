@@ -29,7 +29,26 @@ const cookbookCollection = defineCollection({
     }),
 });
 
+const blogCollection = defineCollection({
+  type: 'content',
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.nullable(z.date()),
+      author: z.string(),
+      image: z.nullable(
+        z.object({
+          url: image(),
+          alt: z.string(),
+        }),
+      ),
+      tags: z.array(z.string()),
+    }),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
   cookbook: cookbookCollection,
+  blog: blogCollection,
 };

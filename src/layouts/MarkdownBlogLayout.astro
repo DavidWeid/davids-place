@@ -1,0 +1,56 @@
+---
+import Base from '@layouts/Base.astro';
+import Hero from '@components/Hero.astro';
+// import ImageRecipe from '@components/ImageRecipe.astro';
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    pubDate: Date;
+    author: string;
+    image: {
+      url: string;
+      alt: string;
+    };
+    tags: string[];
+  };
+}
+
+const { frontmatter } = Astro.props;
+const { title, description, pubDate, author, image, tags } = frontmatter;
+const pageTitle = `Blog Post: ${title}`;
+const heroTitle = title;
+const heroDescription = description;
+---
+
+<Base title={pageTitle}>
+  <Hero title={heroTitle} description={heroDescription}>
+    <!-- {
+      image && (
+        <ImageRecipe
+          src={image.url}
+          alt={image.alt}
+          class="h-96 object-cover"
+        />
+      )
+    } -->
+  </Hero>
+
+  <hr class='border-green-emerald' />
+
+  <div
+    data-tags={`| tags: ${tags.join(', ')}`}
+    data-pagefind-index-attrs='data-tags'
+    class='bg-white dark:bg-medium'
+  >
+    <div class='container'>
+      <span class='block pb-8'></span>
+
+      <section>
+        <slot />
+      </section>
+
+      <span class='block pb-16'></span>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@layouts/Base.astro';
+import Hero from '@components/Hero.astro';
+import Search from '@components/Search.astro';
+import Card from '@components/Card.astro';
+
+const baseURL = import.meta.env.BASE_URL;
+const allBlogPosts = await getCollection('blog');
+
+const pageTitle = 'Blog Home';
+const heroTitle = "<span class='text-gradient'>Blog</span>";
+const heroDescription =
+  'Browse my collection of blog posts.';
+---
+
+<Base title={pageTitle} indexForSearch={false} includeSearchComponent={true}>
+  <Hero title={heroTitle} description={heroDescription} />
+
+  <div class="container">
+    <Search id="search" />
+  </div>
+
+  <span class="block pb-8"></span>
+
+  <section class="container">
+    <ul
+      role="list"
+      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
+    >
+      {
+        allBlogPosts.map((post) => (
+          <Card
+            href={`${baseURL}blog/post/${post.slug}/`}
+            title={post.data.title}
+            body={post.data.description}
+            tags={post.data.tags}
+          />
+        ))
+      }
+    </ul>
+
+    <span class="block pb-16"></span>
+  </section>
+</Base>

@@ -15,7 +15,7 @@ const cardTags = null;
 <Base title={pageTitle} indexForSearch={false}>
   <Hero title={heroTitle} description={heroDescription} />
 
-  <section class="container">
+  <section class='container'>
     <NoteBlock>
       This website is a playground for me to learn <strong>Astro</strong>, using <strong
         >TailwindCSS</strong
@@ -23,38 +23,38 @@ const cardTags = null;
       or even helpful here.
     </NoteBlock>
 
-    <span class="block pb-8"></span>
+    <span class='block pb-8'></span>
 
     <ul
-      role="list"
-      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
+      role='list'
+      class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8'
     >
       <Card
-        href="https://github.com/DavidWeid/"
-        title="GitHub Profile"
-        body="View my GitHub profile for an idea of my code cadences."
-        tags={cardTags}
-      />
-      <Card
-        href="https://www.linkedin.com/in/david-weid/"
-        title="LinkedIn Profile"
-        body="View my LinkedIn profile for an idea of my professional background."
-        tags={cardTags}
-      />
-      <Card
-        href="mailto:david.weid.2@gmail.com"
-        title="Contact Me"
-        body="Email me directly if that is your preference."
-        tags={cardTags}
-      />
-      <Card
         href={`${baseURL}cookbook/`}
-        title="Cookbook"
-        body="A collection of recipes I have enjoyed."
+        title='Cookbook'
+        body='A collection of recipes I have enjoyed.'
+        tags={cardTags}
+      />
+      <Card
+        href='https://github.com/DavidWeid/'
+        title='GitHub Profile'
+        body='View my GitHub profile for an idea of my code cadences.'
+        tags={cardTags}
+      />
+      <Card
+        href='https://www.linkedin.com/in/david-weid/'
+        title='LinkedIn Profile'
+        body='View my LinkedIn profile for an idea of my professional background.'
+        tags={cardTags}
+      />
+      <Card
+        href='mailto:david.weid.2@gmail.com'
+        title='Contact Me'
+        body='Email me directly if that is your preference.'
         tags={cardTags}
       />
     </ul>
 
-    <span class="block pb-16"></span>
+    <span class='block pb-16'></span>
   </section>
 </Base>
