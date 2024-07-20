@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
-import Search from '@components/Search.astro';
 import Card from '@components/Card.astro';
 
 const baseURL = import.meta.env.BASE_URL;
@@ -10,23 +9,16 @@ const allBlogPosts = await getCollection('blog');
 
 const pageTitle = 'Blog Home';
 const heroTitle = "<span class='text-gradient'>Blog</span>";
-const heroDescription =
-  'Browse my collection of blog posts.';
+const heroDescription = 'Browse my collection of blog posts.';
 ---
 
-<Base title={pageTitle} indexForSearch={false} includeSearchComponent={true}>
+<Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
   <Hero title={heroTitle} description={heroDescription} />
 
-  <div class="container">
-    <Search id="search" />
-  </div>
-
-  <span class="block pb-8"></span>
-
-  <section class="container">
+  <section class='container'>
     <ul
-      role="list"
-      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
+      role='list'
+      class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8'
     >
       {
         allBlogPosts.map((post) => (
@@ -40,6 +32,6 @@ const heroDescription =
       }
     </ul>
 
-    <span class="block pb-16"></span>
+    <span class='block pb-16'></span>
   </section>
 </Base>

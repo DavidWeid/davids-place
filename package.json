@@ -12,7 +12,7 @@
     "prepare": "husky i"
   },
   "dependencies": {
-    "@astrojs/check": "^0.8.1",
+    "@astrojs/check": "^0.8.2",
     "@astrojs/mdx": "^3.1.2",
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
@@ -34,7 +34,7 @@
     "pretty-quick": "^4.0.0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.18.1"
+    "@rollup/rollup-linux-x64-gnu": "astrojs/check"
   },
   "lint-staged": {
     "*.{js,mjs,ts,json,css,astro,html,mdx,md}": "prettier --write"
