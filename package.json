@@ -34,7 +34,7 @@
     "pretty-quick": "^4.0.0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "astrojs/check"
+    "@rollup/rollup-linux-x64-gnu": "^4.19.0"
   },
   "lint-staged": {
     "*.{js,mjs,ts,json,css,astro,html,mdx,md}": "prettier --write"
