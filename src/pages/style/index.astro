@@ -1,0 +1,75 @@
+---
+import Base from '@layouts/Base.astro';
+import Hero from '@components/Hero.astro';
+import { customColors } from 'tailwind.config.mjs';
+
+import { Image } from 'astro:assets';
+
+const astroImageFiles = await Astro.glob('src/images/astro/*.svg');
+
+const pageTitle = 'Style Visualization';
+const heroTitle =
+  "<span class='text-gradient block'>Style Visualization</span>";
+const heroDescription = '';
+
+const extractAstroName = (string: string) => {
+  const match = string.match(/astro-\d+/);
+  return match ? match[0] : null;
+};
+
+const extractAstroNumber = (string: string) => {
+  const match = string.match(/astro-(\d+)/);
+  return match ? match[1] : '0';
+};
+
+const orderClasses: { [key: string]: string } = {
+  1: 'order-[1]',
+  2: 'order-[2]',
+  3: 'order-[3]',
+  4: 'order-[4]',
+  5: 'order-[5]',
+  6: 'order-[6]',
+  7: 'order-[7]',
+  8: 'order-[8]',
+  9: 'order-[9]',
+  10: 'order-[10]',
+  11: 'order-[11]',
+  12: 'order-[12]',
+  13: 'order-[13]',
+  14: 'order-[14]',
+  15: 'order-[15]',
+  16: 'order-[16]',
+  17: 'order-[17]',
+  18: 'order-[18]',
+  19: 'order-[19]',
+  20: 'order-[20]'
+};
+---
+
+<Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
+  <Hero title={heroTitle} description={heroDescription} />
+
+  <section class='container'>
+    <div class='grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-8'>
+      {
+        astroImageFiles.map((astroImage) => (
+          <div
+            class={`flex flex-col gap-2 items-center ${extractAstroNumber(astroImage.default.src) ? orderClasses[extractAstroNumber(astroImage.default.src)] : ''}`}
+          >
+            <Image
+              src={astroImage.default}
+              alt={`Astro Logo - ${extractAstroName(astroImage.default.src)}`}
+              width={astroImage.default.width}
+              height={astroImage.default.height}
+              class='h-20 w-auto'
+            />
+
+            <p>{extractAstroName(astroImage.default.src)}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <span class='block pb-16'></span>
+  </section>
+</Base>
