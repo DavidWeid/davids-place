@@ -18,7 +18,7 @@ html {
 }
 
 html.dark {
-  @apply bg-dark text-white;
+  @apply bg-dark text-light;
 }
 
 body {
@@ -61,7 +61,7 @@ code {
 }
 
 code.dark-background {
-  @apply px-2 rounded-lg bg-white text-medium;
+  @apply px-2 rounded-lg bg-light text-medium;
 }
 
 img,
@@ -70,7 +70,7 @@ video {
 }
 
 mark {
-  @apply inline-flex justify-center px-1.5 py-0.5 rounded font-medium tracking-wide bg-green-light dark:bg-blue-dark/75 dark:text-white;
+  @apply inline-flex justify-center px-1.5 py-0.5 rounded font-medium tracking-wide bg-green-light dark:bg-blue-dark/75 dark:text-light;
 }
 
 input {
@@ -181,7 +181,7 @@ input {
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__results-area {
-  @apply px-4 rounded-lg border border-dark dark:border-light bg-light dark:bg-medium text-dark dark:text-white;
+  @apply px-4 rounded-lg border border-dark dark:border-light bg-light dark:bg-medium text-dark dark:text-light;
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__result {
@@ -200,6 +200,6 @@ input {
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__button {
-  @apply bg-green-dark dark:bg-blue-dark text-white border-green-emerald dark:border-blue-light hover:border-blue-dark dark:hover:border-green-dark h-12 w-max px-10 mx-auto transition-all duration-500 text-sm uppercase;
+  @apply bg-green-dark dark:bg-blue-dark text-light border-green-emerald dark:border-blue-light hover:border-blue-dark dark:hover:border-green-dark h-12 w-max px-10 mx-auto transition-all duration-500 text-sm uppercase;
   margin-bottom: calc(40px * var(--pagefind-ui-scale));
 }

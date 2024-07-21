@@ -31,9 +31,9 @@ const pathname: string = `${new URL(Astro.request.url).pathname}`;
 const homepageLinkAttributes = pathname === baseURL ? {} : { href: baseURL };
 
 const nonLinkClasses =
-  'text-white/60 hover:text-white/60 dark:text-white/60 dark:hover:text-white/60 w-max px-3 py-2 uppercase text-sm';
+  'text-light/60 hover:text-light/60 dark:text-light/60 dark:hover:text-light/60 w-max px-3 py-2 uppercase text-sm';
 const linkClasses =
-  'text-white hover:text-green-emerald hover:scale-110 transition-all w-max px-3 py-2 uppercase text-sm';
+  'text-light hover:text-green-emerald hover:scale-110 transition-all w-max px-3 py-2 uppercase text-sm';
 
 const navItems: string[] = Object.keys(obj).map(
   (key) =>
@@ -44,7 +44,7 @@ const navItems: string[] = Object.keys(obj).map(
 ---
 
 <nav
-  class="z-30 py-4 bg-dark text-white bg-gradient-to-tr from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 transition-all laptop:sticky laptop:top-0"
+  class="z-30 py-4 bg-dark text-light bg-gradient-to-tr from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 transition-all laptop:sticky laptop:top-0"
 >
   <div class="container flex justify-between items-center">
     <div class="flex items-center group">
@@ -81,7 +81,7 @@ const navItems: string[] = Object.keys(obj).map(
           type="checkbox"
           id="darkModeSwitch"
           checked="true"
-          class="transition-all before:transition-all duration-500 before:duration-500 relative appearance-none w-12 h-6 rounded-full bg-white/75 hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-4 before:h-4 before:rounded-full before:bg-blue-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-blue-dark checked:before:bg-accent-light checked:before:left-7"
+          class="transition-all before:transition-all duration-500 before:duration-500 relative appearance-none w-12 h-6 rounded-full bg-light/75 hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-4 before:h-4 before:rounded-full before:bg-blue-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-blue-dark checked:before:bg-accent-light checked:before:left-7"
         />
         <label
           for="darkModeSwitch"

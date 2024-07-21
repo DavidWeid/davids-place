@@ -78,7 +78,7 @@ const heroDescription = description;
   <div
     data-tags={`| tags: ${tags.join(', ')}`}
     data-pagefind-index-attrs="data-tags"
-    class="bg-white dark:bg-medium"
+    class="bg-light dark:bg-medium"
   >
     <div class="container">
       <span class="block pb-8"></span>
@@ -115,7 +115,7 @@ const heroDescription = description;
                               for={
                                 category.toLowerCase() + '-ingredient-' + index
                               }
-                              class="peer-checked:text-blue-dark/50 dark:peer-checked:text-white/40 hover:cursor-pointer hover:text-blue-dark dark:hover:text-green-emerald"
+                              class="peer-checked:text-blue-dark/50 dark:peer-checked:text-light/40 hover:cursor-pointer hover:text-blue-dark dark:hover:text-green-emerald"
                             >
                               {ingredient}
                             </label>
@@ -142,7 +142,7 @@ const heroDescription = description;
               <ol class="flex flex-col gap-6">
                 {instructions.map((instruction, index) => (
                   <li class="flex flex-col gap-2">
-                    <span class="text-xl font-bold tracking-wider text-dark/75 dark:text-white/85">
+                    <span class="text-xl font-bold tracking-wider text-dark/75 dark:text-light/85">
                       Step {index + 1}
                     </span>
                     <span class="leading-7 max-w-prose">{instruction}</span>

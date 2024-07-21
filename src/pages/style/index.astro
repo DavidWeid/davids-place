@@ -1,7 +1,7 @@
 ---
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
-
+import SvgGenerator from '@components/SvgGenerator.astro';
 import { Image } from 'astro:assets';
 
 const astroImageFiles = await Astro.glob('src/images/astro/*.svg');
@@ -77,47 +77,79 @@ const orderClasses: { [key: string]: string } = {
   <Hero title={heroTitle} description={heroDescription} />
 
   <section class='container'>
-    <details name='colors'>
-      <summary><h2 class='inline'>Custom Colors</h2></summary>
+    <details class='scroll-mt-24 tablet:scroll-mt-20' name='colors'>
+      <summary
+        class='group flex items-center justify-between w-full tablet:w-max min-w-[25%] cursor-pointer py-3 border-b-2 border-green-emerald hover:text-green-dark'
+        ><h2 class='inline'>Custom Colors</h2>
+        <SvgGenerator
+          svg='icons/arrow-bubbles-right-green'
+          className='w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500'
+        /></summary
+      >
       <div
         class='p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8'
       >
         {
-          Object.keys(customColors).map((color) => (
-            <div class='flex flex-col gap-2 items-center p-6'>
-              <div
-                class='h-20 w-20 rounded-full'
-                style={`background-color: ${customColors[color]}`}
-              />
+          Object.keys(customColors).map((color) => {
+            if (typeof customColors[color] === 'string') {
+              return (
+                <div class='flex flex-col gap-2 items-center p-6'>
+                  <div
+                    class='h-20 w-20 rounded-full'
+                    style={`background-color: ${customColors[color]}`}
+                  />
 
-              <p class='text-sm text-center px-2'>{color}</p>
-            </div>
-          ))
+                  <p class='text-sm text-center px-2 select-text'>{color}</p>
+                </div>
+              );
+            } else {
+              return Object.keys(customColors[color]).map((shade) => {
+                return (
+                  <div class='flex flex-col gap-2 items-center p-6'>
+                    <div
+                      class='h-20 w-20 rounded-full'
+                      style={`background-color: ${(customColors[color] as { [key: string]: string })[shade]}`}
+                    />
+
+                    <p class='text-sm text-center px-2 select-text'>{`${color} - ${shade}`}</p>
+                  </div>
+                );
+              });
+            }
+          })
         }
       </div>
     </details>
 
     <span class='block pb-16'></span>
 
-    <details name='images'>
-      <summary><h2 class='inline'>Astro SVGs</h2></summary>
+    <details class='scroll-mt-24 tablet:scroll-mt-20' name='images'>
+      <summary
+        class='group flex items-center justify-between w-full tablet:w-max min-w-[25%] cursor-pointer py-3 border-b-2 border-green-emerald hover:text-green-dark'
+        ><h2 class='inline'>Astro SVGs</h2>
+        <SvgGenerator
+          svg='icons/arrow-bubbles-right-green'
+          className='w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500'
+        /></summary
+      >
       <div
         class='p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8'
       >
         {
           astroImageFiles.map((astroImage) => (
             <div
-              class={`flex flex-col gap-2 items-center ${extractAstroNumber(astroImage.default.src) ? orderClasses[extractAstroNumber(astroImage.default.src)] : ''} bg-medium text-white p-6 rounded-full`}
+              class={`flex flex-col gap-2 items-center ${extractAstroNumber(astroImage.default.src) ? orderClasses[extractAstroNumber(astroImage.default.src)] : ''} bg-medium text-light p-6 rounded-full`}
             >
               <Image
                 src={astroImage.default}
+                loading='lazy'
                 alt={`Astro Logo - ${extractAstroName(astroImage.default.src)}`}
                 width={astroImage.default.width}
                 height={astroImage.default.height}
                 class='h-20 w-auto'
               />
 
-              <p class='text-sm text-center px-2'>
+              <p class='text-sm text-center px-2 select-text'>
                 {extractAstroName(astroImage.default.src)}
               </p>
             </div>
@@ -128,23 +160,31 @@ const orderClasses: { [key: string]: string } = {
 
     <span class='block pb-16'></span>
 
-    <details name='images'>
-      <summary><h2 class='inline'>Icon SVGs</h2></summary>
+    <details class='scroll-mt-24 tablet:scroll-mt-20' name='images'>
+      <summary
+        class='group flex items-center justify-between w-full tablet:w-max min-w-[25%] cursor-pointer py-3 border-b-2 border-green-emerald hover:text-green-dark'
+        ><h2 class='inline'>Icon SVGs</h2>
+        <SvgGenerator
+          svg='icons/arrow-bubbles-right-green'
+          className='w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500'
+        /></summary
+      >
       <div
         class='p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8'
       >
         {
           iconImageFiles.map((iconImage) => (
-            <div class='flex flex-col gap-2 items-center bg-medium text-white p-6 rounded-full'>
+            <div class='flex flex-col gap-2 items-center bg-medium text-light p-6 rounded-full'>
               <Image
+                loading='lazy'
                 src={iconImage.default}
                 alt={`Icon - ${iconImage.default.src}`}
                 width={iconImage.default.width}
                 height={iconImage.default.height}
-                class='aspect-square'
+                class='aspect-square w-12'
               />
 
-              <p class='text-sm text-center px-2'>
+              <p class='text-sm text-center px-2 select-text'>
                 {extractFileName(iconImage.default.src)}
               </p>
             </div>
@@ -155,4 +195,23 @@ const orderClasses: { [key: string]: string } = {
 
     <span class='block pb-16'></span>
   </section>
+
+  <script>
+    const details = document.querySelectorAll('details');
+
+    details.forEach((targetDetail) => {
+      targetDetail.addEventListener('toggle', () => {
+        details.forEach((detail) => {
+          if (detail === targetDetail && detail.open) {
+            const summaryIcon = detail.querySelector('svg');
+            summaryIcon?.classList.replace('rotate-90', '-rotate-90');
+            detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else if (detail === targetDetail && !detail.open) {
+            const summaryIcon = detail.querySelector('svg');
+            summaryIcon?.classList.replace('-rotate-90', 'rotate-90');
+          }
+        });
+      });
+    });
+  </script>
 </Base>
