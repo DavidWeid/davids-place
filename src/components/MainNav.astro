@@ -14,7 +14,7 @@ const obj: NavigationLinks = {
   home: `${baseURL}`,
   cookbook: `${baseURL}cookbook/`,
   gaming: `${baseURL}games/`,
-  blog: `${baseURL}blog/`,
+  blog: `${baseURL}blog/`
 };
 
 let astroLogo = astroLogoSpread;
@@ -39,17 +39,17 @@ const navItems: string[] = Object.keys(obj).map(
   (key) =>
     `<li class='flex items-center'>
       ${pathname === obj[key] ? `<span class="${nonLinkClasses}">${key}</span>` : `<a role="link" href="${obj[key]}" class="${linkClasses}">${key}</a>`}
-  </li>`,
+  </li>`
 );
 ---
 
 <nav
-  class="z-30 py-4 bg-dark text-light bg-gradient-to-tr from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 transition-all laptop:sticky laptop:top-0"
+  class='z-30 py-4 bg-dark text-light bg-gradient-to-tr from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 transition-all laptop:sticky laptop:top-0'
 >
-  <div class="container flex justify-between items-center">
-    <div class="flex items-center group">
+  <div class='container flex justify-between items-center'>
+    <div class='flex items-center group'>
       <Image
-        loading="eager"
+        loading='eager'
         src={astroLogo}
         alt="David's Place Logo - An astronaut"
         title="David's Place Logo - An astronaut"
@@ -59,12 +59,12 @@ const navItems: string[] = Object.keys(obj).map(
       />
       {
         pathname === baseURL ? (
-          <span class="px-4 py-2">David's Place</span>
+          <span class='px-4 py-2'>David's Place</span>
         ) : (
           <a
-            role="link"
+            role='link'
             {...homepageLinkAttributes}
-            class="px-4 py-2 group-hover:text-green-emerald group-hover:scale-110 transition-all"
+            class='px-4 py-2 group-hover:text-green-emerald group-hover:scale-110 transition-all'
             aria-label="David's Place Homepage"
           >
             David's Place
@@ -72,31 +72,42 @@ const navItems: string[] = Object.keys(obj).map(
         )
       }
     </div>
-    <div class="flex items-center gap-4">
+
+    <div class='flex items-center gap-4'>
       <!-- Nav items visible on tablet+ -->
-      <ul class="hidden tablet:flex items-center gap-3" set:html={navItems} />
-      <fieldset class="flex flex-col gap-1 items-center">
-        <legend class="sr-only">Select Dark Mode:</legend>
+      <ul class='hidden tablet:flex items-center gap-3' set:html={navItems} />
+
+      <fieldset class='flex flex-col gap-1 items-center'>
+        <legend class='sr-only'>Select Dark Mode:</legend>
         <input
-          type="checkbox"
-          id="darkModeSwitch"
-          checked="true"
+          type='checkbox'
+          id='darkModeSwitch'
+          checked='true'
           class="transition-all before:transition-all duration-500 before:duration-500 relative appearance-none w-12 h-6 rounded-full bg-light/75 hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-4 before:h-4 before:rounded-full before:bg-blue-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-blue-dark checked:before:bg-accent-light checked:before:left-7"
         />
         <label
-          for="darkModeSwitch"
-          class="text-center text-xs opacity-75 hover:cursor-pointer w-[70px]"
+          for='darkModeSwitch'
+          class='text-center text-xs opacity-75 hover:cursor-pointer w-[70px]'
           >Dark Mode</label
         >
       </fieldset>
+
+      <div>
+        <button id='font-decrease' class='' aria-label='Decrease Font Size'
+          >A-</button
+        >
+        <button id='font-increase' class='' aria-label='Increase Font Size'
+          >A+</button
+        >
+      </div>
     </div>
   </div>
 
   <!-- Nav items visible on mobile only -->
-  <div class="container tablet:hidden">
-    <span class="block my-4 border-t border-t-green-emerald"></span>
+  <div class='container tablet:hidden'>
+    <span class='block my-4 border-t border-t-green-emerald'></span>
     <ul
-      class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2"
+      class='flex flex-wrap justify-center items-center gap-x-4 gap-y-2'
       set:html={navItems}
     />
   </div>
@@ -166,5 +177,32 @@ const navItems: string[] = Object.keys(obj).map(
 
     initDarkMode();
     addChangeListenerToSwitch();
+  });
+</script>
+
+<script is:inline>
+  const decreaseFontButton = document.getElementById('font-decrease');
+  const increaseFontButton = document.getElementById('font-increase');
+
+  const decreaseFontSize = () => {
+    const root = document.documentElement;
+    const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
+    const newFontSize = currentFontSize - 1;
+    root.style.fontSize = `${newFontSize}px`;
+  };
+
+  const increaseFontSize = () => {
+    const root = document.documentElement;
+    const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
+    const newFontSize = currentFontSize + 1;
+    root.style.fontSize = `${newFontSize}px`;
+  };
+
+  decreaseFontButton?.addEventListener('click', () => {
+    decreaseFontSize();
+  });
+
+  increaseFontButton?.addEventListener('click', () => {
+    increaseFontSize();
   });
 </script>
