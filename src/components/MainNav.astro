@@ -9,6 +9,7 @@ interface NavigationLinks {
 }
 
 const baseURL = import.meta.env.BASE_URL;
+const pathname = Astro.url.pathname;
 
 const obj: NavigationLinks = {
   home: `${baseURL}`,
@@ -19,13 +20,11 @@ const obj: NavigationLinks = {
 
 let astroLogo = astroLogoSpread;
 
-if (new URL(Astro.request.url).pathname.includes('cookbook')) {
+if (pathname.includes('cookbook')) {
   astroLogo = astroLogoBook;
-} else if (new URL(Astro.request.url).pathname.includes('games')) {
+} else if (pathname.includes('games')) {
   astroLogo = astroLogoGame;
 }
-
-const pathname: string = `${new URL(Astro.request.url).pathname}`;
 
 // If on homepage, don't include the 'href' attribute on the link element
 const homepageLinkAttributes = pathname === baseURL ? {} : { href: baseURL };
@@ -198,11 +197,19 @@ const navItems: string[] = Object.keys(obj).map(
     root.style.fontSize = `${newFontSize}px`;
   };
 
-  decreaseFontButton?.addEventListener('click', () => {
-    decreaseFontSize();
-  });
+  const addEventListenerToFontButtons = () => {
+    console.log('Font buttons are ready!');
 
-  increaseFontButton?.addEventListener('click', () => {
-    increaseFontSize();
+    decreaseFontButton?.addEventListener('click', () => {
+      decreaseFontSize();
+    });
+
+    increaseFontButton?.addEventListener('click', () => {
+      increaseFontSize();
+    });
+  };
+
+  document.addEventListener('astro:page-load', () => {
+    addEventListenerToFontButtons();
   });
 </script>
