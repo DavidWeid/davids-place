@@ -145,8 +145,6 @@ const navItems: string[] = Object.keys(obj).map(
     setDarkModeSwitchState(isDarkMode());
   };
 
-  initDarkMode();
-
   document.addEventListener('astro:after-swap', () => {
     initDarkMode();
   });
@@ -180,14 +178,25 @@ const navItems: string[] = Object.keys(obj).map(
 </script>
 
 <script is:inline>
-  const decreaseFontButton = document.getElementById('font-decrease');
-  const increaseFontButton = document.getElementById('font-increase');
+  const setFontSizeInStorage = (fontSize) => {
+    localStorage.setItem('fontSize', fontSize);
+  };
+
+  const setFontSizeFromStorage = () => {
+    const root = document.documentElement;
+    const storedFontSize = localStorage.getItem('fontSize');
+
+    if (storedFontSize) {
+      root.style.fontSize = `${storedFontSize}px`;
+    }
+  };
 
   const decreaseFontSize = () => {
     const root = document.documentElement;
     const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
     const newFontSize = currentFontSize - 1;
     root.style.fontSize = `${newFontSize}px`;
+    setFontSizeInStorage(newFontSize);
   };
 
   const increaseFontSize = () => {
@@ -195,10 +204,12 @@ const navItems: string[] = Object.keys(obj).map(
     const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
     const newFontSize = currentFontSize + 1;
     root.style.fontSize = `${newFontSize}px`;
+    setFontSizeInStorage(newFontSize);
   };
 
   const addEventListenerToFontButtons = () => {
-    console.log('Font buttons are ready!');
+    const decreaseFontButton = document.getElementById('font-decrease');
+    const increaseFontButton = document.getElementById('font-increase');
 
     decreaseFontButton?.addEventListener('click', () => {
       decreaseFontSize();
@@ -210,6 +221,14 @@ const navItems: string[] = Object.keys(obj).map(
   };
 
   document.addEventListener('astro:page-load', () => {
+    setFontSizeFromStorage();
     addEventListenerToFontButtons();
   });
+
+  document.addEventListener('astro:after-swap', () => {
+    setFontSizeFromStorage();
+  });
+
+  setFontSizeFromStorage();
+  addEventListenerToFontButtons();
 </script>
