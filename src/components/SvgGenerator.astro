@@ -30,10 +30,10 @@ function getSVG(name: string) {
   };
 }
 
-const { svg, ...attributes }: Props = Astro.props;
+const { svg, className, id }: Props = Astro.props;
 const { attributes: baseAttributes, innerHTML } = getSVG(svg);
 
-const svgAttributes = { ...baseAttributes, ...attributes };
+const svgAttributes = { ...baseAttributes, class: className, id };
 ---
 
 <svg {...svgAttributes} set:html={innerHTML} />
