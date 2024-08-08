@@ -3,6 +3,8 @@ import { Image } from 'astro:assets';
 import astroLogoSpread from '@images/astro/astro-9.svg';
 import astroLogoBook from '@images/astro/astro-6.svg';
 import astroLogoGame from '@images/astro/astro-10.svg';
+import astroLogoPencil from '@images/astro/astro-8.svg';
+import astroLogoDesk from '@images/astro/astro-3.svg';
 
 interface NavigationLinks {
   [key: string]: string;
@@ -24,6 +26,10 @@ if (pathname.includes('cookbook')) {
   astroLogo = astroLogoBook;
 } else if (pathname.includes('games')) {
   astroLogo = astroLogoGame;
+} else if (pathname.includes('blog')) {
+  astroLogo = astroLogoPencil;
+} else if (pathname.includes('style')) {
+  astroLogo = astroLogoDesk;
 }
 
 // If on homepage, don't include the 'href' attribute on the link element
@@ -193,16 +199,18 @@ const navItems: string[] = Object.keys(obj).map(
 
   const setFontSize = (newFontSize) => {
     const root = document.documentElement;
+    const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
     const storedFontSize = localStorage.getItem('fontSize');
     const displayedFontSize = document.getElementById('font-size');
 
     if (storedFontSize) {
       root.style.fontSize = `${storedFontSize}px`;
-    } else {
+    } else if (newFontSize) {
       root.style.fontSize = `${newFontSize}px`;
     }
 
-    displayedFontSize.textContent = storedFontSize || newFontSize;
+    displayedFontSize.textContent =
+      storedFontSize || newFontSize || currentFontSize;
   };
 
   const decreaseFontSize = () => {
