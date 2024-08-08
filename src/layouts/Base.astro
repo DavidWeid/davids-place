@@ -105,10 +105,14 @@ indexForSearch === false
     <meta name='twitter:description' content={metaDescription} />
     <meta name='twitter:image' content={generalOGImage.src} />
 
-    <meta
-      name='google-site-verification'
-      content='riTFFVMSa2yEdiUjWs5sdzQHRQYwJLh_pxBZNU0C-3U'
-    />
+    {
+      baseURL === Astro.url.pathname && (
+        <meta
+          name='google-site-verification'
+          content='riTFFVMSa2yEdiUjWs5sdzQHRQYwJLh_pxBZNU0C-3U'
+        />
+      )
+    }
 
     {
       includeSearchComponent && (
