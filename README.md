@@ -21,17 +21,24 @@ Inside this Astro project, you'll see the following folders and files:
 │   ├── components/
 │   ├── layouts/
 │   │   ├── Layout.astro
-│   │   └── MarkdownRecipeLayout.astro
+│   │   ├── MarkdownRecipeLayout.astro
+│   │   └── MarkdownBlogLayout.astro
 │   ├── content/
+│   │   ├── blog/
 │   │   ├── cookbook/
 │   │   │   └── brioche-buns.mdx
 │   │   └── config.ts
 │   ├── pages/
 │   │   ├── index.astro
 │   │   ├── 404.astro
-│   │   └── cookbook/
-│   │       └── recipes/
-│   │           └── [...slug].astro
+│   │   ├── blog/
+│   │   │    └── posts/
+│   │   │        └── [...slug].astro
+│   │   ├── cookbook/
+│   │   │    └── recipes/
+│   │   │        └── [...slug].astro
+│   │   └──games/
+│   │         └──index.astro
 │   └── styles/
 │       └── base.css
 └── package.json

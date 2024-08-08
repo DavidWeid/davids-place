@@ -23,7 +23,7 @@ const heroDescription = 'Browse my collection of blog posts.';
       {
         allBlogPosts.map((post) => (
           <Card
-            href={`${baseURL}blog/post/${post.slug}/`}
+            href={`${baseURL}blog/posts/${post.slug}/`}
             title={post.data.title}
             body={post.data.description}
             tags={post.data.tags}
