@@ -214,7 +214,7 @@ const navItems: string[] = Object.keys(obj).map(
       setFontSizeInStorage(currentFontSize);
     }
 
-    displayedFontSize.textContent = storedFontSize || currentFontSize;
+    displayedFontSize.textContent = storedFontSize || 16;
   };
 
   const decreaseFontSize = () => {
