@@ -194,21 +194,27 @@ const navItems: string[] = Object.keys(obj).map(
 
 <script is:inline>
   const setFontSizeInStorage = (fontSize) => {
-    localStorage.setItem('fontSize', fontSize);
+    localStorage.fontSize = fontSize;
   };
 
   const setFontSize = (document) => {
     const currentFontSize = parseFloat(
       getComputedStyle(document.documentElement).fontSize
     );
-    const storedFontSize = localStorage.getItem('fontSize');
+    const storedFontSize = localStorage.fontSize;
     const displayedFontSize = document.getElementById('font-size');
 
     if (storedFontSize !== currentFontSize) {
       document.documentElement.style.fontSize = `${storedFontSize}px`;
     }
 
-    displayedFontSize.textContent = storedFontSize;
+    console.log(storedFontSize, currentFontSize);
+
+    if (storedFontSize === null && currentFontSize !== NaN) {
+      setFontSizeInStorage(currentFontSize);
+    }
+
+    displayedFontSize.textContent = storedFontSize || currentFontSize;
   };
 
   const decreaseFontSize = () => {
