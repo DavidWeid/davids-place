@@ -2,6 +2,8 @@
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import ImageRecipe from '@components/ImageRecipe.astro';
+import SvgGenerator from '@components/SvgGenerator.astro';
+
 interface Props {
   frontmatter: {
     title: string;
@@ -175,26 +177,7 @@ const heroDescription = description;
                 rel="noopener noreferrer"
                 class="content-link-gradient text-sm flex items-center gap-1 w-fit"
               >
-                <svg
-                  width="16px"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
-                  fill="none"
-                >
-                  <g
-                    stroke-width="2.1"
-                    stroke="#666"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <>
-                      <polyline points="17 13.5 17 19.5 5 19.5 5 7.5 11 7.5" />
-                      <path d="M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5" />
-                    </>
-                  </g>
-                </svg>
+                <SvgGenerator svg="icons/external-link" className='h-4 w-4 dark:fill-light' />
                 {source}
               </a>
             </section>
