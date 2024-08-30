@@ -204,17 +204,12 @@ const navItems: string[] = Object.keys(obj).map(
     const storedFontSize = localStorage.fontSize;
     const displayedFontSize = document.getElementById('font-size');
 
-    if (storedFontSize !== currentFontSize) {
+    if (storedFontSize && storedFontSize !== currentFontSize) {
       document.documentElement.style.fontSize = `${storedFontSize}px`;
+      displayedFontSize.textContent = storedFontSize;
+    } else {
+      displayedFontSize.textContent = currentFontSize;
     }
-
-    console.log(storedFontSize, currentFontSize);
-
-    if (storedFontSize === null && currentFontSize !== NaN) {
-      setFontSizeInStorage(currentFontSize);
-    }
-
-    displayedFontSize.textContent = storedFontSize || 16;
   };
 
   const decreaseFontSize = () => {
