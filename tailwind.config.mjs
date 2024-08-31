@@ -55,8 +55,11 @@ export default {
     },
     extend: {
       fontFamily: {
+        // sans and mono are available in 200-900 weights
         sans: ['Reddit Sans Variable', ...defaultTheme.fontFamily.sans],
         mono: ['Reddit Mono Variable', ...defaultTheme.fontFamily.mono],
+        //  sans-syne is available in 400-800 weights
+        'sans-syne': ['Syne Variable', ...defaultTheme.fontFamily.sans],
       },
       colors: customColors,
       boxShadow: {

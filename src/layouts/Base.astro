@@ -1,8 +1,7 @@
 ---
 import '@styles/base.css';
-// Supports weights 200-900
+import '@fontsource-variable/syne';
 import '@fontsource-variable/reddit-mono';
-// Supports weights 200-900
 import '@fontsource-variable/reddit-sans';
 import '@fontsource-variable/reddit-sans/wght-italic.css';
 
@@ -17,19 +16,19 @@ interface Props {
   includeSearchComponent?: boolean;
 }
 
-interface generalOGImage {
-  src: string;
-  width: number;
-  height: number;
-}
-
 const baseURL = import.meta.env.BASE_URL;
 const pathname: string = `${baseURL}${new URL(Astro.request.url).pathname}`;
 const urlString: string = new URL(Astro.request.url).href;
-const { title, indexForSearch = true, includeSearchComponent } = Astro.props;
+
+const {
+  title,
+  indexForSearch = true,
+  includeSearchComponent = false
+} = Astro.props;
+
 const metaTitle: string = title ? `${title} | David's Place` : "David's Place";
 const metaDescription: string =
-  "David's Place includes projects, blogs, and ideas related to web development and other interests held by David Weid II.";
+  "David's Place, an AstroJS & TailwindCSS playground, includes projects, blogs, and ideas related to web development and other interests of David Weid II.";
 
 const mainElementAttributes = {};
 indexForSearch === false

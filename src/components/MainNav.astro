@@ -17,7 +17,7 @@ const obj: NavigationLinks = {
   home: `${baseURL}`,
   cookbook: `${baseURL}cookbook/`,
   gaming: `${baseURL}games/`,
-  blog: `${baseURL}blog/`
+  // blog: `${baseURL}blog/`
 };
 
 let astroLogo = astroLogoSpread;
@@ -51,7 +51,7 @@ const navItems: string[] = Object.keys(obj).map(
 <nav
   class='z-30 py-4 bg-dark text-light bg-gradient-to-tr from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 transition-all laptop:sticky laptop:top-0'
 >
-  <div class='container flex flex-wrap justify-between items-center'>
+  <div class='container flex flex-wrap justify-between items-center gap-y-2'>
     <div class='flex items-center group'>
       <Image
         loading='eager'
@@ -59,8 +59,8 @@ const navItems: string[] = Object.keys(obj).map(
         alt="David's Place Logo - An astronaut"
         title="David's Place Logo - An astronaut"
         class={pathname === baseURL
-          ? 'h-12 w-auto'
-          : 'h-12 w-auto group-hover:-rotate-12 transition-all'}
+          ? 'h-10 tablet:h-12 w-auto'
+          : 'h-10 tablet:h-12 w-auto group-hover:-rotate-12 transition-all'}
       />
       {
         pathname === baseURL ? (

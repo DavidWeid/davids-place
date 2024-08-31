@@ -14,7 +14,7 @@
 }
 
 html {
-  @apply bg-light text-dark font-sans text-base desktop:text-lg select-none desktop:overscroll-y-none scroll-smooth;
+  @apply bg-light text-dark font-sans font-normal text-base lining-nums desktop:text-lg select-none desktop:overscroll-y-none scroll-smooth;
 }
 
 html.dark {
@@ -125,11 +125,6 @@ input {
   animation: vibrate 4s infinite;
 }
 
-@media (prefers-reduced-motion) {
-  .vibrate {
-    animation: none;
-  }
-}
 
 @keyframes vibrate {
   0% {
@@ -160,9 +155,58 @@ input {
   animation: shimmer var(--randomized-animation-time) infinite linear;
 }
 
+.green-blue-shimmer-slow {
+  background: linear-gradient(
+    -45deg,
+    theme('colors.green.emerald') 40%,
+    theme('colors.green.light') 50%,
+    theme('colors.green.emerald') 60%
+  );
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 5s infinite linear;
+}
+
+.dark .green-blue-shimmer-slow {
+  background: linear-gradient(
+    -45deg,
+    theme('colors.blue.dark') 40%,
+    theme('colors.blue.light') 50%,
+    theme('colors.blue.dark') 60%
+  );
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 5s infinite linear;
+}
+
 @keyframes shimmer {
   to {
     background-position-x: 0%;
+  }
+}
+
+.wave {
+  @apply inline-block;
+  animation: wave 1.5s infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(15deg);
+  }
+
+  100% {
+    transform: rotate(0deg)
+  }  
+}
+
+@media (prefers-reduced-motion) {
+  .vibrate, .green-shimmer {
+    animation: none;
   }
 }
 

@@ -1,60 +1,235 @@
 ---
 import Base from '@layouts/Base.astro';
-import Hero from '@components/Hero.astro';
-import NoteBlock from '@components/NoteBlock.astro';
+import { Image } from 'astro:assets';
+import headshot from '@images/general/david-weid-headshot.jpg';
 import Card from '@components/Card.astro';
+import Badge from '@components/Badge.astro';
+
+import NoteBlock from '@components/NoteBlock.astro';
 
 const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'Portfolio Home';
+
 const heroTitle = "Welcome to <span class='text-gradient'>David's Place</span>";
 const heroDescription =
   "<strong>David's Place</strong> is for me to showcase my work and share my thoughts and interests. <br />I have been a web developer since 2019 and currently work at <strong>Datadog</strong>, based in New York City.";
-const cardTags = null;
+
+const externalLinks = [
+  {
+    link: 'https://github.com/DavidWeid/',
+    title: 'GitHub Profile',
+    description: 'View my GitHub profile for an idea of my code cadences.',
+    tags: null
+  },
+  {
+    link: 'https://www.linkedin.com/in/david-weid/',
+    title: 'LinkedIn Profile',
+    description:
+      'View my LinkedIn profile for an idea of my professional background.',
+    tags: null
+  },
+  {
+    link: 'mailto:david.weid.2@gmail.com',
+    title: 'Contact Me',
+    description: 'Email me directly if that is your preference.',
+    tags: null
+  }
+];
+
+const internalLinks = [
+  {
+    link: `${baseURL}cookbook/`,
+    title: 'Cookbook',
+    description: 'A collection of recipes I have enjoyed.',
+    tags: ['recipes', 'food', 'cooking']
+  },
+  {
+    link: `${baseURL}games/`,
+    title: 'Games',
+    description: 'Data from the Steam API and other fun content.',
+    tags: ['games', 'steam', 'api at build']
+  },
+  {
+    link: `${baseURL}style/`,
+    title: 'Site Style Visualization',
+    description: "A visual representation of the site's styles and SVGs",
+    tags: ['styles', 'visuals']
+  }
+];
+
+const skills = [
+  'Javascript',
+  'HTML5',
+  'CSS',
+  'TailwindCSS',
+  'AlpineJS',
+  'Hugo (SSG)',
+  '11ty',
+  'AstroJS',
+  'React',
+  'Bootstrap',
+  'Materialize',
+  'Express.js',
+  'SASS',
+  'jQuery (and deprecation)',
+  'Node.js',
+  'AJAX',
+  'WordPress',
+  'Wix',
+  'Google Analytics',
+  'AWS Amplify',
+  'Datadog',
+  'DatoCMS'
+];
 ---
 
 <Base title={pageTitle} indexForSearch={false}>
-  <Hero title={heroTitle} description={heroDescription} />
+  <div class='bg-white dark:bg-medium'>
+    <span class='block pb-20'></span>
+
+    <section class='container'>
+      <div class='tablet:max-w-[85ch] mx-auto'>
+        <span class='flex gap-1.5 font-sans-syne text-xl'
+          ><span class='wave'>👋</span>Hi there</span
+        >
+        <h1 class='text-5xl text-gradient'>David Weid II</h1>
+        <span class='block pb-10'></span>
+        <p class='text-lg'>
+          I am a Front End Web Developer with a passion to never stop learning
+          and evolving. I am a calm and respectful communicator that firmly
+          believes in the power of diversity. The reason I am a developer is to
+          create positive interactions between users and technology.
+        </p>
+        <span class='block pb-10'></span>
+        <Image
+          loading='eager'
+          src={headshot}
+          alt='David Weid II'
+          title='David Weid II'
+          class='vibrate w-40 h-w-40 rounded-full border border-blue-dark dark:border-green-emerald mx-auto'
+        />
+      </div>
+    </section>
+    <span class='block pb-20'></span>
+    <hr class='border-blue-dark dark:border-green-emerald' />
+  </div>
+
+  <span class='block pb-20'></span>
 
   <section class='container'>
-    <NoteBlock>
-      This website is a playground for me to learn <strong>Astro</strong>, using <strong
-        >TailwindCSS</strong
-      > and other cool CSS/HTML tricks, but I hope you find something interesting
-      or even helpful here.
-    </NoteBlock>
+    <div class='tablet:max-w-[85ch] mx-auto'>
+      <span class='flex gap-1.5 font-sans-syne text-lg'
+        ><span class='wave'>💻</span>Web Developer</span
+      >
+      <h2 class='text-gradient'>Learn more about me</h2>
+      <span class='block pb-10'></span>
+      <p class='text-lg pb-5'>
+        I am proficient in building, maintaining, analyzing, and improving
+        complex websites, with a focus on the user, from concept to deployment
+        via a variety of Javascript and templating frameworks. I have been
+        coding since 2019 and currently work at Datadog, based in New York City.
+      </p>
 
-    <span class='block pb-8'></span>
+      <p class='text-lg'>
+        Here are some quick ways to learn more or get in touch:
+      </p>
+    </div>
+
+    <span class='block pb-10'></span>
 
     <ul
       role='list'
-      class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8'
+      class='laptop:max-w-[85ch] laptop:mx-auto grid grid-cols-1 tablet:grid-cols-3 gap-8'
     >
-      <Card
-        href={`${baseURL}cookbook/`}
-        title='Cookbook'
-        body='A collection of recipes I have enjoyed.'
-        tags={cardTags}
-      />
-      <Card
-        href='https://github.com/DavidWeid/'
-        title='GitHub Profile'
-        body='View my GitHub profile for an idea of my code cadences.'
-        tags={cardTags}
-      />
-      <Card
-        href='https://www.linkedin.com/in/david-weid/'
-        title='LinkedIn Profile'
-        body='View my LinkedIn profile for an idea of my professional background.'
-        tags={cardTags}
-      />
-      <Card
-        href='mailto:david.weid.2@gmail.com'
-        title='Contact Me'
-        body='Email me directly if that is your preference.'
-        tags={cardTags}
-      />
+      {
+        externalLinks.map((link) => (
+          <Card
+            href={link.link}
+            title={link.title}
+            body={link.description}
+            tags={link.tags}
+          />
+        ))
+      }
     </ul>
 
-    <span class='block pb-16'></span>
+    <span class='block pb-20'></span>
+
+    <div class='tablet:max-w-[85ch] mx-auto'>
+      <span class='flex gap-1.5 font-sans-syne text-base'
+        ><span class='wave'>💻</span>Front End</span
+      >
+      <h3 class='text-gradient'>My Coding Skills</h3>
+      <p class='text-lg pb-10'>
+        Languages, frameworks, technologies. The front end landscape is
+        continuously evolving, and that keeps the internet interesting. Things
+        I'm proficient with:
+      </p>
+
+      <div class='flex flex-wrap justify-center items-center gap-x-5 gap-y-2.5'>
+        {
+          skills.map((skill) => (
+            <Badge
+              tag={skill}
+              clickable={false}
+              variant='large'
+              additionalClasses='green-blue-shimmer-slow'
+            />
+          ))
+        }
+      </div>
+
+      <span class='block pb-20'></span>
+      <hr class='border-blue-dark dark:border-green-emerald' />
+    </div>
   </section>
+
+  <span class='block pb-20'></span>
+
+  <section class='container'>
+    <div class='tablet:max-w-[85ch] mx-auto'>
+      <span class='flex gap-1.5 font-sans-syne text-lg'
+        ><span class='wave'>🚀</span>David's Place</span
+      >
+      <h2 class='text-gradient'>About this project and website</h2>
+
+      <span class='block pb-10'></span>
+
+      <NoteBlock>
+        This website is a side project and playground for me to learn <strong
+          >AstroJS</strong
+        >, using <strong>TailwindCSS</strong> and other cool CSS/HTML tricks, but
+        I hope you find something interesting or even useful here.
+      </NoteBlock>
+
+      <span class='block pb-10'></span>
+
+      <p class='text-lg'>
+        Currently, David's Place acts as a portfolio and visual representation
+        of my resume (everything above if you've made it this far). The most
+        robust project on this site is the <strong>Cookbook</strong>. I have
+        more I want to build, but it's fun all the same!
+      </p>
+
+      <span class='block pb-10'></span>
+
+      <ul
+        role='list'
+        class='laptop:max-w-[85ch] laptop:mx-auto grid grid-cols-1 tablet:grid-cols-3 gap-8'
+      >
+        {
+          internalLinks.map((link) => (
+            <Card
+              href={link.link}
+              title={link.title}
+              body={link.description}
+              tags={link.tags}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <span class='block pb-20'></span>
 </Base>
