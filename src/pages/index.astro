@@ -1,5 +1,6 @@
 ---
 import Base from '@layouts/Base.astro';
+import SvgGenerator from '@components/SvgGenerator.astro';
 import { Image } from 'astro:assets';
 import headshot from '@images/general/david-weid-headshot.jpg';
 import Card from '@components/Card.astro';
@@ -114,7 +115,7 @@ const skills = [
       </div>
     </section>
     <span class='block pb-20'></span>
-    <hr class='border-blue-dark dark:border-green-emerald' />
+    <SvgGenerator svg='general/layered-waves-haikei' />
   </div>
 
   <span class='block pb-20'></span>
