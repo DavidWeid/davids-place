@@ -36,7 +36,8 @@
     "pretty-quick": "^4.0.0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.21.2"
+    "@rollup/rollup-linux-x64-gnu": "^4.21.2",
+    "@esbuild/darwin-arm64": "^0.23.1"
   },
   "lint-staged": {
     "*.{js,mjs,ts,json,css,astro,html,mdx,md}": "prettier --write"
