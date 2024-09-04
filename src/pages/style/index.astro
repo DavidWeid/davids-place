@@ -140,13 +140,9 @@ const orderClasses: { [key: string]: string } = {
             <div
               class={`flex flex-col gap-2 items-center ${extractAstroNumber(astroImage.default.src) ? orderClasses[extractAstroNumber(astroImage.default.src)] : ''} brightness-110 bg-medium text-light p-6 rounded-full`}
             >
-              <Image
-                src={astroImage.default}
-                loading='lazy'
-                alt={`Astro Logo - ${extractAstroName(astroImage.default.src)}`}
-                width={astroImage.default.width}
-                height={astroImage.default.height}
-                class='h-20 w-auto'
+              <SvgGenerator
+                svg={`astro/${extractAstroName(astroImage.default.src)}`}
+                className='h-20'
               />
 
               <p class='text-sm text-center px-2 select-text'>
@@ -175,13 +171,9 @@ const orderClasses: { [key: string]: string } = {
         {
           iconImageFiles.map((iconImage) => (
             <div class='flex flex-col gap-2 items-center brightness-110 bg-medium text-light p-6 rounded-full'>
-              <Image
-                loading='lazy'
-                src={iconImage.default}
-                alt={`Icon - ${iconImage.default.src}`}
-                width={iconImage.default.width}
-                height={iconImage.default.height}
-                class='aspect-square w-12'
+              <SvgGenerator
+                svg={`icons/${extractFileName(iconImage.default.src)}`}
+                className='aspect-square w-12 h-12'
               />
 
               <p class='text-sm text-center px-2 select-text'>
