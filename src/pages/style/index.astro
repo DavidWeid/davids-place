@@ -22,9 +22,19 @@ const extractAstroNumber = (string: string) => {
 };
 
 const extractFileName = (string: string) => {
-  const match = string.match(/\/([^\/?]+)\?/);
-  return match ? match[1].replace(/\.[^/.]+$/, '') : null;
+  const match = string.match(/\/([^\/]+)\.[^.]+\.svg$/);
+  return match ? match[1] : null;
 };
+
+// Loop through astroImageFiles and log the src of each file
+astroImageFiles.forEach((astroImage) => {
+  console.log(astroImage.default.src);
+});
+
+// Loop through iconImageFiles and log the src of each file
+iconImageFiles.forEach((iconImage) => {
+  console.log(extractFileName(iconImage.default.src));
+});
 
 const customColors: { [key: string]: string | { [key: string]: string } } = {
   dark: '#13151a',
@@ -173,7 +183,7 @@ const orderClasses: { [key: string]: string } = {
         class='p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8'
       >
         {
-          iconImageFiles.map(async (iconImage) => {
+          iconImageFiles.map((iconImage) => {
             if (!extractFileName(iconImage.default.src)) {
               return;
             }
