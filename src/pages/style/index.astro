@@ -2,10 +2,9 @@
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
-import { Image } from 'astro:assets';
 
-const astroImageFiles = await Astro.glob('src/images/astro/*.svg');
-const iconImageFiles = await Astro.glob('src/images/icons/*.svg');
+const astroImageFiles = await Astro.glob('../../images/astro/*.svg');
+const iconImageFiles = await Astro.glob('../../images/icons/*.svg');
 
 const pageTitle = 'Style Visualization';
 const heroTitle =
