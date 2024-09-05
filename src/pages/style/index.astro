@@ -22,19 +22,9 @@ const extractAstroNumber = (string: string) => {
 };
 
 const extractFileName = (string: string) => {
-  const match = string.match(/\/([^\/]+)\.[^.]+\.svg$/);
+  const match = string.match(/\/([^\/]+?)(?:\.[^\/.]+)?\.svg(?:\?.*)?$/);
   return match ? match[1] : null;
 };
-
-// Loop through astroImageFiles and log the src of each file
-astroImageFiles.forEach((astroImage) => {
-  console.log(astroImage.default.src);
-});
-
-// Loop through iconImageFiles and log the src of each file
-iconImageFiles.forEach((iconImage) => {
-  console.log(extractFileName(iconImage.default.src));
-});
 
 const customColors: { [key: string]: string | { [key: string]: string } } = {
   dark: '#13151a',
@@ -155,7 +145,7 @@ const orderClasses: { [key: string]: string } = {
               >
                 <SvgGenerator
                   svg={`astro/${extractAstroName(astroImage.default.src)}`}
-                  className='h-20'
+                  className='h-20 w-auto'
                 />
 
                 <p class='text-sm text-center px-2 select-text'>
