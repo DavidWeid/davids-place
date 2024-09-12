@@ -11,7 +11,7 @@ import NoteBlock from '@components/NoteBlock.astro';
 const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'Portfolio Home';
 
-const heroEyebrow = '<span class="wave">👋</span>Hi there</span>';
+const heroEyebrow = '<span class="wave">👋</span>Hi there';
 const heroTitle = '<span class="text-gradient">David Weid II</span>';
 const heroDescription =
   'I am a Front End Web Developer with a passion to never stop learning and evolving. I am a calm and respectful communicator that firmly believes in the power of diversity. The reason I am a developer is to create positive interactions between users and technology.';
@@ -93,17 +93,10 @@ const skills = [
 
     <section class='container'>
       <div class='tablet:max-w-[85ch] mx-auto'>
-        <span class='flex gap-1.5 font-sans-syne text-xl'
-          ><span class='wave'>👋</span>Hi there</span
-        >
-        <h1 class='text-5xl text-gradient'>David Weid II</h1>
+        <span set:html={heroEyebrow} class='flex gap-1.5 font-sans-syne text-xl'></span>
+        <h1 set:html={heroTitle} class='text-5xl text-gradient'></h1>
         <span class='block pb-10'></span>
-        <p class='text-lg'>
-          I am a Front End Web Developer with a passion to never stop learning
-          and evolving. I am a calm and respectful communicator that firmly
-          believes in the power of diversity. The reason I am a developer is to
-          create positive interactions between users and technology.
-        </p>
+        <p set:html={heroDescription} class='text-lg'></p>
         <span class='block pb-10'></span>
         <Image
           loading='eager'
