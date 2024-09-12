@@ -99,6 +99,7 @@ const skills = [
         <p set:html={heroDescription} class='text-lg'></p>
         <span class='block pb-10'></span>
         <Image
+          id="headshot"
           loading='eager'
           src={headshot}
           alt='David Weid II'
@@ -230,3 +231,29 @@ const skills = [
 
   <span class='block pb-20'></span>
 </Base>
+
+<script>
+  const headshot = document.getElementById('headshot');
+  let activeFilter = '';
+
+  headshot?.addEventListener('click', () => {
+    const filterClasses = [
+      'grayscale',
+      'saturate-200',
+      'brightness-150',
+      'hue-rotate-[200deg]',
+      'hue-rotate-[300deg]',
+      'sepia'
+    ];
+
+    if (activeFilter) {
+      headshot.classList.remove(activeFilter);
+      activeFilter = '';
+      return;
+    }
+
+    const randomFilter = filterClasses[Math.floor(Math.random() * filterClasses.length)];
+    headshot.classList.add(randomFilter);
+    activeFilter = randomFilter;
+  });
+</script>
