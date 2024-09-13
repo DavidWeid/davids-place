@@ -22,35 +22,40 @@ const backgroundSvgs = [
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={true}>
-  <div id="hero" class='bg-white dark:bg-medium overflow-hidden relative'>
+  <div id='hero' class='bg-white dark:bg-medium overflow-hidden relative'>
     <section class='relative container z-10'>
       <span class='block pb-28'></span>
 
       <div class='tablet:max-w-[85ch] mx-auto'>
-        <h1 set:html={heroTitle} class='flex gap-3 text-5xl'></h1>
+        <h1 set:html={heroTitle} class='flex gap-3 text-5xl' />
         <span class='block pb-10'></span>
-        <p set:html={heroDescription} class='text-lg'></p>
+        <p set:html={heroDescription} class='text-lg' />
       </div>
 
       <span class='block pb-28'></span>
     </section>
-    {backgroundSvgs.forEach((svg) => (
-      <SvgGenerator svg={svg} className='absolute top-0 right-0 bottom-0 left-0 min-h-full min-w-full max-h-none max-w-none z-0 hidden' />
-    ))}
+    {
+      backgroundSvgs.map((svg) => (
+        <SvgGenerator
+          svg={svg}
+          className='absolute top-0 right-0 bottom-0 left-0 min-h-full min-w-full max-h-none max-w-none z-0 hidden'
+        />
+      ))
+    }
   </div>
 
-  <span class="block pb-8"></span>
+  <span class='block pb-8'></span>
 
-  <div class="container">
-    <Search id="search" />
+  <div class='container'>
+    <Search id='search' />
   </div>
 
-  <span class="block pb-8"></span>
+  <span class='block pb-8'></span>
 
-  <section class="container">
+  <section class='container'>
     <ul
-      role="list"
-      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
+      role='list'
+      class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8'
     >
       {
         allCookbookRecipes.map((recipe) => (
@@ -64,15 +69,19 @@ const backgroundSvgs = [
       }
     </ul>
 
-    <span class="block pb-16"></span>
+    <span class='block pb-16'></span>
   </section>
 </Base>
 
-<script>
+<script is:inline data-astro-rerun>
   // Randomly show hero background SVG
-  const backgroundSvgs = document.getElementById('hero')?.querySelectorAll('svg.absolute');
-  if (backgroundSvgs) {
+  backgroundSvgs = document
+    .getElementById('hero')
+    ?.querySelectorAll('svg.absolute');
+
+  if (backgroundSvgs?.length) {
     const randomIndex = Math.floor(Math.random() * backgroundSvgs.length);
+    console.log(randomIndex);
     backgroundSvgs[randomIndex].classList.remove('hidden');
   }
 </script>
