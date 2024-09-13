@@ -3,8 +3,8 @@ import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
 
-const astroImageFiles = await Astro.glob('../../images/astro/*.svg');
-const iconImageFiles = await Astro.glob('../../images/icons/*.svg');
+const astroImageFiles = import.meta.glob('../../images/astro/*.svg');
+const iconImageFiles = import.meta.glob('../../images/icons/*.svg');
 
 const pageTitle = 'Style Visualization';
 const heroTitle =
@@ -22,9 +22,10 @@ const extractAstroNumber = (string: string) => {
 };
 
 const extractFileName = (string: string) => {
-  const match = string.match(/\/([^\/]+?)(?:\.[^\/.]+)?\.svg(?:\?.*)?$/);
-  return match ? match[1] : null;
-};
+  const regex = /([^/]+)(?=\.\w+$)/;
+  const match = string.match(regex);
+  return match ? match[0] : null;
+}
 
 const customColors: { [key: string]: string | { [key: string]: string } } = {
   dark: '#13151a',
@@ -135,21 +136,21 @@ const orderClasses: { [key: string]: string } = {
         class='p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8'
       >
         {
-          astroImageFiles.map((astroImage) => {
-            if (!extractAstroName(astroImage.default.src)) {
+          Object.keys(astroImageFiles).map((astroImage) => {
+            if (!extractAstroName(astroImage)) {
               return;
             }
             return (
               <div
-                class={`flex flex-col gap-2 items-center ${extractAstroNumber(astroImage.default.src) ? orderClasses[extractAstroNumber(astroImage.default.src)] : ''} brightness-110 bg-medium text-light p-6 rounded-full`}
+                class={`flex flex-col gap-2 items-center ${extractAstroNumber(astroImage) ? orderClasses[extractAstroNumber(astroImage)] : ''} brightness-110 bg-medium text-light p-6 rounded-full`}
               >
                 <SvgGenerator
-                  svg={`astro/${extractAstroName(astroImage.default.src)}`}
+                  svg={`astro/${extractAstroName(astroImage)}`}
                   className='h-20 w-auto'
                 />
 
                 <p class='text-sm text-center px-2 select-text'>
-                  {extractAstroName(astroImage.default.src)}
+                  {extractAstroName(astroImage)}
                 </p>
               </div>
             );
@@ -173,19 +174,19 @@ const orderClasses: { [key: string]: string } = {
         class='p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8'
       >
         {
-          iconImageFiles.map((iconImage) => {
-            if (!extractFileName(iconImage.default.src)) {
+          Object.keys(iconImageFiles).map((iconImage) => {
+            if (!extractFileName(iconImage)) {
               return;
             }
             return (
               <div class='flex flex-col gap-2 items-center brightness-110 bg-medium text-light p-6 rounded-full'>
                 <SvgGenerator
-                  svg={`icons/${extractFileName(iconImage.default.src)}`}
+                  svg={`icons/${extractFileName(iconImage)}`}
                   className='aspect-square w-12 h-12'
                 />
 
                 <p class='text-sm text-center px-2 select-text'>
-                  {extractFileName(iconImage.default.src)}
+                  {extractFileName(iconImage)}
                 </p>
               </div>
             );
