@@ -217,11 +217,11 @@ input {
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__search-input {
-  @apply border-gray-300 focus-visible:border-transparent font-normal text-lg text-green-dark dark:text-blue-dark;
+  @apply border-gray-300 focus-visible:border-transparent font-normal text-lg text-blue-dark;
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__search-input::placeholder {
-  @apply text-green-dark dark:text-blue-dark opacity-80;
+  @apply text-blue-dark opacity-80;
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__results-area {
