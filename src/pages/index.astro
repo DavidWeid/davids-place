@@ -2,7 +2,7 @@
 import Base from '@layouts/Base.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
 import { Image } from 'astro:assets';
-import headshot from '@images/general/david-weid-headshot.jpg';
+import headshot from '@images/general/david-weid-headshot-2.jpg';
 import Card from '@components/Card.astro';
 import Badge from '@components/Badge.astro';
 
@@ -105,8 +105,9 @@ const skills = [
           alt='David Weid II'
           title='David Weid II'
           class='vibrate w-40 h-w-40 rounded-full border border-blue-dark dark:border-green-emerald mx-auto'
-          width={160}
-          height={160}
+          width={480}
+          height={480}
+          densities={[1.5, 2, 2.5, 3]}
         />
       </div>
     </section>
