@@ -1,0 +1,36 @@
+.pagefind-ui .pagefind-ui__form::before {
+  @apply bg-green-dark dark:bg-blue-dark opacity-100 h-5 w-5;
+  top: calc(20px * var(--pagefind-ui-scale));
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__search-input {
+  @apply border-gray-300 focus-visible:border-transparent font-normal text-lg text-blue-dark;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__search-input::placeholder {
+  @apply text-blue-dark opacity-80;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__results-area {
+  @apply px-4 rounded-lg border border-dark dark:border-light bg-light dark:bg-medium text-dark dark:text-light;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__result {
+  @apply border-t border-medium dark:border-light pb-6 pt-3;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__result:last-of-type {
+  @apply !border-b-0;
+}
+
+.pagefind-ui
+  .pagefind-ui__form
+  .pagefind-ui__result-title
+  .pagefind-ui__result-link {
+  @apply text-blue-dark hover:text-green-dark dark:text-green-light dark:hover:text-green-emerald hover:no-underline;
+}
+
+.pagefind-ui .pagefind-ui__form .pagefind-ui__button {
+  @apply bg-green-dark dark:bg-blue-dark text-light border-green-emerald dark:border-blue-light hover:border-blue-dark dark:hover:border-green-dark h-12 w-max px-10 mx-auto transition-all duration-500 text-sm uppercase;
+  margin-bottom: calc(40px * var(--pagefind-ui-scale));
+}

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import MarkdownRecipeLayout from '@layouts/MarkdownRecipeLayout.astro';
+import Recipe from '@layouts/Recipe.astro';
 import Prose from '@components/Prose.astro';
 
 interface Props {
@@ -23,8 +23,8 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<MarkdownRecipeLayout frontmatter={entry.data}>
+<Recipe frontmatter={entry.data}>
   <Prose>
     <Content />
   </Prose>
-</MarkdownRecipeLayout>
+</Recipe>

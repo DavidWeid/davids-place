@@ -15,41 +15,41 @@ const cardTags = null;
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
   <HeroBackground title={heroTitle} description={heroDescription} />
 
-  <section class="container">
-    <span class="block pb-8"></span>
+  <section class='container'>
+    <span class='block pb-8'></span>
 
     <NoteBlock>
       The URL you are trying to access does not exist. Please check the URL and
-      try again, or use the links below to naviagte to a different part of the
+      try again, or use the links below to navigate to a different part of the
       site.
     </NoteBlock>
 
-    <span class="block pb-8"></span>
+    <span class='block pb-8'></span>
 
     <ul
-      role="list"
-      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
+      role='list'
+      class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8'
     >
       <Card
         href={`${baseURL}`}
-        title="Homepage"
-        body="Visit the homepage."
+        title='Homepage'
+        body='Visit the homepage.'
         tags={cardTags}
       />
       <Card
         href={`${baseURL}cookbook/`}
-        title="Cookbook"
-        body="A collection of recipes I have enjoyed."
+        title='Cookbook'
+        body='A collection of recipes I have enjoyed.'
         tags={cardTags}
       />
       <Card
         href={`${baseURL}games/`}
-        title="Gaming Center"
-        body="My gamified personal portfolio and bio."
+        title='Gaming Center'
+        body='My gamified personal portfolio and bio.'
         tags={cardTags}
       />
     </ul>
 
-    <span class="block pb-16"></span>
+    <span class='block pb-16'></span>
   </section>
 </Base>

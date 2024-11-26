@@ -1,7 +1,7 @@
 ---
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
-// import ImageRecipe from '@components/ImageRecipe.astro';
+
 interface Props {
   frontmatter: {
     title: string;
@@ -24,17 +24,7 @@ const heroDescription = description;
 ---
 
 <Base title={pageTitle} indexForSearch={false}>
-  <Hero title={heroTitle} description={heroDescription}>
-    <!-- {
-      image && (
-        <ImageRecipe
-          src={image.url}
-          alt={image.alt}
-          class="h-96 object-cover"
-        />
-      )
-    } -->
-  </Hero>
+  <Hero title={heroTitle} description={heroDescription} />
 
   <hr class='border-green-emerald' />
 

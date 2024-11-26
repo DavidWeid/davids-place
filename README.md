@@ -21,8 +21,8 @@ Inside this Astro project, you'll see the following folders and files:
 │   ├── components/
 │   ├── layouts/
 │   │   ├── Layout.astro
-│   │   ├── MarkdownRecipeLayout.astro
-│   │   └── MarkdownBlogLayout.astro
+│   │   ├── Recipe.astro
+│   │   └── BlogPost.astro
 │   ├── content/
 │   │   ├── blog/
 │   │   ├── cookbook/
@@ -97,7 +97,7 @@ image:
   alt: Image for the food made from this recipe
 ```
 
-- The front matter parameter is used in the layout file `src/layouts/MarkdownRecipeLayouts.astro` that imports the `ImageRecipe` component, passing in the front matter values for `src` and `alt`.
+- The front matter parameter is used in the layout file `src/layouts/Recipes.astro` that imports the `ImageRecipe` component, passing in the front matter values for `src` and `alt`.
 
 Note: To use the value of the `image` paramater from the front matter, the content schema for `image` needs to be defined using the `image` helper to validate the image metadata with Zod.
 

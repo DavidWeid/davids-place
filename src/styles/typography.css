@@ -1,0 +1,76 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold tracking-wide;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+h4,
+h5,
+h6 {
+  @apply text-lg;
+}
+
+code {
+  @apply font-mono;
+}
+
+code.dark-background {
+  @apply px-2 rounded-lg bg-light text-medium;
+}
+
+mark {
+  @apply inline-flex justify-center px-1.5 py-0.5 rounded font-medium tracking-wide bg-green-light dark:bg-blue-dark/75 dark:text-light;
+}
+
+.text-gradient {
+  -webkit-text-fill-color: transparent;
+  @apply bg-clip-text bg-[size:150%] bg-[position:0%] transition-all ease-in-out duration-300 bg-gradient-to-br from-blue-dark to-green-emerald dark:from-green-emerald dark:to-blue-light from-10% to-75% hover:bg-[size:300%];
+}
+
+.content-link {
+  @apply text-blue-dark hover:text-green-dark no-underline;
+}
+
+.content-link-gradient {
+  padding-bottom: 4px;
+  background: linear-gradient(
+      to right,
+      theme('colors.blue.dark'),
+      theme('colors.blue.dark')
+    ),
+    linear-gradient(
+      to right,
+      theme('colors.green.dark'),
+      theme('colors.green.emerald'),
+      theme('colors.green.light')
+    );
+  background-size:
+    100% 2px,
+    0 2px;
+  background-position:
+    100% 100%,
+    0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+.content-link-gradient:hover {
+  background-size:
+    0 2px,
+    100% 2px;
+}
