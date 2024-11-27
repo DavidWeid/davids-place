@@ -56,23 +56,23 @@ const navItems: string[] = Object.keys(obj).map(
       <Image
         loading='eager'
         src={astroLogo}
-        alt="David's Place Logo - An astronaut"
-        title="David's Place Logo - An astronaut"
+        alt="David’s Place Logo - An astronaut"
+        title="David’s Place Logo - An astronaut"
         class={pathname === baseURL
           ? 'h-10 tablet:h-12 w-auto'
           : 'h-10 tablet:h-12 w-auto group-hover:-rotate-12 transition-all'}
       />
       {
         pathname === baseURL ? (
-          <span class='px-4 py-2'>David's Place</span>
+          <span class='px-4 py-2'>David’s Place</span>
         ) : (
           <a
             role='link'
             {...homepageLinkAttributes}
             class='px-4 py-2 group-hover:text-green-emerald group-hover:scale-110 transition-all'
-            aria-label="David's Place Homepage"
+            aria-label="David’s Place Homepage"
           >
-            David's Place
+            David’s Place
           </a>
         )
       }

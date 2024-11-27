@@ -1,4 +1,4 @@
-# David's Place
+# David’s Place
 
 This project allows me to showcase my work and share my thoughts in interests (end goal). However, this website is actually practice for me to learn [Astro](https://astro.build/) as a test run to see if it makes sense for a large, complex website. This project contains the follow technologies:
 
@@ -52,7 +52,7 @@ Files in the `src/content/` directory are not automatically built as routes in t
 
 ### 🔧 Astro
 
-Astro's configuration file is `astro.config.mjs`. Here we import tailwind, and mdx as our site integrations. We set the tailwind integration to also include `applyBaseStyles` to `false` to give us more control (see the next section "Styling").
+Astro’s configuration file is `astro.config.mjs`. Here we import tailwind, and mdx as our site integrations. We set the tailwind integration to also include `applyBaseStyles` to `false` to give us more control (see the next section "Styling").
 
 We also set `prefetch.prefetchAll` to `true`. This will prefetch all links according to the value of `prefetch.defaultStrategy`, which is not explicitly set in this case and so by default is set to `hover`.
 
@@ -64,7 +64,7 @@ We also set `prefetch.prefetchAll` to `true`. This will prefetch all links accor
 
 This site uses tailwindcss and the tailwind typography plugin to style prose sections. The `src/styles/base.css` file is not a default file for the Astro+Tailwind setup, but has been added to allow greater customization. This file contains global styles and should be limit in final size as scoped styles are preferrable where possible.
 
-Tailwind configuration is done in the `tailwind.config.mjs` file. We search for tailwind classes in the `src` directory in the following files: `.{astro,html,js,jsx,md,mdx,ts,tsx}`. We enable darkMode through the 'class' option and set `theme.screens` to chosen breakpoints for tablet, laptop, and desktop. We then extend the theme's colors and finally add the typography plugin.
+Tailwind configuration is done in the `tailwind.config.mjs` file. We search for tailwind classes in the `src` directory in the following files: `.{astro,html,js,jsx,md,mdx,ts,tsx}`. We enable darkMode through the 'class' option and set `theme.screens` to chosen breakpoints for tablet, laptop, and desktop. We then extend the theme’s colors and finally add the typography plugin.
 
 ## 📚 Content
 
