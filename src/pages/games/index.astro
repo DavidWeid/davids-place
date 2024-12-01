@@ -62,12 +62,10 @@ const staticStats = [
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
   <HeroBackground title={heroTitle} description={heroDescription} />
 
-  <span class='block pb-8'></span>
-
-  <section class='relative'>
+  <section class='relative bg-medium'>
     <div
       id='player-card-holder'
-      class='card-collapsed relative -top-[120px] bottom-0 left-0 right-0 m-auto w-full'
+      class='card-collapsed laptop:scroll-mt-20 relative bottom-0 left-0 right-0 m-auto w-full'
     >
       <div
         id='player-card'
@@ -81,10 +79,7 @@ const staticStats = [
           >
             {playerData.personaname}
             <span class='sr-only'>View Steam profile (Opens in a new tab)</span>
-            <SvgGenerator
-                svg='icons/external-link-blue'
-                className='w-6 h-6'
-              />
+            <SvgGenerator svg='icons/external-link-blue' className='w-6 h-6' />
           </a>
         </h2>
 
@@ -152,12 +147,12 @@ const staticStats = [
             <span
               class='group-hover:translate-y-1.5 transition-transform duration-500'
             >
-              <span id='button-text' class="mr-1">VIEW FULL PROFILE</span>
+              <span id='button-text' class='mr-1'>VIEW FULL PROFILE</span>
               <SvgGenerator
-              id="button-icon"
-              svg='icons/arrow-bubbles-right-green'
-              className='inline w-4 h-4 rotate-90 group-hover:scale-125 transition-transform duration-500'
-            />
+                id='button-icon'
+                svg='icons/arrow-bubbles-right-green'
+                className='inline w-4 h-4 rotate-90 group-hover:scale-125 transition-transform duration-500'
+              />
             </span>
           </button>
         </div>
@@ -358,13 +353,15 @@ const staticStats = [
 
   <style>
     #player-card-holder {
-      @apply transition-[max-width] duration-500;
+      @apply transition-all duration-500;
     }
     .card-expanded {
+      @apply top-0;
       max-width: 100%;
     }
 
     .card-collapsed {
+      @apply -top-[120px];
       max-width: 350px;
     }
 
@@ -436,7 +433,8 @@ const staticStats = [
           );
           if (viewProfileButtonText)
             viewProfileButtonText.textContent = 'HIDE PROFILE DETAILS';
-          if (viewProfileButtonIcon) viewProfileButtonIcon.classList.replace('rotate-90', '-rotate-90');
+          if (viewProfileButtonIcon)
+            viewProfileButtonIcon.classList.replace('rotate-90', '-rotate-90');
           profileDetails?.classList.replace('collapsed', 'expanded');
         } else {
           playerCardHolder?.classList.replace(
@@ -445,9 +443,18 @@ const staticStats = [
           );
           if (viewProfileButtonText)
             viewProfileButtonText.textContent = 'VIEW FULL PROFILE';
-          if (viewProfileButtonIcon) viewProfileButtonIcon.classList.replace('-rotate-90', 'rotate-90');
+          if (viewProfileButtonIcon)
+            viewProfileButtonIcon.classList.replace('-rotate-90', 'rotate-90');
           profileDetails?.classList.replace('expanded', 'collapsed');
         }
+
+        // wait 0.25s for the card to expand/collapse, then scroll into view
+        setTimeout(() => {
+          playerCardHolder?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 250);
       });
 
       profileNavButtons.forEach((button) => {
