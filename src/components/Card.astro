@@ -53,7 +53,7 @@ let target =
         }
       </h2>
       <span class='block pb-4'></span>
-      <p class="font-sans-syne">
+      <p class='font-sans-syne'>
         {body}
       </p>
     </div>
@@ -91,6 +91,7 @@ let target =
     scrollbar-width: none;
   }
   .link-card > a {
+    user-select: none;
     padding: calc(1.5rem - 1px);
   }
   .link-card:is(:hover, :focus-within) {

@@ -16,7 +16,7 @@ const pathname = Astro.url.pathname;
 const obj: NavigationLinks = {
   home: `${baseURL}`,
   cookbook: `${baseURL}cookbook/`,
-  gaming: `${baseURL}games/`,
+  gaming: `${baseURL}games/`
   // blog: `${baseURL}blog/`
 };
 
@@ -52,12 +52,14 @@ const navItems: string[] = Object.keys(obj).map(
   class='z-30 py-4 bg-dark text-light bg-gradient-to-tr from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 transition-all laptop:sticky laptop:top-0'
 >
   <div class='container flex flex-wrap justify-between items-center gap-y-2'>
+    <a href='#main' class='skip-link'>Skip to content</a>
+
     <div class='flex items-center group'>
       <Image
         loading='eager'
         src={astroLogo}
-        alt="David’s Place Logo - An astronaut"
-        title="David’s Place Logo - An astronaut"
+        alt='David’s Place Logo - An astronaut'
+        title='David’s Place Logo - An astronaut'
         class={pathname === baseURL
           ? 'h-10 tablet:h-12 w-auto'
           : 'h-10 tablet:h-12 w-auto group-hover:-rotate-12 transition-all'}
@@ -70,7 +72,7 @@ const navItems: string[] = Object.keys(obj).map(
             role='link'
             {...homepageLinkAttributes}
             class='px-4 py-2 group-hover:text-green-emerald group-hover:scale-110 transition-all'
-            aria-label="David’s Place Homepage"
+            aria-label='David’s Place Homepage'
           >
             David’s Place
           </a>
@@ -126,6 +128,16 @@ const navItems: string[] = Object.keys(obj).map(
     />
   </div>
 </nav>
+
+<style>
+  .skip-link {
+    @apply absolute top-5 left-1/2 -translate-x-1/2 -translate-y-[175%] w-max bg-dark text-light px-5 h-10 flex items-center justify-center z-40 rounded-b-lg font-mono uppercase text-xs transition-all duration-500;
+  }
+
+  .skip-link:focus {
+    @apply -translate-y-1/2;
+  }
+</style>
 
 <script is:inline>
   const setDarkModeSwitchState = (boolean) => {

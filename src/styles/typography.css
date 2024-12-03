@@ -25,6 +25,14 @@ h6 {
   @apply text-lg;
 }
 
+a {
+  @apply select-text;
+}
+
+nav a {
+  @apply select-none;
+}
+
 code {
   @apply font-mono;
 }

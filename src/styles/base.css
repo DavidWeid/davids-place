@@ -34,6 +34,14 @@ video {
   @apply w-full h-auto;
 }
 
+*:focus-visible {
+  @apply ring-2 ring-green-dark dark:ring-green-emerald ring-offset-0 outline-none;
+}
+
+*::selection {
+  @apply bg-green-dark text-light;
+}
+
 input {
   @apply focus-visible:ring-1 focus-visible:ring-green-emerald focus-visible:ring-offset-0 focus-visible:outline-none;
 }
