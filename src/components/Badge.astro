@@ -10,14 +10,14 @@ const {
   tag,
   clickable,
   variant = 'default',
-  additionalClasses = ''
+  additionalClasses = '',
 } = Astro.props;
 const clickableClasses: string = clickable
   ? 'hover:bg-accent-dark hover:text-accent-light transition-all duration-500'
   : '';
 const variantClasses: { [key: string]: string } = {
   default: 'px-2 py-1 text-xs',
-  large: 'px-2.5 py-1.5 text-sm'
+  large: 'px-2.5 py-1.5 text-sm',
 };
 ---
 

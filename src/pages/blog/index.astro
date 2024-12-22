@@ -15,15 +15,15 @@ const heroDescription = 'Browse my collection of blog posts.';
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
   <Hero title={heroTitle} description={heroDescription} />
 
-  <section class='container'>
+  <section class="container">
     <ul
-      role='list'
-      class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8'
+      role="list"
+      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
     >
       {
         allBlogPosts.map((post) => (
           <Card
-            href={`${baseURL}blog/posts/${post.slug}/`}
+            href={`${baseURL}blog/posts/${post.id}/`}
             title={post.data.title}
             body={post.data.description}
             tags={post.data.tags}
@@ -32,6 +32,6 @@ const heroDescription = 'Browse my collection of blog posts.';
       }
     </ul>
 
-    <span class='block pb-16'></span>
+    <span class="block pb-16"></span>
   </section>
 </Base>

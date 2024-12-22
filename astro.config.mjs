@@ -8,7 +8,7 @@ export default defineConfig({
   vite: defineConfig({
     ssr: {
       external: ['tailwind.config.mjs'],
-    }
+    },
   }),
   site: 'https://davidweid.github.io',
   base: '/davids-place',

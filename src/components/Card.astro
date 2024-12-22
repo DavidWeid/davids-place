@@ -15,54 +15,54 @@ let target =
 ---
 
 <li
-  role='listitem'
-  class='link-card min-h-60 flex p-0.5 rounded-xl shadow-inner bg-green-emerald dark:bg-medium bg-none bg-[size:200%] bg-[100%] transition-[background-position] duration-500 group'
+  role="listitem"
+  class="link-card min-h-60 flex p-0.5 rounded-xl shadow-inner bg-green-emerald dark:bg-medium bg-none bg-[size:200%] bg-[100%] transition-[background-position] duration-500 group"
 >
   <a
     href={href}
     target={target}
-    class='w-full rounded-xl text-dark bg-light dark:text-light dark:bg-medium transition-colors duration-500 flex flex-col justify-between'
+    class="w-full rounded-xl text-dark bg-light dark:text-light dark:bg-medium transition-colors duration-500 flex flex-col justify-between"
   >
     <div>
-      <h2 class='flex justify-between gap-2'>
+      <h2 class="flex justify-between gap-2">
         {title}
         {
           target === '_blank' ? (
             <>
               <SvgGenerator
-                svg='icons/external-link-blue'
-                className='hidden dark:block w-6 h-6 group-hover:scale-[1.2] transition-transform duration-500'
+                svg="icons/external-link-blue"
+                className="hidden dark:block w-6 h-6 group-hover:scale-[1.2] transition-transform duration-500"
               />
               <SvgGenerator
-                svg='icons/external-link-green'
-                className='block dark:hidden w-6 h-6 group-hover:scale-[1.2] transition-transform duration-500'
+                svg="icons/external-link-green"
+                className="block dark:hidden w-6 h-6 group-hover:scale-[1.2] transition-transform duration-500"
               />
             </>
           ) : (
             <>
               <SvgGenerator
-                svg='icons/arrow-bubbles-right-blue'
-                className='block dark:hidden w-6 h-6 group-hover:scale-125 group-hover:translate-x-2 transition-transform duration-500'
+                svg="icons/arrow-bubbles-right-blue"
+                className="block dark:hidden w-6 h-6 group-hover:scale-125 group-hover:translate-x-2 transition-transform duration-500"
               />
               <SvgGenerator
-                svg='icons/arrow-bubbles-right-green'
-                className='hidden dark:block w-6 h-6 group-hover:scale-125 group-hover:translate-x-2 transition-transform duration-500'
+                svg="icons/arrow-bubbles-right-green"
+                className="hidden dark:block w-6 h-6 group-hover:scale-125 group-hover:translate-x-2 transition-transform duration-500"
               />
             </>
           )
         }
       </h2>
-      <span class='block pb-4'></span>
-      <p class='font-sans-syne'>
+      <span class="block pb-4"></span>
+      <p class="font-sans-syne">
         {body}
       </p>
     </div>
     {
       tags && tags.length > 0 ? (
         <>
-          <span class='block pb-4' />
-          <div class='flex gap-2.5 overflow-x-scroll'>
-            <span class='sr-only'>Tags include:</span>
+          <span class="block pb-4" />
+          <div class="flex gap-2.5 overflow-x-scroll">
+            <span class="sr-only">Tags include:</span>
             {tags.slice(0, 4).map((tag) => (
               <Badge tag={tag} clickable={false} />
             ))}
@@ -74,7 +74,7 @@ let target =
     }
     {
       target === '_blank' ? (
-        <span class='sr-only'>(Opens in a new tab)</span>
+        <span class="sr-only">(Opens in a new tab)</span>
       ) : (
         ''
       )

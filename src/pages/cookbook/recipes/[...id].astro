@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Recipe from '@layouts/Recipe.astro';
 import Prose from '@components/Prose.astro';
 
@@ -14,13 +14,13 @@ interface Content {
 export async function getStaticPaths() {
   const cookbookEntries = await getCollection('cookbook');
   return cookbookEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { id: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <Recipe frontmatter={entry.data}>

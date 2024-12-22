@@ -33,10 +33,10 @@ Inside this Astro project, you'll see the following folders and files:
 │   │   ├── 404.astro
 │   │   ├── blog/
 │   │   │    └── posts/
-│   │   │        └── [...slug].astro
+│   │   │        └── [...id].astro
 │   │   ├── cookbook/
 │   │   │    └── recipes/
-│   │   │        └── [...slug].astro
+│   │   │        └── [...id].astro
 │   │   └──games/
 │   │         └──index.astro
 │   └── styles/
@@ -46,7 +46,7 @@ Inside this Astro project, you'll see the following folders and files:
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-Files in the `src/content/` directory are not automatically built as routes in the same way that the `pages/` directory works. In this case, we map our content files (`.mdx`) located in `src/content/cookbook/` to a route via `src/pages/cookbook/recipes/[...slug].astro`. This astro file represents our "single" page template so that each `.mdx` file in `/cookbook/` lands at the path `/cookbook/recipe/`. The cookbook "list" page is defined by `src/pages/cookbook/index.astro`, which is the same as a regular astro `page` file.
+Files in the `src/content/` directory are not automatically built as routes in the same way that the `pages/` directory works. In this case, we map our content files (`.mdx`) located in `src/content/cookbook/` to a route via `src/pages/cookbook/recipes/[...id].astro`. This astro file represents our "single" page template so that each `.mdx` file in `/cookbook/` lands at the path `/cookbook/recipe/`. The cookbook "list" page is defined by `src/pages/cookbook/index.astro`, which is the same as a regular astro `page` file.
 
 ## Configuration
 

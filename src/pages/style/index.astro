@@ -25,7 +25,7 @@ const extractFileName = (string: string) => {
   const regex = /([^/]+)(?=\.\w+$)/;
   const match = string.match(regex);
   return match ? match[0] : null;
-}
+};
 
 const customColors: { [key: string]: string | { [key: string]: string } } = {
   dark: '#13151a',
@@ -36,17 +36,17 @@ const customColors: { [key: string]: string | { [key: string]: string } } = {
   'accent-dark': '#310a65',
   red: {
     dark: '#C84B44',
-    light: '#F8756A'
+    light: '#F8756A',
   },
   blue: {
     dark: '#3844C6',
-    light: '#5C68F3'
+    light: '#5C68F3',
   },
   green: {
     dark: '#2e9c51',
     emerald: '#50C878',
-    light: '#9fdeb0'
-  }
+    light: '#9fdeb0',
+  },
 };
 
 const orderClasses: { [key: string]: string } = {
@@ -69,49 +69,49 @@ const orderClasses: { [key: string]: string } = {
   17: 'order-[17]',
   18: 'order-[18]',
   19: 'order-[19]',
-  20: 'order-[20]'
+  20: 'order-[20]',
 };
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
   <Hero title={heroTitle} description={heroDescription} />
 
-  <section class='container'>
-    <details class='scroll-mt-24 tablet:scroll-mt-20' name='colors'>
+  <section class="container">
+    <details class="scroll-mt-24 tablet:scroll-mt-20" name="colors">
       <summary
-        class='group flex items-center justify-between w-full tablet:w-max min-w-[25%] cursor-pointer py-3 border-b-2 border-green-emerald hover:text-green-dark'
-        ><h2 class='inline'>Custom Colors</h2>
+        class="group flex items-center justify-between w-full tablet:w-max min-w-[25%] cursor-pointer py-3 border-b-2 border-green-emerald hover:text-green-dark"
+        ><h2 class="inline">Custom Colors</h2>
         <SvgGenerator
-          svg='icons/arrow-bubbles-right-green'
-          className='w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500'
+          svg="icons/arrow-bubbles-right-green"
+          className="w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500"
         /></summary
       >
       <div
-        class='p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8'
+        class="p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8"
       >
         {
           Object.keys(customColors).map((color) => {
             if (typeof customColors[color] === 'string') {
               return (
-                <div class='flex flex-col gap-2 items-center p-6'>
+                <div class="flex flex-col gap-2 items-center p-6">
                   <div
-                    class='h-20 w-20 rounded-full'
+                    class="h-20 w-20 rounded-full"
                     style={`background-color: ${customColors[color]}`}
                   />
 
-                  <p class='text-sm text-center px-2 select-text'>{color}</p>
+                  <p class="text-sm text-center px-2 select-text">{color}</p>
                 </div>
               );
             } else {
               return Object.keys(customColors[color]).map((shade) => {
                 return (
-                  <div class='flex flex-col gap-2 items-center p-6'>
+                  <div class="flex flex-col gap-2 items-center p-6">
                     <div
-                      class='h-20 w-20 rounded-full'
+                      class="h-20 w-20 rounded-full"
                       style={`background-color: ${(customColors[color] as { [key: string]: string })[shade]}`}
                     />
 
-                    <p class='text-sm text-center px-2 select-text'>{`${color} - ${shade}`}</p>
+                    <p class="text-sm text-center px-2 select-text">{`${color} - ${shade}`}</p>
                   </div>
                 );
               });
@@ -121,19 +121,19 @@ const orderClasses: { [key: string]: string } = {
       </div>
     </details>
 
-    <span class='block pb-16'></span>
+    <span class="block pb-16"></span>
 
-    <details class='scroll-mt-24 tablet:scroll-mt-20' name='images'>
+    <details class="scroll-mt-24 tablet:scroll-mt-20" name="images">
       <summary
-        class='group flex items-center justify-between w-full tablet:w-max min-w-[25%] cursor-pointer py-3 border-b-2 border-green-emerald hover:text-green-dark'
-        ><h2 class='inline'>Astro SVGs</h2>
+        class="group flex items-center justify-between w-full tablet:w-max min-w-[25%] cursor-pointer py-3 border-b-2 border-green-emerald hover:text-green-dark"
+        ><h2 class="inline">Astro SVGs</h2>
         <SvgGenerator
-          svg='icons/arrow-bubbles-right-green'
-          className='w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500'
+          svg="icons/arrow-bubbles-right-green"
+          className="w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500"
         /></summary
       >
       <div
-        class='p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8'
+        class="p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8"
       >
         {
           Object.keys(astroImageFiles).map((astroImage) => {
@@ -146,10 +146,10 @@ const orderClasses: { [key: string]: string } = {
               >
                 <SvgGenerator
                   svg={`astro/${extractAstroName(astroImage)}`}
-                  className='h-20 w-auto'
+                  className="h-20 w-auto"
                 />
 
-                <p class='text-sm text-center px-2 select-text'>
+                <p class="text-sm text-center px-2 select-text">
                   {extractAstroName(astroImage)}
                 </p>
               </div>
@@ -159,19 +159,19 @@ const orderClasses: { [key: string]: string } = {
       </div>
     </details>
 
-    <span class='block pb-16'></span>
+    <span class="block pb-16"></span>
 
-    <details class='scroll-mt-24 tablet:scroll-mt-20' name='images'>
+    <details class="scroll-mt-24 tablet:scroll-mt-20" name="images">
       <summary
-        class='group flex items-center justify-between w-full tablet:w-max min-w-[25%] cursor-pointer py-3 border-b-2 border-green-emerald hover:text-green-dark'
-        ><h2 class='inline'>Icon SVGs</h2>
+        class="group flex items-center justify-between w-full tablet:w-max min-w-[25%] cursor-pointer py-3 border-b-2 border-green-emerald hover:text-green-dark"
+        ><h2 class="inline">Icon SVGs</h2>
         <SvgGenerator
-          svg='icons/arrow-bubbles-right-green'
-          className='w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500'
+          svg="icons/arrow-bubbles-right-green"
+          className="w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500"
         /></summary
       >
       <div
-        class='p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8'
+        class="p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8"
       >
         {
           Object.keys(iconImageFiles).map((iconImage) => {
@@ -179,13 +179,13 @@ const orderClasses: { [key: string]: string } = {
               return;
             }
             return (
-              <div class='flex flex-col gap-2 items-center brightness-110 bg-medium text-light p-6 rounded-full'>
+              <div class="flex flex-col gap-2 items-center brightness-110 bg-medium text-light p-6 rounded-full">
                 <SvgGenerator
                   svg={`icons/${extractFileName(iconImage)}`}
-                  className='aspect-square w-12 h-12'
+                  className="aspect-square w-12 h-12"
                 />
 
-                <p class='text-sm text-center px-2 select-text'>
+                <p class="text-sm text-center px-2 select-text">
                   {extractFileName(iconImage)}
                 </p>
               </div>
@@ -195,7 +195,7 @@ const orderClasses: { [key: string]: string } = {
       </div>
     </details>
 
-    <span class='block pb-16'></span>
+    <span class="block pb-16"></span>
   </section>
 
   <script>

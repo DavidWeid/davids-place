@@ -21,21 +21,21 @@ const externalLinks = [
     link: 'https://github.com/DavidWeid/',
     title: 'GitHub Profile',
     description: 'View my GitHub profile for an idea of my code cadences.',
-    tags: null
+    tags: null,
   },
   {
     link: 'https://www.linkedin.com/in/david-weid/',
     title: 'LinkedIn Profile',
     description:
       'View my LinkedIn profile for an idea of my professional background.',
-    tags: null
+    tags: null,
   },
   {
     link: 'mailto:david.weid.2@gmail.com',
     title: 'Contact Me',
     description: 'Email me directly if that is your preference.',
-    tags: null
-  }
+    tags: null,
+  },
 ];
 
 const internalLinks = [
@@ -43,20 +43,20 @@ const internalLinks = [
     link: `${baseURL}cookbook/`,
     title: 'Cookbook',
     description: 'A collection of recipes I have enjoyed.',
-    tags: ['recipes', 'food', 'cooking']
+    tags: ['recipes', 'food', 'cooking'],
   },
   {
     link: `${baseURL}games/`,
     title: 'Games',
     description: 'Data from the Steam API and other fun content.',
-    tags: ['games', 'steam', 'api at build']
+    tags: ['games', 'steam', 'api at build'],
   },
   {
     link: `${baseURL}style/`,
     title: 'Site Style Visualization',
-    description: "A visual representation of the site’s styles and SVGs",
-    tags: ['styles', 'visuals']
-  }
+    description: 'A visual representation of the site’s styles and SVGs',
+    tags: ['styles', 'visuals'],
+  },
 ];
 
 const skills = [
@@ -83,67 +83,67 @@ const skills = [
   'Google Analytics',
   'AWS Amplify',
   'Datadog RUM',
-  'DatoCMS'
+  'DatoCMS',
 ];
 ---
 
 <Base title={pageTitle} indexForSearch={false}>
-  <div class='bg-white dark:bg-medium'>
-    <span class='block pb-20'></span>
+  <div class="bg-white dark:bg-medium">
+    <span class="block pb-20"></span>
 
-    <section class='container'>
-      <div class='tablet:max-w-[85ch] mx-auto'>
+    <section class="container">
+      <div class="tablet:max-w-[85ch] mx-auto">
         <span
           set:html={heroEyebrow}
-          class='flex gap-1.5 font-sans-syne text-xl'
+          class="flex gap-1.5 font-sans-syne text-xl"
         />
-        <h1 set:html={heroTitle} class='text-5xl text-gradient' />
-        <span class='block pb-10'></span>
-        <p set:html={heroDescription} class='text-lg' />
-        <span class='block pb-10'></span>
+        <h1 set:html={heroTitle} class="text-5xl text-gradient" />
+        <span class="block pb-10"></span>
+        <p set:html={heroDescription} class="text-lg" />
+        <span class="block pb-10"></span>
         <Image
-          id='headshot'
-          loading='eager'
+          id="headshot"
+          loading="eager"
           src={headshot}
-          alt='David Weid II'
-          title='David Weid II'
-          class='vibrate w-40 h-w-40 rounded-full border border-blue-dark dark:border-green-emerald mx-auto'
+          alt="David Weid II"
+          title="David Weid II"
+          class="vibrate w-40 h-w-40 rounded-full border border-blue-dark dark:border-green-emerald mx-auto"
           width={480}
           height={480}
           densities={[1.5, 2, 2.5, 3]}
         />
       </div>
     </section>
-    <span class='block pb-20'></span>
-    <SvgGenerator svg='general/layered-waves-haikei' />
+    <span class="block pb-20"></span>
+    <SvgGenerator svg="general/layered-waves-haikei" />
   </div>
 
-  <span class='block pb-20'></span>
+  <span class="block pb-20"></span>
 
-  <section class='container'>
-    <div class='tablet:max-w-[85ch] mx-auto'>
-      <span class='flex gap-1.5 font-sans-syne text-lg'
-        ><span class='wave'>💻</span>Web Developer</span
+  <section class="container">
+    <div class="tablet:max-w-[85ch] mx-auto">
+      <span class="flex gap-1.5 font-sans-syne text-lg"
+        ><span class="wave">💻</span>Web Developer</span
       >
-      <h2 class='text-gradient'>Learn more about me</h2>
-      <span class='block pb-10'></span>
-      <p class='text-lg pb-5'>
+      <h2 class="text-gradient">Learn more about me</h2>
+      <span class="block pb-10"></span>
+      <p class="text-lg pb-5">
         I am proficient in building, maintaining, analyzing, and improving
         complex websites, with a focus on the user, from concept to deployment
         via a variety of Javascript and templating frameworks. I have been
         coding since 2019 and currently work at Datadog, based in New York City.
       </p>
 
-      <p class='text-lg'>
+      <p class="text-lg">
         Here are some quick ways to learn more or get in touch:
       </p>
     </div>
 
-    <span class='block pb-10'></span>
+    <span class="block pb-10"></span>
 
     <ul
-      role='list'
-      class='laptop:max-w-[85ch] laptop:mx-auto grid grid-cols-1 tablet:grid-cols-3 gap-8'
+      role="list"
+      class="laptop:max-w-[85ch] laptop:mx-auto grid grid-cols-1 tablet:grid-cols-3 gap-8"
     >
       {
         externalLinks.map((link) => (
@@ -157,95 +157,95 @@ const skills = [
       }
     </ul>
 
-    <span class='block pb-20'></span>
+    <span class="block pb-20"></span>
 
-    <div class='tablet:max-w-[85ch] mx-auto'>
-      <span class='flex gap-1.5 font-sans-syne text-base'
-        ><span class='wave'>💻</span>Front End</span
+    <div class="tablet:max-w-[85ch] mx-auto">
+      <span class="flex gap-1.5 font-sans-syne text-base"
+        ><span class="wave">💻</span>Front End</span
       >
-      <h3 class='text-gradient'>My Coding Skills</h3>
-      <p class='text-lg pb-10'>
+      <h3 class="text-gradient">My Coding Skills</h3>
+      <p class="text-lg pb-10">
         Languages, frameworks, technologies. The front end landscape is
         continuously evolving, and that keeps the internet interesting. Things
         I'm proficient with:
       </p>
 
-      <div class='flex flex-wrap justify-center items-center gap-x-5 gap-y-2.5'>
+      <div class="flex flex-wrap justify-center items-center gap-x-5 gap-y-2.5">
         {
           skills.map((skill) => (
             <Badge
               tag={skill}
               clickable={false}
-              variant='large'
-              additionalClasses='green-blue-shimmer-slow'
+              variant="large"
+              additionalClasses="green-blue-shimmer-slow"
             />
           ))
         }
       </div>
     </div>
 
-    <span class='block pb-20'></span>
+    <span class="block pb-20"></span>
 
-    <div class='tablet:max-w-[85ch] mx-auto'>
-      <span class='flex items-center gap-1.5 font-sans-syne text-base'>
+    <div class="tablet:max-w-[85ch] mx-auto">
+      <span class="flex items-center gap-1.5 font-sans-syne text-base">
         <SvgGenerator
-          id='dd-icon-white'
-          svg='icons/dd_icon_white'
-          className='w-6 h-6 hidden dark:block'
+          id="dd-icon-white"
+          svg="icons/dd_icon_white"
+          className="w-6 h-6 hidden dark:block"
         />
         <SvgGenerator
-          id='dd-icon-rgb'
-          svg='icons/dd_icon_rgb'
-          className='w-6 h-6 block dark:hidden'
+          id="dd-icon-rgb"
+          svg="icons/dd_icon_rgb"
+          className="w-6 h-6 block dark:hidden"
         />
         Experience
       </span>
-      <h3 class='text-gradient'>Working at Datadog</h3>
-      <div class='flex justify-between flex-wrap pb-8'>
-        <p class='tablet:text-lg'>
+      <h3 class="text-gradient">Working at Datadog</h3>
+      <div class="flex justify-between flex-wrap pb-8">
+        <p class="tablet:text-lg">
           Software Engineer (Front End Web Developer)
         </p>
-        <p class='font-mono text-gray-600 dark:text-gray-300'>
+        <p class="font-mono text-gray-600 dark:text-gray-300">
           April 2021 – Present
         </p>
       </div>
 
-      <p class='text-lg pb-2'>
-        <span class='block text-lg text-gradient font-semibold'
+      <p class="text-lg pb-2">
+        <span class="block text-lg text-gradient font-semibold"
           >Description:</span
         >
         At Datadog, I update, build, and enhance Datadog websites, including <a
-          href='https://datadoghq.com/'
-          target='_blank'
-          rel='noopener noreferrer'
-          class='content-link-gradient inline-flex items-center gap-1 w-fit leading-5'
+          href="https://datadoghq.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="content-link-gradient inline-flex items-center gap-1 w-fit leading-5"
           >datadoghq.com <SvgGenerator
-            svg='icons/external-link'
-            className='h-4 w-4 dark:fill-light'
+            svg="icons/external-link"
+            className="h-4 w-4 dark:fill-light"
           /></a
         >, <a
-          href='https://docs.datadoghq.com/'
-          target='_blank'
-          rel='noopener noreferrer'
-          class='content-link-gradient inline-flex items-center gap-1 w-fit leading-5'
+          href="https://docs.datadoghq.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="content-link-gradient inline-flex items-center gap-1 w-fit leading-5"
           >docs.datadoghq.com <SvgGenerator
-            svg='icons/external-link'
-            className='h-4 w-4 dark:fill-light'
+            svg="icons/external-link"
+            className="h-4 w-4 dark:fill-light"
           /></a
         >, and <a
-          href='https://securitylabs.datadoghq.com/'
-          target='_blank'
-          rel='noopener noreferrer'
-          class='content-link-gradient inline-flex items-center gap-1 w-fit leading-5'
+          href="https://securitylabs.datadoghq.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="content-link-gradient inline-flex items-center gap-1 w-fit leading-5"
           >securitylabs.datadoghq.com <SvgGenerator
-            svg='icons/external-link'
-            className='h-4 w-4 dark:fill-light'
+            svg="icons/external-link"
+            className="h-4 w-4 dark:fill-light"
           /></a
         >. Additionally, I develop tools and processes to help facilitate team
         efforts, including replatforming Datadog websites from Bootstrap,
         jQuery, and HugoSSG to TailwindCSS, AstroJS, and DatoCMS.
       </p>
-      <p class='text-lg'>
+      <p class="text-lg">
         I work closely with Marketing, Brand Design, Community teams and more
         across the company to enhance Datadog’s standing as a monitoring and
         security platform. Some of my favorite interpersonal aspects also
@@ -254,21 +254,21 @@ const skills = [
         their work.
       </p>
 
-      <span class='block pb-20'></span>
-      <hr class='border-blue-dark dark:border-green-emerald' />
+      <span class="block pb-20"></span>
+      <hr class="border-blue-dark dark:border-green-emerald" />
     </div>
   </section>
 
-  <span class='block pb-20'></span>
+  <span class="block pb-20"></span>
 
-  <section class='container'>
-    <div class='tablet:max-w-[85ch] mx-auto'>
-      <span class='flex gap-1.5 font-sans-syne text-lg'
-        ><span class='wave'>🚀</span>David’s Place</span
+  <section class="container">
+    <div class="tablet:max-w-[85ch] mx-auto">
+      <span class="flex gap-1.5 font-sans-syne text-lg"
+        ><span class="wave">🚀</span>David’s Place</span
       >
-      <h2 class='text-gradient'>About this project and website</h2>
+      <h2 class="text-gradient">About this project and website</h2>
 
-      <span class='block pb-10'></span>
+      <span class="block pb-10"></span>
 
       <NoteBlock>
         This website is a side project and playground for me to learn <strong
@@ -277,20 +277,20 @@ const skills = [
         I hope you find something interesting or even useful here.
       </NoteBlock>
 
-      <span class='block pb-10'></span>
+      <span class="block pb-10"></span>
 
-      <p class='text-lg'>
+      <p class="text-lg">
         Currently, David’s Place acts as a portfolio and visual representation
         of my resume (everything above if you've made it this far). The most
         robust project on this site is the <strong>Cookbook</strong>. I have
         more I want to build, but it’s fun all the same!
       </p>
 
-      <span class='block pb-10'></span>
+      <span class="block pb-10"></span>
 
       <ul
-        role='list'
-        class='laptop:max-w-[85ch] laptop:mx-auto grid grid-cols-1 tablet:grid-cols-3 gap-8'
+        role="list"
+        class="laptop:max-w-[85ch] laptop:mx-auto grid grid-cols-1 tablet:grid-cols-3 gap-8"
       >
         {
           internalLinks.map((link) => (
@@ -306,7 +306,7 @@ const skills = [
     </div>
   </section>
 
-  <span class='block pb-20'></span>
+  <span class="block pb-20"></span>
 </Base>
 
 <script>
@@ -320,7 +320,7 @@ const skills = [
       'brightness-150',
       'hue-rotate-[200deg]',
       'hue-rotate-[300deg]',
-      'sepia'
+      'sepia',
     ];
 
     if (activeFilter) {

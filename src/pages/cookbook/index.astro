@@ -19,50 +19,50 @@ const backgroundSvgs = [
   'general/circle-scatter-haikei-4',
   'general/circle-scatter-haikei-5',
   'general/circle-scatter-haikei-6',
-  'general/circle-scatter-haikei-7'
+  'general/circle-scatter-haikei-7',
 ];
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={true}>
-  <div id='hero' class='bg-white dark:bg-medium overflow-hidden relative'>
-    <section class='relative container z-10'>
-      <span class='block pb-28'></span>
+  <div id="hero" class="bg-white dark:bg-medium overflow-hidden relative">
+    <section class="relative container z-10">
+      <span class="block pb-28"></span>
 
-      <div class='tablet:max-w-[85ch] mx-auto'>
-        <h1 set:html={heroTitle} class='flex gap-3 text-5xl' />
-        <span class='block pb-10'></span>
-        <p set:html={heroDescription} class='text-lg' />
+      <div class="tablet:max-w-[85ch] mx-auto">
+        <h1 set:html={heroTitle} class="flex gap-3 text-5xl" />
+        <span class="block pb-10"></span>
+        <p set:html={heroDescription} class="text-lg" />
       </div>
 
-      <span class='block pb-28'></span>
+      <span class="block pb-28"></span>
     </section>
     {
       backgroundSvgs.map((svg) => (
         <SvgGenerator
           svg={svg}
-          className='absolute top-0 right-0 bottom-0 left-0 min-h-full min-w-full max-h-none max-w-none z-0 hidden'
+          className="absolute top-0 right-0 bottom-0 left-0 min-h-full min-w-full max-h-none max-w-none z-0 hidden"
         />
       ))
     }
   </div>
 
-  <span class='block pb-8'></span>
+  <span class="block pb-8"></span>
 
-  <div class='container'>
-    <Search id='search' />
+  <div class="container">
+    <Search id="search" />
   </div>
 
-  <span class='block pb-8'></span>
+  <span class="block pb-8"></span>
 
-  <section class='container'>
+  <section class="container">
     <ul
-      role='list'
-      class='grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8'
+      role="list"
+      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
     >
       {
         allCookbookRecipes.map((recipe) => (
           <Card
-            href={`${baseURL}cookbook/recipes/${recipe.slug}/`}
+            href={`${baseURL}cookbook/recipes/${recipe.id}/`}
             title={recipe.data.title}
             body={recipe.data.description}
             tags={recipe.data.tags}
@@ -71,7 +71,7 @@ const backgroundSvgs = [
       }
     </ul>
 
-    <span class='block pb-16'></span>
+    <span class="block pb-16"></span>
   </section>
 </Base>
 

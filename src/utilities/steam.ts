@@ -86,7 +86,9 @@ export const getOwnedGames = async (
   );
   try {
     const response = await responseOwnedGames.json();
-    return response.response.games.filter((game: any) => game.playtime_forever > 60);
+    return response.response.games.filter(
+      (game: any) => game.playtime_forever > 60,
+    );
   } catch (error) {
     console.error('Error fetching owned games', error);
     return staticOwnedGames;

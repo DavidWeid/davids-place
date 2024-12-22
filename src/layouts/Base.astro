@@ -6,7 +6,7 @@ import '@fontsource-variable/reddit-sans';
 import '@fontsource-variable/reddit-sans/wght-italic.css';
 
 import generalOGImage from '@images/og/og-davids-place.png';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import MainNav from '@components/MainNav.astro';
 import MainFooter from '@components/MainFooter.astro';
 
@@ -23,7 +23,7 @@ const urlString: string = new URL(Astro.request.url).href;
 const {
   title,
   indexForSearch = true,
-  includeSearchComponent = false
+  includeSearchComponent = false,
 } = Astro.props;
 
 const metaTitle: string = title ? `${title} | David’s Place` : 'David’s Place';
@@ -31,7 +31,7 @@ const metaDescription: string =
   'David’s Place, an AstroJS & TailwindCSS playground, includes projects, blogs, and ideas related to web development and other interests of David Weid II.';
 
 const mainElementAttributes: { id: string; 'data-pagefind-body'?: string } = {
-  id: 'main'
+  id: 'main',
 };
 
 // If indexForSearch is true, add 'data-pagefind-body' to mainElementAttributes, set to 'true'
@@ -41,75 +41,75 @@ if (indexForSearch) {
 ---
 
 <!doctype html>
-<html lang='en' class='dark' data-pagefind-meta={`url[${pathname}]`}>
+<html lang="en" class="dark" data-pagefind-meta={`url[${pathname}]`}>
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
-    <link rel='canonical' href={urlString} />
-    <link rel='sitemap' href={`${baseURL}sitemap-index.xml`} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={urlString} />
+    <link rel="sitemap" href={`${baseURL}sitemap-index.xml`} />
 
-    <link rel='icon' type='image/ico' href=`${baseURL}favicon.ico` />
+    <link rel="icon" type="image/ico" href=`${baseURL}favicon.ico` />
     <link
-      rel='apple-touch-icon'
-      sizes='180x180'
+      rel="apple-touch-icon"
+      sizes="180x180"
       href={`${baseURL}apple-touch-icon.png?v=1`}
     />
     <link
-      rel='icon'
-      type='image/png'
-      sizes='32x32'
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
       href={`${baseURL}favicon-32x32.png?v=1`}
     />
     <link
-      rel='icon'
-      type='image/png'
-      sizes='16x16'
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
       href={`${baseURL}favicon-16x16.png?v=1`}
     />
-    <link rel='manifest' href={`${baseURL}site.webmanifest?v=1`} />
+    <link rel="manifest" href={`${baseURL}site.webmanifest?v=1`} />
     <link
-      rel='mask-icon'
+      rel="mask-icon"
       href={`${baseURL}safari-pinned-tab.svg?v=1`}
-      color='#3844C6'
+      color="#3844C6"
     />
-    <link rel='shortcut icon' href={`${baseURL}favicon.ico?v=1`} />
-    <meta name='apple-mobile-web-app-title' content='David’s Place' />
-    <meta name='application-name' content='David’s Place' />
-    <meta name='msapplication-TileColor' content='#603cba' />
-    <meta name='theme-color' content='#3844C6' />
+    <link rel="shortcut icon" href={`${baseURL}favicon.ico?v=1`} />
+    <meta name="apple-mobile-web-app-title" content="David’s Place" />
+    <meta name="application-name" content="David’s Place" />
+    <meta name="msapplication-TileColor" content="#603cba" />
+    <meta name="theme-color" content="#3844C6" />
 
     <title>{metaTitle}</title>
-    <meta name='description' content={metaDescription} />
+    <meta name="description" content={metaDescription} />
 
-    <meta property='og:locale' content='en_US' />
-    <meta property='og:title' content={metaTitle} />
-    <meta property='og:description' content={metaDescription} />
-    <meta property='og:url' content={urlString} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={urlString} />
     <meta
-      property='og:site_name'
-      content='Portfolio Project Focused on Web Development | David’s Place'
+      property="og:site_name"
+      content="Portfolio Project Focused on Web Development | David’s Place"
     />
-    <meta property='og:type' content='website' />
-    <meta property='og:image' content={generalOGImage.src} />
-    <meta property='og:image:width' content={`${generalOGImage.width}`} />
-    <meta property='og:image:height' content={`${generalOGImage.height}`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={generalOGImage.src} />
+    <meta property="og:image:width" content={`${generalOGImage.width}`} />
+    <meta property="og:image:height" content={`${generalOGImage.height}`} />
     <meta
-      property='og:image:alt'
-      content='Social Media Open Graph Illustration for David’s Place'
+      property="og:image:alt"
+      content="Social Media Open Graph Illustration for David’s Place"
     />
-    <meta property='og:image:type' content='image/png' />
+    <meta property="og:image:type" content="image/png" />
 
-    <meta name='twitter:card' content='summary_large_image' />
-    <meta name='twitter:title' content={metaTitle} />
-    <meta name='twitter:description' content={metaDescription} />
-    <meta name='twitter:image' content={generalOGImage.src} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={generalOGImage.src} />
 
     {
       baseURL === Astro.url.pathname && (
         <meta
-          name='google-site-verification'
-          content='riTFFVMSa2yEdiUjWs5sdzQHRQYwJLh_pxBZNU0C-3U'
+          name="google-site-verification"
+          content="riTFFVMSa2yEdiUjWs5sdzQHRQYwJLh_pxBZNU0C-3U"
         />
       )
     }
@@ -117,13 +117,13 @@ if (indexForSearch) {
     {
       includeSearchComponent && (
         <>
-          <link href={`${baseURL}pagefind/pagefind-ui.css`} rel='stylesheet' />
+          <link href={`${baseURL}pagefind/pagefind-ui.css`} rel="stylesheet" />
           <script is:inline src={`${baseURL}pagefind/pagefind-ui.js`} />
         </>
       )
     }
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <MainNav />
