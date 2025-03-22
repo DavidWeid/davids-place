@@ -37,7 +37,7 @@
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "^0.23.1",
-    "@rollup/rollup-linux-x64-gnu": "^4.29.1"
+    "@rollup/rollup-linux-x64-gnu": "^4.36.0"
   },
   "lint-staged": {
     "*.{js,mjs,ts,json,css,astro,html,mdx,md}": "prettier --write"
