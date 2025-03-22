@@ -22,11 +22,19 @@ boxShadowClass = boxShadowClass.slice(0, -1);
 
 <style define:vars={{ boxShadowClass }}>
   .background-space {
-    @apply relative h-96 bg-dark;
+    position: relative;
+    height: calc(var(--spacing) * 96);
+    background-color: var(--color-dark);
   }
 
   .star {
-    @apply absolute top-1/2 left-1/2 w-0.5 h-0.5 bg-light rounded-full;
+    position: absolute;
+    top: calc(1/2 * 100%);
+    left: calc(1/2 * 100%);
+    width: calc(var(--spacing) * 0.5);
+    height: calc(var(--spacing) * 0.5);
+    background-color: var(--color-light)
+    border-radius: calc(infinity * 1px);
     box-shadow: var(--boxShadowClass);
     animation: zoom 10s alternate infinite;
   }

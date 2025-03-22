@@ -18,7 +18,7 @@ const { src, ...attrs } = Astro.props;
 
 const classes: string = attrs.class
   ? attrs.class
-  : 'max-w-screen-tablet mx-auto rounded-lg border-2 border-medium/80';
+  : 'max-w-(--breakpoint-tablet) mx-auto rounded-lg border-2 border-medium/80';
 ---
 
 <Image

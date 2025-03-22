@@ -1,51 +1,134 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1440px;
+  --breakpoint-desktopxl: 1920px;
+
+  --font-weight-*: initial;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  --font-sans:
+    Reddit Sans Variable, ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono:
+    Reddit Mono Variable, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --font-sans-syne:
+    Syne Variable, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-dark: #13151a;
+  --color-light: #f5f5f5;
+  --color-medium: #23262d;
+  --color-accent: #883aea;
+  --color-accent-light: #e0ccfa;
+  --color-accent-dark: #310a65;
+
+  --color-red-dark: #c84b44;
+  --color-red-light: #f8756a;
+
+  --color-blue-dark: #3844c6;
+  --color-blue-light: #5c68f3;
+
+  --color-green-dark: #2e9c51;
+  --color-green-emerald: #50c878;
+  --color-green-light: #9fdeb0;
+
+  --shadow-sharp: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
+  --shadow-deep: 0 22px 70px 4px rgba(0, 0, 0, 0.6);
+  --shadow-shallow: 0 11px 35px 2px rgba(0, 0, 0, 0.3);
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= theme(--breakpoint-tablet)) {
+    padding-inline: 2rem;
+  }
+  @media (width >= theme(--breakpoint-laptop)) {
+    padding-inline: 2.25rem;
+  }
+  @media (width >= theme(--breakpoint-desktop)) {
+    padding-inline: 2.5rem;
+  }
+  @media (width >= theme(--breakpoint-desktopxl)) {
+    padding-inline: 3rem;
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+  html {
+    @apply bg-light text-dark font-sans font-normal text-base lining-nums desktop:text-lg select-none desktop:overscroll-y-none scroll-smooth;
+  }
+
+  html.dark {
+    @apply bg-dark text-light;
+  }
+
+  body {
+    @apply min-h-screen flex flex-col justify-between overflow-x-hidden;
+  }
+
+  main {
+    @apply flex-1;
+  }
+
+  img,
+  video {
+    @apply w-full h-auto;
+  }
+
+  *:focus-visible {
+    @apply ring-2 ring-green-dark dark:ring-green-emerald ring-offset-0 outline-hidden;
+  }
+
+  *::selection {
+    @apply bg-green-dark text-light;
+  }
+
+  input {
+    @apply focus-visible:ring-1 focus-visible:ring-green-emerald focus-visible:ring-offset-0 focus-visible:outline-hidden;
+  }
+
+  .container {
+    @apply w-full max-w-full! desktopxl:max-w-(--breakpoint-desktopxl)!;
+  }
+}
 
 :root {
   --accent-gradient: linear-gradient(
     45deg,
-    theme('colors.blue.light'),
-    theme('colors.blue.dark') 30%,
-    theme('colors.green.emerald') 60%
+    var(--color-blue-light),
+    var(--color-blue-dark) 30%,
+    var(--color-green-emerald) 60%
   );
 
   --randomized-animation-time: 0.5s;
-}
-
-html {
-  @apply bg-light text-dark font-sans font-normal text-base lining-nums desktop:text-lg select-none desktop:overscroll-y-none scroll-smooth;
-}
-
-html.dark {
-  @apply bg-dark text-light;
-}
-
-body {
-  @apply min-h-screen flex flex-col justify-between overflow-x-hidden;
-}
-
-main {
-  @apply flex-1;
-}
-
-img,
-video {
-  @apply w-full h-auto;
-}
-
-*:focus-visible {
-  @apply ring-2 ring-green-dark dark:ring-green-emerald ring-offset-0 outline-none;
-}
-
-*::selection {
-  @apply bg-green-dark text-light;
-}
-
-input {
-  @apply focus-visible:ring-1 focus-visible:ring-green-emerald focus-visible:ring-offset-0 focus-visible:outline-none;
-}
-
-.container {
-  @apply w-full !max-w-full desktopxl:!max-w-screen-desktopxl;
 }

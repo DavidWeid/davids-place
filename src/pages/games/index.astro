@@ -114,7 +114,7 @@ const staticStats = [
               <span class="block pb-4" />
               <p class="uppercase text-sm text-center">
                 In game
-                <span class="block mt-1.5 py-1 px-2 bg-green-dark rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                <span class="block mt-1.5 py-1 px-2 bg-green-dark rounded-sm text-xs tracking-wide font-mono shadow-2xl shadow-black">
                   {playerData.gameextrainfo}
                 </span>
               </p>
@@ -127,7 +127,7 @@ const staticStats = [
               <span class="block pb-4" />
               <p class="uppercase text-sm text-center">
                 Most Recently Seen
-                <span class="block mt-1.5 py-1 px-2 bg-medium/75 dark:bg-light/25 rounded text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                <span class="block mt-1.5 py-1 px-2 bg-medium/75 dark:bg-light/25 rounded-sm text-xs tracking-wide font-mono shadow-2xl shadow-black">
                   {mostRecentPlayedGame}
                 </span>
               </p>
@@ -353,40 +353,71 @@ const staticStats = [
 
   <style>
     #player-card-holder {
-      @apply transition-all duration-500;
+      transition-property: all;
+      transition-timing-function: var(
+        --tw-ease,
+        var(--default-transition-timing-function)
+      );
+      transition-duration: var(
+        --tw-duration,
+        var(--default-transition-duration)
+      );
+      --tw-duration: 500ms;
+      transition-duration: 500ms;
     }
     .card-expanded {
-      @apply top-0;
+      top: 0;
       max-width: 100%;
     }
 
     .card-collapsed {
-      @apply -top-[120px];
+      top: -120px;
       max-width: 350px;
     }
 
     button.active {
-      @apply border-b-green-emerald;
+      border-bottom-color: var(--color-green-emerald);
     }
 
     #profile-details {
-      @apply transition-opacity duration-500;
+      transition-property: opacity;
+      transition-timing-function: var(
+        --tw-ease,
+        var(--default-transition-timing-function)
+      );
+      transition-duration: var(
+        --tw-duration,
+        var(--default-transition-duration)
+      );
+      --tw-duration: 500ms;
+      transition-duration: 500ms;
     }
 
     #profile-details.collapsed {
-      @apply opacity-0 w-0 h-0;
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
 
     #profile-details.collapsed * {
-      @apply hidden;
+      display: none;
     }
 
     #profile-details.expanded {
-      @apply opacity-100 w-full laptop:w-max laptop:max-w-full h-full;
+      opacity: 100;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (width >= 1024px) {
+      #profile-details.expanded {
+        width: max-content;
+        max-width: 100%;
+      }
     }
 
     #profile-nav::-webkit-scrollbar {
-      @apply hidden;
+      display: none;
     }
 
     #profile-nav {
@@ -395,7 +426,8 @@ const staticStats = [
     }
 
     .panel {
-      @apply max-w-screen-tablet mx-auto;
+      max-width: var(--breakpoint-tablet);
+      margin-inline: auto;
     }
   </style>
 
