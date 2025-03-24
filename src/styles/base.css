@@ -85,7 +85,7 @@
     border-color: var(--color-gray-200, currentColor);
   }
   html {
-    @apply bg-light text-dark font-sans font-normal text-base lining-nums desktop:text-lg select-none desktop:overscroll-y-none scroll-smooth;
+    @apply bg-light text-dark font-sans font-normal text-base lining-nums desktop:text-lg desktop:overscroll-y-none scroll-smooth;
   }
 
   html.dark {
@@ -102,7 +102,7 @@
 
   img,
   video {
-    @apply w-full h-auto;
+    @apply w-full h-auto select-none;
   }
 
   *:focus-visible {
@@ -115,6 +115,13 @@
 
   input {
     @apply focus-visible:ring-1 focus-visible:ring-green-emerald focus-visible:ring-offset-0 focus-visible:outline-hidden;
+  }
+
+  button,
+  summary,
+  input,
+  label {
+    @apply cursor-pointer;
   }
 
   .container {

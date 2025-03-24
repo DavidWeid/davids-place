@@ -29,7 +29,7 @@ a {
   @apply select-text;
 }
 
-nav a {
+nav * {
   @apply select-none;
 }
 
@@ -56,7 +56,8 @@ mark {
 
 .content-link-gradient {
   padding-bottom: 4px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       theme('colors.blue.dark'),
       theme('colors.blue.dark')

@@ -3,10 +3,11 @@ import Base from '@layouts/Base.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
 import { Image } from 'astro:assets';
 import headshot from '@images/general/david-weid-headshot-2.jpg';
+import catIcon from '@images/games/cat-500.png';
 import Card from '@components/Card.astro';
 import Badge from '@components/Badge.astro';
-
 import NoteBlock from '@components/NoteBlock.astro';
+import config from 'package.json';
 
 const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'Portfolio Home';
@@ -14,20 +15,20 @@ const pageTitle = 'Portfolio Home';
 const heroEyebrow = '<span class="wave">👋</span>Hi there';
 const heroTitle = '<span class="text-gradient">David Weid II</span>';
 const heroDescription =
-  'I am a Front End Web Developer with a passion to never stop learning and evolving. I am a calm and respectful communicator that firmly believes in the power of diversity. The reason I am a developer is to create positive interactions between users and technology.';
+  'I am a Senior Front-End Web Developer Engineer with 5+ years of experience building and optimizing high-performance websites using JavaScript, TypeScript, and modern frameworks. I am a calm, collaborative communicator with a proven ability to lead projects, mentor teammates, and drive significant improvements in site performance and user experience, who values diversity and user-centric design. The reason I am a developer is to create positive interactions between users and technology.';
 
 const externalLinks = [
-  {
-    link: 'https://github.com/DavidWeid/',
-    title: 'GitHub Profile',
-    description: 'View my GitHub profile for an idea of my code cadences.',
-    tags: null,
-  },
   {
     link: 'https://www.linkedin.com/in/david-weid/',
     title: 'LinkedIn Profile',
     description:
       'View my LinkedIn profile for an idea of my professional background.',
+    tags: null,
+  },
+  {
+    link: 'https://github.com/DavidWeid/',
+    title: 'GitHub Profile',
+    description: 'View my GitHub profile for an idea of my code cadences.',
     tags: null,
   },
   {
@@ -68,6 +69,8 @@ const skills = [
   'AstroJS',
   'Hugo (SSG)',
   '11ty',
+  'Accessibility',
+  'SEO',
   'Design Systems',
   'Component Architecture',
   'React',
@@ -85,6 +88,9 @@ const skills = [
   'Datadog RUM',
   'DatoCMS',
 ];
+
+const astroVersion = config.dependencies.astro.slice(1);
+const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 ---
 
 <Base title={pageTitle} indexForSearch={false}>
@@ -111,6 +117,15 @@ const skills = [
           width={480}
           height={480}
           densities={[1.5, 2, 2.5, 3]}
+        />
+        <Image
+          id="cat-icon"
+          src={catIcon}
+          alt="Cat"
+          loading="lazy"
+          width={480}
+          height={480}
+          class="hidden w-40 h-w-40 rounded-full border border-blue-dark dark:border-green-emerald mx-auto"
         />
       </div>
     </section>
@@ -161,11 +176,11 @@ const skills = [
 
     <div class="tablet:max-w-[85ch] mx-auto">
       <span class="flex gap-1.5 font-sans-syne text-base"
-        ><span class="wave">💻</span>Front End</span
+        ><span class="wave">💻</span>Front-End</span
       >
       <h3 class="text-gradient">My Coding Skills</h3>
       <p class="text-lg pb-10">
-        Languages, frameworks, technologies. The front end landscape is
+        Languages, frameworks, technologies. The front-end landscape is
         continuously evolving, and that keeps the internet interesting. Things
         I'm proficient with:
       </p>
@@ -203,7 +218,7 @@ const skills = [
       <h3 class="text-gradient">Working at Datadog</h3>
       <div class="flex justify-between flex-wrap pb-8">
         <p class="tablet:text-lg">
-          Software Engineer (Front End Web Developer)
+          Senior Web Development Engineer (Front-End)
         </p>
         <p class="font-mono text-gray-600 dark:text-gray-300">
           April 2021 – Present
@@ -273,8 +288,12 @@ const skills = [
       <NoteBlock>
         This website is a side project and playground for me to learn <strong
           >AstroJS</strong
-        >, using <strong>TailwindCSS</strong> and other cool CSS/HTML tricks, but
-        I hope you find something interesting or even useful here.
+        >, using <strong>TailwindCSS</strong> and other cool CSS/HTML tricks. It
+        is hosted on <strong>GitHub Pages</strong> and is a static website that makes
+        use of Astro's <strong>View transitions</strong>. It's currently using <strong
+          >Astro {astroVersion}</strong
+        > and <strong>Tailwind {tailwindVersion}</strong>. I hope you find
+        something interesting or even useful here.
       </NoteBlock>
 
       <span class="block pb-10"></span>
@@ -311,27 +330,40 @@ const skills = [
 
 <script>
   const headshot = document.getElementById('headshot');
+  const catIcon = document.getElementById('cat-icon');
   let activeFilter = '';
+  let counter = 0;
+  const filterClasses = [
+    'grayscale',
+    'saturate-200',
+    'brightness-150',
+    'hue-rotate-[200deg]',
+    'hue-rotate-[300deg]',
+    'sepia',
+    'invert',
+    'contrast-200',
+  ];
 
-  headshot?.addEventListener('click', () => {
-    const filterClasses = [
-      'grayscale',
-      'saturate-200',
-      'brightness-150',
-      'hue-rotate-[200deg]',
-      'hue-rotate-[300deg]',
-      'sepia',
-    ];
-
+  const handleClick = () => {
     if (activeFilter) {
-      headshot.classList.remove(activeFilter);
+      headshot?.classList.remove(activeFilter);
       activeFilter = '';
+      counter++;
       return;
+    }
+
+    if (counter === 12) {
+      headshot?.classList.replace('vibrate', 'hidden');
+      catIcon?.classList.replace('hidden', 'vibrate');
     }
 
     const randomFilter =
       filterClasses[Math.floor(Math.random() * filterClasses.length)];
-    headshot.classList.add(randomFilter);
+    headshot?.classList.add(randomFilter);
     activeFilter = randomFilter;
-  });
+    counter++;
+  };
+
+  headshot?.removeEventListener('click', handleClick);
+  headshot?.addEventListener('click', handleClick);
 </script>

@@ -84,7 +84,9 @@
 
 @media (prefers-reduced-motion) {
   .vibrate,
-  .green-shimmer {
-    animation: none;
+  .green-shimmer,
+  .green-blue-shimmer-slow,
+  .wave {
+    animation: none !important;
   }
 }

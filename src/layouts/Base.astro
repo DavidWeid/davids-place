@@ -14,6 +14,7 @@ interface Props {
   title: string;
   indexForSearch?: boolean;
   includeSearchComponent?: boolean;
+  classes?: string | '';
 }
 
 const baseURL = import.meta.env.BASE_URL;
@@ -24,19 +25,29 @@ const {
   title,
   indexForSearch = true,
   includeSearchComponent = false,
+  classes = '',
 } = Astro.props;
 
 const metaTitle: string = title ? `${title} | David’s Place` : 'David’s Place';
 const metaDescription: string =
   'David’s Place, an AstroJS & TailwindCSS playground, includes projects, blogs, and ideas related to web development and other interests of David Weid II.';
 
-const mainElementAttributes: { id: string; 'data-pagefind-body'?: string } = {
+const mainElementAttributes: {
+  id: string;
+  'data-pagefind-body'?: string;
+  class?: string;
+} = {
   id: 'main',
 };
 
 // If indexForSearch is true, add 'data-pagefind-body' to mainElementAttributes, set to 'true'
 if (indexForSearch) {
   mainElementAttributes['data-pagefind-body'] = 'true';
+}
+
+// If classes is not an empty string, add it to the class attribute of mainElementAttributes
+if (classes !== '') {
+  mainElementAttributes.class = classes;
 }
 ---
 

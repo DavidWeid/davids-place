@@ -57,9 +57,38 @@ const staticStats = [
     value: 11,
   },
 ];
+
+const codingStats = [
+  { attribute: 'JavaScript', value: 9 },
+  { attribute: 'TypeScript', value: 7 },
+  { attribute: 'HTML5', value: 9 },
+  { attribute: 'CSS3', value: 9 },
+  { attribute: 'TailwindCSS', value: 9 },
+  { attribute: 'AlpineJS', value: 8 },
+  { attribute: 'Hugo (SSG)', value: 8 },
+  { attribute: 'AstroJS', value: 7 },
+  { attribute: '11ty', value: 6 },
+  { attribute: 'React', value: 5 },
+  { attribute: 'Bootstrap/Materialize', value: 7 },
+  { attribute: 'Express.js', value: 5 },
+  { attribute: 'Typesense', value: 7 },
+  { attribute: 'Algolia', value: 7 },
+  { attribute: 'NodeJS', value: 8 },
+  { attribute: 'WordPress', value: 5 },
+  { attribute: 'Wix', value: 5 },
+  { attribute: 'Google Analytics', value: 7 },
+  { attribute: 'AWS Amplify', value: 7 },
+  { attribute: 'Datadog', value: 6 },
+  { attribute: 'DatoCMS', value: 7 },
+];
 ---
 
-<Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
+<Base
+  title={pageTitle}
+  indexForSearch={false}
+  includeSearchComponent={false}
+  classes="bg-medium"
+>
   <HeroBackground title={heroTitle} description={heroDescription} />
 
   <section class="relative bg-medium">
@@ -69,7 +98,7 @@ const staticStats = [
     >
       <div
         id="player-card"
-        class="text-light bg-blue-dark dark:bg-medium py-6 px-12 rounded-lg flex flex-col items-center transition-shadow duration-500 shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark"
+        class="text-light bg-blue-dark dark:bg-medium py-6 px-12 flex flex-col items-center transition-shadow duration-500 shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark"
       >
         <h2>
           <a
@@ -176,21 +205,21 @@ const staticStats = [
                   >STATS</button
                 >
               </li>
-              <li class="whitespace-nowrap">
+              <li class="whitespace-nowrap hidden">
                 <button
                   id="button--friends"
                   class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
                   >FRIENDS</button
                 >
               </li>
-              <li class="whitespace-nowrap">
+              <li class="whitespace-nowrap hidden">
                 <button
                   id="button--recent-games"
                   class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
                   >RECENT GAMES</button
                 >
               </li>
-              <li class="whitespace-nowrap">
+              <li class="whitespace-nowrap hidden">
                 <button
                   id="button--owned-games"
                   class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
@@ -309,7 +338,7 @@ const staticStats = [
 
             <div id="panel--stats" class="panel hidden">
               {
-                staticStats.map((stat) => (
+                codingStats.map((stat) => (
                   <div id={stat.attribute} class="grid grid-cols-6 gap-2">
                     <div class="col-span-2 tablet:col-span-1">
                       <p class="font-mono text-xs tablet:text-sm uppercase">
@@ -368,11 +397,19 @@ const staticStats = [
     .card-expanded {
       top: 0;
       max-width: 100%;
+
+      #player-card {
+        border-radius: 0;
+      }
     }
 
     .card-collapsed {
       top: -120px;
       max-width: 350px;
+
+      #player-card {
+        border-radius: var(--radius-xl);
+      }
     }
 
     button.active {

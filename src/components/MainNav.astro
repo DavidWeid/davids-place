@@ -90,11 +90,11 @@ const navItems: string[] = Object.keys(obj).map(
           type="checkbox"
           id="darkModeSwitch"
           checked="true"
-          class="transition-all before:transition-all duration-500 before:duration-500 relative appearance-none w-12 h-6 rounded-full bg-light/75 hover:cursor-pointer hover:brightness-125 before:content-[''] before:w-4 before:h-4 before:rounded-full before:bg-blue-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-blue-dark checked:before:bg-accent-light checked:before:left-7"
+          class="transition-all before:transition-all duration-500 before:duration-500 relative appearance-none w-12 h-6 rounded-full bg-light/75 hover:brightness-125 before:content-[''] before:w-4 before:h-4 before:rounded-full before:bg-blue-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-blue-dark checked:before:bg-accent-light checked:before:left-7"
         />
         <label
           for="darkModeSwitch"
-          class="text-center text-xs opacity-75 hover:cursor-pointer w-[70px]"
+          class="text-center text-xs opacity-75 w-[70px]"
           >Dark Mode</label
         >
       </fieldset>
@@ -220,8 +220,6 @@ const navItems: string[] = Object.keys(obj).map(
     const root = document.documentElement;
     const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
     const storedFontSize = localStorage.fontSize;
-
-    console.log(currentFontSize, storedFontSize);
 
     if (storedFontSize && storedFontSize !== currentFontSize) {
       root.style.fontSize = `${storedFontSize}px`;
