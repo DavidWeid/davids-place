@@ -170,127 +170,85 @@ const navItems: string[] = Object.keys(obj).map(
 </style>
 
 <script is:inline>
-  const setDarkModeSwitchState = (boolean) => {
+  function applyTheme() {
+    // Set theme based on local storage or prefers-color-scheme
     const darkModeSwitch = document.getElementById('darkModeSwitch');
     const darkModeLabel = document.querySelector('label[for="darkModeSwitch"]');
-    if (darkModeSwitch && darkModeLabel) {
-      darkModeSwitch.checked = boolean;
-      darkModeSwitch.setAttribute('aria-checked', boolean);
-      darkModeLabel.textContent = boolean ? 'Dark Mode' : 'Light Mode';
-    }
-  };
 
-  const isDarkMode = () => {
     if (
       localStorage.theme === 'dark' ||
       (!('theme' in localStorage) &&
         window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  const initDarkMode = () => {
-    if (isDarkMode()) {
       document.documentElement.classList.add('dark');
+
+      if (darkModeSwitch && darkModeLabel) {
+        darkModeSwitch.checked = true;
+        darkModeSwitch.setAttribute('aria-checked', true);
+        darkModeLabel.textContent = 'Dark Mode';
+      }
     } else {
       document.documentElement.classList.remove('dark');
-    }
 
-    setDarkModeSwitchState(isDarkMode());
-  };
-
-  document.addEventListener('astro:after-swap', () => {
-    initDarkMode();
-  });
-
-  document.addEventListener('astro:page-load', () => {
-    const toggleDarkMode = () => {
-      const initialDarkModeState = isDarkMode();
-
-      if (initialDarkModeState === true) {
-        document.documentElement.classList.remove('dark');
-        localStorage.theme = 'light';
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.theme = 'dark';
+      if (darkModeSwitch && darkModeLabel) {
+        darkModeSwitch.checked = false;
+        darkModeSwitch.setAttribute('aria-checked', false);
+        darkModeLabel.textContent = 'Light Mode';
       }
+    }
+  }
 
-      setDarkModeSwitchState(!initialDarkModeState);
-    };
+  function setTheme(event) {
+    // Set local storage theme based on checked state of switch
+    localStorage.theme = event.target.checked ? 'dark' : 'light';
+    applyTheme();
+  }
 
-    const addChangeListenerToSwitch = () => {
-      const darkModeSwitch = document.getElementById('darkModeSwitch');
-
-      darkModeSwitch?.addEventListener('change', () => {
-        toggleDarkMode();
-      });
-    };
-
-    initDarkMode();
-    addChangeListenerToSwitch();
+  document.addEventListener('astro:after-swap', applyTheme);
+  document.addEventListener('astro:page-load', () => {
+    document
+      .getElementById('darkModeSwitch')
+      ?.addEventListener('click', setTheme);
   });
+
+  applyTheme();
 </script>
 
 <script is:inline>
-  const setFontSizeInStorage = (fontSize) => {
-    localStorage.fontSize = fontSize;
-  };
-
-  const setFontSize = (document) => {
-    const currentFontSize = parseFloat(
-      getComputedStyle(document.documentElement).fontSize,
-    );
+  function applyFontSize() {
+    // Set font size based on local storage or default
+    const root = document.documentElement;
+    const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
     const storedFontSize = localStorage.fontSize;
-    const displayedFontSize = document.getElementById('font-size');
+
+    console.log(currentFontSize, storedFontSize);
 
     if (storedFontSize && storedFontSize !== currentFontSize) {
-      document.documentElement.style.fontSize = `${storedFontSize}px`;
-      displayedFontSize.textContent = storedFontSize;
+      root.style.fontSize = `${storedFontSize}px`;
+      document.getElementById('font-size').textContent = storedFontSize;
     } else {
-      displayedFontSize.textContent = currentFontSize;
+      document.getElementById('font-size').textContent = currentFontSize;
     }
-  };
+  }
 
-  const decreaseFontSize = () => {
-    const root = document.documentElement;
-    const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
-    const newFontSize = currentFontSize - 1;
-    setFontSizeInStorage(newFontSize);
-    setFontSize(document);
-  };
-
-  const increaseFontSize = () => {
-    const root = document.documentElement;
-    const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
-    const newFontSize = currentFontSize + 1;
-    setFontSizeInStorage(newFontSize);
-    setFontSize(document);
-  };
-
-  const addEventListenerToFontButtons = () => {
-    const decreaseFontButton = document.getElementById('font-decrease');
-    const increaseFontButton = document.getElementById('font-increase');
-
-    decreaseFontButton?.addEventListener('click', () => {
-      decreaseFontSize();
+  document.addEventListener('astro:after-swap', applyFontSize);
+  document.addEventListener('astro:page-load', () => {
+    document.getElementById('font-decrease')?.addEventListener('click', () => {
+      const root = document.documentElement;
+      const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
+      const newFontSize = currentFontSize - 1;
+      localStorage.fontSize = newFontSize;
+      applyFontSize();
     });
 
-    increaseFontButton?.addEventListener('click', () => {
-      increaseFontSize();
+    document.getElementById('font-increase')?.addEventListener('click', () => {
+      const root = document.documentElement;
+      const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
+      const newFontSize = currentFontSize + 1;
+      localStorage.fontSize = newFontSize;
+      applyFontSize();
     });
-  };
-
-  document.addEventListener('astro:before-swap', (ev) => {
-    setFontSize(ev.newDocument);
   });
 
-  document.addEventListener('astro:after-swap', () => {
-    addEventListenerToFontButtons();
-  });
-
-  setFontSize(document);
-  addEventListenerToFontButtons();
+  applyFontSize();
 </script>
