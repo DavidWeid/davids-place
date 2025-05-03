@@ -20,6 +20,8 @@
     "@fontsource-variable/syne": "^5.1.0",
     "@tailwindcss/vite": "^4.1.5",
     "astro": "^5.7.10",
+    "astro-compressor": "^1.0.0",
+    "astro-show-tailwindcss-breakpoint": "^1.0.9",
     "hast-util-to-html": "^9.0.5",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.1.5",

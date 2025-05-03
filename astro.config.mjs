@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import showTailwindcssBreakpoint from 'astro-show-tailwindcss-breakpoint';
+import compressor from 'astro-compressor';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,5 +16,20 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    showTailwindcssBreakpoint({
+      breakpoints: {
+        t: '768px',
+        l: '1024px',
+        d: '1440px',
+        dxl: '1920px',
+      },
+    }),
+    compressor(),
+  ],
+  server: {
+    open: true,
+  },
 });
