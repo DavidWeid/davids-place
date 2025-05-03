@@ -91,29 +91,29 @@ const codingStats = [
 >
   <HeroBackground title={heroTitle} description={heroDescription} />
 
-  <section class="relative bg-medium">
+  <section class="bg-medium relative">
     <div
       id="player-card-holder"
-      class="card-collapsed laptop:scroll-mt-20 relative bottom-0 left-0 right-0 m-auto w-full"
+      class="card-collapsed laptop:scroll-mt-20 relative right-0 bottom-0 left-0 m-auto w-full"
     >
       <div
         id="player-card"
-        class="text-light bg-blue-dark dark:bg-medium py-6 px-12 flex flex-col items-center transition-shadow duration-500 shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark"
+        class="text-light bg-blue-dark dark:bg-medium shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark flex flex-col items-center px-12 py-6 transition-shadow duration-500"
       >
         <h2>
           <a
             href={playerData.profileurl}
             target="_blank"
-            class="relative flex items-center gap-2 w-max hover:text-green-emerald"
+            class="hover:text-green-emerald relative flex w-max items-center gap-2"
           >
             {playerData.personaname}
             <span class="sr-only">View Steam profile (Opens in a new tab)</span>
-            <SvgGenerator svg="icons/external-link-blue" className="w-6 h-6" />
+            <SvgGenerator svg="icons/external-link-blue" className="h-6 w-6" />
           </a>
         </h2>
 
         <p
-          class="flex gap-2 items-center uppercase text-xs tracking-wide font-mono"
+          class="flex items-center gap-2 font-mono text-xs tracking-wide uppercase"
         >
           Status <span class="sr-only">{playerData.stateText}</span>
           <span
@@ -134,16 +134,16 @@ const codingStats = [
           height={playerData.avatarfull.height
             ? playerData.avatarfull.height
             : 144}
-          class="vibrate w-36 h-36 rounded-full border border-green-emerald"
+          class="vibrate border-green-emerald h-36 w-36 rounded-full border"
         />
 
         {
           playerData.gameextrainfo && (
             <>
               <span class="block pb-4" />
-              <p class="uppercase text-sm text-center">
+              <p class="text-center text-sm uppercase">
                 In game
-                <span class="block mt-1.5 py-1 px-2 bg-green-dark rounded-sm text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                <span class="bg-green-dark mt-1.5 block rounded-sm px-2 py-1 font-mono text-xs tracking-wide shadow-2xl shadow-black">
                   {playerData.gameextrainfo}
                 </span>
               </p>
@@ -154,9 +154,9 @@ const codingStats = [
           !playerData.gameextrainfo && mostRecentPlayedGame && (
             <>
               <span class="block pb-4" />
-              <p class="uppercase text-sm text-center">
+              <p class="text-center text-sm uppercase">
                 Most Recently Seen
-                <span class="block mt-1.5 py-1 px-2 bg-medium/75 dark:bg-light/25 rounded-sm text-xs tracking-wide font-mono shadow-2xl shadow-black">
+                <span class="bg-medium/75 dark:bg-light/25 mt-1.5 block rounded-sm px-2 py-1 font-mono text-xs tracking-wide shadow-2xl shadow-black">
                   {mostRecentPlayedGame}
                 </span>
               </p>
@@ -164,23 +164,23 @@ const codingStats = [
           )
         }
 
-        <div class="w-full group">
+        <div class="group w-full">
           <hr
-            class="mt-4 border-green-emerald transition-transform duration-500 group-hover:scale-105"
+            class="border-green-emerald mt-4 transition-transform duration-500 group-hover:scale-105"
           />
 
           <button
             id="view-full-profile"
-            class="flex items-center justify-center gap-2 py-4 w-full text-sm font-mono uppercase hover:font-bold"
+            class="flex w-full items-center justify-center gap-2 py-4 font-mono text-sm uppercase hover:font-bold"
           >
             <span
-              class="group-hover:translate-y-1.5 transition-transform duration-500"
+              class="transition-transform duration-500 group-hover:translate-y-1.5"
             >
               <span id="button-text" class="mr-1">VIEW FULL PROFILE</span>
               <SvgGenerator
                 id="button-icon"
                 svg="icons/arrow-bubbles-right-green"
-                className="inline w-4 h-4 rotate-90 group-hover:scale-125 transition-transform duration-500"
+                className="inline h-4 w-4 rotate-90 transition-transform duration-500 group-hover:scale-125"
               />
             </span>
           </button>
@@ -189,11 +189,11 @@ const codingStats = [
         <!-- Profile Details -->
         <section id="profile-details" class="collapsed">
           <nav id="profile-nav" class="w-full overflow-x-auto">
-            <ul class="flex justify-center gap-6 w-max mx-auto">
+            <ul class="mx-auto flex w-max justify-center gap-6">
               <li class="whitespace-nowrap">
                 <button
                   id="button--about"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase active"
+                  class="border-b-light hover:text-green-emerald active border-b px-4 py-2 uppercase transition-all duration-500"
                 >
                   ABOUT
                 </button>
@@ -201,28 +201,28 @@ const codingStats = [
               <li class="whitespace-nowrap">
                 <button
                   id="button--stats"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
+                  class="border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
                   >STATS</button
                 >
               </li>
-              <li class="whitespace-nowrap hidden">
+              <li class="hidden whitespace-nowrap">
                 <button
                   id="button--friends"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
+                  class="border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
                   >FRIENDS</button
                 >
               </li>
-              <li class="whitespace-nowrap hidden">
+              <li class="hidden whitespace-nowrap">
                 <button
                   id="button--recent-games"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
+                  class="border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
                   >RECENT GAMES</button
                 >
               </li>
-              <li class="whitespace-nowrap hidden">
+              <li class="hidden whitespace-nowrap">
                 <button
                   id="button--owned-games"
-                  class="px-4 py-2 border-b border-b-light hover:text-green-emerald transition-all duration-500 uppercase"
+                  class="border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
                   >OWNED GAMES</button
                 >
               </li>
@@ -232,16 +232,16 @@ const codingStats = [
           <div id="profile-panel" class="py-6">
             <div id="panel--about" class="panel">
               <div
-                class="grid grid-cols-3 gap-6 bg-medium dark:bg-blue-dark/50 px-3 pt-3 pb-4 rounded-3xl"
+                class="bg-medium dark:bg-blue-dark/50 grid grid-cols-3 gap-6 rounded-3xl px-3 pt-3 pb-4"
               >
                 <div class="col-span-1 flex flex-col justify-between">
                   <p
-                    class="uppercase text-center pb-3 font-bold text-sm tracking-wider min-h-[52px] tablet:min-h-10"
+                    class="tablet:min-h-10 min-h-[52px] pb-3 text-center text-sm font-bold tracking-wider uppercase"
                   >
                     SPIRIT ANIMAL
                   </p>
                   <div
-                    class="h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center"
+                    class="tablet:flex-row tablet:justify-center flex h-full flex-col items-center justify-between gap-3"
                   >
                     <Image
                       src={catIcon}
@@ -249,10 +249,10 @@ const codingStats = [
                       loading="lazy"
                       width={500}
                       height={500}
-                      class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
+                      class="tablet:w-[50px] tablet:h-[50px] h-[40px] w-[40px] rounded-full"
                     />
                     <p
-                      class="text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-light"
+                      class="tablet:text-left dark:border-light border-b pb-1 text-center font-mono text-sm"
                     >
                       CAT
                     </p>
@@ -260,12 +260,12 @@ const codingStats = [
                 </div>
                 <div class="col-span-1 flex flex-col justify-between">
                   <p
-                    class="uppercase text-center pb-3 font-bold text-sm tracking-wider min-h-[52px] tablet:min-h-10"
+                    class="tablet:min-h-10 min-h-[52px] pb-3 text-center text-sm font-bold tracking-wider uppercase"
                   >
                     FAVORITE DRINK
                   </p>
                   <div
-                    class="h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center"
+                    class="tablet:flex-row tablet:justify-center flex h-full flex-col items-center justify-between gap-3"
                   >
                     <Image
                       src={drinkIcon}
@@ -273,10 +273,10 @@ const codingStats = [
                       loading="lazy"
                       width={500}
                       height={500}
-                      class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
+                      class="tablet:w-[50px] tablet:h-[50px] h-[40px] w-[40px] rounded-full"
                     />
                     <p
-                      class="text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-light"
+                      class="tablet:text-left dark:border-light border-b pb-1 text-center font-mono text-sm"
                     >
                       MATCHA LATTE
                     </p>
@@ -284,12 +284,12 @@ const codingStats = [
                 </div>
                 <div class="col-span-1 flex flex-col justify-between">
                   <p
-                    class="uppercase text-center pb-3 font-bold text-sm tracking-wider min-h-[52px] tablet:min-h-10"
+                    class="tablet:min-h-10 min-h-[52px] pb-3 text-center text-sm font-bold tracking-wider uppercase"
                   >
                     BIRTHDAY
                   </p>
                   <div
-                    class="h-full flex flex-col tablet:flex-row gap-3 items-center justify-between tablet:justify-center"
+                    class="tablet:flex-row tablet:justify-center flex h-full flex-col items-center justify-between gap-3"
                   >
                     <Image
                       src={cupcakeIcon}
@@ -297,10 +297,10 @@ const codingStats = [
                       loading="lazy"
                       width={500}
                       height={500}
-                      class="rounded-full w-[40px] h-[40px] tablet:w-[50px] tablet:h-[50px]"
+                      class="tablet:w-[50px] tablet:h-[50px] h-[40px] w-[40px] rounded-full"
                     />
                     <p
-                      class="text-center tablet:text-left font-mono text-sm pb-1 border-b dark:border-light"
+                      class="tablet:text-left dark:border-light border-b pb-1 text-center font-mono text-sm"
                     >
                       JAN 10
                     </p>
@@ -310,13 +310,13 @@ const codingStats = [
 
               <span class="block pb-12"></span>
 
-              <div class="p-2 flex gap-6 items-center">
+              <div class="flex items-center gap-6 p-2">
                 <p
-                  class="uppercase text-center font-bold text-sm tracking-wider"
+                  class="text-center text-sm font-bold tracking-wider uppercase"
                 >
                   Abilities:
                 </p>
-                <p class="font-mono text-sm tablet:text-base tablet:leading-5">
+                <p class="tablet:text-base tablet:leading-5 font-mono text-sm">
                   Technologist, Web developer, Gamer, Cat parent
                 </p>
               </div>
@@ -324,7 +324,7 @@ const codingStats = [
               <span class="block pb-10"></span>
 
               <div class="p-2">
-                <p class="italic text-sm">
+                <p class="text-sm italic">
                   "Lord Arbiter", a Capricorn also known as "David", thrives on
                   the web and in the gaming world, but loves spending time with
                   his husband and two cats. He also enjoys gaming with friends,
@@ -340,19 +340,19 @@ const codingStats = [
               {
                 codingStats.map((stat) => (
                   <div id={stat.attribute} class="grid grid-cols-6 gap-2">
-                    <div class="col-span-2 tablet:col-span-1">
-                      <p class="font-mono text-xs tablet:text-sm uppercase">
+                    <div class="tablet:col-span-1 col-span-2">
+                      <p class="tablet:text-sm font-mono text-xs uppercase">
                         {stat.attribute}
                       </p>
                     </div>
                     <div class="col-span-1">
-                      <p class="text-xs tablet:text-sm uppercase text-right">
+                      <p class="tablet:text-sm text-right text-xs uppercase">
                         {stat.value}
                       </p>
                     </div>
-                    <div class="col-span-3 tablet:col-span-4 flex items-center">
+                    <div class="tablet:col-span-4 col-span-3 flex items-center">
                       <span
-                        class="block h-2/3 green-shimmer"
+                        class="green-shimmer block h-2/3"
                         style={`width: ${(stat.value / 20) * 100}%`}
                       />
                     </div>
@@ -368,7 +368,7 @@ const codingStats = [
                 alt="Game icon"
                 width={40}
                 height={40}
-                class="vibrate w-10 h-10 rounded-full border border-green-emerald"
+                class="vibrate border-green-emerald h-10 w-10 rounded-full border"
               />
             </div>
             <div id="panel--owned-games" class="panel hidden">OWNED GAMES</div>

@@ -85,7 +85,7 @@
     border-color: var(--color-gray-200, currentColor);
   }
   html {
-    @apply bg-light text-dark font-sans font-normal text-base lining-nums desktop:text-lg desktop:overscroll-y-none scroll-smooth;
+    @apply bg-light text-dark desktop:text-lg desktop:overscroll-y-none scroll-smooth font-sans text-base font-normal lining-nums;
   }
 
   html.dark {
@@ -93,7 +93,7 @@
   }
 
   body {
-    @apply min-h-screen flex flex-col justify-between overflow-x-hidden;
+    @apply flex min-h-screen flex-col justify-between overflow-x-hidden;
   }
 
   main {
@@ -102,11 +102,11 @@
 
   img,
   video {
-    @apply w-full h-auto select-none;
+    @apply h-auto w-full select-none;
   }
 
   *:focus-visible {
-    @apply ring-2 ring-green-dark dark:ring-green-emerald ring-offset-0 outline-hidden;
+    @apply ring-green-dark dark:ring-green-emerald ring-2 ring-offset-0 outline-hidden;
   }
 
   *::selection {
@@ -114,7 +114,7 @@
   }
 
   input {
-    @apply focus-visible:ring-1 focus-visible:ring-green-emerald focus-visible:ring-offset-0 focus-visible:outline-hidden;
+    @apply focus-visible:ring-green-emerald focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:outline-hidden;
   }
 
   button,
@@ -125,7 +125,7 @@
   }
 
   .container {
-    @apply w-full max-w-full! desktopxl:max-w-(--breakpoint-desktopxl)!;
+    @apply desktopxl:max-w-(--breakpoint-desktopxl)! w-full max-w-full!;
   }
 }
 

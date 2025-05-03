@@ -42,5 +42,6 @@ const { id } = Astro.props;
     }
   }
 
-  customElements.get('pagefind-search') || customElements.define('pagefind-search', Search);
+  customElements.get('pagefind-search') ||
+    customElements.define('pagefind-search', Search);
 </script>

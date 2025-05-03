@@ -49,12 +49,12 @@ const navItems: string[] = Object.keys(obj).map(
 ---
 
 <nav
-  class="z-30 py-4 bg-dark text-light bg-linear-to-tr from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 transition-all laptop:sticky laptop:top-0"
+  class="bg-dark text-light from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 laptop:sticky laptop:top-0 z-30 bg-linear-to-tr py-4 transition-all"
 >
-  <div class="container flex flex-wrap justify-between items-center gap-y-2">
+  <div class="container flex flex-wrap items-center justify-between gap-y-2">
     <a href="#main" class="skip-link">Skip to content</a>
 
-    <div class="flex items-center group">
+    <div class="group flex items-center">
       <Image
         loading="eager"
         src={astroLogo}
@@ -71,7 +71,7 @@ const navItems: string[] = Object.keys(obj).map(
           <a
             role="link"
             {...homepageLinkAttributes}
-            class="px-4 py-2 group-hover:text-green-emerald group-hover:scale-110 transition-all"
+            class="group-hover:text-green-emerald px-4 py-2 transition-all group-hover:scale-110"
             aria-label="David’s Place Homepage"
           >
             David’s Place
@@ -82,27 +82,26 @@ const navItems: string[] = Object.keys(obj).map(
 
     <div class="flex items-center gap-4">
       <!-- Nav items visible on tablet+ -->
-      <ul class="hidden laptop:flex items-center gap-3" set:html={navItems} />
+      <ul class="laptop:flex hidden items-center gap-3" set:html={navItems} />
 
-      <fieldset class="flex flex-col gap-1 items-center">
+      <fieldset class="flex flex-col items-center gap-1">
         <legend class="sr-only">Select Dark Mode:</legend>
         <input
           type="checkbox"
           id="darkModeSwitch"
           checked="true"
-          class="transition-all before:transition-all duration-500 before:duration-500 relative appearance-none w-12 h-6 rounded-full bg-light/75 hover:brightness-125 before:content-[''] before:w-4 before:h-4 before:rounded-full before:bg-blue-dark before:absolute before:top-1/2 before:left-1 before:-translate-y-1/2 checked:bg-blue-dark checked:before:bg-accent-light checked:before:left-7"
+          class="bg-light/75 before:bg-blue-dark checked:bg-blue-dark checked:before:bg-accent-light relative h-6 w-12 appearance-none rounded-full transition-all duration-500 before:absolute before:top-1/2 before:left-1 before:h-4 before:w-4 before:-translate-y-1/2 before:rounded-full before:transition-all before:duration-500 before:content-[''] checked:before:left-7 hover:brightness-125"
         />
         <label
           for="darkModeSwitch"
-          class="text-center text-xs opacity-75 w-[70px]"
-          >Dark Mode</label
+          class="w-[70px] text-center text-xs opacity-75">Dark Mode</label
         >
       </fieldset>
 
       <div class="flex items-center gap-2">
         <button
           id="font-decrease"
-          class="duration-300 min-w-10 min-h-5 px-1 py-1 flex items-center justify-center border-b border-light/10 hover:border-green-emerald active:border-light/10"
+          class="border-light/10 hover:border-green-emerald active:border-light/10 flex min-h-5 min-w-10 items-center justify-center border-b px-1 py-1 duration-300"
           aria-label="Decrease Font Size">A-</button
         >
         <span
@@ -112,7 +111,7 @@ const navItems: string[] = Object.keys(obj).map(
         >
         <button
           id="font-increase"
-          class="duration-300 min-w-10 min-h-5 px-1 py-1 flex items-center justify-center border-b-2 border-light/10 hover:border-green-emerald active:border-light/10"
+          class="border-light/10 hover:border-green-emerald active:border-light/10 flex min-h-5 min-w-10 items-center justify-center border-b-2 px-1 py-1 duration-300"
           aria-label="Increase Font Size">A+</button
         >
       </div>
@@ -120,10 +119,10 @@ const navItems: string[] = Object.keys(obj).map(
   </div>
 
   <!-- Nav items visible on mobile only -->
-  <div class="container laptop:hidden">
-    <span class="block my-4 border-t border-t-green-emerald"></span>
+  <div class="laptop:hidden container">
+    <span class="border-t-green-emerald my-4 block border-t"></span>
     <ul
-      class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2"
+      class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2"
       set:html={navItems}
     />
   </div>

@@ -77,41 +77,41 @@ const orderClasses: { [key: string]: string } = {
   <Hero title={heroTitle} description={heroDescription} />
 
   <section class="container">
-    <details class="scroll-mt-24 tablet:scroll-mt-20" name="colors">
+    <details class="tablet:scroll-mt-20 scroll-mt-24" name="colors">
       <summary
-        class="group flex items-center justify-between w-full tablet:w-max min-w-[25%] py-3 border-b-2 border-green-emerald hover:text-green-dark"
+        class="group tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
         ><h2 class="inline">Custom Colors</h2>
         <SvgGenerator
           svg="icons/arrow-bubbles-right-green"
-          className="w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500"
+          className="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
         /></summary
       >
       <div
-        class="p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8"
+        class="tablet:grid-cols-4 laptop:grid-cols-6 tablet:gap-8 grid grid-cols-2 gap-6 rounded-lg p-6"
       >
         {
           Object.keys(customColors).map((color) => {
             if (typeof customColors[color] === 'string') {
               return (
-                <div class="flex flex-col gap-2 items-center p-6">
+                <div class="flex flex-col items-center gap-2 p-6">
                   <div
                     class="h-20 w-20 rounded-full"
                     style={`background-color: ${customColors[color]}`}
                   />
 
-                  <p class="text-sm text-center px-2 select-text">{color}</p>
+                  <p class="px-2 text-center text-sm select-text">{color}</p>
                 </div>
               );
             } else {
               return Object.keys(customColors[color]).map((shade) => {
                 return (
-                  <div class="flex flex-col gap-2 items-center p-6">
+                  <div class="flex flex-col items-center gap-2 p-6">
                     <div
                       class="h-20 w-20 rounded-full"
                       style={`background-color: ${(customColors[color] as { [key: string]: string })[shade]}`}
                     />
 
-                    <p class="text-sm text-center px-2 select-text">{`${color} - ${shade}`}</p>
+                    <p class="px-2 text-center text-sm select-text">{`${color} - ${shade}`}</p>
                   </div>
                 );
               });
@@ -123,17 +123,17 @@ const orderClasses: { [key: string]: string } = {
 
     <span class="block pb-16"></span>
 
-    <details class="scroll-mt-24 tablet:scroll-mt-20" name="images">
+    <details class="tablet:scroll-mt-20 scroll-mt-24" name="images">
       <summary
-        class="group flex items-center justify-between w-full tablet:w-max min-w-[25%] py-3 border-b-2 border-green-emerald hover:text-green-dark"
+        class="group tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
         ><h2 class="inline">Astro SVGs</h2>
         <SvgGenerator
           svg="icons/arrow-bubbles-right-green"
-          className="w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500"
+          className="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
         /></summary
       >
       <div
-        class="p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8"
+        class="tablet:grid-cols-4 laptop:grid-cols-6 tablet:gap-8 grid grid-cols-2 gap-6 rounded-lg p-6"
       >
         {
           Object.keys(astroImageFiles).map((astroImage) => {
@@ -142,14 +142,14 @@ const orderClasses: { [key: string]: string } = {
             }
             return (
               <div
-                class={`flex flex-col gap-2 items-center ${extractAstroNumber(astroImage) ? orderClasses[extractAstroNumber(astroImage)] : ''} brightness-110 bg-medium text-light p-6 rounded-full`}
+                class={`flex flex-col items-center gap-2 ${extractAstroNumber(astroImage) ? orderClasses[extractAstroNumber(astroImage)] : ''} bg-medium text-light rounded-full p-6 brightness-110`}
               >
                 <SvgGenerator
                   svg={`astro/${extractAstroName(astroImage)}`}
                   className="h-20 w-auto"
                 />
 
-                <p class="text-sm text-center px-2 select-text">
+                <p class="px-2 text-center text-sm select-text">
                   {extractAstroName(astroImage)}
                 </p>
               </div>
@@ -161,17 +161,17 @@ const orderClasses: { [key: string]: string } = {
 
     <span class="block pb-16"></span>
 
-    <details class="scroll-mt-24 tablet:scroll-mt-20" name="images">
+    <details class="tablet:scroll-mt-20 scroll-mt-24" name="images">
       <summary
-        class="group flex items-center justify-between w-full tablet:w-max min-w-[25%] py-3 border-b-2 border-green-emerald hover:text-green-dark"
+        class="group tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
         ><h2 class="inline">Icon SVGs</h2>
         <SvgGenerator
           svg="icons/arrow-bubbles-right-green"
-          className="w-6 h-6 rotate-90 group-hover:scale-125 transition-transform duration-500"
+          className="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
         /></summary
       >
       <div
-        class="p-6 rounded-lg grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-6 tablet:gap-8"
+        class="tablet:grid-cols-4 laptop:grid-cols-6 tablet:gap-8 grid grid-cols-2 gap-6 rounded-lg p-6"
       >
         {
           Object.keys(iconImageFiles).map((iconImage) => {
@@ -179,13 +179,13 @@ const orderClasses: { [key: string]: string } = {
               return;
             }
             return (
-              <div class="flex flex-col gap-2 items-center brightness-110 bg-medium text-light p-6 rounded-full">
+              <div class="bg-medium text-light flex flex-col items-center gap-2 rounded-full p-6 brightness-110">
                 <SvgGenerator
                   svg={`icons/${extractFileName(iconImage)}`}
                   className="aspect-square w-12 h-12"
                 />
 
-                <p class="text-sm text-center px-2 select-text">
+                <p class="px-2 text-center text-sm select-text">
                   {extractFileName(iconImage)}
                 </p>
               </div>

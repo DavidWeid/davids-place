@@ -38,16 +38,16 @@ code {
 }
 
 code.dark-background {
-  @apply px-2 rounded-lg bg-light text-medium;
+  @apply bg-light text-medium rounded-lg px-2;
 }
 
 mark {
-  @apply inline-flex justify-center px-1.5 py-0.5 rounded font-medium tracking-wide bg-green-light dark:bg-blue-dark/75 dark:text-light;
+  @apply bg-green-light dark:bg-blue-dark/75 dark:text-light inline-flex justify-center rounded px-1.5 py-0.5 font-medium tracking-wide;
 }
 
 .text-gradient {
   -webkit-text-fill-color: transparent;
-  @apply bg-clip-text bg-[size:150%] bg-[position:0%] transition-all ease-in-out duration-300 bg-gradient-to-br from-blue-dark to-green-emerald dark:from-green-emerald dark:to-blue-light from-10% to-75% hover:bg-[size:300%];
+  @apply from-blue-dark to-green-emerald dark:from-green-emerald dark:to-blue-light bg-gradient-to-br from-10% to-75% bg-[size:150%] bg-clip-text bg-[position:0%] transition-all duration-300 ease-in-out hover:bg-[size:300%];
 }
 
 .content-link {

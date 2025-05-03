@@ -94,16 +94,16 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 ---
 
 <Base title={pageTitle} indexForSearch={false}>
-  <div class="bg-white dark:bg-medium">
+  <div class="dark:bg-medium bg-white">
     <span class="block pb-20"></span>
 
     <section class="container">
       <div class="tablet:max-w-[85ch] mx-auto">
         <span
           set:html={heroEyebrow}
-          class="flex gap-1.5 font-sans-syne text-xl"
+          class="font-sans-syne flex gap-1.5 text-xl"
         />
-        <h1 set:html={heroTitle} class="text-5xl text-gradient" />
+        <h1 set:html={heroTitle} class="text-gradient text-5xl" />
         <span class="block pb-10"></span>
         <p set:html={heroDescription} class="text-lg" />
         <span class="block pb-10"></span>
@@ -113,7 +113,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           src={headshot}
           alt="David Weid II"
           title="David Weid II"
-          class="vibrate w-40 h-w-40 rounded-full border border-blue-dark dark:border-green-emerald mx-auto"
+          class="vibrate h-w-40 border-blue-dark dark:border-green-emerald mx-auto w-40 rounded-full border"
           width={480}
           height={480}
           densities={[1.5, 2, 2.5, 3]}
@@ -125,7 +125,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           loading="lazy"
           width={480}
           height={480}
-          class="hidden w-40 h-w-40 rounded-full border border-blue-dark dark:border-green-emerald mx-auto"
+          class="h-w-40 border-blue-dark dark:border-green-emerald mx-auto hidden w-40 rounded-full border"
         />
       </div>
     </section>
@@ -137,12 +137,12 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
   <section class="container">
     <div class="tablet:max-w-[85ch] mx-auto">
-      <span class="flex gap-1.5 font-sans-syne text-lg"
+      <span class="font-sans-syne flex gap-1.5 text-lg"
         ><span class="wave">💻</span>Web Developer</span
       >
       <h2 class="text-gradient">Learn more about me</h2>
       <span class="block pb-10"></span>
-      <p class="text-lg pb-5">
+      <p class="pb-5 text-lg">
         I am proficient in building, maintaining, analyzing, and improving
         complex websites, with a focus on the user, from concept to deployment
         via a variety of Javascript and templating frameworks. I have been
@@ -158,7 +158,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
     <ul
       role="list"
-      class="laptop:max-w-[85ch] laptop:mx-auto grid grid-cols-1 tablet:grid-cols-3 gap-8"
+      class="laptop:max-w-[85ch] laptop:mx-auto tablet:grid-cols-3 grid grid-cols-1 gap-8"
     >
       {
         externalLinks.map((link) => (
@@ -175,17 +175,17 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
     <span class="block pb-20"></span>
 
     <div class="tablet:max-w-[85ch] mx-auto">
-      <span class="flex gap-1.5 font-sans-syne text-base"
+      <span class="font-sans-syne flex gap-1.5 text-base"
         ><span class="wave">💻</span>Front-End</span
       >
       <h3 class="text-gradient">My Coding Skills</h3>
-      <p class="text-lg pb-10">
+      <p class="pb-10 text-lg">
         Languages, frameworks, technologies. The front-end landscape is
         continuously evolving, and that keeps the internet interesting. Things
         I'm proficient with:
       </p>
 
-      <div class="flex flex-wrap justify-center items-center gap-x-5 gap-y-2.5">
+      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5">
         {
           skills.map((skill) => (
             <Badge
@@ -202,21 +202,21 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
     <span class="block pb-20"></span>
 
     <div class="tablet:max-w-[85ch] mx-auto">
-      <span class="flex items-center gap-1.5 font-sans-syne text-base">
+      <span class="font-sans-syne flex items-center gap-1.5 text-base">
         <SvgGenerator
           id="dd-icon-white"
           svg="icons/dd_icon_white"
-          className="w-6 h-6 hidden dark:block"
+          className="hidden h-6 w-6 dark:block"
         />
         <SvgGenerator
           id="dd-icon-rgb"
           svg="icons/dd_icon_rgb"
-          className="w-6 h-6 block dark:hidden"
+          className="block h-6 w-6 dark:hidden"
         />
         Experience
       </span>
       <h3 class="text-gradient">Working at Datadog</h3>
-      <div class="flex justify-between flex-wrap pb-8">
+      <div class="flex flex-wrap justify-between pb-8">
         <p class="tablet:text-lg">
           Senior Web Development Engineer (Front-End)
         </p>
@@ -225,36 +225,36 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
         </p>
       </div>
 
-      <p class="text-lg pb-2">
-        <span class="block text-lg text-gradient font-semibold"
+      <p class="pb-2 text-lg">
+        <span class="text-gradient block text-lg font-semibold"
           >Description:</span
         >
         At Datadog, I update, build, and enhance Datadog websites, including <a
           href="https://datadoghq.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="content-link-gradient inline-flex items-center gap-1 w-fit leading-5"
+          class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
           >datadoghq.com <SvgGenerator
             svg="icons/external-link"
-            className="h-4 w-4 dark:fill-light"
+            className="dark:fill-light h-4 w-4"
           /></a
         >, <a
           href="https://docs.datadoghq.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="content-link-gradient inline-flex items-center gap-1 w-fit leading-5"
+          class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
           >docs.datadoghq.com <SvgGenerator
             svg="icons/external-link"
-            className="h-4 w-4 dark:fill-light"
+            className="dark:fill-light h-4 w-4"
           /></a
         >, and <a
           href="https://securitylabs.datadoghq.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="content-link-gradient inline-flex items-center gap-1 w-fit leading-5"
+          class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
           >securitylabs.datadoghq.com <SvgGenerator
             svg="icons/external-link"
-            className="h-4 w-4 dark:fill-light"
+            className="dark:fill-light h-4 w-4"
           /></a
         >. Additionally, I develop tools and processes to help facilitate team
         efforts, including replatforming Datadog websites from Bootstrap,
@@ -278,7 +278,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
   <section class="container">
     <div class="tablet:max-w-[85ch] mx-auto">
-      <span class="flex gap-1.5 font-sans-syne text-lg"
+      <span class="font-sans-syne flex gap-1.5 text-lg"
         ><span class="wave">🚀</span>David’s Place</span
       >
       <h2 class="text-gradient">About this project and website</h2>
@@ -309,7 +309,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
       <ul
         role="list"
-        class="laptop:max-w-[85ch] laptop:mx-auto grid grid-cols-1 tablet:grid-cols-3 gap-8"
+        class="laptop:max-w-[85ch] laptop:mx-auto tablet:grid-cols-3 grid grid-cols-1 gap-8"
       >
         {
           internalLinks.map((link) => (

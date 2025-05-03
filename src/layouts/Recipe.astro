@@ -57,8 +57,8 @@ const heroData = [
     <div class="flex flex-wrap justify-center gap-8">
       {
         heroData.map(({ label, value }) => (
-          <span class="flex flex-col gap-0.5 items-center">
-            <span class="text-gradient font-bold text-lg">{label}</span>
+          <span class="flex flex-col items-center gap-0.5">
+            <span class="text-gradient text-lg font-bold">{label}</span>
             {value}
           </span>
         ))
@@ -71,6 +71,7 @@ const heroData = [
           src={image.url}
           alt={image.alt}
           class="h-96 object-cover"
+          loading="eager"
         />
       )
     }
@@ -86,20 +87,20 @@ const heroData = [
     <div class="container">
       <span class="block pb-8"></span>
 
-      <section class="grid grid-cols-1 laptop:grid-cols-3 gap-8 relative">
+      <section class="laptop:grid-cols-3 relative grid grid-cols-1 gap-8">
         {
           ingredients && (
             <fieldset class="laptop:overflow-y-auto laptop:max-h-[75vh] laptop:sticky laptop:top-28 rounded-lg">
               <legend data-pagefind-ignore="all">
                 <h2>Ingredients</h2>
-                <span class="block text-xs opacity-75 tracking-wide pl-1 pb-2">
+                <span class="block pb-2 pl-1 text-xs tracking-wide opacity-75">
                   Click to check off
                 </span>
               </legend>
               <span class="block pb-8" />
               <div
                 id="ingredients-container"
-                class="flex flex-col gap-8 p-4 bg-light bg-opacity-90 dark:bg-dark dark:bg-opacity-50 rounded-lg"
+                class="bg-light bg-opacity-90 dark:bg-dark dark:bg-opacity-50 flex flex-col gap-8 rounded-lg p-4"
               >
                 {ingredients.map((data) => {
                   const { category, items } = data;
@@ -115,7 +116,7 @@ const heroData = [
                                 category.toLowerCase() + '-ingredient-' + index
                               }
                               type="checkbox"
-                              class="sr-only peer"
+                              class="peer sr-only"
                             />
                             <label
                               for={
@@ -138,7 +139,7 @@ const heroData = [
 
         <button
           id="pin-button"
-          class="fixed z-40 bottom-5 right-5 laptop:hidden px-4 py-2 rounded-sm bg-green-dark text-light hover:bg-blue-dark transition-all duration-500"
+          class="laptop:hidden bg-green-dark text-light hover:bg-blue-dark fixed right-5 bottom-5 z-40 rounded-sm px-4 py-2 transition-all duration-500"
           data-state="unpinned"
         >
           Pin Ingredients
@@ -149,17 +150,17 @@ const heroData = [
             <div class="laptop:col-span-2">
               <h2>Instructions</h2>
               {/* TODO: Add collapsable item functionality */}
-              <span class="block text-xs opacity-75 tracking-wide pl-1 pb-2 invisible">
+              <span class="invisible block pb-2 pl-1 text-xs tracking-wide opacity-75">
                 Click to collapse
               </span>
               <span class="block pb-8" />
               <ol class="flex flex-col gap-6">
                 {instructions.map((instruction, index) => (
                   <li class="flex flex-col gap-2">
-                    <span class="text-xl font-bold tracking-wider text-dark/75 dark:text-light/85">
+                    <span class="text-dark/75 dark:text-light/85 text-xl font-bold tracking-wider">
                       Step {index + 1}
                     </span>
-                    <span class="leading-7 max-w-prose">{instruction}</span>
+                    <span class="max-w-prose leading-7">{instruction}</span>
                     <hr class="border-green-emerald w-1/4" />
                   </li>
                 ))}
@@ -188,7 +189,7 @@ const heroData = [
                 href={source}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="content-link-gradient text-sm flex items-center gap-1 w-fit"
+                class="content-link-gradient flex w-fit items-center gap-1 text-sm"
               >
                 <SvgGenerator
                   svg="icons/external-link"

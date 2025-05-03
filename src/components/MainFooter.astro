@@ -6,16 +6,16 @@ const year: number = new Date().getFullYear();
 ---
 
 <footer
-  class="z-30 py-4 bg-dark text-light bg-linear-to-tr from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80"
+  class="bg-dark text-light from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 z-30 bg-linear-to-tr py-4"
 >
-  <div class="container flex justify-between items-center">
-    <span class="flex items-center text-light">David {year}</span>
+  <div class="container flex items-center justify-between">
+    <span class="text-light flex items-center">David {year}</span>
     <ul role="list" class="flex items-center gap-3">
       <li role="listitem">
         <a
           href={`${baseURL}style/`}
           title="Style Guide"
-          class="px-2 py-2 block hover:text-green-emerald text-xs"
+          class="hover:text-green-emerald block px-2 py-2 text-xs"
           >Site Styles</a
         >
       </li>
@@ -24,14 +24,14 @@ const year: number = new Date().getFullYear();
         <a
           href="https://github.com/DavidWeid/"
           title="GitHub Profile"
-          class="px-2 py-2 block group"
+          class="group block px-2 py-2"
         >
           <span class="sr-only"
             >View my GitHub Profile (Redirects to GitHub.com)</span
           >
           <SvgGenerator
             svg="icons/github"
-            className="fill-light group-hover:fill-green-emerald group-hover:scale-125 transition-all"
+            className="fill-light group-hover:fill-green-emerald transition-all group-hover:scale-125"
           />
         </a>
       </li>
@@ -40,14 +40,14 @@ const year: number = new Date().getFullYear();
         <a
           href="https://www.linkedin.com/in/david-weid/"
           title="LinkedIn Profile"
-          class="px-2 py-2 block group"
+          class="group block px-2 py-2"
         >
           <span class="sr-only"
             >View my LinkedIn Profile (Redirects to LinkedIn.com)</span
           >
           <SvgGenerator
             svg="icons/linkedin"
-            className="fill-light group-hover:fill-green-emerald group-hover:scale-125 transition-all"
+            className="fill-light group-hover:fill-green-emerald transition-all group-hover:scale-125"
           />
         </a>
       </li>
@@ -56,14 +56,14 @@ const year: number = new Date().getFullYear();
         <a
           href="mailto:david.weid.2@gmail.com"
           title="Email Contact"
-          class="px-2 py-2 block group"
+          class="group block px-2 py-2"
         >
           <span class="sr-only"
             >Send me an email (Open email via OS settings)</span
           >
           <SvgGenerator
             svg="icons/email"
-            className="fill-light group-hover:fill-green-emerald group-hover:scale-125 transition-all"
+            className="fill-light group-hover:fill-green-emerald transition-all group-hover:scale-125"
           />
         </a>
       </li>
@@ -71,10 +71,10 @@ const year: number = new Date().getFullYear();
   </div>
 
   <div class="container">
-    <span class="block mt-2 mb-1 border-t border-t-green-emerald"></span>
+    <span class="border-t-green-emerald mt-2 mb-1 block border-t"></span>
   </div>
 
-  <div class="container flex justify-center items-center gap-6 mt-1">
+  <div class="container mt-1 flex items-center justify-center gap-6">
     <!-- <a
       href="https://www.flaticon.com/authors/justicon"
       class="text-center text-light/50 hover:text-green-emerald/75 text-xs"
@@ -86,7 +86,7 @@ const year: number = new Date().getFullYear();
     <a
       href="https://www.canva.com/p/unfold-x/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
       target="_blank"
-      class="text-center text-light/50 hover:text-green-emerald/75 text-xs"
+      class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
       >Gaming page icons created by Unfold X - Canva <span class="sr-only"
         >(Redirects to Canva.com)</span
       ></a
@@ -97,7 +97,7 @@ const year: number = new Date().getFullYear();
     <a
       href="https://www.canva.com/p/dedy-izhams-images/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
       target="_blank"
-      class="text-center text-light/50 hover:text-green-emerald/75 text-xs"
+      class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
       >Astronaut cartoon created by Dedy Izham - Canva <span class="sr-only"
         >(Redirects to Canva.com)</span
       ></a

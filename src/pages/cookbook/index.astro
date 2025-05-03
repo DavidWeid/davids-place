@@ -24,8 +24,8 @@ const backgroundSvgs = [
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={true}>
-  <div id="hero" class="bg-white dark:bg-medium overflow-hidden relative">
-    <section class="relative container z-10">
+  <div id="hero" class="dark:bg-medium relative overflow-hidden bg-white">
+    <section class="relative z-10 container">
       <span class="block pb-28"></span>
 
       <div class="tablet:max-w-[85ch] mx-auto">
@@ -57,7 +57,7 @@ const backgroundSvgs = [
   <section class="container">
     <ul
       role="list"
-      class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8"
+      class="tablet:grid-cols-2 laptop:grid-cols-4 grid grid-cols-1 gap-8"
     >
       {
         allCookbookRecipes.map((recipe) => (
