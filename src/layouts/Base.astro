@@ -18,6 +18,7 @@ interface Props {
 }
 
 const baseURL = import.meta.env.BASE_URL;
+const isDev = import.meta.env.DEV;
 const pathname: string = `${baseURL}${new URL(Astro.request.url).pathname}`;
 const urlString: string = new URL(Astro.request.url).href;
 
@@ -55,10 +56,41 @@ if (classes !== '') {
 <html lang="en" class="dark" data-pagefind-meta={`url[${pathname}]`}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={urlString} />
     <link rel="sitemap" href={`${baseURL}sitemap-index.xml`} />
+
+    <!-- Preload fonts -->
+    {
+      !isDev && (
+        <>
+          <link
+            rel="preload"
+            as="font"
+            href="/_astro/reddit-mono-latin-wght-normal.QDbkNZLp.woff2"
+            type="font/woff2"
+            crossorigin="anonymous"
+          />
+          <link
+            rel="preload"
+            as="font"
+            href="/_astro/reddit-sans-latin-wght-normal.CBEGhBzt.woff2"
+            type="font/woff2"
+            crossorigin="anonymous"
+          />
+          <link
+            rel="preload"
+            as="font"
+            href="/_astro/syne-latin-wght-normal.Dvf_39Wt.woff2"
+            type="font/woff2"
+            crossorigin="anonymous"
+          />
+        </>
+      )
+    }
+
+    <!--  -->
 
     <link rel="icon" type="image/ico" href=`${baseURL}favicon.ico` />
     <link
