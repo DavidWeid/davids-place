@@ -286,7 +286,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
       <span class="block pb-10"></span>
 
       <NoteBlock>
-        <div class="flex flex-col desktop:flex-row items-center gap-2">
+        <div class="desktop:flex-row flex flex-col items-center gap-2">
           <div>
             This website is a side project and playground for me to learn <strong
               >AstroJS</strong
@@ -298,8 +298,9 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             >. I hope you find something interesting or even useful here.
           </div>
 
-          <canvas id="dotlottie-canvas" class="aspect-square w-4/5 desktop:w-1/6 h-fit"
-          ></canvas>
+          <canvas
+            id="dotlottie-canvas"
+            class="desktop:w-1/6 aspect-square h-fit w-4/5"></canvas>
         </div>
       </NoteBlock>
 
@@ -382,6 +383,6 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
     autoplay: true,
     loop: true,
     canvas: document.querySelector('#dotlottie-canvas') as HTMLCanvasElement,
-    src: 'https://lottie.host/embed/6fe8bf34-2e43-46ea-802d-648c15423de4/nB8OjhiO0n.lottie',
+    src: 'https://lottie.host/67761132-c9e4-43d4-b17f-04e416915d3d/BMXQKoVtaQ.json',
   });
 </script>
