@@ -286,14 +286,21 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
       <span class="block pb-10"></span>
 
       <NoteBlock>
-        This website is a side project and playground for me to learn <strong
-          >AstroJS</strong
-        >, using <strong>TailwindCSS</strong> and other cool CSS/HTML tricks. It
-        is hosted on <strong>GitHub Pages</strong> and is a static website that makes
-        use of Astro's <strong>View transitions</strong>. It's currently using <strong
-          >Astro {astroVersion}</strong
-        > and <strong>Tailwind {tailwindVersion}</strong>. I hope you find
-        something interesting or even useful here.
+        <div class="flex flex-col desktop:flex-row items-center gap-2">
+          <div>
+            This website is a side project and playground for me to learn <strong
+              >AstroJS</strong
+            >, using <strong>TailwindCSS</strong> and other cool CSS/HTML tricks.
+            It is hosted on <strong>GitHub Pages</strong> and is a static website
+            that makes use of Astro's <strong>View transitions</strong>. It's
+            currently using <strong>Astro {astroVersion}</strong> and <strong
+              >Tailwind {tailwindVersion}</strong
+            >. I hope you find something interesting or even useful here.
+          </div>
+
+          <canvas id="dotlottie-canvas" class="aspect-square w-4/5 desktop:w-1/6 h-fit"
+          ></canvas>
+        </div>
       </NoteBlock>
 
       <span class="block pb-10"></span>
@@ -366,4 +373,15 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
   headshot?.removeEventListener('click', handleClick);
   headshot?.addEventListener('click', handleClick);
+</script>
+
+<script>
+  import { DotLottie } from '@lottiefiles/dotlottie-web';
+
+  const dotLottie = new DotLottie({
+    autoplay: true,
+    loop: true,
+    canvas: document.querySelector('#dotlottie-canvas') as HTMLCanvasElement,
+    src: 'https://lottie.host/embed/6fe8bf34-2e43-46ea-802d-648c15423de4/nB8OjhiO0n.lottie',
+  });
 </script>
