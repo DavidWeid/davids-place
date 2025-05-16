@@ -43,7 +43,7 @@ const linkClasses =
 const navItems: string[] = Object.keys(obj).map(
   (key) =>
     `<li class='flex items-center'>
-      ${pathname === obj[key] ? `<span class="${nonLinkClasses}">${key}</span>` : `<a role="link" href="${obj[key]}" class="${linkClasses}">${key}</a>`}
+      ${pathname === obj[key] ? `<span class="${nonLinkClasses}">${key}</span>` : `<a href="${obj[key]}" class="${linkClasses}">${key}</a>`}
   </li>`,
 );
 ---
@@ -69,7 +69,6 @@ const navItems: string[] = Object.keys(obj).map(
           <span class="px-4 py-2">David’s Place</span>
         ) : (
           <a
-            role="link"
             {...homepageLinkAttributes}
             class="group-hover:text-green-emerald px-4 py-2 transition-all group-hover:scale-110"
             aria-label="David’s Place Homepage"
