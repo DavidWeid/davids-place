@@ -82,11 +82,30 @@
   }
 }
 
+.reveal {
+  animation: reveal linear forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+@keyframes reveal {
+  0% {
+    scale: 0.8;
+    opacity: 0;
+  }
+
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion) {
   .vibrate,
   .green-shimmer,
   .green-blue-shimmer-slow,
-  .wave {
+  .wave,
+  .reveal {
     animation: none !important;
   }
 }
