@@ -177,12 +177,12 @@ const heroData = [
         <slot />
       </section>
 
-      <span class="block pb-16"></span>
+      {!source && <span class="block pb-[200px]" />}
 
       {
         source && (
           <>
-            <section class="opacity-90">
+            <section class="pt-20 opacity-90">
               <h2>See the original recipe</h2>
               <span class="block pb-4" />
               <a
@@ -198,7 +198,7 @@ const heroData = [
                 {source}
               </a>
             </section>
-            <span class="block pb-16" />
+            <span class="block pb-[200px]" />
           </>
         )
       }

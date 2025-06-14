@@ -29,11 +29,11 @@ boxShadowClass = boxShadowClass.slice(0, -1);
 
   .star {
     position: absolute;
-    top: calc(1/2 * 100%);
-    left: calc(1/2 * 100%);
+    top: calc(1 / 2 * 100%);
+    left: calc(1 / 2 * 100%);
     width: calc(var(--spacing) * 0.5);
     height: calc(var(--spacing) * 0.5);
-    background-color: var(--color-light)
+    background-color: var(--color-light);
     border-radius: calc(infinity * 1px);
     box-shadow: var(--boxShadowClass);
     animation: zoom 10s alternate infinite;
@@ -58,7 +58,7 @@ boxShadowClass = boxShadowClass.slice(0, -1);
 <section class="background-space overflow-hidden">
   <span class="star"></span>
   <div
-    class="container h-full flex flex-col justify-center items-center text-center text-light"
+    class="text-light container flex h-full flex-col items-center justify-center text-center"
   >
     <h1 set:html={title} />
 
