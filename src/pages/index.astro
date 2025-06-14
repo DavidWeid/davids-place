@@ -13,9 +13,10 @@ const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'Portfolio Home';
 
 const heroEyebrow = '<span class="wave">👋</span>Hi there';
-const heroTitle = '<span class="text-gradient">David Weid II</span>';
+const heroTitle =
+  '<span class="text-gradient">David <span class="whitespace-nowrap">Weid II</span></span>';
 const heroDescription =
-  'I am a Senior Front-End Web Developer Engineer with 5+ years of experience building and optimizing high-performance websites using JavaScript, TypeScript, and modern frameworks. I am a calm, collaborative communicator with a proven ability to lead projects, mentor teammates, and drive significant improvements in site performance and user experience, who values diversity and user-centric design. The reason I am a developer is to create positive interactions between users and technology.';
+  'An experienced Front-End Web Developer.<br/>A proven communicator and leader.<br/>An optimizer and problem solver.';
 
 const externalLinks = [
   {
@@ -95,41 +96,52 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
 <Base title={pageTitle} indexForSearch={false}>
   <div class="dark:bg-medium bg-white">
-    <span class="block pb-20"></span>
+    <span class="tablet:pb-20 block pb-10"></span>
 
     <section class="container">
-      <div class="tablet:max-w-[85ch] mx-auto">
-        <span
-          set:html={heroEyebrow}
-          class="font-sans-syne flex gap-1.5 text-xl"
-        />
-        <h1 set:html={heroTitle} class="text-gradient text-5xl" />
-        <span class="block pb-10"></span>
-        <p set:html={heroDescription} class="text-lg" />
-        <span class="block pb-10"></span>
-        <Image
-          id="headshot"
-          loading="eager"
-          src={headshot}
-          alt="David Weid II"
-          title="David Weid II"
-          class="vibrate h-w-40 border-blue-dark dark:border-green-emerald mx-auto w-40 rounded-full border"
-          width={480}
-          height={480}
-          densities={[1.5, 2, 2.5, 3]}
-        />
-        <Image
-          id="cat-icon"
-          src={catIcon}
-          alt="Cat"
-          loading="lazy"
-          width={480}
-          height={480}
-          class="h-w-40 border-blue-dark dark:border-green-emerald mx-auto hidden w-40 rounded-full border"
-        />
+      <div
+        class="tablet:flex tablet:justify-center tablet:items-center desktop:items-start tablet:gap-x-14 grid grid-cols-1 gap-x-10 gap-y-5"
+      >
+        <div class="col-span-1 flex flex-col gap-5">
+          <span
+            set:html={heroEyebrow}
+            class="font-sans-syne tablet:text-3xl flex gap-1.5 text-2xl"
+          />
+          <h1
+            set:html={heroTitle}
+            class="text-gradient tablet:text-9xl text-5xl"
+          />
+          <p
+            set:html={heroDescription}
+            class="tablet:text-2xl text-lg leading-8"
+          />
+        </div>
+
+        <div class="col-span-1">
+          <Image
+            id="headshot"
+            loading="eager"
+            src={headshot}
+            alt="David Weid II"
+            title="David Weid II"
+            class="vibrate border-blue-dark dark:border-green-emerald tablet:max-w-[500px] max-w-[300px] rounded-2xl border"
+            width={headshot.width / 2}
+            height={headshot.height / 2}
+            densities={[1.5, 2, 2.5, 3]}
+          />
+          <Image
+            id="cat-icon"
+            src={catIcon}
+            alt="Cat"
+            loading="lazy"
+            width={catIcon.width}
+            height={catIcon.height}
+            class="border-blue-dark dark:border-green-emerald hidden rounded-2xl border"
+          />
+        </div>
       </div>
     </section>
-    <span class="block pb-20"></span>
+    <span class="tablet:pb-20 block pb-10"></span>
     <SvgGenerator svg="general/layered-waves-haikei" />
   </div>
 
@@ -299,7 +311,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
           <canvas
             id="dotlottie-canvas"
-            class="desktop:w-1/6 aspect-square h-fit w-4/5"></canvas>
+            class="desktop:w-1/12 aspect-square h-fit w-1/4"></canvas>
         </div>
       </NoteBlock>
 
@@ -377,10 +389,20 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 <script>
   import { DotLottie } from '@lottiefiles/dotlottie-web';
 
-  const dotLottie = new DotLottie({
-    autoplay: true,
-    loop: true,
-    canvas: document.querySelector('#dotlottie-canvas') as HTMLCanvasElement,
-    src: 'https://lottie.host/67761132-c9e4-43d4-b17f-04e416915d3d/BMXQKoVtaQ.json',
+  document.addEventListener('astro:page-load', () => {
+    const dotLottieCanvas = document.querySelector(
+      '#dotlottie-canvas',
+    ) as HTMLCanvasElement;
+
+    if (!dotLottieCanvas) {
+      return;
+    }
+
+    const dotLottie = new DotLottie({
+      autoplay: true,
+      loop: true,
+      canvas: dotLottieCanvas,
+      src: 'https://lottie.host/67761132-c9e4-43d4-b17f-04e416915d3d/BMXQKoVtaQ.json',
+    });
   });
 </script>
