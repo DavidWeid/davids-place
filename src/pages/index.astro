@@ -127,16 +127,16 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           />
         </div>
 
-        <div class="col-span-1">
+        <div class="tablet:max-w-[400px] col-span-1 max-w-[250px] grow">
           <Image
             id="headshot"
             loading="eager"
             src={headshotImage.src}
             alt="David Weid II"
             title="David Weid II"
-            class="breathe gradient-border tablet:max-w-[400px] max-w-[250px] rounded-2xl before:rounded-2xl"
+            class="breathe gradient-border rounded-2xl before:rounded-2xl"
             width={400}
-            height={400}
+            height={399}
             densities={[1.5, 2, 2.5, 3]}
           />
           <Image
