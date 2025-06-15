@@ -10,7 +10,7 @@ import NoteBlock from '@components/NoteBlock.astro';
 import headshot from '@images/general/david-weid-headshot-3.jpg';
 import imageCat from '@images/games/cat-500.png';
 
-import SvgLayeredWavesHaikei from '@images/general/layered-waves-haikei.svg';
+import SvgLowPolyGridHaikei from '@images/general/low-poly-grid-haikei.svg';
 import IconExternalLink from '@images/icons/external-link.svg';
 import IconDdWhite from '@images/icons/dd_icon_white.svg';
 import IconDdRgb from '@images/icons/dd_icon_purple.svg';
@@ -128,7 +128,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
         </div>
 
         <div
-          class="gradient-border col-span-1 aspect-square w-[400px] max-w-full rounded-2xl before:rounded-2xl"
+          class="gradient-border col-span-1 aspect-square w-[400px] max-w-full rounded-2xl"
         >
           <Image
             id="headshot"
@@ -155,7 +155,10 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
       </div>
     </section>
     <span class="tablet:pb-20 block pb-10"></span>
-    <SvgLayeredWavesHaikei />
+
+    <div class="h-4 overflow-hidden">
+      <SvgLowPolyGridHaikei class="" />
+    </div>
   </div>
 
   <span class="block pb-20"></span>

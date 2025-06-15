@@ -19,13 +19,15 @@ const { src, ...attrs } = Astro.props;
 
 const classes: string = attrs.class
   ? attrs.class
-  : 'reveal max-w-(--breakpoint-tablet) mx-auto rounded-lg border-2 border-medium/80';
+  : 'reveal max-w-(--breakpoint-tablet) mx-auto my-0! rounded-lg border-medium/80';
 ---
 
-<Image
-  src={src}
-  {...attrs}
-  width={src.width / 2}
-  densities={[1.5, 2]}
-  class={classes}
-/>
+<div class="gradient-border rounded-lg">
+  <Image
+    src={src}
+    {...attrs}
+    width={src.width / 2}
+    densities={[1.5, 2]}
+    class={classes}
+  />
+</div>
