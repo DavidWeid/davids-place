@@ -72,6 +72,13 @@ const image = await getImage({
     <link rel="canonical" href={urlString} />
     <link rel="sitemap" href={`${baseURL}sitemap-index.xml`} />
 
+    <!-- Preload Homepage Hero Image -->
+    {
+      !isDev && baseURL === Astro.url.pathname && (
+        <link rel="preload" as="image" href={image.src} type="image/webp" />
+      )
+    }
+
     <!-- Preload fonts -->
     {
       !isDev && (
@@ -97,17 +104,9 @@ const image = await getImage({
             type="font/woff2"
             crossorigin="anonymous"
           />
-          <link
-            rel="preload"
-            as="image"
-            href={image.src}
-            type="image/webp"
-          />
         </>
       )
     }
-
-    <!--  -->
 
     <link rel="icon" type="image/ico" href=`${baseURL}favicon.ico` />
     <link

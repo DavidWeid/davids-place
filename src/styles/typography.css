@@ -53,7 +53,7 @@
 }
 
 .gradient-border {
-  @apply p-px relative before:absolute before:inset-0 before:border before:border-transparent before:mask-exclude before:content-[''];
+  @apply relative p-0.5 before:absolute before:inset-0 before:border before:border-transparent before:mask-exclude before:content-[''];
 
   background: linear-gradient(
       140deg,

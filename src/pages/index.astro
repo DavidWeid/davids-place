@@ -127,7 +127,9 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           />
         </div>
 
-        <div class="col-span-1 w-[400px] max-w-full">
+        <div
+          class="gradient-border breathe col-span-1 aspect-square w-[400px] max-w-full rounded-2xl before:rounded-2xl"
+        >
           <Image
             id="headshot"
             loading="eager"
@@ -135,10 +137,10 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             src={headshotImage.src}
             alt="David Weid II"
             title="David Weid II"
-            class="breathe gradient-border w-[400px] max-w-full rounded-2xl before:rounded-2xl"
-            width={400}
-            height={400}
+            width={396}
+            height={396}
             densities={[1.5, 2, 2.5, 3]}
+            class="rounded-2xl"
           />
           <Image
             id="cat-icon"
@@ -147,7 +149,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             loading="lazy"
             width={imageCat.width}
             height={imageCat.height}
-            class="gradient-border tablet:max-w-[400px] hidden max-w-[250px] rounded-2xl before:rounded-2xl"
+            class="hidden rounded-2xl"
           />
         </div>
       </div>
