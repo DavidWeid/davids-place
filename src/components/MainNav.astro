@@ -213,21 +213,25 @@ const navItems: string[] = Object.keys(obj).map(
 </script>
 
 <script is:inline>
-  function applyFontSize() {
+  function applyFontSize(newDocument) {
     // Set font size based on local storage or default
-    const root = document.documentElement;
+    const root = newDocument?.documentElement || document.documentElement;
+    const targetDocument = newDocument || document;
     const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
     const storedFontSize = localStorage.fontSize;
 
     if (storedFontSize && storedFontSize !== currentFontSize) {
       root.style.fontSize = `${storedFontSize}px`;
-      document.getElementById('font-size').textContent = storedFontSize;
+      targetDocument.getElementById('font-size').textContent = storedFontSize;
     } else {
-      document.getElementById('font-size').textContent = currentFontSize;
+      targetDocument.getElementById('font-size').textContent = currentFontSize;
     }
   }
 
-  document.addEventListener('astro:after-swap', applyFontSize);
+  document.addEventListener('astro:before-swap', (event) => {
+    applyFontSize(event.newDocument);
+  });
+
   document.addEventListener('astro:page-load', () => {
     document.getElementById('font-decrease')?.addEventListener('click', () => {
       const root = document.documentElement;
