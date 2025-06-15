@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import astroLogoSpread from '@images/astro/astro-9.svg';
-import astroLogoBook from '@images/astro/astro-6.svg';
-import astroLogoGame from '@images/astro/astro-10.svg';
-import astroLogoPencil from '@images/astro/astro-8.svg';
-import astroLogoDesk from '@images/astro/astro-3.svg';
+import AstroLogoSpread from '@images/astro/astro-9.svg';
+import AstroLogoBook from '@images/astro/astro-6.svg';
+import AstroLogoGame from '@images/astro/astro-10.svg';
+import AstroLogoPencil from '@images/astro/astro-8.svg';
+import AstroLogoDesk from '@images/astro/astro-3.svg';
 
 interface NavigationLinks {
   [key: string]: string;
@@ -20,16 +20,16 @@ const obj: NavigationLinks = {
   // blog: `${baseURL}blog/`
 };
 
-let astroLogo = astroLogoSpread;
+let AstroLogo = AstroLogoSpread;
 
 if (pathname.includes('cookbook')) {
-  astroLogo = astroLogoBook;
+  AstroLogo = AstroLogoBook;
 } else if (pathname.includes('games')) {
-  astroLogo = astroLogoGame;
+  AstroLogo = AstroLogoGame;
 } else if (pathname.includes('blog')) {
-  astroLogo = astroLogoPencil;
+  AstroLogo = AstroLogoPencil;
 } else if (pathname.includes('style')) {
-  astroLogo = astroLogoDesk;
+  AstroLogo = AstroLogoDesk;
 }
 
 // If on homepage, don't include the 'href' attribute on the link element
@@ -55,11 +55,7 @@ const navItems: string[] = Object.keys(obj).map(
     <a href="#main" class="skip-link">Skip to content</a>
 
     <div class="group flex items-center">
-      <Image
-        loading="eager"
-        src={astroLogo}
-        alt="David’s Place Logo - An astronaut"
-        title="David’s Place Logo - An astronaut"
+      <AstroLogo
         class={pathname === baseURL
           ? 'h-10 tablet:h-12 w-auto'
           : 'h-10 tablet:h-12 w-auto group-hover:-rotate-12 transition-all'}
