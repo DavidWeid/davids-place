@@ -6,6 +6,7 @@ import '@fontsource-variable/reddit-sans';
 import '@fontsource-variable/reddit-sans/wght-italic.css';
 
 import generalOGImage from '@images/og/og-davids-place.png';
+import headshot from '@images/general/david-weid-headshot-2.jpg';
 import { ClientRouter } from 'astro:transitions';
 import MainNav from '@components/MainNav.astro';
 import MainFooter from '@components/MainFooter.astro';
@@ -89,7 +90,7 @@ if (classes !== '') {
           <link
             rel="preload"
             as="image"
-            href="/davids-place/_astro/david-weid-headshot-2.3UgeIw4n_Z1mgFF4.webp"
+            href={headshot.src}
             type="image/webp"
             crossorigin="anonymous"
           />
