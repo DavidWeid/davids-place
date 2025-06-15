@@ -1,10 +1,10 @@
-.vibrate {
+.breathe {
   transform: scale(1);
   box-shadow: 0 0 0 rgba(0, 0, 0, 1);
-  animation: vibrate 4s infinite;
+  animation: breathe 4s infinite;
 }
 
-@keyframes vibrate {
+@keyframes breathe {
   0% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(0, 3, 3, 0.7);
@@ -101,7 +101,7 @@
 }
 
 @media (prefers-reduced-motion) {
-  .vibrate,
+  .breathe,
   .green-shimmer,
   .green-blue-shimmer-slow,
   .wave,
