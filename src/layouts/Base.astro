@@ -7,6 +7,7 @@ import '@fontsource-variable/reddit-sans/wght-italic.css';
 
 import generalOGImage from '@images/og/og-davids-place.png';
 import headshot from '@images/general/david-weid-headshot-2.jpg';
+import { hashTransform } from 'astro/assets/utils';
 import { ClientRouter } from 'astro:transitions';
 import MainNav from '@components/MainNav.astro';
 import MainFooter from '@components/MainFooter.astro';
@@ -51,6 +52,23 @@ if (indexForSearch) {
 if (classes !== '') {
   mainElementAttributes.class = classes;
 }
+
+function generateTransformHash() {
+  const transform = {
+    src: headshot.src,
+    width: 400,
+    height: 400,
+    format: 'jpg',
+  };
+
+  const imageService = 'astroImageService';
+  const propertiesToHash = ['width', 'height', 'format'];
+
+  // Generate the hash based on the transform, image service, and properties
+  const hash = hashTransform(transform, imageService, propertiesToHash);
+
+  return hash;
+}
 ---
 
 <!doctype html>
@@ -90,7 +108,7 @@ if (classes !== '') {
           <link
             rel="preload"
             as="image"
-            href={headshot.src}
+            href={`"/davids-place/_astro/david-weid-headshot-2.3UgeIw4n_${generateTransformHash()}.webp`}
             type="image/webp"
             crossorigin="anonymous"
           />
