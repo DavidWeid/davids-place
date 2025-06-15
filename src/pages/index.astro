@@ -128,7 +128,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
         </div>
 
         <div
-          class="gradient-border breathe col-span-1 aspect-square w-[400px] max-w-full rounded-2xl before:rounded-2xl"
+          class="gradient-border col-span-1 aspect-square w-[400px] max-w-full rounded-2xl before:rounded-2xl"
         >
           <Image
             id="headshot"
@@ -140,7 +140,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             width={396}
             height={396}
             densities={[1.5, 2, 2.5, 3]}
-            class="rounded-2xl"
+            class="relative z-10 rounded-2xl"
           />
           <Image
             id="cat-icon"
@@ -381,8 +381,8 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
     }
 
     if (counter === 12) {
-      headshot?.classList.replace('breathe', 'hidden');
-      imageCat?.classList.replace('hidden', 'breathe');
+      headshot?.classList.add('hidden');
+      imageCat?.classList.remove('hidden');
     }
 
     const randomFilter =
