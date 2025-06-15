@@ -7,7 +7,7 @@ import Card from '@components/Card.astro';
 import Badge from '@components/Badge.astro';
 import NoteBlock from '@components/NoteBlock.astro';
 
-import headshot from '@images/general/david-weid-headshot-2.jpg';
+import headshot from '@images/general/david-weid-headshot-3.jpg';
 import imageCat from '@images/games/cat-500.png';
 
 import SvgLayeredWavesHaikei from '@images/general/layered-waves-haikei.svg';
@@ -127,16 +127,17 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           />
         </div>
 
-        <div class="tablet:max-w-[400px] col-span-1 max-w-[250px] grow">
+        <div class="col-span-1 w-[400px] max-w-full">
           <Image
             id="headshot"
             loading="eager"
+            fetchpriority="high"
             src={headshotImage.src}
             alt="David Weid II"
             title="David Weid II"
-            class="breathe gradient-border rounded-2xl before:rounded-2xl"
+            class="breathe gradient-border w-[400px] max-w-full rounded-2xl before:rounded-2xl"
             width={400}
-            height={399}
+            height={400}
             densities={[1.5, 2, 2.5, 3]}
           />
           <Image
