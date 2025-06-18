@@ -1,5 +1,7 @@
 ---
-import SvgGenerator from '@components/SvgGenerator.astro';
+import IconGithub from '@images/icons/github.svg';
+import IconLinkedin from '@images/icons/linkedin.svg';
+import IconEmail from '@images/icons/email.svg';
 
 const baseURL = import.meta.env.BASE_URL;
 const year: number = new Date().getFullYear();
@@ -29,9 +31,8 @@ const year: number = new Date().getFullYear();
           <span class="sr-only"
             >View my GitHub Profile (Redirects to GitHub.com)</span
           >
-          <SvgGenerator
-            svg="icons/github"
-            className="fill-light group-hover:fill-green-emerald transition-all group-hover:scale-125"
+          <IconGithub
+            class="fill-light group-hover:fill-green-emerald transition-all group-hover:scale-125"
           />
         </a>
       </li>
@@ -45,9 +46,8 @@ const year: number = new Date().getFullYear();
           <span class="sr-only"
             >View my LinkedIn Profile (Redirects to LinkedIn.com)</span
           >
-          <SvgGenerator
-            svg="icons/linkedin"
-            className="fill-light group-hover:fill-green-emerald transition-all group-hover:scale-125"
+          <IconLinkedin
+            class="fill-light group-hover:fill-green-emerald transition-all group-hover:scale-125"
           />
         </a>
       </li>
@@ -61,9 +61,8 @@ const year: number = new Date().getFullYear();
           <span class="sr-only"
             >Send me an email (Open email via OS settings)</span
           >
-          <SvgGenerator
-            svg="icons/email"
-            className="fill-light group-hover:fill-green-emerald transition-all group-hover:scale-125"
+          <IconEmail
+            class="fill-light group-hover:fill-green-emerald transition-all group-hover:scale-125"
           />
         </a>
       </li>

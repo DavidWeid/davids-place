@@ -1,6 +1,9 @@
 ---
 import Badge from '@components/Badge.astro';
-import SvgGenerator from '@components/SvgGenerator.astro';
+import IconExternalLinkBlue from '@images/icons/external-link-blue.svg';
+import IconExternalLinkGreen from '@images/icons/external-link-green.svg';
+import IconArrowBubblesRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
+import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
 interface Props {
   title: string;
@@ -28,25 +31,13 @@ let target =
         {
           target === '_blank' ? (
             <>
-              <SvgGenerator
-                svg="icons/external-link-blue"
-                className="hidden dark:block w-6 h-6 group-hover:scale-[1.2] transition-transform duration-500"
-              />
-              <SvgGenerator
-                svg="icons/external-link-green"
-                className="block dark:hidden w-6 h-6 group-hover:scale-[1.2] transition-transform duration-500"
-              />
+              <IconExternalLinkBlue class="hidden h-6 w-6 transition-transform duration-500 group-hover:scale-[1.2] dark:block" />
+              <IconExternalLinkGreen class="block h-6 w-6 transition-transform duration-500 group-hover:scale-[1.2] dark:hidden" />
             </>
           ) : (
             <>
-              <SvgGenerator
-                svg="icons/arrow-bubbles-right-blue"
-                className="block dark:hidden w-6 h-6 group-hover:scale-125 group-hover:translate-x-2 transition-transform duration-500"
-              />
-              <SvgGenerator
-                svg="icons/arrow-bubbles-right-green"
-                className="hidden dark:block w-6 h-6 group-hover:scale-125 group-hover:translate-x-2 transition-transform duration-500"
-              />
+              <IconArrowBubblesRightBlue class="block h-6 w-6 transition-transform duration-500 group-hover:translate-x-2 group-hover:scale-125 dark:hidden" />
+              <IconArrowBubblesRightGreen class="hidden h-6 w-6 transition-transform duration-500 group-hover:translate-x-2 group-hover:scale-125 dark:block" />
             </>
           )
         }

@@ -2,6 +2,7 @@
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
+import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
 const astroImageFiles = import.meta.glob('../../images/astro/*.svg');
 const iconImageFiles = import.meta.glob('../../images/icons/*.svg');
@@ -81,9 +82,8 @@ const orderClasses: { [key: string]: string } = {
       <summary
         class="group tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
         ><h2 class="inline">Custom Colors</h2>
-        <SvgGenerator
-          svg="icons/arrow-bubbles-right-green"
-          className="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
+        <IconArrowBubblesRightGreen
+          class="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
         /></summary
       >
       <div
@@ -127,9 +127,8 @@ const orderClasses: { [key: string]: string } = {
       <summary
         class="group tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
         ><h2 class="inline">Astro SVGs</h2>
-        <SvgGenerator
-          svg="icons/arrow-bubbles-right-green"
-          className="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
+        <IconArrowBubblesRightGreen
+          class="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
         /></summary
       >
       <div
@@ -165,9 +164,8 @@ const orderClasses: { [key: string]: string } = {
       <summary
         class="group tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
         ><h2 class="inline">Icon SVGs</h2>
-        <SvgGenerator
-          svg="icons/arrow-bubbles-right-green"
-          className="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
+        <IconArrowBubblesRightGreen
+          class="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
         /></summary
       >
       <div

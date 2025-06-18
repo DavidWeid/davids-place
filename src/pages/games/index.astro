@@ -12,7 +12,8 @@ import { Image } from 'astro:assets';
 import catIcon from '@images/games/cat-500.png';
 import drinkIcon from '@images/games/drink-500.png';
 import cupcakeIcon from '@images/games/cupcake-500.png';
-import SvgGenerator from '@components/SvgGenerator.astro';
+import IconExternalLinkBlue from '@images/icons/external-link-blue.svg';
+import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
 const pageTitle = 'Gaming Center';
 const heroTitle =
@@ -108,7 +109,7 @@ const codingStats = [
           >
             {playerData.personaname}
             <span class="sr-only">View Steam profile (Opens in a new tab)</span>
-            <SvgGenerator svg="icons/external-link-blue" className="h-6 w-6" />
+            <IconExternalLinkBlue class="h-6 w-6" />
           </a>
         </h2>
 
@@ -177,10 +178,9 @@ const codingStats = [
               class="transition-transform duration-500 group-hover:translate-y-1.5"
             >
               <span id="button-text" class="mr-1">VIEW FULL PROFILE</span>
-              <SvgGenerator
+              <IconArrowBubblesRightGreen
                 id="button-icon"
-                svg="icons/arrow-bubbles-right-green"
-                className="inline h-4 w-4 rotate-90 transition-transform duration-500 group-hover:scale-125"
+                class="inline h-4 w-4 rotate-90 transition-transform duration-500 group-hover:scale-125"
               />
             </span>
           </button>

@@ -2,7 +2,7 @@
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import ImageRecipe from '@components/ImageRecipe.astro';
-import SvgGenerator from '@components/SvgGenerator.astro';
+import IconExternalLink from '@images/icons/external-link.svg';
 
 interface Props {
   frontmatter: {
@@ -191,10 +191,7 @@ const heroData = [
                 rel="noopener noreferrer"
                 class="content-link-gradient flex w-fit items-center gap-1 text-sm"
               >
-                <SvgGenerator
-                  svg="icons/external-link"
-                  className="h-4 w-4 dark:fill-light"
-                />
+                <IconExternalLink class="dark:fill-light h-4 w-4" />
                 {source}
               </a>
             </section>
