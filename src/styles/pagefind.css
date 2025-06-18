@@ -12,7 +12,7 @@
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__results-area {
-  @apply border-dark dark:border-light bg-light dark:bg-medium text-dark dark:text-light rounded-lg border px-4;
+  @apply border-dark dark:border-light bg-light dark:bg-medium text-dark dark:text-light rounded-6-8-12 border px-4;
 }
 
 .pagefind-ui .pagefind-ui__form .pagefind-ui__result {

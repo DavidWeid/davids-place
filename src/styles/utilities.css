@@ -1,0 +1,11 @@
+@utility container {
+  @apply tablet:px-8 laptop:px-9 desktop:px-10 desktopxl:px-12 desktopxl:max-w-(--breakpoint-desktopxl) mx-auto w-full max-w-full! px-4;
+}
+
+@utility rounded-6-8-12 {
+  @apply tablet:rounded-lg desktop:rounded-xl rounded-md;
+}
+
+@utility rounded-8-12-16 {
+  @apply tablet:rounded-xl desktop:rounded-2xl rounded-lg;
+}
