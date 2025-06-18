@@ -2,29 +2,36 @@
 interface Props {
   title: string;
   description: string | null;
+  isCentered?: boolean;
+  classes?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, isCentered = true, classes = '' } = Astro.props;
+
+const alignmentClasses = isCentered ? 'text-center' : 'text-left';
 ---
 
-<section>
+<section class={classes}>
   <div class="container">
-    <span class="laptop:pb-16 desktop:pb-20 block pb-10"></span>
+    <span class="laptop:pb-24 desktop:pb-28 block pb-20"></span>
 
-    <h1 set:html={title} class="text-center" />
+    <h1 set:html={title} class={alignmentClasses} />
 
     {
       description ? (
         <>
           <span class="block pb-8" />
-          <p set:html={description} class="text-center text-xl" />
+          <p
+            set:html={description}
+            class={`${alignmentClasses} desktop:text-2xl text-xl`}
+          />
           <slot />
-          <span class="laptop:pb-16 desktop:pb-20 block pb-10" />
+          <span class="laptop:pb-24 desktop:pb-28 block pb-20" />
         </>
       ) : (
         <>
           <slot />
-          <span class="laptop:pb-16 desktop:pb-20 block pb-10" />
+          <span class="laptop:pb-24 desktop:pb-28 block pb-20" />
         </>
       )
     }

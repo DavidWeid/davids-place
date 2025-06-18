@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '@layouts/Base.astro';
+import Hero from '@components/Hero.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
 import Search from '@components/Search.astro';
 import Card from '@components/Card.astro';
@@ -9,7 +10,8 @@ const baseURL = import.meta.env.BASE_URL;
 const allCookbookRecipes = await getCollection('cookbook');
 
 const pageTitle = 'Cookbook Home';
-const heroTitle = "<span class='wave'>🍜</span>Cookbook";
+const heroTitle =
+  '<span class="flex gap-3"><span class="wave">🍜</span>Cookbook</span>';
 const heroDescription =
   'Browse my collection of recipes gathered over the years.';
 const backgroundSvgs = [
@@ -25,17 +27,12 @@ const backgroundSvgs = [
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={true}>
   <div id="hero" class="dark:bg-medium relative overflow-hidden bg-white">
-    <section class="relative z-10 container">
-      <span class="block pb-28"></span>
-
-      <div class="tablet:max-w-[85ch] mx-auto">
-        <h1 set:html={heroTitle} class="flex gap-3 text-5xl" />
-        <span class="block pb-10"></span>
-        <p set:html={heroDescription} class="text-lg" />
-      </div>
-
-      <span class="block pb-28"></span>
-    </section>
+    <Hero
+      title={heroTitle}
+      description={heroDescription}
+      isCentered={false}
+      classes="relative z-10"
+    />
     {
       backgroundSvgs.map((svg) => (
         <SvgGenerator
