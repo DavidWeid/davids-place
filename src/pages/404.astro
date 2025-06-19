@@ -9,44 +9,45 @@ const pageTitle = '404: Not Found';
 const heroTitle =
   '<span class="block font-mono">Error: <code class="dark-background">404 Not Found</code></span>';
 const heroDescription = 'This is not the page you are looking for.';
-const cardTags = null;
 ---
 
 <Base title={pageTitle} indexForSearch={false} includeSearchComponent={false}>
   <HeroBackground title={heroTitle} description={heroDescription} />
 
   <section class="container">
-    <span class="block pb-8"></span>
+    <div class="laptop:max-w-[90ch] laptop:mx-auto">
+      <span class="block pb-10"></span>
 
-    <NoteBlock>
-      The URL you are trying to access does not exist. Please check the URL and
-      try again, or use the links below to navigate to a different part of the
-      site.
-    </NoteBlock>
+      <NoteBlock>
+        The URL you are trying to access does not exist. Please check the URL
+        and try again, or use the links below to navigate to a different part of
+        the site.
+      </NoteBlock>
 
-    <span class="block pb-8"></span>
+      <span class="block pb-10"></span>
 
-    <ul class="tablet:grid-cols-2 laptop:grid-cols-4 grid grid-cols-1 gap-8">
-      <Card
-        href={`${baseURL}`}
-        title="Homepage"
-        body="Visit the homepage."
-        tags={cardTags}
-      />
-      <Card
-        href={`${baseURL}cookbook/`}
-        title="Cookbook"
-        body="A collection of recipes I have enjoyed."
-        tags={cardTags}
-      />
-      <Card
-        href={`${baseURL}games/`}
-        title="Gaming Center"
-        body="My gamified personal portfolio and bio."
-        tags={cardTags}
-      />
-    </ul>
+      <ul class="tablet:grid-cols-3 grid grid-cols-1 gap-8">
+        <Card
+          href={`${baseURL}`}
+          title="Homepage"
+          body="Visit the homepage."
+          tags={['Intro', 'Resume', 'About']}
+        />
+        <Card
+          href={`${baseURL}cookbook/`}
+          title="Cookbook"
+          body="A collection of recipes I have enjoyed."
+          tags={['Recipes', 'Food', 'Cooking']}
+        />
+        <Card
+          href={`${baseURL}games/`}
+          title="Gaming Center"
+          body="My gamified personal portfolio and bio."
+          tags={['Fun', 'Games', 'Personal']}
+        />
+      </ul>
 
-    <span class="block pb-[200px]"></span>
+      <span class="block pb-[200px]"></span>
+    </div>
   </section>
 </Base>

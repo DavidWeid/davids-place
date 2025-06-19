@@ -8,15 +8,18 @@
     @apply font-bold tracking-wide;
   }
 
-  h1 {
+  h1,
+  .h1 {
     @apply laptop:text-6xl text-5xl;
   }
 
-  h2 {
+  h2,
+  .h2 {
     @apply laptop:text-4xl text-3xl;
   }
 
-  h3 {
+  h3,
+  .h3 {
     @apply laptop:text-2xl text-xl;
   }
 

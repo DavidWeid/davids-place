@@ -161,141 +161,192 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
   <span class="block pb-20"></span>
 
   <section class="container">
-    <div class="tablet:max-w-[85ch] mx-auto">
-      <span class="font-sans-syne flex gap-1.5 text-lg"
-        ><span class="wave">💻</span>Web Developer</span
-      >
-      <h2 class="text-gradient">Learn more about me</h2>
-      <span class="block pb-5"></span>
-      <p class="pb-5 text-lg">
-        I am proficient in building, maintaining, analyzing, and improving
-        complex websites, with a focus on the user, from concept to deployment
-        via a variety of Javascript and templating frameworks. I have been
-        coding since 2019 and currently work at Datadog, based in New York City.
-      </p>
-
-      <p class="pb-5 text-lg">
-        The most important things to me in web development are the people I work
-        with, the quality of the products I produce, and the impact I can have
-        on the user experience. Performance, accessibility, and usability are my
-        top priorities.
-      </p>
-
-      <p class="text-lg">
-        Here are some quick ways to learn more or get in touch:
-      </p>
-    </div>
-
-    <span class="block pb-10"></span>
-
-    <ul
-      class="laptop:max-w-[85ch] laptop:mx-auto tablet:grid-cols-3 grid grid-cols-1 gap-8"
+    <div
+      class="tablet:max-w-[85vw] desktopxl:max-w-[75vw] laptop:grid laptop:grid-cols-6 laptop:gap-x-10 mx-auto flex flex-col"
     >
-      {
-        externalLinks.map((link) => (
-          <Card
-            href={link.link}
-            title={link.title}
-            body={link.description}
-            tags={link.tags}
-          />
-        ))
-      }
-    </ul>
-
-    <span class="block pb-20"></span>
-
-    <div class="tablet:max-w-[85ch] mx-auto">
-      <span class="font-sans-syne flex gap-1.5 text-base"
-        ><span class="wave">💻</span>Front-End</span
-      >
-      <h3 class="text-gradient">My Coding Skills</h3>
-      <p class="pb-10 text-lg">
-        Languages, frameworks, technologies. The front-end landscape is
-        continuously evolving, and that keeps the internet interesting. Things
-        I'm proficient with:
-      </p>
-
-      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5">
-        {
-          skills.map((skill) => (
-            <Badge
-              tag={skill}
-              clickable={false}
-              variant="large"
-              additionalClasses="green-blue-shimmer-slow"
-            />
-          ))
-        }
-      </div>
-    </div>
-
-    <span class="block pb-20"></span>
-
-    <div class="tablet:max-w-[85ch] mx-auto">
-      <span class="font-sans-syne flex items-center gap-1.5 text-base">
-        <IconDdIconWhite id="dd-icon-white" class="hidden h-6 w-6 dark:block" />
-        <IconDdIconRgb id="dd-icon-rgb" class="block h-6 w-6 dark:hidden" />
-        Experience
-      </span>
-      <h3 class="text-gradient">Working at Datadog</h3>
-      <div class="flex flex-wrap justify-between pb-8">
-        <p class="tablet:text-lg">
-          Senior Web Development Engineer (Front-End)
-        </p>
-        <p class="font-mono text-gray-600 dark:text-gray-300">
-          April 2021 – Present
-        </p>
+      <div class="laptop:col-span-6">
+        <h2 class="text-gradient">Learn more about me</h2>
+        <span class="block pb-5"></span>
       </div>
 
-      <p class="pb-2 text-lg">
-        <span class="text-gradient block text-lg font-semibold"
-          >Description:</span
+      <div class="laptop:col-span-2">
+        <h3 class="font-sans-syne h3 flex gap-1.5">
+          <span class="wave">🌐</span>Web Developer
+        </h3>
+        <span class="laptop:hidden block pb-5"></span>
+      </div>
+
+      <div class="laptop:col-span-4">
+        <p class="pb-5 text-lg">
+          I am proficient in building, maintaining, analyzing, and improving
+          complex websites, with a focus on the user, from concept to deployment
+          via a variety of Javascript and templating frameworks. I have been
+          coding since 2019 and currently work at Datadog, based in New York
+          City.
+        </p>
+
+        <p class="pb-5 text-lg">
+          The most important things to me in web development are the people I
+          work with, the quality of the products I produce, and the impact I can
+          have on the user experience. Performance, accessibility, and usability
+          are my top priorities.
+        </p>
+
+        <p class="text-lg">
+          Here are some quick ways to learn more or get in touch:
+        </p>
+
+        <span class="block pb-10"></span>
+
+        <ul class="tablet:grid-cols-3 grid grid-cols-1 gap-8">
+          {
+            externalLinks.map((link) => (
+              <Card
+                href={link.link}
+                title={link.title}
+                body={link.description}
+                tags={link.tags}
+              />
+            ))
+          }
+        </ul>
+
+        <span class="laptop:pb-28 block pb-20"></span>
+      </div>
+
+      <div class="laptop:col-span-2">
+        <h3 class="font-sans-syne h3 flex gap-1.5">
+          <span class="wave">💻</span>Coding Skills
+        </h3>
+        <span class="laptop:hidden block pb-5"></span>
+      </div>
+
+      <div class="laptop:col-span-4">
+        <p class="pb-10 text-lg">
+          Languages, frameworks, technologies. The front-end landscape is
+          continuously evolving, and that keeps the internet interesting. Things
+          I'm proficient with:
+        </p>
+
+        <div
+          class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5"
         >
-        At Datadog, I update, build, and enhance Datadog websites, including <a
-          href="https://datadoghq.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
-          >datadoghq.com <IconExternalLink class="dark:fill-light h-4 w-4" /></a
-        >, <a
-          href="https://docs.datadoghq.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
-          >docs.datadoghq.com <IconExternalLink
-            class="dark:fill-light h-4 w-4"
-          /></a
-        >, and <a
-          href="https://securitylabs.datadoghq.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
-          >securitylabs.datadoghq.com <IconExternalLink
-            class="dark:fill-light h-4 w-4"
-          /></a
-        >. Additionally, I develop tools and processes to help facilitate team
-        efforts, including replatforming Datadog websites from Bootstrap,
-        jQuery, and HugoSSG to TailwindCSS, AstroJS, and DatoCMS.
-      </p>
-      <p class="text-lg">
-        I work closely with Marketing, Brand Design, Community teams and more
-        across the company to enhance Datadog’s standing as a monitoring and
-        security platform. Some of my favorite interpersonal aspects also
-        include onboarding and mentoring new teammates, helping them to
-        integrate quickly with both meaningful contributions and an enjoyment of
-        their work.
-      </p>
+          {
+            skills.map((skill) => (
+              <Badge
+                tag={skill}
+                clickable={false}
+                variant="large"
+                additionalClasses="green-blue-shimmer-slow"
+              />
+            ))
+          }
+        </div>
 
-      <span class="block pb-20"></span>
-      <hr class="green-blue-shimmer-slow h-1 border-0" />
+        <span class="laptop:pb-28 block pb-20"></span>
+      </div>
+
+      <div class="laptop:col-span-2">
+        <h3 class="font-sans-syne h3 flex gap-1.5">
+          <span class="wave">💼</span>Work Experience
+        </h3>
+        <span class="laptop:hidden block pb-5"></span>
+      </div>
+
+      <div class="laptop:col-span-4">
+        <p
+          class="text-gradient flex items-center gap-1.5 py-0.5 text-lg font-semibold"
+        >
+          <IconDdIconWhite
+            id="dd-icon-white"
+            class="hidden h-6 w-6 dark:block"
+          />
+          <IconDdIconRgb
+            id="dd-icon-rgb"
+            class="block h-6 w-6 dark:hidden"
+          />Datadog
+        </p>
+
+        <div class="flex flex-wrap justify-between pb-8">
+          <p class="tablet:text-lg">
+            Senior Web Development Engineer (Front-End)
+          </p>
+          <p class="font-mono text-gray-600 dark:text-gray-300">
+            April 2021 – Present
+          </p>
+        </div>
+
+        <p class="pb-5 text-lg">
+          I joined Datadog in early 2021 as a Software Engineer for the Websites
+          team very early in my career. Since then, I grew into a Software
+          Engineer II and now a Senior Web Development Engineer. As the team has
+          grown, so has my role and responsibilities, allowing me to take on
+          more complex projects and lead initiatives that have a significant
+          impact on the company’s web presence.
+        </p>
+
+        <p class="pb-5 text-lg">
+          At Datadog, I update, build, and enhance Datadog websites, including <a
+            href="https://securitylabs.datadoghq.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
+            >securitylabs.datadoghq.com <span class="sr-only"
+              >(Opens in a new tab)</span
+            >
+            <IconExternalLink class="dark:fill-light h-4 w-4" /></a
+          >, <a
+            href="https://datadoghq.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
+            >datadoghq.com <span class="sr-only">(Opens in a new tab)</span>
+            <IconExternalLink class="dark:fill-light h-4 w-4" /></a
+          >, and <a
+            href="https://docs.datadoghq.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
+            >docs.datadoghq.com <span class="sr-only">(Opens in a new tab)</span
+            >
+            <IconExternalLink class="dark:fill-light h-4 w-4" /></a
+          >. Additionally, I develop tools and processes to help facilitate team
+          efforts, including replatforming Datadog websites from Bootstrap,
+          jQuery, and HugoSSG to TailwindCSS, AstroJS, and DatoCMS.
+        </p>
+        <p class="pb-5 text-lg">
+          I frequently cross-collaborate with Marketing, Brand Design, Community
+          teams and more across the company to enhance Datadog’s standing as a
+          monitoring and security platform. Some of my favorite interpersonal
+          aspects also include onboarding and mentoring new teammates, helping
+          them to integrate quickly with both meaningful contributions and an
+          enjoyment of their work.
+        </p>
+
+        <a
+          href={`${baseURL}david-weid-resume-2025.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="content-link-gradient inline-flex w-fit items-center gap-1 text-lg leading-5"
+          >View a PDF of my resume <span class="sr-only"
+            >(Opens in a new tab)</span
+          >
+          <IconExternalLink class="dark:fill-light h-4 w-4" /></a
+        >
+
+        <span class="laptop:pb-28 block pb-20"></span>
+      </div>
     </div>
   </section>
 
-  <span class="block pb-20"></span>
+  <hr
+    class="green-blue-shimmer-slow tablet:max-w-[85vw] desktopxl:max-w-[75vw] mx-auto h-1 border-0"
+  />
+
+  <span class="laptop:pb-28 block pb-20"></span>
 
   <section class="container">
-    <div class="tablet:max-w-[85ch] mx-auto">
+    <div class="laptop:max-w-[90ch] laptop:mx-auto">
       <span class="font-sans-syne flex gap-1.5 text-lg"
         ><span class="wave">🚀</span>David’s Place</span
       >
@@ -310,9 +361,9 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
               >AstroJS</strong
             >, using <strong>TailwindCSS</strong> and other cool CSS/HTML tricks.
             It is hosted on <strong>GitHub Pages</strong> and is a static website
-            that makes use of Astro's <strong>View transitions</strong>. It's
-            currently using <strong>Astro {astroVersion}</strong> and <strong
-              >Tailwind {tailwindVersion}</strong
+            that makes use of Astro's <strong>View Transitions</strong>. It's
+            currently using <strong>Astro {astroVersion[0]}</strong> and <strong
+              >Tailwind {tailwindVersion[0]}</strong
             >. I hope you find something interesting or even useful here.
           </div>
 
@@ -334,7 +385,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
       <span class="block pb-10"></span>
 
       <ul
-        class="laptop:max-w-[85ch] laptop:mx-auto tablet:grid-cols-3 grid grid-cols-1 gap-8"
+        class="laptop:max-w-[90ch] laptop:mx-auto tablet:grid-cols-3 grid grid-cols-1 gap-8"
       >
         {
           internalLinks.map((link) => (
