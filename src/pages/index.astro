@@ -9,6 +9,7 @@ import NoteBlock from '@components/NoteBlock.astro';
 
 import headshot from '@images/general/david-weid-headshot-3.jpg';
 import imageCat from '@images/games/cat-500.png';
+import imageWebsiteStackWhite from '@images/general/website-stack-white.png';
 
 import IconExternalLink from '@images/icons/external-link.svg';
 import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
@@ -162,7 +163,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
   <section class="container">
     <div
-      class="tablet:max-w-[85vw] desktopxl:max-w-[75vw] laptop:grid laptop:grid-cols-6 laptop:gap-x-10 mx-auto flex flex-col"
+      class="tablet:max-w-[85vw] desktopxl:max-w-[65vw] laptop:grid laptop:grid-cols-6 laptop:gap-x-10 mx-auto flex flex-col"
     >
       <div class="laptop:col-span-6">
         <h2 class="text-gradient">Learn more about me</h2>
@@ -340,7 +341,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
   </section>
 
   <hr
-    class="green-blue-shimmer-slow tablet:max-w-[85vw] desktopxl:max-w-[75vw] mx-auto h-1 border-0"
+    class="green-blue-shimmer-slow tablet:max-w-[85vw] desktopxl:max-w-[65vw] mx-auto h-1 border-0"
   />
 
   <span class="laptop:pb-28 block pb-20"></span>
@@ -367,9 +368,15 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             >. I hope you find something interesting or even useful here.
           </div>
 
-          <canvas
-            id="dotlottie-canvas"
-            class="desktop:w-1/12 aspect-square h-fit w-1/4"></canvas>
+          <Image
+            loading="lazy"
+            src={imageWebsiteStackWhite}
+            alt="Core web technologies"
+            title="Core web technologies"
+            width={100}
+            height={100}
+            class="w-[100px] h-auto"
+          />
         </div>
       </NoteBlock>
 
@@ -442,25 +449,4 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
   headshot?.removeEventListener('click', handleClick);
   headshot?.addEventListener('click', handleClick);
-</script>
-
-<script>
-  import { DotLottie } from '@lottiefiles/dotlottie-web';
-
-  document.addEventListener('astro:page-load', () => {
-    const dotLottieCanvas = document.querySelector(
-      '#dotlottie-canvas',
-    ) as HTMLCanvasElement;
-
-    if (!dotLottieCanvas) {
-      return;
-    }
-
-    const dotLottie = new DotLottie({
-      autoplay: true,
-      loop: true,
-      canvas: dotLottieCanvas,
-      src: 'https://lottie.host/67761132-c9e4-43d4-b17f-04e416915d3d/BMXQKoVtaQ.json',
-    });
-  });
 </script>
