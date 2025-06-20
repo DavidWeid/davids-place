@@ -1,8 +1,8 @@
 ---
 import {
-  getGameNews,
+  // getGameNews,
   getPlayerData,
-  getOwnedGames,
+  // getOwnedGames,
   getRecentGames,
 } from 'src/utilities/steam';
 
@@ -20,44 +20,15 @@ const heroTitle =
   "<span class='text-gradient block pb-10'>Gaming Center</span>";
 const heroDescription = '';
 
-const gameNews = await getGameNews('1284190', 3, 500);
+// const gameNews = await getGameNews('1284190', 3, 500);
 const playerData = await getPlayerData();
-const ownedGames = await getOwnedGames();
+// const ownedGames = await getOwnedGames();
 const mostRecentGames = await getRecentGames();
 const mostRecentPlayedGame = mostRecentGames[0]?.name;
-
-// console.log(ownedGames);
 
 // mostRecentGames = [{ appid, name, playtime_2weeks, playtime_forever, img_icon_url, playtime_deck_forever }, ...]
 
 // playtime is in minutes
-
-const staticStats = [
-  {
-    attribute: 'strength',
-    value: 10,
-  },
-  {
-    attribute: 'dexterity',
-    value: 16,
-  },
-  {
-    attribute: 'constitution',
-    value: 9,
-  },
-  {
-    attribute: 'intelligence',
-    value: 19,
-  },
-  {
-    attribute: 'wisdom',
-    value: 20,
-  },
-  {
-    attribute: 'charisma',
-    value: 11,
-  },
-];
 
 const codingStats = [
   { attribute: 'JavaScript', value: 9 },
@@ -67,20 +38,23 @@ const codingStats = [
   { attribute: 'TailwindCSS', value: 9 },
   { attribute: 'AlpineJS', value: 8 },
   { attribute: 'Hugo (SSG)', value: 8 },
-  { attribute: 'AstroJS', value: 7 },
-  { attribute: '11ty', value: 6 },
+  { attribute: 'AstroJS', value: 8 },
+  { attribute: '11ty', value: 5 },
   { attribute: 'React', value: 5 },
-  { attribute: 'Bootstrap/Materialize', value: 7 },
+  { attribute: 'Bootstrap / Materialize', value: 6 },
   { attribute: 'Express.js', value: 5 },
-  { attribute: 'Typesense', value: 7 },
-  { attribute: 'Algolia', value: 7 },
+  { attribute: 'Typesense', value: 8 },
+  { attribute: 'Algolia', value: 8 },
   { attribute: 'NodeJS', value: 8 },
   { attribute: 'WordPress', value: 5 },
   { attribute: 'Wix', value: 5 },
   { attribute: 'Google Analytics', value: 7 },
   { attribute: 'AWS Amplify', value: 7 },
-  { attribute: 'Datadog', value: 6 },
-  { attribute: 'DatoCMS', value: 7 },
+  { attribute: 'Datadog', value: 7 },
+  { attribute: 'DatoCMS', value: 8 },
+  { attribute: 'Figma', value: 6 },
+  { attribute: 'Animations', value: 6 },
+  { attribute: 'Accessibility', value: 8 },
 ];
 ---
 
@@ -337,28 +311,28 @@ const codingStats = [
             </div>
 
             <div id="panel--stats" class="panel hidden">
-              {
-                codingStats.map((stat) => (
-                  <div id={stat.attribute} class="grid grid-cols-6 gap-2">
-                    <div class="tablet:col-span-1 col-span-2">
-                      <p class="tablet:text-sm font-mono text-xs uppercase">
-                        {stat.attribute}
-                      </p>
+              <div class="flex flex-col gap-2">
+                {
+                  codingStats.map((stat) => (
+                    <div id={stat.attribute} class="grid grid-cols-6 gap-8">
+                      <div class="col-span-2">
+                        <p class="tablet:text-base font-mono text-xs uppercase">
+                          {stat.attribute}
+                        </p>
+                      </div>
+                      <div class="col-span-4 flex items-center gap-4">
+                        <p class="tablet:text-base text-right text-xs uppercase">
+                          {stat.value}
+                        </p>
+                        <span
+                          class={`stat-bar block h-2/3 ${stat.value >= 8 ? 'green-shimmer' : 'blue-shimmer'}`}
+                          style={`width: ${(stat.value / 10) * 100}%`}
+                        />
+                      </div>
                     </div>
-                    <div class="col-span-1">
-                      <p class="tablet:text-sm text-right text-xs uppercase">
-                        {stat.value}
-                      </p>
-                    </div>
-                    <div class="tablet:col-span-4 col-span-3 flex items-center">
-                      <span
-                        class="green-shimmer block h-2/3"
-                        style={`width: ${(stat.value / 20) * 100}%`}
-                      />
-                    </div>
-                  </div>
-                ))
-              }
+                  ))
+                }
+              </div>
             </div>
             <div id="panel--friends" class="panel hidden">FRIENDS</div>
             <div id="panel--recent-games" class="panel hidden">
@@ -448,6 +422,7 @@ const codingStats = [
 
     @media (width >= 1024px) {
       #profile-details.expanded {
+        min-width: 75vw;
         width: max-content;
         max-width: 100%;
       }
@@ -484,9 +459,9 @@ const codingStats = [
       const profilePanels = document.querySelectorAll(
         '#profile-panel div[id^="panel--"]',
       );
-      const greenBars = document.querySelectorAll('.green-shimmer');
+      const statBars = document.querySelectorAll('.stat-bar');
 
-      greenBars.forEach((bar) => {
+      statBars.forEach((bar) => {
         const time = Math.random() * 2 + 1;
         (bar as HTMLElement).style.setProperty(
           '--randomized-animation-time',

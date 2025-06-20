@@ -9,8 +9,6 @@ interface Props {
     title: string;
     description: string;
     source: string;
-    pubDate: Date;
-    author: string;
     image: {
       url: string;
       alt: string;
@@ -30,8 +28,6 @@ const {
   title,
   description,
   source,
-  pubDate,
-  author,
   image,
   tags,
   servings,
@@ -46,6 +42,7 @@ const heroTitle = title;
 const heroDescription = description;
 const heroData = [
   { label: 'PREP TIME', value: prepTime },
+  { label: 'COOK TIME', value: cookTime },
   { label: 'TOTAL TIME', value: totalTime },
   { label: 'SERVINGS', value: servings },
 ];
@@ -264,7 +261,7 @@ const heroData = [
       }
     };
 
-    const handleScreenResize = (e: Event) => {
+    const handleScreenResize = () => {
       if (window.outerWidth >= 1024) {
         // Unpin ingredients (plus update button)
         if (pinButton) {

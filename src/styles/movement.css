@@ -33,6 +33,18 @@
   animation: shimmer var(--randomized-animation-time) infinite linear;
 }
 
+.blue-shimmer {
+  background: linear-gradient(
+    -45deg,
+    theme('colors.blue.dark') 40%,
+    theme('colors.blue.light') 50%,
+    theme('colors.blue.dark') 60%
+  );
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer var(--randomized-animation-time) infinite linear;
+}
+
 .green-blue-shimmer-slow {
   background: linear-gradient(
     -45deg,
@@ -103,6 +115,7 @@
 @media (prefers-reduced-motion) {
   .breathe,
   .green-shimmer,
+  .blue-shimmer,
   .green-blue-shimmer-slow,
   .wave,
   .reveal {

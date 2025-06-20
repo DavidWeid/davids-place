@@ -3,28 +3,28 @@ import avatarDefault from '@images/games/avatar-default.png';
 const steamApiKey = import.meta.env.STEAM_API_KEY || null;
 const steamUserId = import.meta.env.PUBLIC_STEAM_USER_ID || null;
 
-const games = [
-  {
-    title: 'Helldivers 2',
-    id: 553850,
-  },
-  {
-    title: 'Chivalry 2',
-    id: 1824220,
-  },
-  {
-    title: 'Timberborn',
-    id: 1062090,
-  },
-  {
-    title: 'Farthest Frontier',
-    id: 1044720,
-  },
-  {
-    title: 'The Planet Crafter',
-    id: 1284190,
-  },
-];
+// const games = [
+//   {
+//     title: 'Helldivers 2',
+//     id: 553850,
+//   },
+//   {
+//     title: 'Chivalry 2',
+//     id: 1824220,
+//   },
+//   {
+//     title: 'Timberborn',
+//     id: 1062090,
+//   },
+//   {
+//     title: 'Farthest Frontier',
+//     id: 1044720,
+//   },
+//   {
+//     title: 'The Planet Crafter',
+//     id: 1284190,
+//   },
+// ];
 
 export const getGameNews = async (
   appId: string,
