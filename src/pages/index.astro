@@ -3,6 +3,8 @@ import config from 'package.json';
 import { Image, getImage } from 'astro:assets';
 
 import Base from '@layouts/Base.astro';
+import EmojiTextWave from '@components/EmojiTextWave.astro';
+import ExternalLink from '@components/ExternalLink.astro';
 import Card from '@components/Card.astro';
 import Badge from '@components/Badge.astro';
 import NoteBlock from '@components/NoteBlock.astro';
@@ -11,7 +13,6 @@ import headshot from '@images/general/david-weid-headshot-3.jpg';
 import imageCat from '@images/games/cat-500.png';
 import imageWebsiteStackWhite from '@images/general/website-stack-white.png';
 
-import IconExternalLink from '@images/icons/external-link.svg';
 import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
 import IconDdIconRgb from '@images/icons/dd_icon_purple.svg';
 
@@ -25,7 +26,6 @@ const headshotImage = await getImage({
   format: 'webp',
 });
 
-const heroEyebrow = '<span class="wave">👋</span>Hi there';
 const heroTitle =
   '<span class="text-gradient">David <span class="whitespace-nowrap">Weid II</span></span>';
 const heroDescription =
@@ -37,19 +37,19 @@ const externalLinks = [
     title: 'LinkedIn Profile',
     description:
       'View my LinkedIn profile for an idea of my professional background.',
-    tags: null,
+    tags: ['social'],
   },
   {
     link: 'https://github.com/DavidWeid/',
     title: 'GitHub Profile',
     description: 'View my GitHub profile for an idea of my code cadences.',
-    tags: null,
+    tags: ['technical'],
   },
   {
     link: 'mailto:david.weid.2@gmail.com',
     title: 'Contact Me',
     description: 'Email me directly if that is your preference.',
-    tags: null,
+    tags: ['contact'],
   },
 ];
 
@@ -109,17 +109,16 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
 <Base title={pageTitle} indexForSearch={false}>
   <div class="dark:bg-medium bg-white">
-    <span class="tablet:pb-20 block pb-10"></span>
+    <span class="spacer-40-80-80"></span>
 
     <section class="container">
       <div
         class="tablet:flex tablet:justify-center tablet:items-center desktop:items-start tablet:gap-x-14 desktop:gap-x-20 grid grid-cols-1 gap-x-10 gap-y-5"
       >
         <div class="tablet:gap-4 col-span-1 flex flex-col gap-2">
-          <span
-            set:html={heroEyebrow}
-            class="text-display-eyebrow flex gap-1.5"
-          />
+          <span class="text-display-eyebrow">
+            <EmojiTextWave emoji="👋" text="Hi there" />
+          </span>
           <h1 set:html={heroTitle} class="text-gradient text-display" />
           <p
             set:html={heroDescription}
@@ -154,12 +153,12 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
         </div>
       </div>
     </section>
-    <span class="tablet:pb-20 block pb-10"></span>
+    <span class="spacer-40-80-80"></span>
 
     <div class="green-blue-shimmer-slow h-4 w-full"></div>
   </div>
 
-  <span class="block pb-20"></span>
+  <span class="spacer-40-80-80"></span>
 
   <section class="container">
     <div
@@ -171,14 +170,14 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
       </div>
 
       <div class="laptop:col-span-2">
-        <h3 class="font-sans-syne h3 flex gap-1.5">
-          <span class="wave">🌐</span>Web Developer
+        <h3 class="font-sans-syne h3">
+          <EmojiTextWave emoji="🌐" text="Web Developer" />
         </h3>
         <span class="laptop:hidden block pb-5"></span>
       </div>
 
       <div class="laptop:col-span-4">
-        <p class="pb-5 text-lg">
+        <p class="text-p-main">
           I am proficient in building, maintaining, analyzing, and improving
           complex websites, with a focus on the user, from concept to deployment
           via a variety of Javascript and templating frameworks. I have been
@@ -186,18 +185,18 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           City.
         </p>
 
-        <p class="pb-5 text-lg">
+        <p class="text-p-main">
           The most important things to me in web development are the people I
           work with, the quality of the products I produce, and the impact I can
           have on the user experience. Performance, accessibility, and usability
           are my top priorities.
         </p>
 
-        <p class="text-lg">
+        <p class="text-p-main">
           Here are some quick ways to learn more or get in touch:
         </p>
 
-        <span class="block pb-10"></span>
+        <span class="spacer-40"></span>
 
         <ul class="tablet:grid-cols-3 grid grid-cols-1 gap-8">
           {
@@ -212,18 +211,18 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           }
         </ul>
 
-        <span class="laptop:pb-28 block pb-20"></span>
+        <span class="spacer-80-112-112"></span>
       </div>
 
       <div class="laptop:col-span-2">
-        <h3 class="font-sans-syne h3 flex gap-1.5">
-          <span class="wave">💻</span>Coding Skills
+        <h3 class="font-sans-syne h3">
+          <EmojiTextWave emoji="💻" text="Coding Skills" />
         </h3>
         <span class="laptop:hidden block pb-5"></span>
       </div>
 
       <div class="laptop:col-span-4">
-        <p class="pb-10 text-lg">
+        <p class="text-p-main pb-10">
           Languages, frameworks, technologies. The front-end landscape is
           continuously evolving, and that keeps the internet interesting. Things
           I'm proficient with:
@@ -244,12 +243,12 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           }
         </div>
 
-        <span class="laptop:pb-28 block pb-20"></span>
+        <span class="spacer-80-112-112"></span>
       </div>
 
       <div class="laptop:col-span-2">
-        <h3 class="font-sans-syne h3 flex gap-1.5">
-          <span class="wave">💼</span>Work Experience
+        <h3 class="font-sans-syne h3">
+          <EmojiTextWave emoji="💼" text="Work Experience" />
         </h3>
         <span class="laptop:hidden block pb-5"></span>
       </div>
@@ -277,7 +276,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           </p>
         </div>
 
-        <p class="pb-5 text-lg">
+        <p class="text-p-main">
           I joined Datadog in early 2021 as a Software Engineer for the Websites
           team very early in my career. Since then, I grew into a Software
           Engineer II and now a Senior Web Development Engineer. As the team has
@@ -286,36 +285,22 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           impact on the company’s web presence.
         </p>
 
-        <p class="pb-5 text-lg">
-          At Datadog, I update, build, and enhance Datadog websites, including <a
+        <p class="text-p-main">
+          At Datadog, I update, build, and enhance Datadog websites, including <ExternalLink
             href="https://securitylabs.datadoghq.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
-            >securitylabs.datadoghq.com <span class="sr-only"
-              >(Opens in a new tab)</span
-            >
-            <IconExternalLink class="dark:fill-light h-4 w-4" /></a
-          >, <a
+            text="securitylabs.datadoghq.com"
+          />, <ExternalLink
             href="https://datadoghq.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
-            >datadoghq.com <span class="sr-only">(Opens in a new tab)</span>
-            <IconExternalLink class="dark:fill-light h-4 w-4" /></a
-          >, and <a
+            text="datadoghq.com"
+          />, and <ExternalLink
             href="https://docs.datadoghq.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
-            >docs.datadoghq.com <span class="sr-only">(Opens in a new tab)</span
-            >
-            <IconExternalLink class="dark:fill-light h-4 w-4" /></a
-          >. Additionally, I develop tools and processes to help facilitate team
-          efforts, including replatforming Datadog websites from Bootstrap,
+            text="docs.datadoghq.com"
+          />. Additionally, I develop tools and processes to help facilitate
+          team efforts, including replatforming Datadog websites from Bootstrap,
           jQuery, and HugoSSG to TailwindCSS, AstroJS, and DatoCMS.
         </p>
-        <p class="pb-5 text-lg">
+
+        <p class="text-p-main">
           I frequently cross-collaborate with Marketing, Brand Design, Community
           teams and more across the company to enhance Datadog’s standing as a
           monitoring and security platform. Some of my favorite interpersonal
@@ -324,18 +309,14 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
           enjoyment of their work.
         </p>
 
-        <a
-          href={`${baseURL}david-weid-resume-2025.pdf`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="content-link-gradient inline-flex w-fit items-center gap-1 text-lg leading-5"
-          >View a PDF of my resume <span class="sr-only"
-            >(Opens in a new tab)</span
-          >
-          <IconExternalLink class="dark:fill-light h-4 w-4" /></a
-        >
+        <span class="block pb-5"></span>
 
-        <span class="laptop:pb-28 block pb-20"></span>
+        <ExternalLink
+          href={`${baseURL}david-weid-resume-2025.pdf`}
+          text="View a PDF of my resume"
+        />
+
+        <span class="spacer-80-112-112"></span>
       </div>
     </div>
   </section>
@@ -344,16 +325,16 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
     class="green-blue-shimmer-slow tablet:max-w-[85vw] desktopxl:max-w-[65vw] mx-auto h-1 border-0"
   />
 
-  <span class="laptop:pb-28 block pb-20"></span>
+  <span class="spacer-80-112-112"></span>
 
   <section class="container">
     <div class="laptop:max-w-[90ch] laptop:mx-auto">
-      <span class="font-sans-syne flex gap-1.5 text-lg"
-        ><span class="wave">🚀</span>David’s Place</span
-      >
+      <span class="font-sans-syne text-lg">
+        <EmojiTextWave emoji="🚀" text="David’s Place" />
+      </span>
       <h2 class="text-gradient">About this project and website</h2>
 
-      <span class="block pb-10"></span>
+      <span class="spacer-40"></span>
 
       <NoteBlock>
         <div class="desktop:flex-row flex flex-col items-center gap-2">
@@ -380,7 +361,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
         </div>
       </NoteBlock>
 
-      <span class="block pb-10"></span>
+      <span class="spacer-40"></span>
 
       <p class="text-lg">
         Currently, David’s Place acts as a portfolio and visual representation
@@ -389,7 +370,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
         more I want to build, but it’s fun all the same!
       </p>
 
-      <span class="block pb-10"></span>
+      <span class="spacer-40"></span>
 
       <ul
         class="laptop:max-w-[90ch] laptop:mx-auto tablet:grid-cols-3 grid grid-cols-1 gap-8"

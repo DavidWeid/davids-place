@@ -9,3 +9,15 @@
 @utility rounded-8-12-16 {
   @apply tablet:rounded-xl desktop:rounded-2xl rounded-lg;
 }
+
+@utility spacer-40-80-80 {
+  @apply tablet:pb-20 block pb-10;
+}
+
+@utility spacer-40 {
+  @apply block pb-10;
+}
+
+@utility spacer-80-112-112 {
+  @apply laptop:pb-28 block pb-20;
+}

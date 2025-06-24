@@ -58,4 +58,12 @@
 
     font-size: clamp(1.5rem, 2vw, 1.75rem);
   }
+
+  .text-p-main {
+    @apply text-lg;
+  }
+
+  .text-p-main + .text-p-main {
+    @apply pt-5;
+  }
 }

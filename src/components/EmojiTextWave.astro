@@ -1,0 +1,12 @@
+---
+interface Props {
+  emoji: string;
+  text: string;
+}
+
+const { text, emoji } = Astro.props;
+---
+
+<span class="flex gap-1.5">
+  <span class="wave">{emoji}</span>{text}
+</span>

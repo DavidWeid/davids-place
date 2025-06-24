@@ -2,7 +2,7 @@
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import ImageRecipe from '@components/ImageRecipe.astro';
-import IconExternalLink from '@images/icons/external-link.svg';
+import ExternalLink from '@components/ExternalLink.astro';
 
 interface Props {
   frontmatter: {
@@ -182,15 +182,7 @@ const heroData = [
             <section class="pt-20 opacity-90">
               <h2>See the original recipe</h2>
               <span class="block pb-4" />
-              <a
-                href={source}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="content-link-gradient flex w-fit items-center gap-1 text-sm"
-              >
-                <IconExternalLink class="dark:fill-light h-4 w-4" />
-                {source}
-              </a>
+              <ExternalLink href={source} text={source} />
             </section>
             <span class="block pb-[200px]" />
           </>
