@@ -128,30 +128,20 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             >
               <p class="shrink-0">A proven</p>
               <div
-                class="text-container tablet:w-[300px] desktop:w-full relative flex h-9 w-full items-center overflow-hidden"
+                class="text-container tablet:w-[325px] desktop:w-full relative flex h-9 w-full items-center overflow-hidden"
               >
-                <ul class="absolute top-0 left-0">
-                  <li
-                    class="whitespace-nowrap text-blue-600 dark:text-teal-500"
-                  >
-                    Front-End Web Developer
+                <ul class="absolute top-0 left-0 whitespace-nowrap font-semibold">
+                  <li class="text-blue-600 dark:text-teal-500">
+                    Front-End Web Developer...
                   </li>
-                  <li class="whitespace-nowrap text-orange-500">
-                    Communicator
+                  <li class="text-purple-600 dark:text-blue-400">
+                    Accessibility Advocate...
                   </li>
-                  <li
-                    class="whitespace-nowrap text-violet-600 dark:text-pink-500"
-                  >
-                    Leader
+                  <li class="text-orange-500">Problem Solver...</li>
+                  <li class="text-violet-600 dark:text-pink-500">
+                    Communicator...
                   </li>
-                  <li class="whitespace-nowrap text-green-600">
-                    Problem Solver
-                  </li>
-                  <li
-                    class="whitespace-nowrap text-blue-600 dark:text-teal-500"
-                  >
-                    Front-End Web Developer
-                  </li>
+                  <li class="text-green-600">Leader.</li>
                 </ul>
               </div>
             </div>
@@ -431,7 +421,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
 <style>
   .text-container ul {
-    animation: text-scroll 4s 1;
+    animation: text-scroll 4s 1 forwards;
     animation-delay: 1.25s;
   }
 
