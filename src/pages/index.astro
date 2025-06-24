@@ -124,6 +124,43 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             set:html={heroDescription}
             class="tablet:text-2xl text-lg leading-8"
           />
+          <!-- <div class="tablet:text-2xl flex gap-2 text-lg leading-8">
+            <p class="shrink-0">A proven</p>
+            <ul
+              class="text-container relative flex h-9 w-full items-center overflow-hidden"
+            >
+              <li
+                style="--i: 0;"
+                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
+              >
+                Front-End Web Developer
+              </li>
+              <li
+                style="--i: 1;"
+                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
+              >
+                Communicator
+              </li>
+              <li
+                style="--i: 2;"
+                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
+              >
+                Leader
+              </li>
+              <li
+                style="--i: 3;"
+                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
+              >
+                Optimizer
+              </li>
+              <li
+                style="--i: 4;"
+                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
+              >
+                Problem Solver
+              </li>
+            </ul>
+          </div> -->
         </div>
 
         <div
@@ -391,6 +428,25 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
   <span class="block pb-[200px]"></span>
 </Base>
+
+<style>
+  .text-container {
+  }
+
+  .text-container li {
+    animation: text-scroll 1.5s linear infinite;
+    animation-delay: calc(var(--i) * 1.5s);
+  }
+
+  @keyframes text-scroll {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+</style>
 
 <script>
   const headshot = document.getElementById('headshot');
