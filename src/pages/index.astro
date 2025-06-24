@@ -28,8 +28,6 @@ const headshotImage = await getImage({
 
 const heroTitle =
   '<span class="text-gradient">David <span class="whitespace-nowrap">Weid II</span></span>';
-const heroDescription =
-  'An experienced Front-End Web Developer.<br/>A proven communicator and leader.<br/>An optimizer and problem solver.';
 
 const externalLinks = [
   {
@@ -120,47 +118,49 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             <EmojiTextWave emoji="👋" text="Hi there" />
           </span>
           <h1 set:html={heroTitle} class="text-gradient text-display" />
-          <p
-            set:html={heroDescription}
-            class="tablet:text-2xl text-lg leading-8"
-          />
-          <!-- <div class="tablet:text-2xl flex gap-2 text-lg leading-8">
-            <p class="shrink-0">A proven</p>
-            <ul
-              class="text-container relative flex h-9 w-full items-center overflow-hidden"
+
+          <div
+            class="text-container relative h-9 w-full items-center overflow-hidden"
+          >
+            <div
+              id="line-one"
+              class="tablet:text-2xl flex gap-2 text-lg leading-8"
             >
-              <li
-                style="--i: 0;"
-                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
+              <p class="shrink-0">A proven</p>
+              <div
+                class="text-container tablet:w-[300px] desktop:w-full relative flex h-9 w-full items-center overflow-hidden"
               >
-                Front-End Web Developer
-              </li>
-              <li
-                style="--i: 1;"
-                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
-              >
-                Communicator
-              </li>
-              <li
-                style="--i: 2;"
-                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
-              >
-                Leader
-              </li>
-              <li
-                style="--i: 3;"
-                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
-              >
-                Optimizer
-              </li>
-              <li
-                style="--i: 4;"
-                class="absolute top-0 bottom-0 left-0 whitespace-nowrap"
-              >
-                Problem Solver
-              </li>
-            </ul>
-          </div> -->
+                <ul class="absolute top-0 left-0">
+                  <li
+                    class="whitespace-nowrap text-blue-600 dark:text-teal-500"
+                  >
+                    Front-End Web Developer
+                  </li>
+                  <li class="whitespace-nowrap text-orange-500">
+                    Communicator
+                  </li>
+                  <li
+                    class="whitespace-nowrap text-violet-600 dark:text-pink-500"
+                  >
+                    Leader
+                  </li>
+                  <li class="whitespace-nowrap text-green-600">
+                    Problem Solver
+                  </li>
+                  <li
+                    class="whitespace-nowrap text-blue-600 dark:text-teal-500"
+                  >
+                    Front-End Web Developer
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="line-two">
+              <p class="tablet:text-2xl text-lg leading-8">
+                Welcome to my portfolio site
+              </p>
+            </div>
+          </div>
         </div>
 
         <div
@@ -430,17 +430,43 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 </Base>
 
 <style>
-  .text-container {
+  .text-container ul {
+    animation: text-scroll 4s 1;
+    animation-delay: 1.25s;
   }
 
-  .text-container li {
-    animation: text-scroll 1.5s linear infinite;
-    animation-delay: calc(var(--i) * 1.5s);
+  #line-one {
+    animation: text-scroll-single 1s forwards 1;
+    animation-delay: 5.75s;
+  }
+
+  #line-two {
+    animation: text-scroll-single 1s forwards 1;
+    animation-delay: 5.75s;
   }
 
   @keyframes text-scroll {
+    15%,
+    25% {
+      transform: translateY(-20%);
+    }
+    40%,
+    50% {
+      transform: translateY(-40%);
+    }
+    65%,
+    75% {
+      transform: translateY(-60%);
+    }
+    90%,
+    100% {
+      transform: translateY(-80%);
+    }
+  }
+
+  @keyframes text-scroll-single {
     0% {
-      transform: translateY(100%);
+      transform: translateY(0);
     }
     100% {
       transform: translateY(-100%);
