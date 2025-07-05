@@ -61,20 +61,20 @@ const codingStats = [
   title={pageTitle}
   indexForSearch={false}
   includeSearchComponent={false}
-  classes="bg-medium"
+  classes="bg-medium border-light border-b-2"
 >
   <HeroBackground title={heroTitle} description={heroDescription} />
 
-  <section class="bg-medium relative">
+  <section class="bg-medium border-light relative border-t-2">
     <div
       id="player-card-holder"
       class="card-collapsed laptop:scroll-mt-20 relative right-0 bottom-0 left-0 m-auto w-full"
     >
       <div
         id="player-card"
-        class="text-light bg-blue-dark dark:bg-medium shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark flex flex-col items-center px-12 py-6 transition-shadow duration-500"
+        class="text-light bg-blue-dark dark:bg-medium shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark border-light flex flex-col items-center border-2 px-12 py-6 transition-shadow duration-500"
       >
-        <h2>
+        <h2 class="font-sans-syne">
           <a
             href={playerData.profileurl}
             target="_blank"
@@ -87,7 +87,7 @@ const codingStats = [
         </h2>
 
         <p
-          class="flex items-center gap-2 font-mono text-xs tracking-wide uppercase"
+          class="font-sans-syne flex items-center gap-2 text-xs tracking-wide uppercase"
         >
           Status <span class="sr-only">{playerData.stateText}</span>
           <span
@@ -117,7 +117,7 @@ const codingStats = [
               <span class="block pb-4" />
               <p class="text-center text-sm uppercase">
                 In game
-                <span class="bg-green-dark rounded-6-8-12 mt-1.5 block px-2 py-1 font-mono text-xs tracking-wide shadow-2xl shadow-black">
+                <span class="bg-green-dark rounded-6-8-12 font-sans-syne mt-1.5 block px-2 py-1 text-xs tracking-wide shadow-2xl shadow-black">
                   {playerData.gameextrainfo}
                 </span>
               </p>
@@ -130,7 +130,7 @@ const codingStats = [
               <span class="block pb-4" />
               <p class="text-center text-sm uppercase">
                 Most Recently Seen
-                <span class="bg-medium/75 dark:bg-light/25 rounded-6-8-12 mt-1.5 block px-2 py-1 font-mono text-xs tracking-wide shadow-2xl shadow-black">
+                <span class="bg-medium/75 dark:bg-light/25 rounded-6-8-12 font-sans-syne mt-1.5 block px-2 py-1 text-xs tracking-wide shadow-2xl shadow-black">
                   {mostRecentPlayedGame}
                 </span>
               </p>
@@ -145,10 +145,10 @@ const codingStats = [
 
           <button
             id="view-full-profile"
-            class="flex w-full items-center justify-center gap-2 py-4 font-mono text-sm uppercase hover:font-bold"
+            class="font-sans-syne flex w-full items-center justify-center gap-2 py-4 text-sm uppercase"
           >
             <span
-              class="transition-transform duration-500 group-hover:translate-y-1.5"
+              class="transition-transform duration-500 group-hover:scale-110"
             >
               <span id="button-text" class="mr-1">VIEW FULL PROFILE</span>
               <IconArrowBubblesRightGreen
@@ -166,7 +166,7 @@ const codingStats = [
               <li class="whitespace-nowrap">
                 <button
                   id="button--about"
-                  class="border-b-light hover:text-green-emerald active border-b px-4 py-2 uppercase transition-all duration-500"
+                  class="font-sans-syne border-b-light hover:text-green-emerald active border-b px-4 py-2 uppercase transition-all duration-500"
                 >
                   ABOUT
                 </button>
@@ -174,28 +174,28 @@ const codingStats = [
               <li class="whitespace-nowrap">
                 <button
                   id="button--stats"
-                  class="border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
+                  class="font-sans-syne border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
                   >STATS</button
                 >
               </li>
               <li class="hidden whitespace-nowrap">
                 <button
                   id="button--friends"
-                  class="border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
+                  class="font-sans-syne border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
                   >FRIENDS</button
                 >
               </li>
               <li class="hidden whitespace-nowrap">
                 <button
                   id="button--recent-games"
-                  class="border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
+                  class="font-sans-syne border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
                   >RECENT GAMES</button
                 >
               </li>
               <li class="hidden whitespace-nowrap">
                 <button
                   id="button--owned-games"
-                  class="border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
+                  class="font-sans-syne border-b-light hover:text-green-emerald border-b px-4 py-2 uppercase transition-all duration-500"
                   >OWNED GAMES</button
                 >
               </li>
@@ -225,7 +225,7 @@ const codingStats = [
                       class="tablet:w-[50px] tablet:h-[50px] h-[40px] w-[40px] rounded-full"
                     />
                     <p
-                      class="tablet:text-left dark:border-light border-b pb-1 text-center font-mono text-sm"
+                      class="tablet:text-left dark:border-light font-sans-syne border-b pb-1 text-center text-sm"
                     >
                       CAT
                     </p>
@@ -249,7 +249,7 @@ const codingStats = [
                       class="tablet:w-[50px] tablet:h-[50px] h-[40px] w-[40px] rounded-full"
                     />
                     <p
-                      class="tablet:text-left dark:border-light border-b pb-1 text-center font-mono text-sm"
+                      class="tablet:text-left dark:border-light font-sans-syne border-b pb-1 text-center text-sm"
                     >
                       MATCHA LATTE
                     </p>
@@ -273,7 +273,7 @@ const codingStats = [
                       class="tablet:w-[50px] tablet:h-[50px] h-[40px] w-[40px] rounded-full"
                     />
                     <p
-                      class="tablet:text-left dark:border-light border-b pb-1 text-center font-mono text-sm"
+                      class="tablet:text-left dark:border-light font-sans-syne border-b pb-1 text-center text-sm"
                     >
                       JAN 10
                     </p>
@@ -289,7 +289,9 @@ const codingStats = [
                 >
                   Abilities:
                 </p>
-                <p class="tablet:text-base tablet:leading-5 font-mono text-sm">
+                <p
+                  class="tablet:text-base tablet:leading-5 font-sans-syne text-sm"
+                >
                   Technologist, Web developer, Gamer, Cat parent
                 </p>
               </div>
@@ -297,7 +299,7 @@ const codingStats = [
               <span class="block pb-10"></span>
 
               <div class="p-2">
-                <p class="text-base italic">
+                <p class="font-sans-syne text-lg leading-8">
                   "Lord Arbiter", a Capricorn also known as "David", thrives on
                   the web and in the gaming world, but loves spending time with
                   his husband and two cats. He also enjoys gaming with friends,
@@ -315,7 +317,7 @@ const codingStats = [
                   codingStats.map((stat) => (
                     <div id={stat.attribute} class="grid grid-cols-6 gap-8">
                       <div class="col-span-2">
-                        <p class="tablet:text-base font-mono text-xs uppercase">
+                        <p class="tablet:text-base font-sans-syne text-xs uppercase">
                           {stat.attribute}
                         </p>
                       </div>

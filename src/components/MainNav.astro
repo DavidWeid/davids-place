@@ -20,6 +20,9 @@ const obj: NavigationLinks = {
 };
 
 let AstroLogo = AstroLogoSpread;
+const customNavClasses = pathname.includes('about')
+  ? 'border-b-2 border-light'
+  : '';
 
 if (pathname.includes('cookbook')) {
   AstroLogo = AstroLogoBook;
@@ -48,7 +51,7 @@ const navItems: string[] = Object.keys(obj).map(
 ---
 
 <nav
-  class="bg-dark/80 dark:bg-medium/80 text-light laptop:sticky laptop:top-0 tablet:pb-4 z-30 pt-4 pb-2 backdrop-blur-md transition-all"
+  class={`bg-dark/80 dark:bg-medium/80 text-light laptop:sticky laptop:top-0 tablet:pb-4 z-30 pt-4 pb-2 backdrop-blur-md transition-all ${customNavClasses}`}
 >
   <div class="container flex flex-wrap items-center justify-between gap-y-2">
     <a href="#main" class="skip-link">Skip to content</a>
