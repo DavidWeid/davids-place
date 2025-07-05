@@ -1,4 +1,4 @@
-import avatarDefault from '@images/games/avatar-default.png';
+import avatarDefault from '@images/about/avatar-default.png';
 
 const steamApiKey = import.meta.env.STEAM_API_KEY || null;
 const steamUserId = import.meta.env.PUBLIC_STEAM_USER_ID || null;
@@ -48,7 +48,7 @@ export const getPlayerData = async (
 ) => {
   const staticPlayerData = {
     personaname: 'Lord Arbiter',
-    profileurl: '/davids-place/',
+    profileurl: 'https://steamcommunity.com/id/davidweid/',
     avatarfull: avatarDefault,
     personastate: 0,
     stateText: getStateText(0),

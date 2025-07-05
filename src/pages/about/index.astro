@@ -9,15 +9,14 @@ import {
 import Base from '@layouts/Base.astro';
 import HeroBackground from '@components/HeroSpace.astro';
 import { Image } from 'astro:assets';
-import catIcon from '@images/games/cat-500.png';
-import drinkIcon from '@images/games/drink-500.png';
-import cupcakeIcon from '@images/games/cupcake-500.png';
+import catIcon from '@images/about/cat-500.png';
+import drinkIcon from '@images/about/drink-500.png';
+import cupcakeIcon from '@images/about/cupcake-500.png';
 import IconExternalLinkBlue from '@images/icons/external-link-blue.svg';
 import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
-const pageTitle = 'Gaming Center';
-const heroTitle =
-  "<span class='text-gradient block pb-10'>Gaming Center</span>";
+const pageTitle = 'About David';
+const heroTitle = "<span class='text-gradient block pb-10'>Info Center</span>";
 const heroDescription = '';
 
 // const gameNews = await getGameNews('1284190', 3, 500);
@@ -298,7 +297,7 @@ const codingStats = [
               <span class="block pb-10"></span>
 
               <div class="p-2">
-                <p class="text-sm italic">
+                <p class="text-base italic">
                   "Lord Arbiter", a Capricorn also known as "David", thrives on
                   the web and in the gaming world, but loves spending time with
                   his husband and two cats. He also enjoys gaming with friends,
@@ -325,7 +324,7 @@ const codingStats = [
                           {stat.value}
                         </p>
                         <span
-                          class={`stat-bar block h-2/3 ${stat.value >= 8 ? 'green-shimmer' : 'blue-shimmer'}`}
+                          class={`stat-bar block h-4 ${stat.value >= 8 ? 'green-shimmer' : 'blue-shimmer'}`}
                           style={`width: ${(stat.value / 10) * 100}%`}
                         />
                       </div>

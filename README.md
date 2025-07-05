@@ -37,7 +37,7 @@ Inside this Astro project, you'll see the following folders and files:
 │   │   ├── cookbook/
 │   │   │    └── recipes/
 │   │   │        └── [...id].astro
-│   │   └──games/
+│   │   └──about/
 │   │         └──index.astro
 │   └── styles/
 │       └── base.css

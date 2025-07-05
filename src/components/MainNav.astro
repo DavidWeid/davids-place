@@ -15,7 +15,7 @@ const pathname = Astro.url.pathname;
 const obj: NavigationLinks = {
   home: `${baseURL}`,
   cookbook: `${baseURL}cookbook/`,
-  gaming: `${baseURL}games/`,
+  about: `${baseURL}about/`,
   // blog: `${baseURL}blog/`
 };
 
@@ -23,7 +23,7 @@ let AstroLogo = AstroLogoSpread;
 
 if (pathname.includes('cookbook')) {
   AstroLogo = AstroLogoBook;
-} else if (pathname.includes('games')) {
+} else if (pathname.includes('about')) {
   AstroLogo = AstroLogoGame;
 } else if (pathname.includes('blog')) {
   AstroLogo = AstroLogoPencil;

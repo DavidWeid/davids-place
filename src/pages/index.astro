@@ -10,7 +10,7 @@ import Badge from '@components/Badge.astro';
 import NoteBlock from '@components/NoteBlock.astro';
 
 import headshot from '@images/general/david-weid-headshot-3.jpg';
-import imageCat from '@images/games/cat-500.png';
+import imageCat from '@images/about/cat-500.png';
 import imageWebsiteStackWhite from '@images/general/website-stack-white.png';
 
 import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
@@ -59,15 +59,15 @@ const internalLinks = [
     tags: ['recipes', 'food', 'cooking'],
   },
   {
-    link: `${baseURL}games/`,
-    title: 'Games',
-    description: 'Data from the Steam API and other fun content.',
-    tags: ['games', 'steam', 'api at build'],
+    link: `${baseURL}about/`,
+    title: 'About',
+    description: 'My gamified personal bio.',
+    tags: ['about', 'steam', 'api at build'],
   },
   {
     link: `${baseURL}style/`,
     title: 'Site Style Visualization',
-    description: 'A visual representation of the site’s styles and SVGs',
+    description: 'A visual representation of the site’s colors and SVGs',
     tags: ['styles', 'visuals'],
   },
 ];
@@ -166,7 +166,6 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             fetchpriority="high"
             src={headshotImage.src}
             alt="David Weid II"
-            title="David Weid II"
             width={396}
             height={396}
             densities={[1.5, 2, 2.5, 3]}
@@ -384,7 +383,6 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             loading="lazy"
             src={imageWebsiteStackWhite}
             alt="Core web technologies"
-            title="Core web technologies"
             width={100}
             height={100}
             class="h-auto w-[100px]"
