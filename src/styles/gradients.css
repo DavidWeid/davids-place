@@ -1,6 +1,6 @@
 .text-gradient {
   -webkit-text-fill-color: transparent;
-  @apply from-blue-dark to-green-emerald dark:from-green-emerald dark:to-blue-light bg-gradient-to-br from-10% to-75% bg-[size:150%] bg-clip-text bg-[position:0%] transition-all duration-300 ease-in-out hover:bg-[size:300%];
+  @apply from-blue-dark via-blue-light to-green-emerald dark:from-green-emerald dark:via-green-dark dark:to-blue-light bg-gradient-to-br from-15% via-30% to-75% bg-[size:100%] bg-clip-text bg-[position:0%] transition-all duration-500 ease-in-out select-none hover:bg-[size:400%];
 }
 
 .border-gradient {

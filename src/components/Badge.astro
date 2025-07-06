@@ -16,13 +16,13 @@ const clickableClasses: string = clickable
   ? 'hover:bg-accent-dark hover:text-accent-light transition-all duration-500'
   : '';
 const variantClasses: { [key: string]: string } = {
-  default: 'px-2 py-1 text-xs',
-  large: 'px-2.5 py-1.5 text-sm',
+  default: 'px-2.5 py-2 text-xs',
+  large: 'px-3 py-2 text-base',
 };
 ---
 
 <span
-  class={`block whitespace-nowrap ${variantClasses[variant]} tracking-wide font-sans-syne font-medium bg-green-light dark:bg-blue-dark/75 dark:text-light rounded-full uppercase ${clickableClasses} ${additionalClasses}`}
+  class={`block whitespace-nowrap select-none ${variantClasses[variant]} tracking-wider font-sans-syne font-semibold bg-green-emerald dark:bg-blue-dark text-dark dark:text-light rounded-full uppercase ${clickableClasses} ${additionalClasses}`}
 >
   {tag}
 </span>
