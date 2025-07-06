@@ -470,11 +470,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
   }
 </style>
 
-<script>
-  const headshot = document.getElementById('headshot');
-  const imageCat = document.getElementById('cat-icon');
-  let activeFilter = '';
-  let counter = 0;
+<script is:inline>
   const filterClasses = [
     'grayscale',
     'saturate-200',
@@ -486,7 +482,20 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
     'contrast-200',
   ];
 
+  let activeFilter = '';
+  let counter = 0;
+
+  const adjustImage = (counter, headshot, imageCat) => {
+    if (counter >= 12) {
+      headshot?.classList.add('hidden');
+      imageCat?.classList.remove('hidden');
+    }
+  };
+
   const handleClick = () => {
+    const headshot = document.getElementById('headshot');
+    const imageCat = document.getElementById('cat-icon');
+
     if (activeFilter) {
       headshot?.classList.remove(activeFilter);
       activeFilter = '';
@@ -494,10 +503,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
       return;
     }
 
-    if (counter === 12) {
-      headshot?.classList.add('hidden');
-      imageCat?.classList.remove('hidden');
-    }
+    adjustImage(counter, headshot, imageCat);
 
     const randomFilter =
       filterClasses[Math.floor(Math.random() * filterClasses.length)];
@@ -506,6 +512,17 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
     counter++;
   };
 
-  headshot?.removeEventListener('click', handleClick);
-  headshot?.addEventListener('click', handleClick);
+  document.addEventListener('astro:after-swap', () => {
+    const headshot = document.getElementById('headshot');
+    const imageCat = document.getElementById('cat-icon');
+
+    adjustImage(counter, headshot, imageCat);
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    const headshot = document.getElementById('headshot');
+
+    headshot?.removeEventListener('click', handleClick);
+    headshot?.addEventListener('click', handleClick);
+  });
 </script>
