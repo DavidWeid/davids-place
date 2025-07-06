@@ -12,6 +12,8 @@ import { Image } from 'astro:assets';
 import catIcon from '@images/about/cat-500.png';
 import drinkIcon from '@images/about/drink-500.png';
 import cupcakeIcon from '@images/about/cupcake-500.png';
+import flurry from '@images/general/flurry.jpg';
+import pekoe from '@images/general/pekoe.jpg';
 import IconExternalLinkBlue from '@images/icons/external-link-blue.svg';
 import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
@@ -72,7 +74,7 @@ const codingStats = [
     >
       <div
         id="player-card"
-        class="text-light bg-blue-dark dark:bg-medium shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark border-light flex flex-col items-center border-2 px-12 py-6 transition-shadow duration-500"
+        class="text-light bg-medium shadow-shallow shadow-dark/10 dark:shadow-light/10 hover:shadow-dark dark:hover:shadow-green-dark border-light flex flex-col items-center border-2 px-12 py-6 transition-shadow duration-500"
       >
         <h2 class="font-sans-syne">
           <a
@@ -205,7 +207,7 @@ const codingStats = [
           <div id="profile-panel" class="py-6">
             <div id="panel--about" class="panel">
               <div
-                class="bg-medium dark:bg-blue-dark/50 rounded-6-8-12 grid grid-cols-3 gap-6 px-3 pt-3 pb-4"
+                class="bg-green-dark/50 dark:bg-blue-dark/50 rounded-6-8-12 grid grid-cols-3 gap-6 px-3 pt-3 pb-4"
               >
                 <div class="col-span-1 flex flex-col justify-between">
                   <p
@@ -308,6 +310,48 @@ const codingStats = [
                   passion for creating beautiful, accessible, and functional
                   websites.
                 </p>
+              </div>
+
+              <div
+                class="tablet:flex-row flex flex-col items-center justify-center gap-10 py-5"
+              >
+                <div class="flex flex-col items-center gap-5">
+                  <Image
+                    id="cat-icon"
+                    src={flurry}
+                    alt="Flurry the cat in her holiday sweater"
+                    title="Fluffy Flurry"
+                    loading="lazy"
+                    width={flurry.width}
+                    height={flurry.height}
+                    class="border-light h-auto w-[200px] rounded-full border-4"
+                  />
+
+                  <p
+                    class="font-sans-syne text-green-emerald wave text-center text-2xl leading-8 tracking-wide"
+                  >
+                    Flurry
+                  </p>
+                </div>
+
+                <div class="flex flex-col items-center gap-5">
+                  <Image
+                    id="cat-icon"
+                    src={pekoe}
+                    alt="Pekoe the cat in her holiday sweater"
+                    title="Purrfect Pekoe"
+                    loading="lazy"
+                    width={pekoe.width}
+                    height={pekoe.height}
+                    class="border-light h-auto w-[200px] rounded-full border-4"
+                  />
+
+                  <p
+                    class="font-sans-syne text-green-emerald wave text-center text-2xl leading-8 tracking-wide"
+                  >
+                    Pekoe
+                  </p>
+                </div>
               </div>
             </div>
 
