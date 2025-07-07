@@ -78,12 +78,131 @@ const orderClasses: { [key: string]: string } = {
   <Hero title={heroTitle} description={heroDescription} />
 
   <section class="container">
-    <details class="tablet:scroll-mt-20 scroll-mt-24" name="colors">
+    <h2 class="pb-8">Gradient Borders</h2>
+
+    <p class="text-p-main laptop:max-w-[85vw]">
+      One way to create gradient borders is by using a parent element with a
+      gradient background — <code class="dark-background"
+        >background-image: linear-gradient()</code
+      > — and a padding of desired border colors and width. Then, the child has a
+      background color of its own.
+    </p>
+
+    <span class="tablet:pb-4 block pb-8"></span>
+
+    <div
+      class="tablet:flex-row tablet:gap-15 flex flex-col items-center gap-10"
+    >
+      <div
+        class="from-green-emerald to-blue-dark text-light flex h-12 w-[150px] items-center justify-center bg-linear-to-r p-1"
+      >
+        Parent element
+      </div>
+
+      <div class="tablet:flex tablet:gap-15 relative">
+        <span class="tablet:static absolute bottom-0 -left-8 text-4xl">+</span>
+
+        <div
+          class="bg-dark text-light dark:bg-light dark:text-dark flex h-12 w-[150px] items-center justify-center px-4 py-2"
+        >
+          Child element
+        </div>
+      </div>
+
+      <span class="tablet:block hidden text-4xl">=</span>
+
+      <span class="tablet:hidden block w-3/4 border-2"></span>
+
+      <div
+        class="from-green-emerald to-blue-dark h-12 w-[150px] bg-linear-to-r p-1"
+      >
+        <p
+          class="bg-dark text-light dark:bg-light dark:text-dark flex h-full w-full items-center justify-center"
+        >
+          Result
+        </p>
+      </div>
+    </div>
+
+    <span class="tablet:pb-4 block pb-8"></span>
+
+    <p class="text-p-main laptop:max-w-[85vw]">
+      Border radius works, but can use some finessing to get it to look visually
+      correct. Here the parent has a border-radius of 12px while the child's is
+      8px.
+    </p>
+
+    <span class="tablet:pb-4 block pb-8"></span>
+
+    <div
+      class="from-green-emerald to-blue-dark h-12 w-[150px] rounded-xl bg-linear-to-r p-1"
+    >
+      <p
+        class="bg-dark text-light dark:bg-light dark:text-dark flex h-full w-full items-center justify-center rounded-lg"
+      >
+        Rounded
+      </p>
+    </div>
+
+    <span class="tablet:pb-4 block pb-8"></span>
+
+    <p class="text-p-main laptop:max-w-[85vw]">
+      And if the background matches the page, it looks "transparent" (even
+      though it definitely is not).
+    </p>
+
+    <span class="tablet:pb-4 block pb-8"></span>
+
+    <div
+      class="from-green-emerald to-blue-dark h-12 w-[150px] rounded-xl bg-linear-to-r p-1"
+    >
+      <p
+        class="bg-light text-dark dark:bg-dark dark:text-light flex h-full w-full items-center justify-center rounded-lg"
+      >
+        "Transparent"
+      </p>
+    </div>
+
+    <span class="tablet:pb-8 block pb-16"></span>
+
+    <p class="text-p-main laptop:max-w-[85vw]">
+      Another method is to use a transparent border with <code
+        class="dark-background">border-image</code
+      > and
+      <code class="dark-background">border-image-slice</code>. This is actually
+      easier than above, as you're dealing with just border properties on the
+      parent element. And it's transparent by default. However, rounded borders
+      won't work.
+    </p>
+
+    <span class="tablet:pb-4 block pb-8"></span>
+
+    <div
+      class="flex h-12 w-[150px] items-center justify-center rounded-xl border-4 border-transparent"
+      style="border-image: linear-gradient(to right, var(--color-green-emerald), var(--color-blue-dark)); border-image-slice: 1;"
+    >
+      Result
+    </div>
+
+    <!-- TODO: Rounded gradient border with transparent inside -->
+  </section>
+
+  <span class="block pb-16"></span>
+
+  <hr class="green-shimmer-slow h-1 border-0" />
+
+  <span class="block pb-16"></span>
+
+  <section class="container">
+    <details
+      class="group/details tablet:scroll-mt-20 scroll-mt-24"
+      name="colors"
+    >
       <summary
-        class="group tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
+        class="group/summary tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
         ><h2 class="inline">Custom Colors</h2>
         <IconArrowBubblesRightGreen
-          class="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
+          class="h-6 w-6 rotate-90 transition-transform duration-500 group-open/details:-rotate-90 group-hover/summary:scale-125"
         /></summary
       >
       <div
@@ -123,12 +242,15 @@ const orderClasses: { [key: string]: string } = {
 
     <span class="block pb-16"></span>
 
-    <details class="tablet:scroll-mt-20 scroll-mt-24" name="images">
+    <details
+      class="group/details tablet:scroll-mt-20 scroll-mt-24"
+      name="images-astro"
+    >
       <summary
-        class="group tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
+        class="group/summary tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
         ><h2 class="inline">Astro SVGs</h2>
         <IconArrowBubblesRightGreen
-          class="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
+          class="h-6 w-6 rotate-90 transition-transform duration-500 group-open/details:-rotate-90 group-hover/summary:scale-125"
         /></summary
       >
       <div
@@ -160,12 +282,15 @@ const orderClasses: { [key: string]: string } = {
 
     <span class="block pb-16"></span>
 
-    <details class="tablet:scroll-mt-20 scroll-mt-24" name="images">
+    <details
+      class="group/details tablet:scroll-mt-20 scroll-mt-24"
+      name="images-icons"
+    >
       <summary
-        class="group tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
+        class="group/summary tablet:w-max border-green-emerald hover:text-green-dark flex w-full min-w-[25%] items-center justify-between border-b-2 py-3"
         ><h2 class="inline">Icon SVGs</h2>
         <IconArrowBubblesRightGreen
-          class="h-6 w-6 rotate-90 transition-transform duration-500 group-hover:scale-125"
+          class="h-6 w-6 rotate-90 transition-transform duration-500 group-open/details:-rotate-90 group-hover/summary:scale-125"
         /></summary
       >
       <div
@@ -195,23 +320,4 @@ const orderClasses: { [key: string]: string } = {
 
     <span class="block pb-16"></span>
   </section>
-
-  <script>
-    const details = document.querySelectorAll('details');
-
-    details.forEach((targetDetail) => {
-      targetDetail.addEventListener('toggle', () => {
-        details.forEach((detail) => {
-          if (detail === targetDetail && detail.open) {
-            const summaryIcon = detail.querySelector('svg');
-            summaryIcon?.classList.replace('rotate-90', '-rotate-90');
-            detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          } else if (detail === targetDetail && !detail.open) {
-            const summaryIcon = detail.querySelector('svg');
-            summaryIcon?.classList.replace('-rotate-90', 'rotate-90');
-          }
-        });
-      });
-    });
-  </script>
 </Base>

@@ -42,7 +42,7 @@
   }
 
   code.dark-background {
-    @apply bg-light text-medium rounded-lg px-2;
+    @apply bg-medium text-light dark:bg-light dark:text-medium mx-px rounded-md px-2 py-px;
   }
 
   mark {
