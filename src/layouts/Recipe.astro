@@ -1,6 +1,7 @@
 ---
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
+import HeroInfo from '@components/HeroInfo.astro';
 import ImageRecipe from '@components/ImageRecipe.astro';
 import ExternalLink from '@components/ExternalLink.astro';
 
@@ -51,17 +52,17 @@ const heroData = [
 <Base title={pageTitle}>
   <Hero title={heroTitle} description={heroDescription}>
     <span class="block pb-4"></span>
+
     <div class="flex flex-wrap justify-center gap-8">
       {
         heroData.map(({ label, value }) => (
-          <span class="flex flex-col items-center gap-0.5">
-            <span class="text-gradient text-lg font-bold">{label}</span>
-            {value}
-          </span>
+          <HeroInfo label={label} value={value} />
         ))
       }
     </div>
+
     <span class="block pb-8"></span>
+
     {
       image && (
         <ImageRecipe

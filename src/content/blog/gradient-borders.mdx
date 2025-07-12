@@ -1,0 +1,141 @@
+---
+title: Gradient Borders in CSS
+description: A quick how-to for creating gradient borders using CSS
+
+pubDate: 2025-07-07T12:00:00-04:00
+author: David
+
+image:
+
+tags:
+  - Coding
+  - CSS
+
+linkedinPostLink:
+---
+
+import ExternalLink from '@components/ExternalLink.astro';
+import { Image } from 'astro:assets';
+import flurry from '@images/general/flurry.jpg';
+import pekoe from '@images/general/pekoe.jpg';
+
+## Gradient Borders
+
+One way to create gradient borders is by using a parent element with a gradient background — <code>background-image: linear-gradient()</code> — and a padding of desired border colors and width. Then, the child has a background color of its own.
+
+<div class="tablet:flex-row tablet:gap-15 flex flex-col items-center gap-10">
+    <div class="from-green-emerald to-blue-dark text-light flex h-12 w-[150px] items-center justify-center bg-linear-to-r p-1">
+        Parent element
+    </div>
+
+    <div class="tablet:flex tablet:gap-15 relative">
+        <span class="tablet:static absolute bottom-0 -left-8 text-4xl">+</span>
+
+        <div class="bg-dark text-light dark:bg-light dark:text-dark flex h-12 w-[150px] items-center justify-center px-4 py-2">
+          Child element
+        </div>
+    </div>
+
+    <span class="tablet:block hidden text-4xl">=</span>
+
+    <span class="tablet:hidden block w-3/4 border-2"></span>
+
+    <div class="from-green-emerald to-blue-dark h-12 w-[150px] bg-linear-to-r p-1">
+        <span class="bg-dark text-light dark:bg-light dark:text-dark flex h-full w-full items-center justify-center">Result</span>
+    </div>
+
+</div>
+
+Border radius works, but can use some finessing to get it to look visually correct. Here the parent has a border-radius of 12px while the child's is 8px.
+
+<div class="from-green-emerald to-blue-dark h-12 w-[150px] rounded-xl bg-linear-to-r p-1">
+  <span class="bg-dark text-light dark:bg-light dark:text-dark flex h-full w-full items-center justify-center rounded-lg">
+    Rounded
+  </span>
+</div>
+
+And if the background matches the page, it looks "transparent" (even though it definitely is not).
+
+<div class="from-green-emerald to-blue-dark h-12 w-[150px] rounded-xl bg-linear-to-r p-1">
+  <span class="bg-light text-dark dark:bg-dark dark:text-light flex h-full w-full items-center justify-center rounded-lg">
+    "Transparent"
+  </span>
+</div>
+
+Another method is to use a transparent border with <code>border-image</code> and <code>border-image-slice</code>. This is actually easier than above, as you're dealing with just border properties on the parent element. And it's transparent by default. However, rounded borders won't work.
+
+<div
+  class="flex h-12 w-[150px] items-center justify-center rounded-xl border-4 border-transparent"
+  style="border-image: linear-gradient(to right, var(--color-green-emerald), var(--color-blue-dark)); border-image-slice: 1;"
+>
+  Result
+</div>
+
+Border gradient with rounded corners and transparent background. I didn't figure this out, but here's the original post that I found:
+
+<ExternalLink text="How to create rounded gradient borders with any background in CSS" href="https://benfrain.com/how-to-create-rounded-gradient-borders-with-any-background-in-css/" />
+
+<div class="flex flex-wrap gap-4">
+    <div class="relative w-max">
+        <Image
+            id="cat-icon"
+            src={flurry}
+            alt="Cat"
+            loading="lazy"
+            width={flurry.width}
+            height={flurry.height}
+            class="rounded-8-12-16 h-auto w-full max-w-[400px]"
+        />
+
+        <div class="absolute top-1/2 left-1/2 -translate-1/2">
+            <div class="gradient-border-transparent flex h-12 w-[150px] items-center justify-center">
+                Transparent
+            </div>
+        </div>
+    </div>
+
+    <div class="relative w-max">
+        <Image
+            id="cat-icon"
+            src={pekoe}
+            alt="Cat"
+            loading="lazy"
+            width={pekoe.width}
+            height={pekoe.height}
+            class="rounded-8-12-16 h-auto w-full max-w-[400px]"
+        />
+
+        <div class="absolute top-1/2 left-1/2 -translate-1/2">
+            <div class="gradient-border-transparent flex h-12 w-[150px] items-center justify-center backdrop-blur-sm">
+                Blurred
+            </div>
+        </div>
+    </div>
+
+</div>
+
+```
+<style>
+    .gradient-border-transparent {
+        position: relative;
+    }
+
+    .gradient-border-transparent::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        border: 4px solid transparent;
+        background: linear-gradient(
+            to right,
+            var(--color-green-emerald),
+            var(--color-blue-dark)
+          )
+          border-box;
+        mask:
+          linear-gradient(#fff 0 0) padding-box,
+          linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+    }
+</style>
+```

@@ -1,6 +1,8 @@
 ---
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
+import HeroInfo from '@components/HeroInfo.astro';
+import Badge from '@components/Badge.astro';
 
 interface Props {
   frontmatter: {
@@ -21,10 +23,39 @@ const { title, description, pubDate, author, tags } = frontmatter;
 const pageTitle = `Blog Post: ${title}`;
 const heroTitle = title;
 const heroDescription = description;
+const displayDate =
+  pubDate instanceof Date
+    ? pubDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : new Date(pubDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
 ---
 
 <Base title={pageTitle} indexForSearch={false}>
-  <Hero title={heroTitle} description={heroDescription} />
+  <Hero title={heroTitle} description={heroDescription}>
+    <span class="block pb-4"></span>
+
+    <div class="flex flex-wrap justify-center gap-8">
+      <HeroInfo label="Date" value={displayDate} />
+      <HeroInfo label="Author" value={author} />
+    </div>
+
+    <span class="block pb-8"></span>
+
+    <span class="flex gap-2.5 justify-center">
+      {
+        tags.map((tag) => (
+          <Badge tag={tag} clickable={false} variant="default" />
+        ))
+      }
+    </span>
+  </Hero>
 
   <hr class="green-blue-shimmer-slow h-1 border-0" />
 
@@ -35,10 +66,6 @@ const heroDescription = description;
   >
     <div class="container">
       <span class="block pb-8"></span>
-
-      <p>{pubDate}</p>
-
-      <p>{author}</p>
 
       <section>
         <slot />
