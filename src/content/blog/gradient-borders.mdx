@@ -21,7 +21,7 @@ import pekoe from '@images/general/pekoe.jpg';
 
 ## Gradient Borders
 
-One way to create gradient borders is by using a parent element with a gradient background — <code>background-image: linear-gradient()</code> — and a padding of desired border colors and width. Then, the child has a background color of its own.
+One way to create gradient borders is by using a parent element with a gradient background — `background-image: linear-gradient()` — and a padding of desired border colors and width. Then, the child has a background color of its own.
 
 <div class="tablet:flex-row tablet:gap-15 flex flex-col items-center gap-10">
     <div class="from-green-emerald to-blue-dark text-light flex h-12 w-[150px] items-center justify-center bg-linear-to-r p-1">
@@ -62,7 +62,7 @@ And if the background matches the page, it looks "transparent" (even though it d
   </span>
 </div>
 
-Another method is to use a transparent border with <code>border-image</code> and <code>border-image-slice</code>. This is actually easier than above, as you're dealing with just border properties on the parent element. And it's transparent by default. However, rounded borders won't work.
+Another method is to use a transparent border with `border-image` and `border-image-slice`. This is actually easier than above, as you're dealing with just border properties on the parent element. And it's transparent by default. However, rounded borders won't work.
 
 <div
   class="flex h-12 w-[150px] items-center justify-center rounded-xl border-4 border-transparent"
@@ -73,7 +73,10 @@ Another method is to use a transparent border with <code>border-image</code> and
 
 Border gradient with rounded corners and transparent background. I didn't figure this out, but here's the original post that I found:
 
-<ExternalLink text="How to create rounded gradient borders with any background in CSS" href="https://benfrain.com/how-to-create-rounded-gradient-borders-with-any-background-in-css/" />
+<ExternalLink
+  text="How to create rounded gradient borders with any background in CSS"
+  href="https://benfrain.com/how-to-create-rounded-gradient-borders-with-any-background-in-css/"
+/>
 
 <div class="flex flex-wrap gap-4">
     <div class="relative w-max">
