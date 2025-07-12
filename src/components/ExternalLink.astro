@@ -10,14 +10,10 @@ const { href, text } = Astro.props;
 ---
 
 <a
-href={href}
-target="_blank"
-rel="noopener noreferrer"
-class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="content-link-gradient inline-flex w-fit items-center gap-1 leading-5"
   >{text}<span class="sr-only">(Opens in a new tab)</span>
   <IconExternalLink class="dark:fill-light h-4 w-4" />
-  
-
-
-  </a
->
+</a>
