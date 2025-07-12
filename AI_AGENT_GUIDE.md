@@ -4,6 +4,8 @@
 
 This repository is a personal website built with [Astro](https://astro.build/), focused on modern web development practices, visual style demonstrations, and content organization. It features custom components, image handling, and advanced CSS techniques for gradients, borders, and layouts.
 
+> For a broader project overview and additional context, see the [README.md](./README.md) in this repository.
+
 ## Functionality
 
 - **Static Site Generation**: Uses Astro for fast, static builds and server-side rendering.
