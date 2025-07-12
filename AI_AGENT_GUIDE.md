@@ -1,12 +1,11 @@
 # AI Agent Coding Guide for davids-place
 
 ## Overview
+
 This repository is a personal website built with [Astro](https://astro.build/), focused on modern web development practices, visual style demonstrations, and content organization. It features custom components, image handling, and advanced CSS techniques for gradients, borders, and layouts.
 
-
-
-
 ## Functionality
+
 - **Static Site Generation**: Uses Astro for fast, static builds and server-side rendering.
 - **Content Organization**: Blog, cookbook, and other content are organized in the `src/content` directory.
 - **Custom Components**: Reusable UI components (e.g., `Hero`, `Card`, `ExternalLink`, `SvgGenerator`) are in `src/components`.
@@ -18,6 +17,7 @@ This repository is a personal website built with [Astro](https://astro.build/), 
 - **Husky**: Git hooks for code quality and workflow automation (see `i/_/`).
 
 ## Code Practices
+
 - **TypeScript**: All logic is written in TypeScript for type safety and maintainability.
 - **Component-Driven**: UI is built from small, reusable components.
 - **TailwindCSS Utility Classes**: TailwindCSS is used for utility-first styling. Prefer Tailwind utility classes over custom CSS wherever possible. Custom CSS is only used when Tailwind does not provide the needed utility.
@@ -27,6 +27,7 @@ This repository is a personal website built with [Astro](https://astro.build/), 
 - **Consistent Naming**: Folders and files use clear, descriptive names.
 
 ## Libraries & Tools
+
 - **Astro**: Main framework for building the site.
 - **TypeScript**: For all scripting and logic.
 - **Vitest**: For unit testing.
@@ -34,6 +35,7 @@ This repository is a personal website built with [Astro](https://astro.build/), 
 - **Pagefind**: For static site search.
 
 ## Folder Structure
+
 - `src/components/`: Astro components.
 - `src/content/`: Markdown/MDX content (blog, cookbook, etc).
 - `src/layouts/`: Page layouts.
@@ -43,6 +45,7 @@ This repository is a personal website built with [Astro](https://astro.build/), 
 - `i/_/`: Husky Git hooks.
 
 ## Tips for AI Agents
+
 - Prefer Astro components for UI logic and rendering.
 - Use TypeScript for all new scripts and logic.
 - Follow the existing folder and naming conventions.
@@ -54,4 +57,5 @@ This repository is a personal website built with [Astro](https://astro.build/), 
 - When adding new features, keep content, layout, and logic separated.
 
 ---
+
 For more details, see the code in `src/pages/style/index.astro` for advanced CSS and component usage examples.
