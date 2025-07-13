@@ -11,4 +11,11 @@ interface Props {
 const { code, lang, wrap = false, inline = false } = Astro.props;
 ---
 
-<Code code={code} lang={lang as any} wrap={wrap} inline={inline} />
+<Code
+  code={code}
+  lang={lang as any}
+  wrap={wrap}
+  inline={inline}
+  themes={{ light: 'light-plus', dark: 'dark-plus' }}
+  class="before:hidden after:hidden px-2.5 py-1 rounded-6-8-12 dark:border dark:border-light/25"
+/>

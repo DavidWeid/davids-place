@@ -21,7 +21,7 @@ import cat from '@images/about/cat-500.png';
 import flurry from '@images/general/flurry.jpg';
 import pekoe from '@images/general/pekoe.jpg';
 
-## Gradient Borders
+## Gradient Borders: 3 Techniques
 
 One way to create gradient borders is by using a parent element with a gradient background — <CodeMarkdown code="background-image: linear-gradient()" lang="css" inline={true} /> — and a padding of desired border colors and width. Then, the child has a background color of its own.
 
@@ -84,7 +84,7 @@ And if the background matches the page, it looks "transparent" (even though it d
 
 Another method is to use a transparent border with <CodeMarkdown code="border-image" lang="css" inline={true} /> and <CodeMarkdown code="border-image-slice" lang="css" inline={true} />. This is actually easier than above, as you're dealing with just border properties on the parent element. And it's transparent by default. However, rounded borders won't work.
 
-<div class="relative w-max">
+<div class="relative w-max mx-auto">
   <Image
     id="cat-icon"
     src={cat}
@@ -124,7 +124,7 @@ And finally, the fanciest border: gradient with rounded corners and a transparen
 />
 
 <div class="flex flex-wrap">
-  <div class="relative w-max">
+  <div class="relative w-max mx-auto">
     <Image
       id="cat-icon"
       src={flurry}
@@ -136,14 +136,14 @@ And finally, the fanciest border: gradient with rounded corners and a transparen
     />
 
     <div class="absolute top-1/2 left-1/2 -translate-1/2">
-      <div class="border-gradient-transparent before:rounded-xl flex h-12 w-[150px] items-center justify-center">
+      <div class="border-gradient-transparent before:rounded-xl flex h-12 w-[150px] items-center justify-center text-white">
         Transparent
       </div>
     </div>
 
   </div>
 
-  <div class="relative w-max">
+  <div class="relative w-max mx-auto">
     <Image
       id="cat-icon"
       src={pekoe}
@@ -155,7 +155,7 @@ And finally, the fanciest border: gradient with rounded corners and a transparen
     />
 
     <div class="absolute top-1/2 left-1/2 -translate-1/2">
-      <div class="border-gradient-transparent before:rounded-xl flex h-12 w-[150px] items-center justify-center backdrop-blur-sm">
+      <div class="border-gradient-transparent before:rounded-xl flex h-12 w-[150px] items-center justify-center backdrop-blur-sm text-white">
         Blurred
       </div>
     </div>
@@ -192,3 +192,7 @@ And finally, the fanciest border: gradient with rounded corners and a transparen
   }
 </style>
 ```
+
+---
+
+And that concludes the three main ways that I've learned how to create gradient borders in CSS.
