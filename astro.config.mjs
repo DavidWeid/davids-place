@@ -16,6 +16,14 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'light-plus',
+        dark: 'dark-plus',
+      },
+    },
+  },
   integrations: [
     mdx(),
     sitemap({

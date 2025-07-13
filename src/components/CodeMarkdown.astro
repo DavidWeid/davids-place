@@ -1,0 +1,14 @@
+---
+import { Code } from 'astro:components';
+
+interface Props {
+  code: string;
+  lang: string;
+  wrap?: boolean;
+  inline?: boolean;
+}
+
+const { code, lang, wrap = false, inline = false } = Astro.props;
+---
+
+<Code code={code} lang={lang as any} wrap={wrap} inline={inline} />

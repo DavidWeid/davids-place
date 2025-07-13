@@ -14,36 +14,36 @@ tags:
 linkedinPostLink:
 ---
 
+import CodeMarkdown from '@components/CodeMarkdown.astro';
 import ExternalLink from '@components/ExternalLink.astro';
 import { Image } from 'astro:assets';
+import cat from '@images/about/cat-500.png';
 import flurry from '@images/general/flurry.jpg';
 import pekoe from '@images/general/pekoe.jpg';
 
 ## Gradient Borders
 
-One way to create gradient borders is by using a parent element with a gradient background — `background-image: linear-gradient()` — and a padding of desired border colors and width. Then, the child has a background color of its own.
+One way to create gradient borders is by using a parent element with a gradient background — <CodeMarkdown code="background-image: linear-gradient()" lang="css" inline={true} /> — and a padding of desired border colors and width. Then, the child has a background color of its own.
 
 <div class="tablet:flex-row tablet:gap-15 flex flex-col items-center gap-10">
-    <div class="from-green-emerald to-blue-dark text-light flex h-12 w-[150px] items-center justify-center bg-linear-to-r p-1">
-        Parent element
-    </div>
+  <div class="from-green-emerald to-blue-dark text-light flex h-12 w-[150px] items-center justify-center bg-linear-to-r p-1">
+    Parent element
+  </div>
 
-    <div class="tablet:flex tablet:gap-15 relative">
-        <span class="tablet:static absolute bottom-0 -left-8 text-4xl">+</span>
+<div class="tablet:flex tablet:gap-15 relative">
+  <span class="tablet:static absolute bottom-0 -left-8 text-4xl">+</span>
+  <div class="bg-dark text-light dark:bg-light dark:text-dark flex h-12 w-[150px] items-center justify-center px-4 py-2">
+    Child element
+  </div>
+</div>
 
-        <div class="bg-dark text-light dark:bg-light dark:text-dark flex h-12 w-[150px] items-center justify-center px-4 py-2">
-          Child element
-        </div>
-    </div>
+<span class="tablet:block hidden text-4xl">=</span>
 
-    <span class="tablet:block hidden text-4xl">=</span>
+<span class="tablet:hidden block w-3/4 border-2"></span>
 
-    <span class="tablet:hidden block w-3/4 border-2"></span>
-
-    <div class="from-green-emerald to-blue-dark h-12 w-[150px] bg-linear-to-r p-1">
-        <span class="bg-dark text-light dark:bg-light dark:text-dark flex h-full w-full items-center justify-center">Result</span>
-    </div>
-
+  <div class="from-green-emerald to-blue-dark h-12 w-[150px] bg-linear-to-r p-1">
+    <span class="bg-dark text-light dark:bg-light dark:text-dark flex h-full w-full items-center justify-center">Result</span>
+  </div>
 </div>
 
 Border radius works, but can use some finessing to get it to look visually correct. Here the parent has a border-radius of 12px while the child's is 8px.
@@ -57,88 +57,138 @@ Border radius works, but can use some finessing to get it to look visually corre
 And if the background matches the page, it looks "transparent" (even though it definitely is not).
 
 <div class="from-green-emerald to-blue-dark h-12 w-[150px] rounded-xl bg-linear-to-r p-1">
-  <span class="bg-light text-dark dark:bg-dark dark:text-light flex h-full w-full items-center justify-center rounded-lg">
+  <span class="bg-light text-dark dark:bg-medium dark:text-light flex h-full w-full items-center justify-center rounded-lg">
     "Transparent"
   </span>
 </div>
 
-Another method is to use a transparent border with `border-image` and `border-image-slice`. This is actually easier than above, as you're dealing with just border properties on the parent element. And it's transparent by default. However, rounded borders won't work.
-
-<div
-  class="flex h-12 w-[150px] items-center justify-center rounded-xl border-4 border-transparent"
-  style="border-image: linear-gradient(to right, var(--color-green-emerald), var(--color-blue-dark)); border-image-slice: 1;"
->
-  Result
+```html
+<div class="parent">
+  <div class="child">Result</div>
 </div>
 
-Border gradient with rounded corners and transparent background. I didn't figure this out, but here's the original post that I found:
+<style>
+  .parent {
+    background-image: linear-gradient(to right, #50c878, #3844c6);
+    padding: 4px;
+  }
+
+  .child {
+    background: white;
+    color: black;
+  }
+</style>
+```
+
+---
+
+Another method is to use a transparent border with <CodeMarkdown code="border-image" lang="css" inline={true} /> and <CodeMarkdown code="border-image-slice" lang="css" inline={true} />. This is actually easier than above, as you're dealing with just border properties on the parent element. And it's transparent by default. However, rounded borders won't work.
+
+<div class="relative w-max">
+  <Image
+    id="cat-icon"
+    src={cat}
+    alt="Cat"
+    loading="lazy"
+    width={cat.width}
+    height={cat.height}
+    class="rounded-8-12-16 h-auto w-full max-w-[400px]"
+  />
+
+  <div class="absolute top-1/2 left-1/2 -translate-1/2">
+    <div class="flex h-12 w-[150px] items-center justify-center border-4 border-transparent text-dark" style="border-image: linear-gradient(to right, var(--color-green-emerald), var(--color-blue-dark)); border-image-slice: 1;">
+      Result
+    </div>
+  </div>
+</div>
+
+```html
+<div class="border-gradient-transparent">Result</div>
+
+<style>
+  .border-gradient-transparent {
+    border: 4px solid transparent;
+    border-image: linear-gradient(to right, #50c878, #3844c6);
+    border-image-slice: 1;
+  }
+</style>
+```
+
+---
+
+And finally, the fanciest border: gradient with rounded corners and a transparent background. I didn't figure this out, but here's the original post that I found:
 
 <ExternalLink
   text="How to create rounded gradient borders with any background in CSS"
   href="https://benfrain.com/how-to-create-rounded-gradient-borders-with-any-background-in-css/"
 />
 
-<div class="flex flex-wrap gap-4">
-    <div class="relative w-max">
-        <Image
-            id="cat-icon"
-            src={flurry}
-            alt="Cat"
-            loading="lazy"
-            width={flurry.width}
-            height={flurry.height}
-            class="rounded-8-12-16 h-auto w-full max-w-[400px]"
-        />
+<div class="flex flex-wrap">
+  <div class="relative w-max">
+    <Image
+      id="cat-icon"
+      src={flurry}
+      alt="Cat"
+      loading="lazy"
+      width={flurry.width}
+      height={flurry.height}
+      class="rounded-8-12-16 h-auto w-full max-w-[400px]"
+    />
 
-        <div class="absolute top-1/2 left-1/2 -translate-1/2">
-            <div class="gradient-border-transparent flex h-12 w-[150px] items-center justify-center">
-                Transparent
-            </div>
-        </div>
+    <div class="absolute top-1/2 left-1/2 -translate-1/2">
+      <div class="border-gradient-transparent before:rounded-xl flex h-12 w-[150px] items-center justify-center">
+        Transparent
+      </div>
     </div>
 
-    <div class="relative w-max">
-        <Image
-            id="cat-icon"
-            src={pekoe}
-            alt="Cat"
-            loading="lazy"
-            width={pekoe.width}
-            height={pekoe.height}
-            class="rounded-8-12-16 h-auto w-full max-w-[400px]"
-        />
+  </div>
 
-        <div class="absolute top-1/2 left-1/2 -translate-1/2">
-            <div class="gradient-border-transparent flex h-12 w-[150px] items-center justify-center backdrop-blur-sm">
-                Blurred
-            </div>
-        </div>
+  <div class="relative w-max">
+    <Image
+      id="cat-icon"
+      src={pekoe}
+      alt="Cat"
+      loading="lazy"
+      width={pekoe.width}
+      height={pekoe.height}
+      class="rounded-8-12-16 h-auto w-full max-w-[400px]"
+    />
+
+    <div class="absolute top-1/2 left-1/2 -translate-1/2">
+      <div class="border-gradient-transparent before:rounded-xl flex h-12 w-[150px] items-center justify-center backdrop-blur-sm">
+        Blurred
+      </div>
     </div>
 
+  </div>
 </div>
 
-```
-<style>
-    .gradient-border-transparent {
-        position: relative;
-    }
+```html
+<div class="border-gradient-transparent-rounded">Result</div>
 
-    .gradient-border-transparent::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 12px;
-        border: 4px solid transparent;
-        background: linear-gradient(
-            to right,
-            var(--color-green-emerald),
-            var(--color-blue-dark)
-          )
-          border-box;
-        mask:
-          linear-gradient(#fff 0 0) padding-box,
-          linear-gradient(#fff 0 0);
-        mask-composite: exclude;
-    }
+<style>
+  .border-gradient-transparent-rounded {
+    @apply relative;
+  }
+
+  .border-gradient-transparent-rounded::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 4px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(
+        140deg,
+        var(--color-blue-light) 0%,
+        var(--color-blue-dark) 25%,
+        var(--color-green-dark) 50%,
+        var(--color-green-emerald) 100%
+      )
+      border-box;
+    mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
 </style>
 ```
