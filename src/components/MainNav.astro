@@ -20,9 +20,10 @@ const obj: NavigationLinks = {
 };
 
 let AstroLogo = AstroLogoSpread;
-const customNavClasses = pathname.includes('about')
-  ? 'border-b-2 border-light'
-  : '';
+const customNavClasses =
+  pathname.includes('about') && !pathname.includes('cookbook')
+    ? 'border-b-2 border-light'
+    : '';
 
 if (pathname.includes('cookbook')) {
   AstroLogo = AstroLogoBook;

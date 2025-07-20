@@ -1,0 +1,80 @@
+---
+import Base from '@layouts/Base.astro';
+import { Image } from 'astro:assets';
+import ImageChoppingBoard from '@images/about/cookbook/chopping-board.png';
+import ImageMeat from '@images/about/cookbook/meat.png';
+import ImageRibs from '@images/about/cookbook/ribs.png';
+import ImageMint from '@images/about/cookbook/mint.png';
+import ImageBlueberry from '@images/about/cookbook/blueberry.png';
+
+const baseURL = import.meta.env.BASE_URL;
+
+const title = "David's Cookbook - About";
+const header = 'Discover Your Next Favorite Recipe';
+const subheader = 'Explore a diverse cookbook with easy-to-follow dishes';
+const cTA = 'START COOKING';
+---
+
+<Base title={title}>
+  <section
+    class="relative overflow-hidden pt-28 pb-40 laptop:py-36 bg-amber-900 text-light"
+  >
+    <div
+      class="relative z-30 container py-10 flex flex-col items-center gap-8 bg-dark/25 backdrop-blur-md desktop:bg-dark/0 desktop:backdrop-blur-none"
+    >
+      <h1
+        class="text-display desktop:max-w-[65vw] desktopxl:max-w-[50vw] text-center"
+      >
+        {header}
+      </h1>
+
+      <p class="text-display-eyebrow text-center pb-8">{subheader}</p>
+
+      <a
+        href={`${baseURL}cookbook/`}
+        class="font-bold text-xl tracking-wider px-6 py-3 text-light bg-green-dark hover:bg-blue-dark rounded-lg transition-all duration-500 green-shimmer-slow hover:blue-shimmer-slow active:brightness-75"
+        >{cTA}</a
+      >
+    </div>
+    <Image
+      src={ImageMint}
+      alt="Mint leaves"
+      width={ImageMint.width}
+      height={ImageMint.height}
+      loading="eager"
+      class="absolute z-10 laptop:z-0 -left-32 -top-52 desktop:-top-28 laptop:-left-36 w-max h-auto -rotate-45 desktop:rotate-0"
+    />
+    <Image
+      src={ImageBlueberry}
+      alt="Blueberries"
+      width={ImageBlueberry.width}
+      height={ImageBlueberry.height}
+      loading="eager"
+      class="absolute z-0 -right-64 laptop:right-[unset] -top-48 laptop:top-[unset] laptop:-left-44 laptop:-bottom-24 w-max h-auto rotate-180 laptop:rotate-12"
+    />
+    <Image
+      src={ImageChoppingBoard}
+      alt="Chopping Board"
+      width={ImageChoppingBoard.width}
+      height={ImageChoppingBoard.height}
+      loading="eager"
+      class="absolute z-10 laptop:z-0 -right-32 -bottom-40 laptop:-top-28 laptop:-right-36 w-max h-auto -rotate-45 laptop:rotate-45"
+    />
+    <Image
+      src={ImageMeat}
+      alt="Meat"
+      width={ImageMeat.width}
+      height={ImageMeat.height}
+      loading="eager"
+      class="absolute z-0 laptop:z-10 -left-10 tablet:-left-40 -bottom-12 laptop:-bottom-20 laptop:left-[unset] laptop:-right-32 w-max h-auto tablet:rotate-180 laptop:rotate-0"
+    />
+    <Image
+      src={ImageRibs}
+      alt="Ribs"
+      width={ImageRibs.width}
+      height={ImageRibs.height}
+      loading="eager"
+      class="hidden desktop:block absolute z-0 -bottom-40 -right-48 w-max h-auto rotate-12"
+    />
+  </section>
+</Base>

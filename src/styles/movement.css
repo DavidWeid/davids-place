@@ -33,7 +33,7 @@
   animation: shimmer var(--randomized-animation-time) infinite linear;
 }
 
-.green-shimmer-slow {
+@utility green-shimmer-slow {
   background: linear-gradient(
     -45deg,
     theme('colors.green.emerald') 40%,
@@ -55,6 +55,18 @@
   background-size: 300%;
   background-position-x: 100%;
   animation: shimmer var(--randomized-animation-time) infinite linear;
+}
+
+@utility blue-shimmer-slow {
+  background: linear-gradient(
+    -45deg,
+    theme('colors.blue.dark') 40%,
+    theme('colors.blue.light') 50%,
+    theme('colors.blue.dark') 60%
+  );
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 5s infinite linear;
 }
 
 .green-blue-shimmer-slow {
