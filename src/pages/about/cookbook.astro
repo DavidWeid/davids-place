@@ -6,6 +6,13 @@ import ImageMeat from '@images/about/cookbook/meat.png';
 import ImageRibs from '@images/about/cookbook/ribs.png';
 import ImageMint from '@images/about/cookbook/mint.png';
 import ImageBlueberry from '@images/about/cookbook/blueberry.png';
+import ImagePizza from '@images/about/cookbook/pizza.png';
+import ImageTacos from '@images/about/cookbook/tacos.png';
+import ImageCookies from '@images/about/cookbook/cookies.png';
+import ImageKungPaoChicken from '@images/about/cookbook/kung-pao-chicken.png';
+import ImageSushi from '@images/about/cookbook/sushi.png';
+import ImageBread from '@images/about/cookbook/bread.png';
+import ImageNoodles from '@images/about/cookbook/noodles.png';
 
 const baseURL = import.meta.env.BASE_URL;
 
@@ -16,8 +23,9 @@ const cTA = 'START COOKING';
 ---
 
 <Base title={title}>
+  <!-- Hero -->
   <section
-    class="relative overflow-hidden pt-28 pb-40 laptop:py-36 bg-blue-dark dark:bg-blue-dark/60 text-light"
+    class="relative overflow-hidden pt-28 pb-40 laptop:py-36 bg-blue-dark dark:bg-blue-dark/80 text-light"
   >
     <div
       class="relative z-30 container py-10 flex flex-col items-center gap-8 bg-dark/25 backdrop-blur-md laptop:bg-dark/0 laptop:backdrop-blur-none"
@@ -76,5 +84,67 @@ const cTA = 'START COOKING';
       loading="eager"
       class="w-max h-auto hidden laptop:block absolute z-0 -bottom-48 -right-44 desktop:-bottom-40 desktop:-right-48 rotate-45 desktop:rotate-12 scale-50 desktop:scale-100 drop-shadow-lg drop-shadow-blue-light/80 dark:drop-shadow-blue-dark/90"
     />
+    <a
+      href="https://www.canva.com/p/iconsy/"
+      class="text-xs text-dark content-link-gradient absolute right-4 bottom-0 z-30"
+      >Hero images by <span class="font-sans-syne">@iconsy</span></a
+    >
+  </section>
+
+  <!-- Image Row -->
+  <section class="bg-light py-20">
+    <div
+      class="container flex gap-x-12 laptop:gap-x-16 desktop:gap-x-24 gap-y-10 justify-center"
+    >
+      <Image
+        src={ImagePizza}
+        alt="Pizza"
+        width={ImagePizza.width}
+        height={ImagePizza.height}
+        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+      />
+      <Image
+        src={ImageTacos}
+        alt="Tacos"
+        width={ImageTacos.width}
+        height={ImageTacos.height}
+        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+      />
+      <Image
+        src={ImageCookies}
+        alt="Cookies"
+        width={ImageCookies.width}
+        height={ImageCookies.height}
+        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+      />
+      <Image
+        src={ImageKungPaoChicken}
+        alt="Kung Pao Chicken"
+        width={ImageKungPaoChicken.width}
+        height={ImageKungPaoChicken.height}
+        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+      />
+      <Image
+        src={ImageSushi}
+        alt="Sushi"
+        width={ImageSushi.width}
+        height={ImageSushi.height}
+        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+      />
+      <Image
+        src={ImageBread}
+        alt="Bread"
+        width={ImageBread.width}
+        height={ImageBread.height}
+        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+      />
+      <Image
+        src={ImageNoodles}
+        alt="Noodles"
+        width={ImageNoodles.width}
+        height={ImageNoodles.height}
+        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+      />
+    </div>
   </section>
 </Base>
