@@ -8,6 +8,7 @@ import ImageMint from '@images/about/cookbook/mint.png';
 import ImageBlueberry from '@images/about/cookbook/blueberry.png';
 import ImagePizza from '@images/about/cookbook/pizza.png';
 import ImageTacos from '@images/about/cookbook/tacos.png';
+import ImageDumplings from '@images/about/cookbook/dumplings.png';
 import ImageCookies from '@images/about/cookbook/cookies.png';
 import ImageKungPaoChicken from '@images/about/cookbook/kung-pao-chicken.png';
 import ImageSushi from '@images/about/cookbook/sushi.png';
@@ -94,7 +95,7 @@ const cTA = 'START COOKING';
   <!-- Image Row -->
   <section class="bg-light py-20">
     <div
-      class="container flex gap-x-12 laptop:gap-x-16 desktop:gap-x-24 gap-y-10 justify-center"
+      class="container grid grid-cols-4 laptop:grid-cols-8 gap-x-12 laptop:gap-x-16 desktop:gap-x-24 gap-y-10 items-center"
     >
       <Image
         src={ImagePizza}
@@ -102,7 +103,7 @@ const cTA = 'START COOKING';
         width={ImagePizza.width}
         height={ImagePizza.height}
         loading="eager"
-        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
       />
       <Image
         src={ImageTacos}
@@ -110,7 +111,15 @@ const cTA = 'START COOKING';
         width={ImageTacos.width}
         height={ImageTacos.height}
         loading="eager"
-        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
+      />
+      <Image
+        src={ImageDumplings}
+        alt="Burger"
+        width={ImageDumplings.width}
+        height={ImageDumplings.height}
+        loading="eager"
+        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
       />
       <Image
         src={ImageCookies}
@@ -118,7 +127,7 @@ const cTA = 'START COOKING';
         width={ImageCookies.width}
         height={ImageCookies.height}
         loading="eager"
-        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
       />
       <Image
         src={ImageKungPaoChicken}
@@ -126,7 +135,7 @@ const cTA = 'START COOKING';
         width={ImageKungPaoChicken.width}
         height={ImageKungPaoChicken.height}
         loading="eager"
-        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
       />
       <Image
         src={ImageSushi}
@@ -134,7 +143,7 @@ const cTA = 'START COOKING';
         width={ImageSushi.width}
         height={ImageSushi.height}
         loading="eager"
-        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
       />
       <Image
         src={ImageBread}
@@ -142,7 +151,7 @@ const cTA = 'START COOKING';
         width={ImageBread.width}
         height={ImageBread.height}
         loading="eager"
-        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
       />
       <Image
         src={ImageNoodles}
@@ -150,7 +159,7 @@ const cTA = 'START COOKING';
         width={ImageNoodles.width}
         height={ImageNoodles.height}
         loading="eager"
-        class="h-20 desktop:h-28 w-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
       />
     </div>
   </section>
