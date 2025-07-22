@@ -29,7 +29,7 @@ const cTA = 'START COOKING';
     class="relative overflow-hidden pt-28 pb-40 laptop:py-36 bg-blue-dark dark:bg-blue-dark/80 text-light"
   >
     <div
-      class="relative z-30 container py-10 flex flex-col items-center gap-8 bg-dark/25 backdrop-blur-md laptop:bg-dark/0 laptop:backdrop-blur-none"
+      class="relative z-20 container py-10 flex flex-col items-center gap-8 bg-dark/25 backdrop-blur-md laptop:bg-dark/0 laptop:backdrop-blur-none"
     >
       <h1
         class="text-display laptop:max-w-[50vw] desktop:max-w-[65vw] desktopxl:max-w-[50vw] text-center"
@@ -87,13 +87,13 @@ const cTA = 'START COOKING';
     />
     <a
       href="https://www.canva.com/p/iconsy/"
-      class="text-xs text-dark content-link-gradient absolute right-4 bottom-0 z-30"
+      class="text-xs text-dark content-link-gradient absolute right-4 bottom-0 z-20"
       >Hero images by <span class="font-sans-syne">@iconsy</span></a
     >
   </section>
 
   <!-- Image Row -->
-  <section class="relative bg-light dark:bg-medium py-20">
+  <section id="image-row" class="relative bg-light dark:bg-medium py-20">
     <div
       class="container grid grid-cols-4 grid-rows-2 tablet:grid-cols-8 tablet:grid-rows-1 gap-x-12 laptop:gap-x-16 gap-y-10 items-center"
     >
@@ -103,7 +103,7 @@ const cTA = 'START COOKING';
         width={ImagePizza.width}
         height={ImagePizza.height}
         loading="eager"
-        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-1"
       />
       <Image
         src={ImageTacos}
@@ -111,7 +111,7 @@ const cTA = 'START COOKING';
         width={ImageTacos.width}
         height={ImageTacos.height}
         loading="eager"
-        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-1"
       />
       <Image
         src={ImageDumplings}
@@ -119,7 +119,7 @@ const cTA = 'START COOKING';
         width={ImageDumplings.width}
         height={ImageDumplings.height}
         loading="eager"
-        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-1"
       />
       <Image
         src={ImageCookies}
@@ -127,7 +127,7 @@ const cTA = 'START COOKING';
         width={ImageCookies.width}
         height={ImageCookies.height}
         loading="eager"
-        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-1"
       />
       <Image
         src={ImageKungPaoChicken}
@@ -135,7 +135,7 @@ const cTA = 'START COOKING';
         width={ImageKungPaoChicken.width}
         height={ImageKungPaoChicken.height}
         loading="eager"
-        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-2"
       />
       <Image
         src={ImageSushi}
@@ -143,7 +143,7 @@ const cTA = 'START COOKING';
         width={ImageSushi.width}
         height={ImageSushi.height}
         loading="eager"
-        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-2"
       />
       <Image
         src={ImageBread}
@@ -151,7 +151,7 @@ const cTA = 'START COOKING';
         width={ImageBread.width}
         height={ImageBread.height}
         loading="eager"
-        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-2"
       />
       <Image
         src={ImageNoodles}
@@ -159,13 +159,49 @@ const cTA = 'START COOKING';
         width={ImageNoodles.width}
         height={ImageNoodles.height}
         loading="eager"
-        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-2"
       />
     </div>
     <a
       href="https://www.canva.com/p/trendify/"
-      class="text-xs text-dark content-link-gradient absolute right-4 bottom-0 z-30"
+      class="text-xs text-dark content-link-gradient absolute right-4 bottom-0 z-20"
       >Content images by <span class="font-sans-syne">@trendify</span></a
     >
   </section>
+
+  <section class="h-screen"></section>
+
+  <style>
+    .image-row-1,
+    .image-row-2 {
+      animation: shift-right linear;
+      animation-timeline: scroll();
+      animation-duration: 1ms;
+    }
+
+    @media (width < 768px) {
+      .image-row-2 {
+        animation: shift-left linear;
+        animation-timeline: scroll();
+      }
+    }
+
+    @keyframes shift-right {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(225px);
+      }
+    }
+
+    @keyframes shift-left {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-225px);
+      }
+    }
+  </style>
 </Base>
