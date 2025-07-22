@@ -93,9 +93,9 @@ const cTA = 'START COOKING';
   </section>
 
   <!-- Image Row -->
-  <section class="bg-light py-20">
+  <section class="relative bg-light dark:bg-medium py-20">
     <div
-      class="container grid grid-cols-4 laptop:grid-cols-8 gap-x-12 laptop:gap-x-16 desktop:gap-x-24 gap-y-10 items-center"
+      class="container grid grid-cols-4 grid-rows-2 tablet:grid-cols-8 tablet:grid-rows-1 gap-x-12 laptop:gap-x-16 gap-y-10 items-center"
     >
       <Image
         src={ImagePizza}
@@ -103,7 +103,7 @@ const cTA = 'START COOKING';
         width={ImagePizza.width}
         height={ImagePizza.height}
         loading="eager"
-        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
       />
       <Image
         src={ImageTacos}
@@ -111,15 +111,15 @@ const cTA = 'START COOKING';
         width={ImageTacos.width}
         height={ImageTacos.height}
         loading="eager"
-        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
       />
       <Image
         src={ImageDumplings}
-        alt="Burger"
+        alt="Dumplings"
         width={ImageDumplings.width}
         height={ImageDumplings.height}
         loading="eager"
-        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
       />
       <Image
         src={ImageCookies}
@@ -127,7 +127,7 @@ const cTA = 'START COOKING';
         width={ImageCookies.width}
         height={ImageCookies.height}
         loading="eager"
-        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
       />
       <Image
         src={ImageKungPaoChicken}
@@ -135,7 +135,7 @@ const cTA = 'START COOKING';
         width={ImageKungPaoChicken.width}
         height={ImageKungPaoChicken.height}
         loading="eager"
-        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
       />
       <Image
         src={ImageSushi}
@@ -143,7 +143,7 @@ const cTA = 'START COOKING';
         width={ImageSushi.width}
         height={ImageSushi.height}
         loading="eager"
-        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
       />
       <Image
         src={ImageBread}
@@ -151,7 +151,7 @@ const cTA = 'START COOKING';
         width={ImageBread.width}
         height={ImageBread.height}
         loading="eager"
-        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
       />
       <Image
         src={ImageNoodles}
@@ -159,8 +159,13 @@ const cTA = 'START COOKING';
         width={ImageNoodles.width}
         height={ImageNoodles.height}
         loading="eager"
-        class="w-full h-auto drop-shadow-md drop-shadow-medium/25"
+        class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
       />
     </div>
+    <a
+      href="https://www.canva.com/p/trendify/"
+      class="text-xs text-dark content-link-gradient absolute right-4 bottom-0 z-30"
+      >Content images by <span class="font-sans-syne">@trendify</span></a
+    >
   </section>
 </Base>
