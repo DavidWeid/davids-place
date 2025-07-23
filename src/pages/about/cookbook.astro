@@ -14,6 +14,9 @@ import ImageKungPaoChicken from '@images/about/cookbook/kung-pao-chicken.png';
 import ImageSushi from '@images/about/cookbook/sushi.png';
 import ImageBread from '@images/about/cookbook/bread.png';
 import ImageNoodles from '@images/about/cookbook/noodles.png';
+import ImageFriendsEating from '@images/about/cookbook/friends-eating.png';
+import ImageCookingTogether from '@images/about/cookbook/cooking-together.png';
+import ImageVeganFood from '@images/about/cookbook/vegan-food.png';
 
 const baseURL = import.meta.env.BASE_URL;
 
@@ -170,17 +173,16 @@ const cTA = 'START COOKING';
         style="--index: 7; --reverse-index: 0"
       />
     </div>
-    <a
-      href="https://www.canva.com/p/trendify/"
-      class="text-xs text-dark dark:text-light content-link-gradient absolute right-4 bottom-0 z-20"
-      >Content images by <span class="font-sans-syne">@trendify</span></a
-    >
   </section>
 
   <hr class="green-blue-shimmer-slow h-1 border-0" />
 
   <!-- Trust Row -->
-  <section class="relative bg-green-dark dark:bg-blue-dark py-20">
+  <section class="relative py-20">
+    <h2 class="container text-display-minor text-center pb-10">
+      A diverse and ever-growing cookbook
+    </h2>
+
     <div
       class="container flex flex-col tablet:flex-row items-center justify-around gap-5 tablet:gap-10 desktop:gap-20"
     >
@@ -208,41 +210,140 @@ const cTA = 'START COOKING';
     </div>
   </section>
 
-  <style>
-    .image-row-1,
-    .image-row-2 {
-      animation: shift-right linear;
-      animation-timeline: scroll();
-      animation-duration: 1ms;
-    }
+  <hr class="green-blue-shimmer-slow h-1 border-0" />
 
-    @media (width < 768px) {
-      .image-row-2 {
-        animation: shift-left linear;
-        animation-timeline: scroll();
-      }
-    }
+  <!-- Problem Solving Row -->
+  <section class="relative py-20">
+    <div
+      class="container grid grid-cols-1 laptop:grid-cols-2 gap-x-12 gap-y-24 items-center"
+    >
+      <div class="order-1">
+        <h2 class="text-display-minor text-gradient pb-5 w-max max-w-full">
+          Finally answer: “What’s for Dinner?”
+        </h2>
+        <p class="h3 pb-5">
+          Are you tired of cooking the same few meals on repeat, or spending
+          hours searching online for inspiration only to come up empty-handed?
+          Deciding what to cook every day can be a major source of stress and
+          lead to uninspired dinners.
+        </p>
+        <p class="h3">
+          Discover a world of new flavors. Our diverse collection of carefully
+          curated recipes ensures you'll always find fresh, exciting ideas to
+          break out of your cooking rut and make mealtime exciting again.
+        </p>
+      </div>
 
-    @keyframes shift-right {
-      from {
-        transform: translateX(0) rotate(0deg);
-      }
-      to {
-        transform: translateX(calc(100px * var(--index) * 0.5 + 100px))
-          rotate(calc(45deg * var(--index) + 45deg));
-      }
-    }
+      <div class="order-2">
+        <Image
+          src={ImageFriendsEating}
+          alt="Friends Eating together"
+          width={ImageFriendsEating.width}
+          height={ImageFriendsEating.height}
+          loading="eager"
+          class="w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        />
+      </div>
 
-    @keyframes shift-left {
-      from {
-        transform: translateX(0) rotate(0deg);
-      }
-      to {
-        transform: translateX(
-            calc(-100px * var(--reverse-index) * 0.5 + -100px)
-          )
-          rotate(calc(-45deg * var(--reverse-index) - 45deg));
-      }
-    }
-  </style>
+      <div class="order-4 laptop:order-3">
+        <Image
+          src={ImageCookingTogether}
+          alt="Cooking together"
+          width={ImageCookingTogether.width}
+          height={ImageCookingTogether.height}
+          loading="eager"
+          class="w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        />
+      </div>
+
+      <div class="order-3 laptop:order-4">
+        <h2 class="text-display-minor text-gradient pb-5 w-max max-w-full">
+          No More Lost Recipes or Complicated Instructions
+        </h2>
+        <p class="h3 pb-5">
+          Do you have favorite recipes scattered across countless browser tabs,
+          handwritten notes, or old cookbooks? And when you do find a recipe, is
+          it often too complicated, requiring obscure ingredients or advanced
+          techniques that make cooking feel like a chore?
+        </p>
+        <p class="h3">
+          Simplify your kitchen experience. All recipes in David's Place
+          Cookbook are easy-to-follow, clearly organized, and available in one
+          convenient place, transforming complex dishes into enjoyable culinary
+          adventures.
+        </p>
+      </div>
+
+      <div class="order-5">
+        <h2 class="text-display-minor text-gradient pb-5 w-max max-w-full">
+          Eat Vegan or Dairy-Free with Confidence
+        </h2>
+        <p class="h3 pb-5">
+          Struggling to find delicious recipes that align with your dietary
+          restrictions, preferences, or available ingredients? Sifting through
+          endless options to find something dairy-free, vegan, or just right for
+          tonight can be incredibly time-consuming.
+        </p>
+        <p class="h3">
+          Effortlessly find recipes tailored for you. With clearly tagged
+          dietary information and a wide range of options, all dairy-free, our
+          cookbook makes it simple to discover dishes that fit your lifestyle,
+          ensuring everyone at the table is happy.
+        </p>
+      </div>
+
+      <div class="order-6">
+        <Image
+          src={ImageVeganFood}
+          alt="Cooking together"
+          width={ImageVeganFood.width}
+          height={ImageVeganFood.height}
+          loading="eager"
+          class="w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+        />
+      </div>
+    </div>
+
+    <a
+      href="https://www.canva.com/p/trendify/"
+      class="text-xs text-dark dark:text-light content-link-gradient absolute right-4 bottom-0 z-20"
+      >Content images by <span class="font-sans-syne">@trendify</span></a
+    >
+  </section>
 </Base>
+
+<style>
+  .image-row-1,
+  .image-row-2 {
+    animation: shift-right linear;
+    animation-timeline: scroll();
+    animation-duration: 1ms;
+  }
+
+  @media (width < 768px) {
+    .image-row-2 {
+      animation: shift-left linear;
+      animation-timeline: scroll();
+    }
+  }
+
+  @keyframes shift-right {
+    from {
+      transform: translateX(0) rotate(0deg);
+    }
+    to {
+      transform: translateX(calc(100px * var(--index) * 0.5 + 100px))
+        rotate(calc(45deg * var(--index) + 45deg));
+    }
+  }
+
+  @keyframes shift-left {
+    from {
+      transform: translateX(0) rotate(0deg);
+    }
+    to {
+      transform: translateX(calc(-100px * var(--reverse-index) * 0.5 + -100px))
+        rotate(calc(-45deg * var(--reverse-index) - 45deg));
+    }
+  }
+</style>

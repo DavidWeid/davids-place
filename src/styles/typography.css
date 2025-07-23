@@ -59,6 +59,10 @@
     font-size: clamp(1.5rem, 2vw, 1.75rem);
   }
 
+  .text-display-minor {
+    font-size: clamp(2rem, 2vw, 4rem);
+  }
+
   .text-p-main {
     @apply text-lg;
   }

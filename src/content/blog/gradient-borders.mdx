@@ -46,7 +46,7 @@ One way to create gradient borders is by using a parent element with a gradient 
   </div>
 </div>
 
-Border radius works, but can use some finessing to get it to look visually correct. Here the parent has a border-radius of 12px while the child's is 8px.
+Border radius works, but can use some finessing to get it to look visually correct. Here the parent has a border-radius of 12px while the child’s is 8px.
 
 <div class="from-green-emerald to-blue-dark h-12 w-[150px] rounded-xl bg-linear-to-r p-1">
   <span class="bg-dark text-light dark:bg-light dark:text-dark flex h-full w-full items-center justify-center rounded-lg">
@@ -82,7 +82,7 @@ And if the background matches the page, it looks "transparent" (even though it d
 
 ---
 
-Another method is to use a transparent border with <CodeMarkdown code="border-image" lang="css" inline={true} /> and <CodeMarkdown code="border-image-slice" lang="css" inline={true} />. This is actually easier than above, as you're dealing with just border properties on the parent element. And it's transparent by default. However, rounded borders won't work.
+Another method is to use a transparent border with <CodeMarkdown code="border-image" lang="css" inline={true} /> and <CodeMarkdown code="border-image-slice" lang="css" inline={true} />. This is actually easier than above, as you’re dealing with just border properties on the parent element. And it’s transparent by default. However, rounded borders won’t work.
 
 <div class="relative w-max mx-auto">
   <Image
@@ -116,7 +116,7 @@ Another method is to use a transparent border with <CodeMarkdown code="border-im
 
 ---
 
-And finally, the fanciest border: gradient with rounded corners and a transparent background. I didn't figure this out, but here's the original post that I found:
+And finally, the fanciest border: gradient with rounded corners and a transparent background. I didn’t figure this out, but here’s the original post that I found:
 
 <ExternalLink
   text="How to create rounded gradient borders with any background in CSS"
