@@ -242,7 +242,7 @@ const cTA = 'START COOKING';
           alt="Friends Eating together"
           width={ImageFriendsEating.width}
           height={ImageFriendsEating.height}
-          loading="eager"
+          loading="lazy"
           class="reveal w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
         />
       </div>
@@ -253,7 +253,7 @@ const cTA = 'START COOKING';
           alt="Cooking together"
           width={ImageCookingTogether.width}
           height={ImageCookingTogether.height}
-          loading="eager"
+          loading="lazy"
           class="reveal w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
         />
       </div>
@@ -300,17 +300,11 @@ const cTA = 'START COOKING';
           alt="Cooking together"
           width={ImageVeganFood.width}
           height={ImageVeganFood.height}
-          loading="eager"
+          loading="lazy"
           class="reveal w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
         />
       </div>
     </div>
-
-    <a
-      href="https://www.canva.com/p/trendify/"
-      class="text-xs text-dark dark:text-light content-link-gradient absolute right-4 bottom-0 z-20"
-      >Content images by <span class="font-sans-syne">@trendify</span></a
-    >
   </section>
 
   <!-- Testimonial Row -->
@@ -347,6 +341,10 @@ const cTA = 'START COOKING';
 </Base>
 
 <style>
+  section {
+    content-visibility: auto;
+  }
+
   .image-row-1,
   .image-row-2 {
     animation: shift-right linear;

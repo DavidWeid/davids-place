@@ -5,6 +5,12 @@ import IconEmail from '@images/icons/email.svg';
 
 const baseURL = import.meta.env.BASE_URL;
 const year: number = new Date().getFullYear();
+
+const isHomepage = Astro.url.pathname === '/davids-place/';
+const isAboutPage =
+  Astro.url.pathname.includes('about') &&
+  !Astro.url.pathname.includes('cookbook');
+const isCookbookPage = Astro.url.pathname.includes('about/cookbook');
 ---
 
 <footer
@@ -73,22 +79,45 @@ const year: number = new Date().getFullYear();
   </div>
 
   <div class="container mt-1 flex items-center justify-center gap-6">
-    <!-- <a
-      href="https://www.flaticon.com/authors/justicon"
-      class="text-center text-light/50 hover:text-green-emerald/75 text-xs"
-      >Coding icon created by justicon - Flaticon <span class="sr-only">(Redirects to Flaticon.com)</span></a
-    > -->
+    {
+      isHomepage && (
+        <a
+          href="https://www.flaticon.com/authors/justicon"
+          class="text-center text-light/50 hover:text-green-emerald/75 text-xs"
+        >
+          JS, HTML, CSS icon by justicon
+          <span class="sr-only">(Redirects to Flaticon.com)</span>
+        </a>
+      )
+    }
 
     <!-- svg icon source: https://www.svgrepo.com/collection/iconhub-tritone-icons/ -->
 
-    <a
-      href="https://www.canva.com/p/unfold-x/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
-      target="_blank"
-      class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
-      >About page icons created by Unfold X - Canva <span class="sr-only"
-        >(Redirects to Canva.com)</span
-      ></a
-    >
+    {
+      isAboutPage && (
+        <a
+          href="https://www.canva.com/p/unfold-x/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
+          target="_blank"
+          class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
+        >
+          Cat, drink, and cupcake icons by Unfold X
+          <span class="sr-only">(Redirects to Canva.com)</span>
+        </a>
+      )
+    }
+
+    {
+      isCookbookPage && (
+        <a
+          href="https://www.canva.com/p/trendify/"
+          target="_blank"
+          class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
+        >
+          Content images @trendify
+          <span class="sr-only">(Redirects to Canva.com)</span>
+        </a>
+      )
+    }
 
     <span class="opacity-50" aria-hidden="true">|</span>
 
@@ -96,9 +125,8 @@ const year: number = new Date().getFullYear();
       href="https://www.canva.com/p/dedy-izhams-images/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
       target="_blank"
       class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
-      >Astronaut cartoon created by Dedy Izham - Canva <span class="sr-only"
-        >(Redirects to Canva.com)</span
-      ></a
+      >Astronaut cartoon by Dedy Izham
+      <span class="sr-only">(Redirects to Canva.com)</span></a
     >
   </div>
 </footer>
