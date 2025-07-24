@@ -1,0 +1,28 @@
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg aria-hidden="true" focusable="false" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512 512" xml:space="preserve">
+<path style="fill:#FAC656;" d="M256,0C114.616,0,0,114.616,0,256c0,118.321,80.279,217.876,189.335,247.214l321.931-266.705
+	C501.307,104.23,390.827,0,256,0z"/>
+<path style="fill:#F7A150;" d="M378.28,159.01l-88.889-88.889l-33.387,11.13v155.216L83.478,397.357l105.857,105.857
+	C210.592,508.932,232.937,512,256,512c141.384,0,256-114.616,256-256c0-6.558-0.249-13.057-0.733-19.492L408.962,134.204
+	L378.28,159.01z"/>
+<rect x="244.87" y="81.252" style="fill:#394449;" width="22.261" height="66.783"/>
+<g>
+	<rect x="222.609" y="70.122" style="fill:#414D53;" width="66.783" height="22.261"/>
+	<rect x="38.957" y="225.948" style="fill:#414D53;" width="66.783" height="22.261"/>
+</g>
+<rect x="406.261" y="225.948" style="fill:#394449;" width="66.783" height="22.261"/>
+<polygon style="fill:#C34346;" points="428.522,203.687 233.739,181.426 256,386.226 428.522,375.096 "/>
+<polygon style="fill:#E64A55;" points="83.478,203.687 83.478,375.096 256,386.226 256,181.426 "/>
+<rect x="256" y="375.096" style="fill:#57676E;" width="172.522" height="22.261"/>
+<rect x="83.478" y="375.096" style="fill:#748993;" width="172.522" height="22.261"/>
+<g>
+	<rect x="139.13" y="330.574" style="fill:#C34346;" width="22.261" height="22.261"/>
+	<rect x="105.739" y="297.183" style="fill:#C34346;" width="22.261" height="22.261"/>
+</g>
+<rect x="83.478" y="181.426" style="fill:#57676E;" width="172.522" height="22.261"/>
+<rect x="256.011" y="181.426" style="fill:#414D53;" width="172.522" height="22.261"/>
+<path style="fill:#D1F1FF;" d="M361.739,114.643H256l-22.261,33.391L256,181.426h172.522
+	C428.522,144.542,398.622,114.643,361.739,114.643z"/>
+<path style="fill:#FFFFFF;" d="M150.261,114.643c-36.883,0-66.783,29.899-66.783,66.783H256v-66.783H150.261z"/>
+</svg>

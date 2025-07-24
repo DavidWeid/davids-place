@@ -17,6 +17,8 @@ import ImageNoodles from '@images/about/cookbook/noodles.png';
 import ImageFriendsEating from '@images/about/cookbook/friends-eating.png';
 import ImageCookingTogether from '@images/about/cookbook/cooking-together.png';
 import ImageVeganFood from '@images/about/cookbook/vegan-food.png';
+import IconQuotationMark from '@images/icons/quotation-mark.svg';
+import IconKitchenPackApron from '@images/icons/cookbook/kitchen-pack-apron.svg';
 
 const baseURL = import.meta.env.BASE_URL;
 
@@ -241,7 +243,7 @@ const cTA = 'START COOKING';
           width={ImageFriendsEating.width}
           height={ImageFriendsEating.height}
           loading="eager"
-          class="w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+          class="reveal w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
         />
       </div>
 
@@ -252,7 +254,7 @@ const cTA = 'START COOKING';
           width={ImageCookingTogether.width}
           height={ImageCookingTogether.height}
           loading="eager"
-          class="w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+          class="reveal w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
         />
       </div>
 
@@ -299,7 +301,7 @@ const cTA = 'START COOKING';
           width={ImageVeganFood.width}
           height={ImageVeganFood.height}
           loading="eager"
-          class="w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
+          class="reveal w-8/12 tablet:w-9/12 desktopxl:w-6/12 h-auto mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25"
         />
       </div>
     </div>
@@ -310,13 +312,46 @@ const cTA = 'START COOKING';
       >Content images by <span class="font-sans-syne">@trendify</span></a
     >
   </section>
+
+  <!-- Testimonial Row -->
+  <section class="relative py-20 bg-green-dark dark:bg-blue-dark">
+    <div
+      class="container flex flex-col gap-y-10 tablet:grid tablet:grid-cols-12 tablet:gap-x-12"
+    >
+      <blockquote class="relative tablet:col-span-7 tablet:col-start-2 h3">
+        <IconQuotationMark
+          class="fill-white tablet:absolute tablet:top-0 tablet:-left-20 laptop:-left-28 w-16 h-16 laptop:w-20 laptop:h-20 wave"
+        />
+        <p class="pt-2.5 tablet:pt-0">
+          As someone who appreciates diverse and approachable cooking, David's
+          Place Cookbook is a fantastic resource. The clear organization and
+          helpful tags for dietary needs make it incredibly easy to find exactly
+          what you're looking for. The Kung Pao Tofu recipe is a perfect
+          example: detailed instructions guide you to a delightfully crispy and
+          flavorful dish, proving that delicious, plant-based meals are entirely
+          achievable!
+        </p>
+        <p class="pt-5 ml-2.5 text-2xl tablet:text-3xl">
+          — <cite class="font-sans-syne not-italic"
+            >David, Creator of David's Place</cite
+          >
+        </p>
+      </blockquote>
+      <div class="col-span-3 h-max">
+        <IconKitchenPackApron
+          class="max-w-44 tablet:max-w-52 mx-auto tablet:mx-0 drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg"
+        />
+      </div>
+    </div>
+  </section>
 </Base>
 
 <style>
   .image-row-1,
   .image-row-2 {
     animation: shift-right linear;
-    animation-timeline: scroll();
+    animation-timeline: view();
+    animation-range: contain 25% exit;
     animation-duration: 1ms;
   }
 
@@ -324,6 +359,13 @@ const cTA = 'START COOKING';
     .image-row-2 {
       animation: shift-left linear;
       animation-timeline: scroll();
+    }
+  }
+
+  @media (prefers-reduced-motion) {
+    .image-row-1,
+    .image-row-2 {
+      animation: none;
     }
   }
 
