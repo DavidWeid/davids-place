@@ -28,6 +28,7 @@ import IconKitchenPackSpatula from '@images/icons/cookbook/kitchen-pack-spatula.
 import IconKitchenPackTea from '@images/icons/cookbook/kitchen-pack-tea.svg';
 import IconKitchenPackPestleMortar from '@images/icons/cookbook/kitchen-pack-pestle-mortar.svg';
 import IconKitchenPackPot from '@images/icons/cookbook/kitchen-pack-pot.svg';
+import IconKitchenPackHat from '@images/icons/cookbook/kitchen-pack-hat.svg';
 
 const baseURL = import.meta.env.BASE_URL;
 
@@ -55,7 +56,7 @@ const cTA = 'START COOKING';
 
       <a
         href={`${baseURL}cookbook/`}
-        class="inline-block font-bold text-xl tracking-wider px-6 py-3 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark rounded-lg transition-all duration-500 green-shimmer-slow hover:blue-shimmer-slow active:brightness-75"
+        class="inline-block w-max font-bold text-xl tracking-wider px-6 py-3 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark rounded-lg transition-all duration-500 green-shimmer-slow hover:blue-shimmer-slow active:brightness-75"
         >{cTA}</a
       >
     </div>
@@ -299,7 +300,7 @@ const cTA = 'START COOKING';
       <div class="order-6">
         <Image
           src={ImageVeganFood}
-          alt="Cooking together"
+          alt="Tofu and vegan food"
           width={ImageVeganFood.width}
           height={ImageVeganFood.height}
           loading="lazy"
@@ -341,58 +342,66 @@ const cTA = 'START COOKING';
     </div>
   </section>
 
-  <section class="relative py-20 tablet:py-10 bg-medium dark:bg-light">
-    <div class="container circular-grid">
-      <div class="div1 justify-items-center relative">
-        <h2
-          class="text-display-minor text-gradient w-max max-w-full text-center pb-8 tablet:p-4 tablet:absolute tablet:top-1/2 tablet:left-1/2 tablet:-translate-x-1/2 tablet:-translate-y-1/2"
+  <section
+    class="relative py-10 bg-medium dark:bg-light desktopxl:dark:bg-dark"
+  >
+    <div class="container">
+      <div
+        class="grid grid-cols-1 laptop:grid-cols-3 gap-10 desktopxl:max-w-[1800px] desktopxl:mx-auto px-4 laptop:px-8 py-8 bg-light dark:bg-medium rounded-6-8-12 drop-shadow-2xl drop-shadow-medium/25"
+      >
+        <div class="laptop:hidden grid grid-cols-4 gap-5 h-max">
+          <IconKitchenPackCake class="w-full h-auto" />
+          <IconKitchenPackKnife class="w-full h-auto" />
+          <IconKitchenPackMixer class="w-full h-auto" />
+          <IconKitchenPackRollingPin class="w-full h-auto" />
+        </div>
+
+        <div class="flex flex-col gap-5 laptop:col-span-2">
+          <h2 class="text-display text-gradient max-w-[1000px]">
+            Take Control of Your Kitchen Today
+          </h2>
+
+          <p class="h3 w-10/12 tablet:w-9/12 max-w-[1000px] mb-5">
+            Discover a world of new flavors now — David’s Place Cookbook will
+            simplify your cooking routine, making mealtime exciting again.
+          </p>
+
+          <a
+            href={`${baseURL}cookbook/`}
+            class="inline-block w-max font-bold text-xl tracking-wider px-6 py-3 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark rounded-lg transition-all duration-500 green-shimmer-slow hover:blue-shimmer-slow active:brightness-75"
+            >{cTA}</a
+          >
+        </div>
+
+        <div
+          class="laptop:col-span-1 grid grid-cols-4 laptop:grid-cols-3 desktop:grid-cols-4 gap-5 h-max"
         >
-          Take Control of Your<br />Kitchen Today
-        </h2>
-
-        <a
-          href={`${baseURL}cookbook/`}
-          class="inline-block font-bold text-xl tracking-wider px-6 py-3 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark rounded-lg transition-all duration-500 green-shimmer-slow hover:blue-shimmer-slow active:brightness-75 text-center w-full tablet:w-max tablet:absolute tablet:-bottom-[75px] tablet:desktopxl:-bottom-[80px] tablet:left-1/2 tablet:-translate-x-1/2"
-          >{cTA}</a
-        >
-      </div>
-
-      <div class="div2 content-center justify-items-end">
-        <IconKitchenPackCake class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
-      </div>
-
-      <div class="div3 content-center">
-        <IconKitchenPackKnife class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
-      </div>
-
-      <div class="div4 content-start justify-items-center">
-        <IconKitchenPackMixer class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
-      </div>
-
-      <div class="div5 content-end justify-items-center">
-        <IconKitchenPackRollingPin
-          class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20"
-        />
-      </div>
-
-      <div class="div6 content-center">
-        <IconKitchenPackSpatula
-          class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20"
-        />
-      </div>
-
-      <div class="div7 content-center justify-items-end">
-        <IconKitchenPackTea class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
-      </div>
-
-      <div class="div8 content-center">
-        <IconKitchenPackPestleMortar
-          class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20"
-        />
-      </div>
-
-      <div class="div9 content-center justify-items-end">
-        <IconKitchenPackPot class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
+          <IconKitchenPackCake
+            class="wave w-full h-auto laptop:max-w-[100px] hidden! laptop:block! animate-none! desktop:animate-[wave_1.5s_infinite]!"
+          />
+          <IconKitchenPackKnife
+            class="w-full h-auto laptop:max-w-[100px] hidden laptop:block"
+          />
+          <IconKitchenPackMixer
+            class="wave w-full h-auto laptop:max-w-[100px] hidden! laptop:block!"
+          />
+          <IconKitchenPackRollingPin
+            class="wave w-full h-auto laptop:max-w-[100px] hidden! laptop:block! desktop:animate-none!"
+          />
+          <IconKitchenPackSpatula class="w-full h-auto laptop:max-w-[100px]" />
+          <IconKitchenPackTea
+            class="wave w-full h-auto laptop:max-w-[100px] animate-none! desktop:animate-[wave_1.5s_infinite]!"
+          />
+          <IconKitchenPackPestleMortar
+            class="w-full h-auto laptop:max-w-[100px]"
+          />
+          <IconKitchenPackPot
+            class="wave w-full h-auto laptop:max-w-[100px] animate-none! desktop:animate-[wave_1.5s_infinite]!"
+          />
+          <IconKitchenPackHat
+            class="wave w-full h-auto laptop:max-w-[100px] hidden! laptop:block! desktop:hidden!"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -440,44 +449,6 @@ const cTA = 'START COOKING';
     }
     to {
       transform: translateX(-100px) rotate(-45deg);
-    }
-  }
-
-  @media (min-width: 768px) {
-    .circular-grid {
-      display: grid;
-      grid-template-columns: repeat(11, 1fr);
-      grid-template-rows: repeat(5, 1fr);
-      grid-column-gap: 0px;
-      grid-row-gap: 0px;
-    }
-
-    .div1 {
-      grid-area: 3 / 3 / 4 / 10;
-    }
-    .div2 {
-      grid-area: 3 / 1 / 4 / 2;
-    }
-    .div3 {
-      grid-area: 3 / 11 / 4 / 12;
-    }
-    .div4 {
-      grid-area: 5 / 6 / 6 / 7;
-    }
-    .div5 {
-      grid-area: 1 / 6 / 2 / 7;
-    }
-    .div6 {
-      grid-area: 4 / 3 / 5 / 4;
-    }
-    .div7 {
-      grid-area: 4 / 9 / 5 / 10;
-    }
-    .div8 {
-      grid-area: 2 / 3 / 3 / 4;
-    }
-    .div9 {
-      grid-area: 2 / 9 / 3 / 10;
     }
   }
 </style>
