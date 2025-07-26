@@ -423,7 +423,9 @@ const cTA = 'START COOKING';
   @media (width < 768px) {
     .image-row-2 {
       animation: shift-left linear;
-      animation-timeline: scroll();
+      animation-timeline: view();
+      animation-range: contain 25% exit;
+      animation-duration: 1ms;
     }
   }
 
