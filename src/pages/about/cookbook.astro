@@ -1,6 +1,7 @@
 ---
 import Base from '@layouts/Base.astro';
 import { Image } from 'astro:assets';
+
 import ImageChoppingBoard from '@images/about/cookbook/chopping-board.png';
 import ImageMeat from '@images/about/cookbook/meat.png';
 import ImageRibs from '@images/about/cookbook/ribs.png';
@@ -19,10 +20,18 @@ import ImageCookingTogether from '@images/about/cookbook/cooking-together.png';
 import ImageVeganFood from '@images/about/cookbook/vegan-food.png';
 import IconQuotationMark from '@images/icons/quotation-mark.svg';
 import IconKitchenPackApron from '@images/icons/cookbook/kitchen-pack-apron.svg';
+import IconKitchenPackCake from '@images/icons/cookbook/kitchen-pack-cake.svg';
+import IconKitchenPackKnife from '@images/icons/cookbook/kitchen-pack-knife.svg';
+import IconKitchenPackMixer from '@images/icons/cookbook/kitchen-pack-mixer.svg';
+import IconKitchenPackRollingPin from '@images/icons/cookbook/kitchen-pack-rolling-pin.svg';
+import IconKitchenPackSpatula from '@images/icons/cookbook/kitchen-pack-spatula.svg';
+import IconKitchenPackTea from '@images/icons/cookbook/kitchen-pack-tea.svg';
+import IconKitchenPackPestleMortar from '@images/icons/cookbook/kitchen-pack-pestle-mortar.svg';
+import IconKitchenPackPot from '@images/icons/cookbook/kitchen-pack-pot.svg';
 
 const baseURL = import.meta.env.BASE_URL;
 
-const title = "David's Cookbook - About";
+const title = 'David’s Cookbook - About';
 const header = 'Discover Your Next Favorite Recipe';
 const subheader = 'Explore a diverse cookbook with easy-to-follow dishes';
 const cTA = 'START COOKING';
@@ -46,7 +55,7 @@ const cTA = 'START COOKING';
 
       <a
         href={`${baseURL}cookbook/`}
-        class="font-bold text-xl tracking-wider px-6 py-3 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark rounded-lg transition-all duration-500 green-shimmer-slow hover:blue-shimmer-slow active:brightness-75"
+        class="inline-block font-bold text-xl tracking-wider px-6 py-3 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark rounded-lg transition-all duration-500 green-shimmer-slow hover:blue-shimmer-slow active:brightness-75"
         >{cTA}</a
       >
     </div>
@@ -109,7 +118,6 @@ const cTA = 'START COOKING';
         height={ImagePizza.height}
         loading="eager"
         class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-1"
-        style="--index: 0"
       />
       <Image
         src={ImageTacos}
@@ -118,7 +126,6 @@ const cTA = 'START COOKING';
         height={ImageTacos.height}
         loading="eager"
         class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-1"
-        style="--index: 1"
       />
       <Image
         src={ImageDumplings}
@@ -127,7 +134,6 @@ const cTA = 'START COOKING';
         height={ImageDumplings.height}
         loading="eager"
         class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-1"
-        style="--index: 2"
       />
       <Image
         src={ImageCookies}
@@ -136,7 +142,6 @@ const cTA = 'START COOKING';
         height={ImageCookies.height}
         loading="eager"
         class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-1"
-        style="--index: 3"
       />
       <Image
         src={ImageKungPaoChicken}
@@ -145,7 +150,6 @@ const cTA = 'START COOKING';
         height={ImageKungPaoChicken.height}
         loading="eager"
         class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-2"
-        style="--index: 4; --reverse-index: 3"
       />
       <Image
         src={ImageSushi}
@@ -154,7 +158,6 @@ const cTA = 'START COOKING';
         height={ImageSushi.height}
         loading="eager"
         class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-2"
-        style="--index: 5; --reverse-index: 2"
       />
       <Image
         src={ImageBread}
@@ -163,7 +166,6 @@ const cTA = 'START COOKING';
         height={ImageBread.height}
         loading="eager"
         class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-2"
-        style="--index: 6; --reverse-index: 1"
       />
       <Image
         src={ImageNoodles}
@@ -172,7 +174,6 @@ const cTA = 'START COOKING';
         height={ImageNoodles.height}
         loading="eager"
         class="w-full h-auto desktop:max-w-[100px] desktop:mx-auto drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg dark:drop-shadow-light/25 image-row-2"
-        style="--index: 7; --reverse-index: 0"
       />
     </div>
   </section>
@@ -231,7 +232,7 @@ const cTA = 'START COOKING';
         </p>
         <p class="h3">
           Discover a world of new flavors. Our diverse collection of carefully
-          curated recipes ensures you'll always find fresh, exciting ideas to
+          curated recipes ensures you’ll always find fresh, exciting ideas to
           break out of your cooking rut and make mealtime exciting again.
         </p>
       </div>
@@ -269,10 +270,11 @@ const cTA = 'START COOKING';
           techniques that make cooking feel like a chore?
         </p>
         <p class="h3">
-          Simplify your kitchen experience. All recipes in David's Place
-          Cookbook are easy-to-follow, clearly organized, and available in one
-          convenient place, transforming complex dishes into enjoyable culinary
-          adventures.
+          Simplify your kitchen experience. All recipes in <a
+            href={`${baseURL}cookbook/`}
+            class="content-link-gradient">David’s Place Cookbook</a
+          > are easy-to-follow, clearly organized, and available in one convenient
+          place, transforming complex dishes into enjoyable culinary adventures.
         </p>
       </div>
 
@@ -317,17 +319,17 @@ const cTA = 'START COOKING';
           class="fill-white tablet:absolute tablet:top-0 tablet:-left-20 laptop:-left-28 w-16 h-16 laptop:w-20 laptop:h-20 wave"
         />
         <p class="pt-2.5 tablet:pt-0">
-          As someone who appreciates diverse and approachable cooking, David's
+          As someone who appreciates diverse and approachable cooking, David’s
           Place Cookbook is a fantastic resource. The clear organization and
           helpful tags for dietary needs make it incredibly easy to find exactly
-          what you're looking for. The Kung Pao Tofu recipe is a perfect
+          what you’re looking for. The Kung Pao Tofu recipe is a perfect
           example: detailed instructions guide you to a delightfully crispy and
           flavorful dish, proving that delicious, plant-based meals are entirely
           achievable!
         </p>
         <p class="pt-5 ml-2.5 text-2xl tablet:text-3xl">
           — <cite class="font-sans-syne not-italic"
-            >David, Creator of David's Place</cite
+            >David, Creator of David’s Place</cite
           >
         </p>
       </blockquote>
@@ -335,6 +337,62 @@ const cTA = 'START COOKING';
         <IconKitchenPackApron
           class="max-w-44 tablet:max-w-52 mx-auto tablet:mx-0 drop-shadow-md drop-shadow-medium/25 dark:drop-shadow-lg"
         />
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20 tablet:py-10 bg-medium dark:bg-light">
+    <div class="container circular-grid">
+      <div class="div1 justify-items-center relative">
+        <h2
+          class="text-display-minor text-gradient w-max max-w-full text-center pb-8 tablet:p-4 tablet:absolute tablet:top-1/2 tablet:left-1/2 tablet:-translate-x-1/2 tablet:-translate-y-1/2"
+        >
+          Take Control of Your<br />Kitchen Today
+        </h2>
+
+        <a
+          href={`${baseURL}cookbook/`}
+          class="inline-block font-bold text-xl tracking-wider px-6 py-3 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark rounded-lg transition-all duration-500 green-shimmer-slow hover:blue-shimmer-slow active:brightness-75 text-center w-full tablet:w-max tablet:absolute tablet:-bottom-[75px] tablet:desktopxl:-bottom-[80px] tablet:left-1/2 tablet:-translate-x-1/2"
+          >{cTA}</a
+        >
+      </div>
+
+      <div class="div2 content-center justify-items-end">
+        <IconKitchenPackCake class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
+      </div>
+
+      <div class="div3 content-center">
+        <IconKitchenPackKnife class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
+      </div>
+
+      <div class="div4 content-start justify-items-center">
+        <IconKitchenPackMixer class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
+      </div>
+
+      <div class="div5 content-end justify-items-center">
+        <IconKitchenPackRollingPin
+          class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20"
+        />
+      </div>
+
+      <div class="div6 content-center">
+        <IconKitchenPackSpatula
+          class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20"
+        />
+      </div>
+
+      <div class="div7 content-center justify-items-end">
+        <IconKitchenPackTea class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
+      </div>
+
+      <div class="div8 content-center">
+        <IconKitchenPackPestleMortar
+          class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20"
+        />
+      </div>
+
+      <div class="div9 content-center justify-items-end">
+        <IconKitchenPackPot class="hidden tablet:block w-full h-auto max-w-28 desktop:max-w-20" />
       </div>
     </div>
   </section>
@@ -372,8 +430,7 @@ const cTA = 'START COOKING';
       transform: translateX(0) rotate(0deg);
     }
     to {
-      transform: translateX(calc(100px * var(--index) * 0.5 + 100px))
-        rotate(calc(45deg * var(--index) + 45deg));
+      transform: translateX(100px) rotate(45deg);
     }
   }
 
@@ -382,8 +439,45 @@ const cTA = 'START COOKING';
       transform: translateX(0) rotate(0deg);
     }
     to {
-      transform: translateX(calc(-100px * var(--reverse-index) * 0.5 + -100px))
-        rotate(calc(-45deg * var(--reverse-index) - 45deg));
+      transform: translateX(-100px) rotate(-45deg);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .circular-grid {
+      display: grid;
+      grid-template-columns: repeat(11, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+    }
+
+    .div1 {
+      grid-area: 3 / 3 / 4 / 10;
+    }
+    .div2 {
+      grid-area: 3 / 1 / 4 / 2;
+    }
+    .div3 {
+      grid-area: 3 / 11 / 4 / 12;
+    }
+    .div4 {
+      grid-area: 5 / 6 / 6 / 7;
+    }
+    .div5 {
+      grid-area: 1 / 6 / 2 / 7;
+    }
+    .div6 {
+      grid-area: 4 / 3 / 5 / 4;
+    }
+    .div7 {
+      grid-area: 4 / 9 / 5 / 10;
+    }
+    .div8 {
+      grid-area: 2 / 3 / 3 / 4;
+    }
+    .div9 {
+      grid-area: 2 / 9 / 3 / 10;
     }
   }
 </style>
