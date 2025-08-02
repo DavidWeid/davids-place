@@ -1,3 +1,4 @@
+# This GitHub deploy to GitHub Pages has been deprecated for Firebase
 name: Deploy to GitHub Pages
 
 on:
