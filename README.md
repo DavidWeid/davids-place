@@ -7,7 +7,7 @@ This project allows me to showcase my work and share my thoughts in interests (e
 - mdx
 - typescript
 
-This site is deployed here using GitHub Pages: https://davidweid.github.io/davids-place/
+This site is deployed here using Firebase: https://davids-place-portfolio.web.app/
 
 ## 🚀 Project Structure
 

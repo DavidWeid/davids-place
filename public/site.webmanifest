@@ -3,18 +3,18 @@
   "short_name": "David’s Place",
   "icons": [
     {
-      "src": "/davids-place/android-chrome-192x192.png?v=1",
+      "src": "/android-chrome-192x192.png?v=1",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/davids-place/android-chrome-512x512.png?v=1",
+      "src": "/android-chrome-512x512.png?v=1",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "theme_color": "#3844C6",
   "background_color": "#3844C6",
-  "start_url": "/davids-place/",
+  "start_url": "/",
   "display": "standalone"
 }

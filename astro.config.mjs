@@ -10,8 +10,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://davidweid.github.io',
-  base: '/davids-place',
+  site: 'https://davids-place-portfolio.web.app/',
   trailingSlash: 'always',
   prefetch: {
     prefetchAll: true,
