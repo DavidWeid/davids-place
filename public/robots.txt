@@ -4,4 +4,4 @@ Allow: /
 User-agent: Googlebot-Image
 Disallow: /
 
-Sitemap: https://davids-place-portfolio.web.app/sitemap-index.xml
+Sitemap: https://davids-place-portfolio.web.app/sitemap-0.xml

@@ -26,7 +26,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      lastmod: new Date('2025-07-06'),
+      lastmod: new Date('2025-08-03'),
     }),
     showTailwindcssBreakpoint({
       breakpoints: {

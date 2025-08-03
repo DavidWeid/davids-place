@@ -13,6 +13,7 @@ import headshot from '@images/general/david-weid-headshot-3.jpg';
 
 import MainNav from '@components/MainNav.astro';
 import MainFooter from '@components/MainFooter.astro';
+import Analytics from '@components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -70,7 +71,7 @@ const image = await getImage({
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={urlString} />
-    <link rel="sitemap" href={`${baseURL}sitemap-index.xml`} />
+    <link rel="sitemap" href={`${baseURL}sitemap-0.xml`} />
 
     <!-- Preload Homepage Hero Image -->
     {
@@ -196,21 +197,6 @@ const image = await getImage({
       <slot />
     </main>
     <MainFooter />
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6872JXQ90"
-    ></script>
-    <script>
-      // @ts-ignore
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        // @ts-ignore
-        dataLayer.push(arguments);
-      }
-      // @ts-ignore
-      gtag('js', new Date());
-      // @ts-ignore
-      gtag('config', 'G-P6872JXQ90');
-    </script>
+    <Analytics />
   </body>
 </html>
