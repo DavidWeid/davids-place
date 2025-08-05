@@ -195,7 +195,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
       class="tablet:max-w-[85vw] desktopxl:max-w-[65vw] laptop:grid laptop:grid-cols-6 laptop:gap-x-10 mx-auto flex flex-col"
     >
       <div class="laptop:col-span-6">
-        <h2 class="text-gradient w-max">Learn more about me</h2>
+        <h2 class="text-gradient w-max max-w-full">Learn more about me</h2>
         <span class="block pb-5"></span>
       </div>
 
@@ -289,7 +289,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
       <div class="laptop:col-span-4">
         <p
-          class="text-gradient flex w-max items-center gap-1.5 py-0.5 text-lg font-semibold"
+          class="text-gradient flex w-max max-w-full items-center gap-1.5 py-0.5 text-lg font-semibold"
         >
           <IconDdIconWhite
             id="dd-icon-white"
@@ -345,10 +345,12 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
         <span class="block pb-5"></span>
 
-        <ExternalLink
-          href={`${baseURL}david-weid-resume-2025.pdf`}
-          text="View a PDF of my resume"
-        />
+        <p class="text-p-main">
+          <ExternalLink
+            href={`${baseURL}david-weid-resume-2025.pdf`}
+            text="View a PDF of my resume"
+          />
+        </p>
 
         <span class="spacer-80-112-112"></span>
       </div>
@@ -366,7 +368,9 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
       <span class="font-sans-syne text-lg">
         <EmojiTextWave emoji="🚀" text="David’s Place" />
       </span>
-      <h2 class="text-gradient w-max">About this project and website</h2>
+      <h2 class="text-gradient w-max max-w-full">
+        About this project and website
+      </h2>
 
       <span class="spacer-40"></span>
 
@@ -376,11 +380,11 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
             This website is a side project and playground for me to learn <strong
               >AstroJS</strong
             >, using <strong>TailwindCSS</strong> and other cool CSS/HTML tricks.
-            It is hosted on <strong>Firebase</strong> and is a static website
-            that makes use of Astro's <strong>View Transitions</strong>. It's
-            currently using <strong>Astro {astroVersion[0]}</strong> and <strong
-              >Tailwind {tailwindVersion[0]}</strong
-            >. I hope you find something interesting or even useful here.
+            It’s hosted on <strong>Firebase</strong> and is currently a static website
+            that makes use of Astro's <strong>View Transitions</strong>. It uses <strong
+              >Astro {astroVersion[0]}</strong
+            > and <strong>Tailwind {tailwindVersion[0]}</strong>. I hope you
+            find something interesting or even useful here.
           </div>
 
           <Image
@@ -398,7 +402,7 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
       <p class="text-lg">
         Currently, David’s Place acts as a portfolio and visual representation
-        of my resume (everything above if you've made it this far). The most
+        of my resume (everything above if you’ve made it this far). The most
         robust project on this site is the <strong>Cookbook</strong>. I have
         more I want to build, but it’s fun all the same!
       </p>
