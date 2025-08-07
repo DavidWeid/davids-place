@@ -41,7 +41,7 @@ const homepageLinkAttributes = pathname === baseURL ? {} : { href: baseURL };
 const nonLinkClasses =
   'text-light/80 hover:text-light/80 dark:text-light/80 dark:hover:text-light/80 w-max px-3 py-2 uppercase text-sm';
 const linkClasses =
-  'text-light hover:text-green-emerald hover:scale-110 transition-all w-max px-3 py-2 uppercase text-sm';
+  'text-light hover:text-green-emerald hover:scale-110 transition-[color,scale] w-max px-3 py-2 uppercase text-sm';
 
 const navItems: string[] = Object.keys(obj).map(
   (key) =>
@@ -52,7 +52,7 @@ const navItems: string[] = Object.keys(obj).map(
 ---
 
 <nav
-  class={`bg-dark/80 dark:bg-medium/80 text-light laptop:sticky laptop:top-0 tablet:pb-4 z-30 pt-4 pb-2 backdrop-blur-md transition-all ${customNavClasses}`}
+  class={`bg-dark/80 dark:bg-medium/80 text-light laptop:sticky laptop:top-0 tablet:pb-4 z-30 pt-4 pb-2 backdrop-blur-md ${customNavClasses}`}
 >
   <div class="container flex flex-wrap items-center justify-between gap-y-2">
     <a href="#main" class="skip-link">Skip to content</a>
@@ -61,7 +61,7 @@ const navItems: string[] = Object.keys(obj).map(
       <AstroLogo
         class={pathname === baseURL
           ? 'h-10 tablet:h-12 w-auto'
-          : 'h-10 tablet:h-12 w-auto group-hover:-rotate-12 transition-all'}
+          : 'h-10 tablet:h-12 w-auto group-hover:-rotate-12 transition-transform'}
       />
       {
         pathname === baseURL ? (
@@ -69,7 +69,7 @@ const navItems: string[] = Object.keys(obj).map(
         ) : (
           <a
             {...homepageLinkAttributes}
-            class="group-hover:text-green-emerald px-4 py-2 transition-all group-hover:scale-110"
+            class="group-hover:text-green-emerald px-4 py-2 transition-[color,scale] group-hover:scale-110"
             aria-label="David’s Place Homepage"
           >
             David’s Place
