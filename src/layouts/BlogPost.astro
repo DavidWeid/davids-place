@@ -3,6 +3,7 @@ import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import HeroInfo from '@components/HeroInfo.astro';
 import Badge from '@components/Badge.astro';
+import ArticleSchema from '@components/ArticleSchema.astro';
 
 interface Props {
   frontmatter: {
@@ -23,6 +24,9 @@ const { title, description, pubDate, author, tags } = frontmatter;
 const pageTitle = `Blog Post: ${title}`;
 const heroTitle = title;
 const heroDescription = description;
+
+// For ArticleSchema component
+const currentUrl = new URL(Astro.request.url).href;
 const displayDate =
   pubDate instanceof Date
     ? pubDate.toLocaleDateString('en-US', {
@@ -37,7 +41,7 @@ const displayDate =
       });
 ---
 
-<Base title={pageTitle} indexForSearch={false}>
+<Base title={pageTitle} description={description} indexForSearch={false}>
   <Hero title={heroTitle} description={heroDescription}>
     <span class="block pb-4"></span>
 
@@ -74,4 +78,20 @@ const displayDate =
       <span class="block pb-[200px]"></span>
     </div>
   </div>
+
+  {
+    pubDate && (
+      <ArticleSchema
+        article={{
+          title,
+          description,
+          author,
+          pubDate,
+          tags,
+          image: frontmatter.image,
+        }}
+        url={currentUrl}
+      />
+    )
+  }
 </Base>

@@ -8,6 +8,7 @@ import ExternalLink from '@components/ExternalLink.astro';
 import Card from '@components/Card.astro';
 import Badge from '@components/Badge.astro';
 import NoteBlock from '@components/NoteBlock.astro';
+import PersonSchema from '@components/PersonSchema.astro';
 
 import headshot from '@images/general/david-weid-headshot-3.jpg';
 import imageCat from '@images/general/flurry.jpg';
@@ -17,7 +18,9 @@ import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
 import IconDdIconRgb from '@images/icons/dd_icon_purple.svg';
 
 const baseURL = import.meta.env.BASE_URL;
-const pageTitle = 'Portfolio Home';
+const pageTitle = 'David Weid II | Senior Web Development Engineer Portfolio';
+const pageDescription =
+  'Senior Web Dev Engineer at Datadog with 6+ years JavaScript, TypeScript & modern web development experience. View my portfolio, cookbook, and blog.';
 
 const headshotImage = await getImage({
   src: headshot,
@@ -103,9 +106,13 @@ const skills = [
 
 const astroVersion = config.dependencies.astro.slice(1);
 const tailwindVersion = config.dependencies.tailwindcss.slice(1);
+
+// Person Schema data
+const siteUrl = 'https://davids-place-portfolio.web.app';
+const personImageUrl = `${siteUrl}${headshot.src}`;
 ---
 
-<Base title={pageTitle} indexForSearch={false}>
+<Base title={pageTitle} description={pageDescription} indexForSearch={false}>
   <div class="dark:bg-medium bg-white">
     <span class="spacer-40-80-80"></span>
 
@@ -427,6 +434,18 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
   </section>
 
   <span class="block pb-[200px]"></span>
+  
+  <PersonSchema 
+    name="David Weid II"
+    jobTitle="Senior Web Development Engineer"
+    company="Datadog"
+    description="Senior Web Development Engineer at Datadog with 6+ years JavaScript, TypeScript & modern web development experience. Specializes in frontend performance, accessibility, and React/Astro applications."
+    url={siteUrl}
+    imageUrl={personImageUrl}
+    linkedin="https://www.linkedin.com/in/david-weid/"
+    github="https://github.com/DavidWeid/"
+    email="david.weid.2@gmail.com"
+  />
 </Base>
 
 <style>

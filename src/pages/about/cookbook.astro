@@ -32,13 +32,16 @@ import IconKitchenPackHat from '@images/icons/cookbook/kitchen-pack-hat.svg';
 
 const baseURL = import.meta.env.BASE_URL;
 
-const title = 'David’s Cookbook - About';
+const title =
+  'Vegan and Vegetarian Inclusive Cookbook | 15+ Recipes Used by David';
+const description =
+  'Explore a diverse cookbook with easy-to-follow recipes taken from the web, with a focus on vegan and dairy-free eating. Find your next favorite recipe.';
 const header = 'Discover Your Next Favorite Recipe';
 const subheader = 'Explore a diverse cookbook with easy-to-follow dishes';
 const cTA = 'START COOKING';
 ---
 
-<Base title={title}>
+<Base title={title} description={description}>
   <!-- Hero -->
   <section
     class="relative overflow-hidden pt-28 pb-40 laptop:py-36 bg-blue-dark dark:bg-blue-dark/80 text-light"

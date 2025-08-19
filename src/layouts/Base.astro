@@ -17,6 +17,7 @@ import Analytics from '@components/Analytics.astro';
 
 interface Props {
   title: string;
+  description?: string;
   indexForSearch?: boolean;
   includeSearchComponent?: boolean;
   classes?: string | '';
@@ -29,6 +30,7 @@ const urlString: string = new URL(Astro.request.url).href;
 
 const {
   title,
+  description,
   indexForSearch = true,
   includeSearchComponent = false,
   classes = '',
@@ -36,6 +38,7 @@ const {
 
 const metaTitle: string = title ? `${title} | David’s Place` : 'David’s Place';
 const metaDescription: string =
+  description ||
   'David’s Place, an AstroJS & TailwindCSS playground, includes projects, blogs, and ideas related to web development and other interests of David Weid II.';
 
 const mainElementAttributes: {

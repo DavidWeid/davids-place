@@ -1,0 +1,100 @@
+---
+interface Props {
+  recipe: {
+    title: string;
+    description: string;
+    author: string;
+    image?: {
+      url: string;
+      alt: string;
+    };
+    servings: string;
+    prepTime: string;
+    cookTime: string;
+    totalTime: string;
+    ingredients: { category: string; items: string[] }[];
+    instructions: string[];
+    tags: string[];
+  };
+  url: string;
+}
+
+const { recipe, url } = Astro.props;
+
+// Helper function to convert time strings to ISO 8601 duration format
+const convertToISODuration = (timeStr: string): string => {
+  // Extract numbers from strings like "30 minutes", "1½ hours", "2 hours 30 minutes"
+  const hours = timeStr.match(/(\d+(?:[½¼¾])?)\s*(?:hours?|hrs?)/i);
+  const minutes = timeStr.match(/(\d+)\s*(?:minutes?|mins?)/i);
+  
+  let totalMinutes = 0;
+  
+  if (hours) {
+    const hourValue = hours[1].replace('½', '.5').replace('¼', '.25').replace('¾', '.75');
+    totalMinutes += parseFloat(hourValue) * 60;
+  }
+  
+  if (minutes) {
+    totalMinutes += parseInt(minutes[1]);
+  }
+  
+  if (totalMinutes === 0) {
+    // Fallback for unparseable time strings
+    return "PT30M"; // Default to 30 minutes
+  }
+  
+  const hoursForISO = Math.floor(totalMinutes / 60);
+  const minutesForISO = totalMinutes % 60;
+  
+  let duration = "PT";
+  if (hoursForISO > 0) duration += `${hoursForISO}H`;
+  if (minutesForISO > 0) duration += `${minutesForISO}M`;
+  
+  return duration;
+};
+
+// Flatten ingredients into a simple array
+const allIngredients = recipe.ingredients.flatMap((category: { category: string; items: string[] }) => 
+  category.items.map((item: string) => item)
+);
+
+const recipeSchema = {
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": recipe.title,
+  "description": recipe.description,
+  "author": {
+    "@type": "Person",
+    "name": recipe.author
+  },
+  "url": url,
+  ...(recipe.image && {
+    "image": recipe.image.url
+  }),
+  "recipeYield": recipe.servings,
+  "prepTime": convertToISODuration(recipe.prepTime),
+  "cookTime": convertToISODuration(recipe.cookTime), 
+  "totalTime": convertToISODuration(recipe.totalTime),
+  "recipeIngredient": allIngredients,
+  "recipeInstructions": recipe.instructions.map((instruction: string, index: number) => ({
+    "@type": "HowToStep",
+    "position": index + 1,
+    "text": instruction
+  })),
+  "keywords": recipe.tags.join(", "),
+  "recipeCategory": "Main Dish",
+  "recipeCuisine": recipe.tags.includes("chinese") ? "Chinese" : 
+                   recipe.tags.includes("indian") ? "Indian" : 
+                   recipe.tags.includes("thai") ? "Thai" : "International",
+  "suitableForDiet": [
+    ...(recipe.tags.includes("vegan") || recipe.tags.includes("dairy-free") ? ["https://schema.org/VeganDiet"] : []),
+    ...(recipe.tags.includes("vegetarian") ? ["https://schema.org/VegetarianDiet"] : [])
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "description": "Nutritional information not available"
+  }
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(recipeSchema)} />
