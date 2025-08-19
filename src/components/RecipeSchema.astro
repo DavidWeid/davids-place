@@ -66,6 +66,7 @@ const allIngredients = recipe.ingredients.flatMap(
 const recipeSchema = {
   '@context': 'https://schema.org',
   '@type': 'Recipe',
+  '@id': url,
   name: recipe.title,
   description: recipe.description,
   author: {
@@ -74,7 +75,10 @@ const recipeSchema = {
   },
   url: url,
   ...(recipe.image && {
-    image: recipe.image.url.src,
+    image: {
+      '@type': 'ImageObject',
+      url: recipe.image.url.src
+    }
   }),
   recipeYield: recipe.servings,
   prepTime: convertToISODuration(recipe.prepTime),
