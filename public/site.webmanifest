@@ -1,16 +1,24 @@
 {
-  "name": "David’s Place",
-  "short_name": "David’s Place",
+  "name": "David's Place",
+  "short_name": "David's Place",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png?v=1",
+      "src": "/maskable_icon_x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
-      "src": "/android-chrome-512x512.png?v=1",
+      "src": "/maskable_icon_x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/maskable_icon_x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ],
   "theme_color": "#3844C6",
