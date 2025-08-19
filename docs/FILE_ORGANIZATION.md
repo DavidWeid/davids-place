@@ -3,12 +3,14 @@
 ## Quick Reference
 
 **Image Organization:**
+
 - `src/images/` with semantic subfolders
 - Group by content type/usage context
 - Use kebab-case naming
 - Import with `@images/` path alias
 
 **Folder Structure:**
+
 ```
 src/images/
 ├── about/          # Profile and personal content
@@ -27,17 +29,21 @@ Images are systematically organized in `src/images/` with a clear hierarchical s
 ### Subfolder Categories
 
 #### `about/` - Personal Content
+
 **Purpose:** Profile images, personal assets, and general "about me" content
 
 **Contents:**
+
 - Profile photos and headshots
 - Personal project images
 - Background images for about sections
 
 **Subfolders:**
+
 - `cookbook/` - Icons and illustrations for cookbook-related content
 
 **Example:**
+
 ```
 src/images/about/
 ├── avatar-default.png
@@ -50,19 +56,23 @@ src/images/about/
 ```
 
 #### `astro/` - Framework Assets
+
 **Purpose:** Astro framework-related SVG icons and assets
 
 **Contents:**
+
 - Astro logo variations
 - Framework-specific graphics
 - Development-related icons
 
 #### `cookbook/` - Recipe Content
+
 **Purpose:** Recipe-specific images, organized by individual recipe name
 
 **Structure:** Create individual folders for each recipe containing all related images
 
 **Example:**
+
 ```
 src/images/cookbook/
 ├── brioche-buns/
@@ -75,20 +85,26 @@ src/images/cookbook/
 ```
 
 **Usage in content:**
+
 ```mdx
 import recipeImage from '@images/cookbook/recipe-name/recipe-image.jpg';
+
+;
 ```
 
 #### `general/` - Site-Wide Assets
+
 **Purpose:** Reusable images, backgrounds, graphics, and site-wide assets
 
 **Contents:**
+
 - Background images and textures
 - Site logos and branding
 - General-purpose graphics
 - Decorative elements
 
 **Example:**
+
 ```
 src/images/general/
 ├── david-weid-headshot-3.jpg
@@ -98,18 +114,22 @@ src/images/general/
 ```
 
 #### `icons/` - UI Elements
+
 **Purpose:** UI icons, social media icons, and small graphic elements
 
 **Contents:**
+
 - Navigation icons
 - Social media icons
 - UI interaction elements
 - Small decorative graphics
 
 **Subfolders:**
+
 - `cookbook/` - Kitchen and cooking-related icon sets
 
 **Example:**
+
 ```
 src/images/icons/
 ├── arrow-right-blue.svg
@@ -123,9 +143,11 @@ src/images/icons/
 ```
 
 #### `og/` - Social Media
+
 **Purpose:** Open Graph images for social media sharing
 
 **Contents:**
+
 - Site-wide Open Graph image
 - Page-specific social media images
 - Twitter card images
@@ -133,9 +155,11 @@ src/images/icons/
 ## Organization Principles
 
 ### Content-Based Grouping
+
 Group related images by content type or usage context rather than file type or arbitrary categories.
 
 **✅ Good:**
+
 ```
 cookbook/recipe-name/all-recipe-images
 icons/ui-elements
@@ -143,6 +167,7 @@ about/personal-content
 ```
 
 **❌ Avoid:**
+
 ```
 jpg-files/mixed-content
 all-icons-everywhere/
@@ -150,36 +175,44 @@ random-images/
 ```
 
 ### Recipe-Specific Organization
+
 Create individual folders under `cookbook/` for each recipe containing all related images.
 
 **Benefits:**
+
 - Easy to find recipe-related assets
 - Clean organization for content collections
 - Simple to add/remove entire recipe sets
 
 **Example workflow:**
+
 1. Create new recipe: `kung-pao-tofu.mdx`
 2. Create image folder: `src/images/cookbook/kung-pao-tofu/`
 3. Add recipe images to folder
 4. Import in content file using path alias
 
 ### Naming Conventions
+
 Use descriptive, kebab-case naming for both folders and files.
 
 **File Naming:**
+
 - Use kebab-case: `chocolate-chip-cookies.jpg`
 - Be descriptive: `tofu-tikka-masala-banner.png`
 - Include context when needed: `david-weid-headshot-3.jpg`
 
 **Folder Naming:**
+
 - Match content slugs: `cookbook/brioche-buns/`
 - Use semantic names: `icons/`, `general/`, `about/`
 - Group logically: `icons/cookbook/` for cooking-related icons
 
 ### Path Alias Usage
+
 Always import images using the `@images/` path alias for consistency and maintainability.
 
 **✅ Correct Import Pattern:**
+
 ```typescript
 import heroImage from '@images/general/hero-background.jpg';
 import recipePhoto from '@images/cookbook/recipe-name/main-photo.jpg';
@@ -187,6 +220,7 @@ import iconGithub from '@images/icons/github.svg';
 ```
 
 **❌ Avoid Relative Paths:**
+
 ```typescript
 import heroImage from '../images/general/hero-background.jpg';
 import recipePhoto from '../../images/cookbook/recipe-name/main-photo.jpg';
@@ -220,9 +254,10 @@ When adding a new recipe:
 5. Use `ImageRecipe` component for consistent display
 
 **Example:**
+
 ```mdx
 ---
-title: "New Recipe"
+title: 'New Recipe'
 # ... other frontmatter
 ---
 
