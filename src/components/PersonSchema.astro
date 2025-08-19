@@ -26,13 +26,20 @@ const {
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': url,
   name: name,
   jobTitle: jobTitle,
   description: description,
   url: url,
-  image: imageUrl,
+  image: {
+    '@type': 'ImageObject',
+    url: imageUrl,
+    width: '400',
+    height: '400'
+  },
   worksFor: {
     '@type': 'Organization',
+    '@id': 'https://datadoghq.com',
     name: company,
     url: 'https://datadoghq.com',
   },
@@ -41,17 +48,13 @@ const personSchema = {
     'TypeScript',
     'Web Development',
     'Frontend Development',
-    'Astro',
-    'React',
+    'AstroJS',
+    'Static Site Rendering',
     'TailwindCSS',
     'Accessibility',
     'Performance Optimization',
     'Node.js',
   ],
-  alumniOf: {
-    '@type': 'Organization',
-    name: 'Web Development',
-  },
   sameAs: [...(linkedin ? [linkedin] : []), ...(github ? [github] : [])],
   ...(email && {
     email: email,
