@@ -13,7 +13,12 @@ interface Props {
     author: string;
     source: string;
     image: {
-      url: string;
+      url: {
+        src: string;
+        width: number;
+        height: number;
+        format: string;
+      };
       alt: string;
     };
     tags: string[];
