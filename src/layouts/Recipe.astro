@@ -40,6 +40,7 @@ const {
   ingredients,
   instructions,
 } = frontmatter;
+
 const pageTitle = `Cookbook Recipe: ${title}`;
 const heroTitle = title;
 const heroDescription = description;
@@ -197,8 +198,8 @@ const heroData = [
   </div>
 
   <hr class="green-blue-shimmer-slow h-1 border-0" />
-  
-  <RecipeSchema recipe={frontmatter} url={currentUrl} />
+
+  {frontmatter.image && <RecipeSchema recipe={frontmatter} url={currentUrl} />}
 </Base>
 
 <script>

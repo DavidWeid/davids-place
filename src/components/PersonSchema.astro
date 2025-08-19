@@ -24,42 +24,43 @@ const {
 } = Astro.props;
 
 const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": name,
-  "jobTitle": jobTitle,
-  "description": description,
-  "url": url,
-  "image": imageUrl,
-  "worksFor": {
-    "@type": "Organization",
-    "name": company,
-    "url": "https://datadoghq.com"
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: name,
+  jobTitle: jobTitle,
+  description: description,
+  url: url,
+  image: imageUrl,
+  worksFor: {
+    '@type': 'Organization',
+    name: company,
+    url: 'https://datadoghq.com',
   },
-  "knowsAbout": [
-    "JavaScript",
-    "TypeScript",
-    "Web Development",
-    "Frontend Development",
-    "Astro",
-    "React",
-    "TailwindCSS",
-    "Accessibility",
-    "Performance Optimization",
-    "Node.js"
+  knowsAbout: [
+    'JavaScript',
+    'TypeScript',
+    'Web Development',
+    'Frontend Development',
+    'Astro',
+    'React',
+    'TailwindCSS',
+    'Accessibility',
+    'Performance Optimization',
+    'Node.js',
   ],
-  "alumniOf": {
-    "@type": "Organization",
-    "name": "Web Development"
+  alumniOf: {
+    '@type': 'Organization',
+    name: 'Web Development',
   },
-  "sameAs": [
-    ...(linkedin ? [linkedin] : []),
-    ...(github ? [github] : []),
-  ],
+  sameAs: [...(linkedin ? [linkedin] : []), ...(github ? [github] : [])],
   ...(email && {
-    "email": email
-  })
+    email: email,
+  }),
 };
 ---
 
-<script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(personSchema)}
+/>

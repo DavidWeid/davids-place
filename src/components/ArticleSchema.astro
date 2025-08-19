@@ -17,59 +17,79 @@ interface Props {
 const { article, url } = Astro.props;
 
 // Convert date to ISO string
-const publishedDate = article.pubDate instanceof Date 
-  ? article.pubDate.toISOString()
-  : new Date(article.pubDate).toISOString();
+const publishedDate =
+  article.pubDate instanceof Date
+    ? article.pubDate.toISOString()
+    : new Date(article.pubDate).toISOString();
 
 // Determine article type based on tags
 const getArticleType = (tags: string[]) => {
-  if (tags.some(tag => ['css', 'javascript', 'typescript', 'react', 'astro', 'web', 'development'].includes(tag.toLowerCase()))) {
-    return "TechArticle";
+  if (
+    tags.some((tag) =>
+      [
+        'css',
+        'javascript',
+        'typescript',
+        'react',
+        'astro',
+        'web',
+        'development',
+      ].includes(tag.toLowerCase()),
+    )
+  ) {
+    return 'TechArticle';
   }
-  return "Article";
+  return 'Article';
 };
 
 const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": getArticleType(article.tags),
-  "headline": article.title,
-  "description": article.description,
-  "author": {
-    "@type": "Person",
-    "name": article.author,
-    "jobTitle": "Senior Web Development Engineer",
-    "worksFor": {
-      "@type": "Organization", 
-      "name": "Datadog"
-    }
+  '@context': 'https://schema.org',
+  '@type': getArticleType(article.tags),
+  headline: article.title,
+  description: article.description,
+  author: {
+    '@type': 'Person',
+    name: article.author,
+    jobTitle: 'Senior Web Development Engineer',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Datadog',
+    },
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "David's Place",
-    "url": "https://davids-place-portfolio.web.app/"
+  publisher: {
+    '@type': 'Organization',
+    name: "David's Place",
+    url: 'https://davids-place-portfolio.web.app/',
   },
-  "datePublished": publishedDate,
-  "dateModified": publishedDate,
-  "url": url,
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": url
+  datePublished: publishedDate,
+  dateModified: publishedDate,
+  url: url,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': url,
   },
   ...(article.image && {
-    "image": {
-      "@type": "ImageObject",
-      "url": article.image.url,
-      "description": article.image.alt
-    }
+    image: {
+      '@type': 'ImageObject',
+      url: article.image.url,
+      description: article.image.alt,
+    },
   }),
-  "keywords": article.tags.join(", "),
-  "about": article.tags.includes("css") ? "CSS" :
-          article.tags.includes("javascript") ? "JavaScript" :
-          article.tags.includes("career") ? "Web Development Career" :
-          "Web Development",
-  "genre": "Technology",
-  "inLanguage": "en-US"
+  keywords: article.tags.join(', '),
+  about: article.tags.includes('css')
+    ? 'CSS'
+    : article.tags.includes('javascript')
+      ? 'JavaScript'
+      : article.tags.includes('career')
+        ? 'Web Development Career'
+        : 'Web Development',
+  genre: 'Technology',
+  inLanguage: 'en-US',
 };
 ---
 
-<script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(articleSchema)}
+/>
