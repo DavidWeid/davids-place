@@ -21,13 +21,37 @@
       "purpose": "maskable"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/monochrome_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "monochrome"
+    },
+    {
+      "src": "/monochrome_icon_x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "monochrome"
+    },
+    {
+      "src": "/monochrome_icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "monochrome"
+    },
+    {
+      "src": "/maskable_icon_x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "/maskable_icon_x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/maskable_icon_x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
