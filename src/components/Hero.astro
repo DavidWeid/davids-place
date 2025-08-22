@@ -1,18 +1,41 @@
 ---
+import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
+
 interface Props {
   title: string;
   description: string | null;
+  breadcrumb?: { text: string; link: string };
   isCentered?: boolean;
   classes?: string;
 }
 
-const { title, description, isCentered = true, classes = '' } = Astro.props;
+const {
+  title,
+  description,
+  breadcrumb,
+  isCentered = true,
+  classes = '',
+} = Astro.props;
 
 const alignmentClasses = isCentered ? 'text-center' : 'text-left';
 ---
 
 <section class={classes}>
-  <div class="container">
+  <div class="container relative">
+    <span class="spacer-40"></span>
+
+    {
+      breadcrumb && (
+        <a
+          href={breadcrumb.link}
+          class="group flex items-center gap-3 tablet:gap-2 w-max ml-2.5 uppercase text-xs tablet:text-sm font-bold tracking-wide hover:text-green-dark hover:scale-110 transition-[color,scale] duration-500"
+        >
+          <IconArrowBubblesRightGreen class="rotate-180 h-5 w-5 my-3 group-hover:scale-110 transition-transform duration-500 group-hover:-translate-x-2.5" />
+          {breadcrumb.text}
+        </a>
+      )
+    }
+
     <span class="laptop:pb-24 desktop:pb-28 block pb-20"></span>
 
     <h1 set:html={title} class={alignmentClasses} />

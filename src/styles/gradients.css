@@ -47,7 +47,9 @@
   @apply text-blue-dark hover:text-green-dark no-underline;
 }
 
-.content-link-gradient {
+.content-link-gradient,
+.content-link-gradient-reverse {
+  word-break: break-word;
   padding-bottom: 4px;
   background:
     linear-gradient(
@@ -61,18 +63,33 @@
       theme('colors.green.emerald'),
       theme('colors.green.light')
     );
-  background-size:
-    100% 2px,
-    0 2px;
   background-position:
     100% 100%,
     0 100%;
   background-repeat: no-repeat;
   transition: background-size 400ms;
+}
+
+.content-link-gradient {
+  background-size:
+    100% 2px,
+    0 2px;
 
   &:hover {
     background-size:
       0 2px,
       100% 2px;
+  }
+}
+
+.content-link-gradient-reverse {
+  background-size:
+    0 2px,
+    100% 2px;
+
+  &:hover {
+    background-size:
+      100% 2px,
+      0 2px;
   }
 }
