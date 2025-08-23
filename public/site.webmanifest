@@ -1,6 +1,23 @@
 {
   "name": "David’s Place",
   "short_name": "DP",
+  "shortcuts": [
+    {
+      "name": "View Portfolio",
+      "short_name": "Portfolio",
+      "url": "https://davids-place-portfolio.web.app/"
+    },
+    {
+      "name": "View Cookbook",
+      "short_name": "Cookbook",
+      "url": "https://davids-place-portfolio.web.app/cookbook/"
+    },
+    {
+      "name": "View Blog",
+      "short_name": "Blog",
+      "url": "https://davids-place-portfolio.web.app/blog/"
+    }
+  ],
   "icons": [
     {
       "src": "/android-launchericon-512-512.png",
