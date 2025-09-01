@@ -27,7 +27,7 @@
     "astro-show-tailwindcss-breakpoint": "^1.0.9",
     "firebase": "^12.2.1",
     "firebase-admin": "^13.5.0",
-    "firebase-tools": "^14.11.2",
+    "firebase-tools": "^14.15.1",
     "hast-util-to-html": "^9.0.5",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.1.11",
