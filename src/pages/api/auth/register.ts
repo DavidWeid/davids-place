@@ -1,5 +1,3 @@
-export const prerender = false;
-
 import type { APIRoute } from 'astro';
 import { getAuth } from 'firebase-admin/auth';
 import { app } from '@firebase/server';

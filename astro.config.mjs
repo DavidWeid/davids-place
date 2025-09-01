@@ -14,6 +14,7 @@ export default defineConfig({
 
   site: 'https://davids-place-portfolio.web.app/',
   trailingSlash: 'ignore',
+  output: 'server',
 
   prefetch: {
     prefetchAll: true,
