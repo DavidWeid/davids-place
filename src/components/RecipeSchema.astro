@@ -77,8 +77,8 @@ const recipeSchema = {
   ...(recipe.image && {
     image: {
       '@type': 'ImageObject',
-      url: recipe.image.url.src
-    }
+      url: recipe.image.url.src,
+    },
   }),
   recipeYield: recipe.servings,
   prepTime: convertToISODuration(recipe.prepTime),
