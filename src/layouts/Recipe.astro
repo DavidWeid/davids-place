@@ -99,7 +99,6 @@ const heroData = [
 
   <div
     data-tags={`| tags: ${tags.join(', ')}`}
-    data-pagefind-index-attrs="data-tags"
     class="bg-light dark:bg-medium"
   >
     <div class="container">
@@ -109,7 +108,7 @@ const heroData = [
         {
           ingredients && (
             <fieldset class="laptop:overflow-y-auto laptop:max-h-[75vh] laptop:sticky laptop:top-28 rounded-6-8-12">
-              <legend data-pagefind-ignore="all">
+              <legend>
                 <h2>Ingredients</h2>
                 <span class="block py-2 pl-1 text-xs tracking-wide opacity-75">
                   Click to check off

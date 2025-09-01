@@ -41,7 +41,7 @@ const displayDate =
       });
 ---
 
-<Base title={pageTitle} description={description} indexForSearch={false}>
+<Base title={pageTitle} description={description}>
   <Hero title={heroTitle} description={heroDescription}>
     <span class="block pb-4"></span>
 
@@ -65,7 +65,6 @@ const displayDate =
 
   <div
     data-tags={`| tags: ${tags.join(', ')}`}
-    data-pagefind-index-attrs="data-tags"
     class="bg-light dark:bg-medium"
   >
     <div class="container">
