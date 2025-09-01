@@ -4,17 +4,21 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import showTailwindcssBreakpoint from 'astro-show-tailwindcss-breakpoint';
 import compressor from 'astro-compressor';
+import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
   site: 'https://davids-place-portfolio.web.app/',
-  trailingSlash: 'always',
+  trailingSlash: 'ignore',
+
   prefetch: {
     prefetchAll: true,
   },
+
   markdown: {
     shikiConfig: {
       themes: {
@@ -23,6 +27,7 @@ export default defineConfig({
       },
     },
   },
+
   integrations: [
     mdx(),
     sitemap({
@@ -38,7 +43,12 @@ export default defineConfig({
     }),
     compressor(),
   ],
+
   server: {
     open: true,
   },
+
+  adapter: node({
+    mode: 'standalone',
+  }),
 });
