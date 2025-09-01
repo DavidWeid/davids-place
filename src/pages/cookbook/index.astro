@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
-import Search from '@components/Search.astro';
 import Card from '@components/Card.astro';
 
 const baseURL = import.meta.env.BASE_URL;
@@ -25,7 +24,7 @@ const backgroundSvgs = [
 ];
 ---
 
-<Base title={pageTitle} indexForSearch={false} includeSearchComponent={true}>
+<Base title={pageTitle}>
   <div id="hero" class="dark:bg-medium relative overflow-hidden bg-white">
     <Hero
       title={heroTitle}
@@ -41,12 +40,6 @@ const backgroundSvgs = [
         />
       ))
     }
-  </div>
-
-  <span class="block pb-8"></span>
-
-  <div class="container">
-    <Search id="search" />
   </div>
 
   <span class="block pb-8"></span>
