@@ -25,11 +25,7 @@ const baseURL = import.meta.env.BASE_URL;
 const isDev = import.meta.env.DEV;
 const urlString: string = new URL(Astro.request.url).href;
 
-const {
-  title,
-  description,
-  classes = '',
-} = Astro.props;
+const { title, description, classes = '' } = Astro.props;
 
 const metaTitle: string = title ? `${title} | David’s Place` : 'David’s Place';
 const metaDescription: string =
