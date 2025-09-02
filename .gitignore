@@ -1,9 +1,6 @@
 # build output
 dist/
 
-# local build output for pagefind
-public/pagefind/
-
 # generated types
 .astro
 .astro/

@@ -4,7 +4,7 @@
 
 **Essential Commands:**
 
-- `npm run dev` - First time setup (builds pagefind + dev server)
+- `npm run dev` - First time setup (builds + dev server)
 - `npm run start` - Normal development server
 - `npm run test` - Run Vitest tests
 - `npm run build` - Production build with type checking
@@ -27,7 +27,7 @@
 npm run dev
 ```
 
-**Purpose:** Builds pagefind search files and starts development server
+**Purpose:** Builds files and starts development server
 **When to use:** First time working with a fresh clone of the repository
 
 #### For Normal Development
@@ -54,7 +54,7 @@ npm run test
 npm run build
 ```
 
-**Purpose:** Builds site for deployment with type checking and search indexing
+**Purpose:** Builds site for deployment with type checking
 **When to use:** Testing production builds, deployment preparation
 
 ### Code Quality Automation
@@ -131,7 +131,6 @@ import logo from '../images/general/logo.png';
 - **TypeScript**: For all scripting and logic with strict configuration
 - **Vitest**: For unit testing components and utilities
 - **Husky**: For managing Git hooks and code quality
-- **Pagefind**: For static site search functionality
 - **Prettier**: For automated code formatting
 
 ## Troubleshooting
@@ -140,7 +139,6 @@ import logo from '../images/general/logo.png';
 
 **Build Failures:**
 
-- Run `npm run dev` if pagefind files are missing
 - Check TypeScript errors with `npm run build`
 - Ensure all imports use path aliases
 

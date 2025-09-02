@@ -10,7 +10,7 @@ This repository is a personal website built with [Astro](https://astro.build/), 
 
 ### Essential Commands
 
-- `npm run dev` - For new clones (builds pagefind + starts dev)
+- `npm run dev` - For new clones (builds + starts dev)
 - `npm run start` - Normal development server
 - `npm run test` - Run Vitest tests
 - `npm run build` - Production build
@@ -69,7 +69,7 @@ src/
 
 ## Getting Started
 
-1. **First time setup:** Run `npm run dev` (builds search index)
+1. **First time setup:** Run `npm run dev` (builds + starts server)
 2. **Normal development:** Use `npm run start`
 3. **Review relevant guide:** Check the appropriate detailed guide above
 4. **Follow conventions:** Use TypeScript, path aliases, and established patterns

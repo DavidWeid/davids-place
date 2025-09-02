@@ -217,7 +217,6 @@ Uses custom variant configuration:
 @import '@styles/typography.css';
 @import '@styles/gradients.css';
 @import '@styles/movement.css';
-@import '@styles/pagefind.css';
 ```
 
 ### Modular Structure
