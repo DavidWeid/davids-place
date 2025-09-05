@@ -1,7 +1,7 @@
 import { onRequest } from 'firebase-functions/v2/https';
 import { setGlobalOptions } from 'firebase-functions/v2';
 import express from 'express';
-import { handler } from '../dist/server/entry.mjs';
+import { handler as ssrHandler } from '../dist/server/entry.mjs';
 
 // Set global options
 setGlobalOptions({
@@ -11,17 +11,11 @@ setGlobalOptions({
 // Create Express app
 const app = express();
 
-// Handle all routes with Astro handler
-app.use(async (req, res) => {
-  try {
-    await handler(req, res);
-  } catch (error) {
-    console.error('Astro handler error:', error);
-    if (!res.headersSent) {
-      res.status(500).send('Internal Server Error');
-    }
-  }
-});
+// Serve static client assets from dist/client
+app.use(express.static('../dist/client'));
+
+// Use the Astro SSR handler for all other routes
+app.use(ssrHandler);
 
 // Export the server function using Firebase Functions v2
 export const server = onRequest(
