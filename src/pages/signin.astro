@@ -1,5 +1,5 @@
 ---
-import { app } from '@firebase/server';
+import { app } from '../firebase/server';
 import { getAuth } from 'firebase-admin/auth';
 import Base from '@layouts/Base.astro';
 
@@ -37,7 +37,7 @@ if (Astro.cookies.has('__session')) {
     inMemoryPersistence,
     signInWithEmailAndPassword,
   } from 'firebase/auth';
-  import { app } from '@firebase/client';
+  import { app } from '../firebase/client';
 
   const auth = getAuth(app);
   // This will prevent the browser from storing session data
