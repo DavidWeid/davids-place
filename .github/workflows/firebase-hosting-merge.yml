@@ -22,5 +22,3 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DAVIDS_PLACE_PORTFOLIO }}
           channelId: live
           projectId: davids-place-portfolio
-        env:
-          FIREBASE_CLI_EXPERIMENTS: webframeworks
