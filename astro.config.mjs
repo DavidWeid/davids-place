@@ -50,5 +50,7 @@ export default defineConfig({
     open: true,
   },
 
-  adapter: node(),
+  adapter: node({
+    mode: 'middleware',
+  }),
 });
