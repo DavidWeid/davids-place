@@ -1,4 +1,4 @@
-# David’s Place!
+# David’s Place
 
 This project allows me to showcase my work and share my thoughts in interests (end goal). However, this website is actually practice for me to learn [Astro](https://astro.build/) as a test run to see if it makes sense for a large, complex website. This project contains the follow technologies:
 
