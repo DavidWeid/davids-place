@@ -1,9 +1,16 @@
 {
   "hosting": {
-    "source": ".",
+    "public": "dist/client",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "frameworksBackend": {
-      "region": "us-east1"
-    }
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "astrossr"
+      }
+    ]
+  },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs18"
   }
 }
