@@ -16,6 +16,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.1",
+    "@astrojs/node": "^9.4.3",
     "@astrojs/sitemap": "^3.4.1",
     "@fontsource-variable/reddit-mono": "^5.1.0",
     "@fontsource-variable/reddit-sans": "^5.1.0",
@@ -24,7 +25,9 @@
     "astro": "^5.12.0",
     "astro-compressor": "^1.0.0",
     "astro-show-tailwindcss-breakpoint": "^1.0.9",
-    "firebase-tools": "^14.11.2",
+    "firebase": "^12.2.1",
+    "firebase-admin": "^13.5.0",
+    "firebase-tools": "^14.15.1",
     "hast-util-to-html": "^9.0.5",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.1.11",
