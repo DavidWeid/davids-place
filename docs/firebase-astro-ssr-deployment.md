@@ -58,10 +58,22 @@ Initializes Firebase for client-side operations:
 
 ### 4. Firebase Server Setup (`src/firebase/server.ts`)
 
-Handles server-side Firebase Admin SDK:
-- **Environment-aware** initialization (prod vs dev)
-- In production: Uses default Firebase hosting credentials
-- In development: Uses service account from environment variables
+Handles server-side Firebase Admin SDK with robust environment detection:
+
+**Cloud Environment (Cloud Run/Firebase Hosting):**
+- Detects environment using `K_SERVICE`, `FUNCTION_TARGET`, or `FIREBASE_CONFIG`
+- Uses Firebase's built-in default credentials (`initializeApp()`)
+- No environment variables required - credentials provided automatically
+
+**Local Development:**
+- Uses service account credentials from environment variables
+- Validates required variables exist before initialization
+- Fails fast with clear error messages if credentials are missing
+
+**Key Features:**
+- **Environment-aware initialization** with proper fallback handling
+- **Null-safe environment variable access** to prevent runtime errors
+- **Direct relative imports** instead of TypeScript path aliases for Cloud Run compatibility
 - **Singleton pattern** to prevent multiple app initializations
 
 ### 5. Authentication System
@@ -205,3 +217,48 @@ src/
 ```
 
 This setup provides a robust, scalable SSR application with Firebase authentication deployed automatically through GitHub Actions.
+
+## Common Issues and Troubleshooting
+
+### 500 Errors on Authentication Routes
+
+**Problem**: SSR authentication pages (like `/signin`) return 500 errors in production.
+
+**Common Causes & Solutions**:
+
+1. **Import Path Issues**:
+   - **Problem**: TypeScript path aliases (like `@firebase/*`) not resolving in Cloud Run
+   - **Solution**: Use direct relative imports (`../firebase/server` instead of `@firebase/server`)
+
+2. **Environment Variable Errors**:
+   - **Problem**: `Cannot read properties of undefined (reading 'replace')` 
+   - **Cause**: `FIREBASE_PRIVATE_KEY` is undefined in Cloud Run environment
+   - **Solution**: Add null-safe environment variable access and proper fallback handling
+
+3. **Firebase Initialization Failures**:
+   - **Problem**: Firebase Admin SDK fails to initialize in Cloud Run
+   - **Solution**: Use proper environment detection and default credentials for cloud environments
+
+### Debugging Steps
+
+1. **Check Firebase Console Logs**:
+   ```
+   https://console.firebase.google.com/project/your-project/functions/logs
+   ```
+
+2. **Look for Specific Error Messages**:
+   - Module resolution errors (import path issues)
+   - TypeError on undefined properties (environment variable issues)
+   - Firebase initialization failures
+
+3. **Test Environment Detection**:
+   - Ensure Cloud Run environment variables (`K_SERVICE`, `FUNCTION_TARGET`) are detected
+   - Verify local development uses service account credentials properly
+
+### Best Practices
+
+- **Always use direct relative imports** for Firebase modules in SSR routes
+- **Validate environment variables** before using them in initialization
+- **Use Firebase's default credentials** in cloud environments
+- **Fail fast with clear error messages** when credentials are missing
+- **Test both local and preview deployments** thoroughly
