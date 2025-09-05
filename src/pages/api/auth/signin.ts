@@ -19,14 +19,19 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
   }
 
   /* Create and set session cookie */
-  const fiveDays = 60 * 60 * 24 * 5 * 1000;
-  const sessionCookie = await auth.createSessionCookie(idToken, {
-    expiresIn: fiveDays,
-  });
+  try {
+    const fiveDays = 60 * 60 * 24 * 5 * 1000;
+    const sessionCookie = await auth.createSessionCookie(idToken, {
+      expiresIn: fiveDays,
+    });
 
-  cookies.set('__session', sessionCookie, {
-    path: '/',
-  });
+    cookies.set('__session', sessionCookie, {
+      path: '/',
+    });
 
-  return redirect('/dashboard');
+    return redirect('/dashboard');
+  } catch (error) {
+    console.error('Failed to create session cookie:', error);
+    return new Response('Failed to create session', { status: 500 });
+  }
 };

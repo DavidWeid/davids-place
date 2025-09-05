@@ -18,13 +18,32 @@ const serviceAccount = {
 const initApp = () => {
   if (import.meta.env.PROD) {
     console.info('PROD env detected. Using default service account.');
-    // Use default config in firebase functions. Should be already injected in the server by Firebase.
-    return initializeApp();
+    try {
+      // Use default config in firebase functions. Should be already injected in the server by Firebase.
+      return initializeApp();
+    } catch (error) {
+      console.error('Failed to initialize Firebase with default config:', error);
+      throw error;
+    }
   }
   console.info('Loading service account from env.');
-  return initializeApp({
-    credential: cert(serviceAccount as ServiceAccount),
-  });
+  
+  // Validate required environment variables
+  const requiredVars = ['FIREBASE_PROJECT_ID', 'FIREBASE_PRIVATE_KEY', 'FIREBASE_CLIENT_EMAIL'];
+  const missingVars = requiredVars.filter(varName => !import.meta.env[varName]);
+  
+  if (missingVars.length > 0) {
+    throw new Error(`Missing required environment variables: ${missingVars.join(', ')}`);
+  }
+  
+  try {
+    return initializeApp({
+      credential: cert(serviceAccount as ServiceAccount),
+    });
+  } catch (error) {
+    console.error('Failed to initialize Firebase with service account:', error);
+    throw error;
+  }
 };
 
 export const app = activeApps.length === 0 ? initApp() : activeApps[0];

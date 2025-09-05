@@ -9,11 +9,22 @@ const auth = getAuth(app);
 if (!Astro.cookies.has('__session')) {
   return Astro.redirect('/signin/');
 }
-const sessionCookie = Astro.cookies.get('__session')!.value;
-const decodedCookie = await auth.verifySessionCookie(sessionCookie);
-const user = await auth.getUser(decodedCookie.uid);
 
-if (!user) {
+const sessionCookie = Astro.cookies.get('__session')!.value;
+let user;
+
+try {
+  const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+  user = await auth.getUser(decodedCookie.uid);
+  
+  if (!user) {
+    Astro.cookies.delete('__session', { path: '/' });
+    return Astro.redirect('/signin/');
+  }
+} catch (error) {
+  // Invalid session cookie - clear it and redirect to sign in
+  console.error('Session verification failed:', error);
+  Astro.cookies.delete('__session', { path: '/' });
   return Astro.redirect('/signin/');
 }
 ---
