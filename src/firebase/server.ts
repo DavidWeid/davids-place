@@ -16,22 +16,33 @@ const serviceAccount = {
 };
 
 const initApp = () => {
-  // Check if we're in a Firebase hosting environment or production
-  const isFirebaseHosting = import.meta.env.PROD || process.env.FUNCTION_TARGET || process.env.FIREBASE_CONFIG;
+  // Check if we're in a Firebase/Cloud Run environment
+  const isCloudRun = process.env.K_SERVICE || process.env.FUNCTION_TARGET || process.env.FIREBASE_CONFIG;
+  const isProd = import.meta.env.PROD;
   
-  if (isFirebaseHosting) {
-    console.info('Firebase hosting environment detected. Using default service account.');
+  if (isProd || isCloudRun) {
+    console.info('Cloud environment detected. Trying default initialization first.');
     try {
-      // Use default config in firebase functions. Should be already injected in the server by Firebase.
+      // In Cloud Run/Firebase hosting, try default initialization
       return initializeApp();
     } catch (error) {
-      console.error('Failed to initialize Firebase with default config:', error);
-      // Fallback to service account if default initialization fails
-      console.info('Attempting fallback to service account initialization...');
+      console.error('Default initialization failed, trying with explicit project ID:', error);
+      try {
+        // Fallback: try with just project ID (Cloud Run should have default credentials)
+        return initializeApp({
+          projectId: 'davids-place-portfolio'
+        });
+      } catch (secondError) {
+        console.error('Project ID initialization also failed:', secondError);
+        // Last fallback to service account
+        console.info('Attempting service account fallback...');
+      }
     }
+  } else {
+    console.info('Local development detected.');
   }
   
-  console.info('Loading service account from env variables.');
+  console.info('Using service account credentials.');
   
   // Validate required environment variables
   const requiredVars = ['FIREBASE_PROJECT_ID', 'FIREBASE_PRIVATE_KEY', 'FIREBASE_CLIENT_EMAIL'];
@@ -46,7 +57,7 @@ const initApp = () => {
       credential: cert(serviceAccount as ServiceAccount),
     });
   } catch (error) {
-    console.error('Failed to initialize Firebase with service account:', error);
+    console.error('Service account initialization failed:', error);
     throw error;
   }
 };
