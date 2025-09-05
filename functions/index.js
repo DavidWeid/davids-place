@@ -1,5 +1,5 @@
 import functions from 'firebase-functions';
-import { handler as ssrHandler } from '../dist/server/entry.mjs';
+import { handler as ssrHandler } from './dist/server/entry.mjs';
 
 // Export the astrossr function using Firebase Functions v1 (new name to avoid v2 conflict)
 export const astrossr = functions
