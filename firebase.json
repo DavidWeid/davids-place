@@ -5,12 +5,12 @@
     "rewrites": [
       {
         "source": "**",
-        "function": "server"
+        "function": "astrossr"
       }
     ]
   },
   "functions": {
     "source": "functions",
-    "runtime": "nodejs20"
+    "runtime": "nodejs18"
   }
 }
