@@ -13,10 +13,11 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm ci
       - run: npm run build
-      - run: cp -r dist functions/
-      - run: cd functions && npm ci
-      - run: |
-          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DAVIDS_PLACE_PORTFOLIO }}' > /tmp/service-account.json
-          export GOOGLE_APPLICATION_CREDENTIALS=/tmp/service-account.json
-          npx firebase functions:delete server --region us-east1 --project davids-place-portfolio --force || true
-          npx firebase deploy --only hosting,functions --project davids-place-portfolio --force
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DAVIDS_PLACE_PORTFOLIO }}
+          channelId: live
+          projectId: davids-place-portfolio
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
