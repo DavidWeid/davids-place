@@ -1,14 +1,27 @@
-import functions from 'firebase-functions';
+import { onRequest } from 'firebase-functions/v2/https';
+import { setGlobalOptions } from 'firebase-functions/v2';
 import { handler } from '../dist/server/entry.mjs';
 
-// Export the server function using Firebase Functions v1
-export const server = functions
-  .region('us-east1')
-  .https.onRequest(async (req, res) => {
+// Set global options
+setGlobalOptions({
+  region: 'us-east1',
+});
+
+// Export the server function using Firebase Functions v2
+export const server = onRequest(
+  {
+    memory: '1GiB',
+    timeoutSeconds: 60,
+  },
+  async (req, res) => {
     try {
+      // Astro handler expects standard HTTP req/res objects
       return await handler(req, res);
     } catch (error) {
       console.error('Function error:', error);
-      res.status(500).send('Internal Server Error');
+      if (!res.headersSent) {
+        res.status(500).send('Internal Server Error');
+      }
     }
-  });
+  },
+);
