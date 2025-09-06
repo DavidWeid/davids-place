@@ -49,7 +49,7 @@ import Base from '@layouts/Base.astro';
       errorDisplay.textContent = errorText || 'Error creating user';
       errorDisplay.classList.remove('hidden');
     } catch (error: any) {
-      errorDisplay.textContent = 'Network or unexpected error';
+      errorDisplay.textContent = 'Error creating user';
       errorDisplay.classList.remove('hidden');
     }
   });

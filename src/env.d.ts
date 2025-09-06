@@ -13,3 +13,29 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+interface UserRecord {
+  uid: string;
+  email: string;
+  emailVerified: boolean;
+  displayName: string;
+  photoURL?: string;
+  phoneNumber?: string;
+  disabled: boolean;
+  metadata: {
+    creationTime: string;
+    lastSignInTime?: string;
+    lastRefreshTime?: string;
+  };
+  providerData: Array<{
+    UserInfo: {
+      uid: string;
+      displayName: string;
+      email: string;
+      photoURL?: string;
+      providerId: string;
+      phoneNumber?: string;
+    };
+  }>;
+  tokensValidAfterTime?: string;
+}
