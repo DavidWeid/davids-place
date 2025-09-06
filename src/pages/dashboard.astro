@@ -7,7 +7,7 @@ const auth = getAuth(app);
 
 /* Check current session */
 if (!Astro.cookies.has('__session')) {
-  return Astro.redirect('/signin/');
+  return Astro.redirect('/sign-in/');
 }
 
 const sessionCookie = Astro.cookies.get('__session')!.value;
@@ -16,23 +16,23 @@ let user;
 try {
   const decodedCookie = await auth.verifySessionCookie(sessionCookie);
   user = await auth.getUser(decodedCookie.uid);
-  
+
   if (!user) {
     Astro.cookies.delete('__session', { path: '/' });
-    return Astro.redirect('/signin/');
+    return Astro.redirect('/sign-in/');
   }
 } catch (error) {
   // Invalid session cookie - clear it and redirect to sign in
   console.error('Session verification failed:', error);
   Astro.cookies.delete('__session', { path: '/' });
-  return Astro.redirect('/signin/');
+  return Astro.redirect('/sign-in/');
 }
 ---
 
 <Base title="dashboard">
   <h1>Welcome {user.displayName}</h1>
   <p>We are happy to see you here</p>
-  <form action="/api/auth/signout">
+  <form action="/api/auth/sign-out">
     <button type="submit">Sign out</button>
   </form>
 </Base>

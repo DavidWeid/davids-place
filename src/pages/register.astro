@@ -4,14 +4,53 @@ import Base from '@layouts/Base.astro';
 
 <Base title="Register">
   <h1>Register</h1>
-  <p>Already have an account? <a href="/signin/">Sign in</a></p>
-  <form action="/api/auth/register" method="post">
+
+  <p>Already have an account? <a href="/sign-in/">Sign in</a></p>
+
+  <form id="register-form" action="/api/auth/register" method="post">
     <label for="name">Name</label>
-    <input type="text" name="name" id="name" />
+    <input type="text" name="name" id="name" required />
+
     <label for="email" for="email">Email</label>
-    <input type="email" name="email" id="email" />
+    <input type="email" name="email" id="email" required />
+
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" />
+    <input type="password" name="password" id="password" required />
+
     <button type="submit">Register</button>
   </form>
+
+  <p id="register-error" class="hidden"></p>
 </Base>
+
+<script>
+  const form = document.getElementById('register-form') as HTMLFormElement;
+  const errorDisplay = document.getElementById(
+    'register-error',
+  ) as HTMLParagraphElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+      });
+
+      // Redirect to sign-in on successful registration
+      if (response.ok) {
+        window.location.href = '/sign-in/';
+        return;
+      }
+
+      const errorText = await response.text();
+
+      errorDisplay.textContent = errorText || 'Error creating user';
+      errorDisplay.classList.remove('hidden');
+    } catch (error: any) {
+      errorDisplay.textContent = 'Network or unexpected error';
+      errorDisplay.classList.remove('hidden');
+    }
+  });
+</script>

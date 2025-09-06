@@ -47,8 +47,8 @@ Inside this Astro project, you'll see the some of the following folders, files, 
 │   │   │     └── cookbook.astro
 │   │   └── api/auth/
 │   │   │     ├── register.ts
-│   │   │     ├── signin.ts
-│   │   │     └── signout.ts
+│   │   │     ├── sign-in.ts
+│   │   │     └── sign-out.ts
 │   │   └── firebase/
 │   │         ├── client.ts
 │   │         └── server.ts

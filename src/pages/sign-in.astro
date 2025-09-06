@@ -21,14 +21,20 @@ if (Astro.cookies.has('__session')) {
 
 <Base title="Sign in">
   <h1>Sign in</h1>
+
   <p>New here? <a href="/register/">Create an account</a></p>
-  <form action="/api/auth/signin" method="post">
+
+  <form id="sign-in-form" action="/api/auth/sign-in" method="post">
     <label for="email" for="email">Email</label>
-    <input type="email" name="email" id="email" />
+    <input type="email" name="email" id="email" required />
+
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" />
+    <input type="password" name="password" id="password" required />
+
     <button type="submit">Login</button>
   </form>
+
+  <p id="sign-in-error" class="hidden"></p>
 </Base>
 
 <script>
@@ -43,9 +49,14 @@ if (Astro.cookies.has('__session')) {
   // This will prevent the browser from storing session data
   auth.setPersistence(inMemoryPersistence);
 
-  const form = document.querySelector('form') as HTMLFormElement;
+  const form = document.getElementById('sign-in-form') as HTMLFormElement;
+  const errorDisplay = document.getElementById(
+    'sign-in-error',
+  ) as HTMLParagraphElement;
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     const formData = new FormData(form);
     const email = formData.get('email')?.toString();
     const password = formData.get('password')?.toString();
@@ -53,21 +64,35 @@ if (Astro.cookies.has('__session')) {
     if (!email || !password) {
       return;
     }
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password,
-    );
-    const idToken = await userCredential.user.getIdToken();
-    const response = await fetch('/api/auth/signin', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${idToken}`,
-      },
-    });
 
-    if (response.redirected) {
-      window.location.assign(response.url);
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+
+      const idToken = await userCredential.user.getIdToken();
+
+      const response = await fetch(form.action, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
+
+      // Redirect to dashboard on successful sign-in
+      if (response.ok) {
+        window.location.href = '/dashboard/';
+        return;
+      }
+
+      const errorText = await response.text();
+      errorDisplay.textContent = errorText || 'Error signing in';
+      errorDisplay.classList.remove('hidden');
+    } catch (error: any) {
+      errorDisplay.textContent = 'Network or unexpected error';
+      errorDisplay.classList.remove('hidden');
     }
   });
 </script>

@@ -23,7 +23,49 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       displayName: name,
     });
   } catch (error: any) {
-    return new Response('Something went wrong', { status: 400 });
+    let errorMessage = 'Error creating user';
+
+    // Handle specific Firebase Auth errors
+    switch (error.errorInfo.code) {
+      case 'auth/invalid-password':
+        errorMessage = 'Password must at least 6 characters';
+        break;
+
+      case 'auth/invalid-email':
+        errorMessage = 'Email address is improperly formatted';
+        break;
+
+      case 'auth/internal-error':
+        errorMessage = 'Internal error, please try again';
+        break;
+
+      case 'auth/invalid-display-name':
+        errorMessage = 'Display name is invalid';
+        break;
+
+      case 'auth/invalid-phone-number':
+        errorMessage = 'Phone number must be in E.164 format';
+        break;
+
+      case 'auth/invalid-photo-url':
+        errorMessage = 'Photo URL is invalid';
+        break;
+
+      case 'auth/too-many-requests':
+        errorMessage = 'Too many requests, please try again later';
+        break;
+
+      case 'auth/user-disabled':
+        errorMessage = 'User account is disabled';
+        break;
+    }
+
+    // Return more secure error message
+    return new Response(errorMessage, {
+      status: 500,
+    });
   }
-  return redirect('/signin');
+
+  // Return ok response
+  return new Response('Successfully created new user', { status: 200 });
 };

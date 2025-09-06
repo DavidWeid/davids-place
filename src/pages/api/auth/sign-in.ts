@@ -28,10 +28,10 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
     cookies.set('__session', sessionCookie, {
       path: '/',
     });
-
-    return redirect('/dashboard');
-  } catch (error) {
-    console.error('Failed to create session cookie:', error);
-    return new Response('Failed to create session', { status: 500 });
+  } catch (error: any) {
+    return new Response(error, { status: 500 });
   }
+
+  // Return ok response
+  return new Response('Successfully signed in', { status: 200 });
 };
