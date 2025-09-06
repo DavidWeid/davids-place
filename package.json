@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "npx prettier --write .",
-    "prepare": "husky i"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
