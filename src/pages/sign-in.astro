@@ -2,6 +2,8 @@
 import { app } from '../firebase/server';
 import { getAuth } from 'firebase-admin/auth';
 import Base from '@layouts/Base.astro';
+import IconArrowRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
+import IconArrowRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
 /* Check if the user is authenticated */
 const auth = getAuth(app);
@@ -19,22 +21,95 @@ if (Astro.cookies.has('__session')) {
 }
 ---
 
-<Base title="Sign in">
-  <h1>Sign in</h1>
+<Base
+  title="Sign in"
+  description="Sign in to your account at David’s Place to access your content and features."
+  classes="flex flex-col justify-center"
+>
+  <header class="container relative w-max">
+    <span class="spacer-40-80-80"></span>
 
-  <p>New here? <a href="/register/">Create an account</a></p>
+    <h1>Sign in to your account</h1>
 
-  <form id="sign-in-form" action="/api/auth/sign-in" method="post">
-    <label for="email" for="email">Email</label>
-    <input type="email" name="email" id="email" required />
+    <p class="text-p-main pt-8 flex flex-wrap gap-4">
+      <span>New here?</span>
+      <a href="/register/" class="content-link-gradient w-max font-sans-syne"
+        >Create an account</a
+      >
+    </p>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required />
+    <span class="spacer-40-80-80"></span>
+  </header>
 
-    <button type="submit">Login</button>
-  </form>
+  <section
+    class="container bg-green-dark dark:bg-blue-dark flex-grow rounded-t-4xl laptop:rounded-none"
+  >
+    <span class="block pb-14 tablet:pb-20"></span>
+    <form
+      id="sign-in-form"
+      action="/api/auth/sign-in"
+      method="post"
+      class="bg-medium text-light tablet:max-w-[768px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)] opacity-95"
+    >
+      <p class="pt-4 font-sans-syne text-lg">
+        Fill out the form below to sign in your account
+      </p>
 
-  <p id="sign-in-error" class="hidden"></p>
+      <span class="relative group">
+        <label
+          for="email"
+          class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
+          >Email</label
+        >
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+        />
+      </span>
+
+      <span class="relative group">
+        <label
+          for="password"
+          class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
+          >Password</label
+        >
+        <input
+          type="password"
+          name="password"
+          id="password"
+          required
+          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+        />
+      </span>
+
+      <button
+        type="submit"
+        class="group inline-block w-max mt-4 font-bold text-lg tracking-wide px-5 py-2 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark dark:bg-blue-dark dark:hover:bg-green-dark rounded-4xl active:brightness-75 disabled:brightness-75 disabled:bg-blue-dark dark:disabled:bg-green-dark transition-colors duration-500"
+      >
+        <span class="flex items-center gap-2">
+          <span>LOG IN</span>
+          <IconArrowRightGreen
+            class="hidden dark:flex relative right-0 h-5 w-5 group-hover:-right-1.5 group-disabled:-right-1.5 transition-[right] duration-500"
+          />
+          <IconArrowRightBlue
+            class="flex dark:hidden relative right-0 h-5 w-5 group-hover:-right-1.5 group-disabled:-right-1.5 transition-[right] duration-500"
+          />
+        </span>
+      </button>
+
+      <p
+        id="sign-in-error"
+        class="opacity-0 text-red-500 tracking-tight font-mono font-bold text-lg leading-8 transition-opacity duration-500"
+      >
+        *Error signing in
+      </p>
+    </form>
+
+    <span class="block pb-14 tablet:pb-20"></span>
+  </section>
 </Base>
 
 <script>
@@ -54,45 +129,134 @@ if (Astro.cookies.has('__session')) {
     'sign-in-error',
   ) as HTMLParagraphElement;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  if (!form || !errorDisplay) {
+    console.warn('Sign-in form or error display not found');
+  } else {
+    const formInputs = form.querySelectorAll(
+      'input',
+    ) as NodeListOf<HTMLInputElement>;
 
-    const formData = new FormData(form);
-    const email = formData.get('email')?.toString();
-    const password = formData.get('password')?.toString();
+    // Cache labels by input id for better perf
+    const labelMap = new Map<string, HTMLElement | null>();
+    formInputs.forEach((input) => {
+      labelMap.set(input.id, form.querySelector(`label[for="${input.id}"]`));
+    });
 
-    if (!email || !password) {
-      return;
-    }
+    const styleLabel = (label: Element, isActive: boolean) => {
+      if (isActive) {
+        label.classList.add(
+          'text-[12px]',
+          '-top-4',
+          'text-green-emerald',
+          'tracking-wider',
+          'font-bold',
+        );
+        label.classList.remove('text-[16px]', 'leading-4', 'top-0');
+      } else {
+        label.classList.remove(
+          'text-[12px]',
+          '-top-4',
+          'text-green-emerald',
+          'tracking-wider',
+          'font-bold',
+        );
+        label.classList.add('text-[16px]', 'leading-4', 'top-0');
+      }
+    };
 
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password,
-      );
+    // On focus, make label "active"
+    formInputs.forEach((input) => {
+      const label = labelMap.get(input.id) || null;
 
-      const idToken = await userCredential.user.getIdToken();
-
-      const response = await fetch(form.action, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${idToken}`,
-        },
+      input.addEventListener('focus', () => {
+        if (label) styleLabel(label, true);
       });
 
-      // Redirect to dashboard on successful sign-in
-      if (response.ok) {
-        window.location.href = '/dashboard/';
+      // On blur, if input is empty, make label inactive
+      input.addEventListener('blur', () => {
+        if (label) styleLabel(label, !!input.value);
+      });
+
+      // Initialize label from current value
+      if (label) styleLabel(label, !!input.value);
+    });
+
+    // Hide error message when user starts typing
+    form.addEventListener('input', () => {
+      errorDisplay.classList.add('opacity-0');
+    });
+
+    // Prevent duplicate submits, use timeout for fetch
+    let isSubmitting = false;
+    const submitButton = form.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement;
+
+    // Handle form submission
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const email = formData.get('email')?.toString();
+      const password = formData.get('password')?.toString();
+
+      if (!email || !password) {
         return;
       }
 
-      const errorText = await response.text();
-      errorDisplay.textContent = errorText || 'Error signing in';
-      errorDisplay.classList.remove('hidden');
-    } catch (error: any) {
-      errorDisplay.textContent = 'Error signing in';
-      errorDisplay.classList.remove('hidden');
-    }
-  });
+      if (isSubmitting) return;
+      isSubmitting = true;
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 25000);
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password,
+        );
+
+        const idToken = await userCredential.user.getIdToken();
+
+        const response = await fetch(form.action, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${idToken}`,
+          },
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeout);
+
+        // Redirect to dashboard on successful sign-in
+        if (response.ok) {
+          window.location.href = '/dashboard/';
+          return;
+        }
+
+        // Show error message on failure
+        const errorText = await response.text();
+
+        errorDisplay.textContent = errorText
+          ? `*${errorText}`
+          : '*Error signing in';
+        errorDisplay.classList.remove('opacity-0');
+      } catch (error: any) {
+        if (error.name === 'AbortError') {
+          errorDisplay.textContent = '*Request timed out. Please try again.';
+        } else {
+          errorDisplay.textContent = '*Error signing in';
+        }
+        errorDisplay.classList.remove('opacity-0');
+      } finally {
+        isSubmitting = false;
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+  }
 </script>
