@@ -15,7 +15,9 @@ import IconAstroReading from '@images/astro/astro-6.svg';
   <header class="container relative w-max">
     <span class="spacer-40-80-80"></span>
 
-    <h1 class="text-gradient text-display w-max pb-10">Join the Community</h1>
+    <h1 class="text-gradient text-display w-max max-w-full pb-10">
+      Join the Community
+    </h1>
 
     <p class="text-p-main font-sans-syne text-2xl">
       Sign up and start contributing to our platform:
@@ -67,7 +69,7 @@ import IconAstroReading from '@images/astro/astro-6.svg';
       id="register-form"
       action="/api/auth/register"
       method="post"
-      class="bg-medium text-light tablet:max-w-[768px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)] opacity-95"
+      class="relative bg-medium text-light tablet:max-w-[768px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)] opacity-95"
     >
       <p class="pt-4 font-sans-syne text-lg">
         Fill out the form below to create your account
@@ -140,6 +142,10 @@ import IconAstroReading from '@images/astro/astro-6.svg';
       >
         *Error creating user
       </p>
+
+      <IconAstroFloating
+        class="block tablet:hidden absolute -bottom-10 right-10 w-28 h-28"
+      />
     </form>
 
     <span class="block pb-14 tablet:pb-20"></span>
