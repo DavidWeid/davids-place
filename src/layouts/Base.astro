@@ -37,12 +37,8 @@ const mainElementAttributes: {
   class?: string;
 } = {
   id: 'main',
+  class: `flex-grow ${classes}`.trim(),
 };
-
-// If classes is not an empty string, add it to the class attribute of mainElementAttributes
-if (classes !== '') {
-  mainElementAttributes.class = classes;
-}
 
 const image = await getImage({
   src: headshot,
@@ -170,7 +166,7 @@ const image = await getImage({
 
     <ClientRouter />
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen justify-between">
     <MainNav />
     <main {...mainElementAttributes}>
       <slot />

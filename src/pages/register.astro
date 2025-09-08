@@ -1,56 +1,276 @@
 ---
 import Base from '@layouts/Base.astro';
+import IconArrowRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
+import IconArrowRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
+import IconAstroFloating from '@images/astro/astro-9.svg';
+import IconAstroPencilRocket from '@images/astro/astro-8.svg';
+import IconAstroReading from '@images/astro/astro-6.svg';
 ---
 
-<Base title="Register">
-  <h1>Register</h1>
+<Base
+  title="Register"
+  description="Create an account to start contributing to David’s Place"
+  classes="flex flex-col justify-between"
+>
+  <header class="container relative w-max">
+    <span class="spacer-40-80-80"></span>
 
-  <p>Already have an account? <a href="/sign-in/">Sign in</a></p>
+    <h1 class="text-gradient text-display w-max max-w-full pb-10">
+      Join the Community
+    </h1>
 
-  <form id="register-form" action="/api/auth/register" method="post">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" required />
+    <p class="text-p-main font-sans-syne text-2xl">
+      Sign up and start contributing to our platform:
+    </p>
 
-    <label for="email" for="email">Email</label>
-    <input type="email" name="email" id="email" required />
+    <ul class="list-disc list-inside text-p-main pt-2">
+      <li>
+        <strong class="text-green-dark dark:text-blue-dark mr-1 tracking-wide"
+          >Add</strong
+        > and manage new recipes
+      </li>
+      <li>
+        <strong class="text-green-dark dark:text-blue-dark mr-1 tracking-wide"
+          >Create</strong
+        > new blog posts
+      </li>
+      <li>
+        <strong class="text-green-dark dark:text-blue-dark mr-1 tracking-wide"
+          >Contribute</strong
+        > to discussions
+      </li>
+    </ul>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required />
+    <p class="text-p-main pt-8 flex flex-wrap gap-4">
+      <span>Already have an account?</span>
+      <a href="/sign-in/" class="content-link-gradient w-max font-sans-syne"
+        >Sign in here</a
+      >
+    </p>
+    <span class="spacer-40-80-80"></span>
 
-    <button type="submit">Register</button>
-  </form>
+    <IconAstroFloating
+      class="hidden tablet:block drop-shadow-medium drop-shadow-lg absolute top-10 -left-32 laptop:-left-56 w-32 h-32 laptop:w-40 laptop:h-40"
+    />
+    <IconAstroPencilRocket
+      class="hidden tablet:block drop-shadow-medium drop-shadow-lg absolute bottom-24 right-16 laptop:right-10 w-24 h-24 laptop:w-32 laptop:h-32"
+    />
+    <IconAstroReading
+      class="hidden tablet:block drop-shadow-medium drop-shadow-lg absolute bottom-8 -left-16 laptop:-bottom-8 w-20 h-20 laptop:w-28 laptop:h-28"
+    />
+  </header>
 
-  <p id="register-error" class="hidden"></p>
-</Base>
+  <section
+    class="container bg-green-dark dark:bg-blue-dark flex-grow rounded-t-4xl laptop:rounded-none"
+  >
+    <span class="block pb-14 tablet:pb-20"></span>
 
-<script>
-  const form = document.getElementById('register-form') as HTMLFormElement;
-  const errorDisplay = document.getElementById(
-    'register-error',
-  ) as HTMLParagraphElement;
+    <form
+      id="register-form"
+      action="/api/auth/register"
+      method="post"
+      class="relative bg-medium text-light tablet:max-w-[768px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)] opacity-95"
+    >
+      <p class="pt-4 font-sans-syne text-lg">
+        Fill out the form below to create your account
+      </p>
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+      <span class="relative group">
+        <label
+          for="name"
+          class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
+          >Display Name</label
+        >
+        <input
+          type="text"
+          name="name"
+          id="name"
+          required
+          autocomplete="username"
+          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+        />
+      </span>
 
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
+      <span class="relative group">
+        <label
+          for="email"
+          class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
+          >Email</label
+        >
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          autocomplete="email"
+          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+        />
+      </span>
+
+      <span class="relative group">
+        <label
+          for="password"
+          class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
+          >Password</label
+        >
+        <input
+          type="password"
+          name="password"
+          id="password"
+          required
+          autocomplete="new-password"
+          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+        />
+      </span>
+
+      <button
+        type="submit"
+        class="group inline-block w-max mt-4 font-bold text-lg tracking-wide px-5 py-2 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark dark:bg-blue-dark dark:hover:bg-green-dark rounded-4xl active:brightness-75 disabled:brightness-75 disabled:bg-blue-dark dark:disabled:bg-green-dark transition-colors duration-500"
+      >
+        <span class="flex items-center gap-2">
+          <span class="block tablet:hidden">SIGN UP</span>
+          <span class="hidden tablet:block">CREATE ACCOUNT</span>
+          <IconArrowRightGreen
+            class="hidden dark:flex relative right-0 h-5 w-5 group-hover:-right-1.5 group-disabled:-right-1.5 transition-[right] duration-500"
+          />
+          <IconArrowRightBlue
+            class="flex dark:hidden relative right-0 h-5 w-5 group-hover:-right-1.5 group-disabled:-right-1.5 transition-[right] duration-500"
+          />
+        </span>
+      </button>
+
+      <p
+        id="register-error"
+        class="opacity-0 text-red-500 tracking-tight font-mono font-bold text-lg leading-8 transition-opacity duration-500"
+      >
+        *Error creating user
+      </p>
+
+      <IconAstroFloating
+        class="block tablet:hidden absolute -bottom-10 right-10 w-28 h-28"
+      />
+    </form>
+
+    <span class="block pb-14 tablet:pb-20"></span>
+  </section>
+
+  <script>
+    const form = document.getElementById('register-form') as HTMLFormElement;
+    const errorDisplay = document.getElementById(
+      'register-error',
+    ) as HTMLParagraphElement;
+
+    if (!form || !errorDisplay) {
+      console.warn('Form or error display not found');
+    } else {
+      const formInputs = form.querySelectorAll(
+        'input',
+      ) as NodeListOf<HTMLInputElement>;
+
+      // Cache labels by input id for better perf
+      const labelMap = new Map<string, HTMLElement | null>();
+      formInputs.forEach((input) => {
+        labelMap.set(input.id, form.querySelector(`label[for="${input.id}"]`));
       });
 
-      // Redirect to sign-in on successful registration
-      if (response.ok) {
-        window.location.href = '/sign-in/';
-        return;
-      }
+      const styleLabel = (label: Element, isActive: boolean) => {
+        if (isActive) {
+          label.classList.add(
+            'text-[12px]',
+            '-top-4',
+            'text-green-emerald',
+            'tracking-wider',
+            'font-bold',
+          );
+          label.classList.remove('text-[16px]', 'leading-4', 'top-0');
+        } else {
+          label.classList.remove(
+            'text-[12px]',
+            '-top-4',
+            'text-green-emerald',
+            'tracking-wider',
+            'font-bold',
+          );
+          label.classList.add('text-[16px]', 'leading-4', 'top-0');
+        }
+      };
 
-      const errorText = await response.text();
+      // On focus, make label "active"
+      formInputs.forEach((input) => {
+        const label = labelMap.get(input.id) || null;
 
-      errorDisplay.textContent = errorText || 'Error creating user';
-      errorDisplay.classList.remove('hidden');
-    } catch (error: any) {
-      errorDisplay.textContent = 'Network or unexpected error';
-      errorDisplay.classList.remove('hidden');
+        input.addEventListener('focus', () => {
+          if (label) styleLabel(label, true);
+        });
+
+        // On blur, if input is empty, make label inactive
+        input.addEventListener('blur', () => {
+          if (label) styleLabel(label, !!input.value);
+        });
+
+        // Initialize label from current value
+        if (label) styleLabel(label, !!input.value);
+      });
+
+      // Hide error message when user starts typing
+      form.addEventListener('input', () => {
+        errorDisplay.classList.add('opacity-0');
+      });
+
+      // Prevent duplicate submits, use timeout for fetch
+      let isSubmitting = false;
+      const submitButton = form.querySelector(
+        'button[type="submit"]',
+      ) as HTMLButtonElement;
+
+      // Handle form submission
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (isSubmitting) return;
+        isSubmitting = true;
+
+        if (submitButton) {
+          submitButton.disabled = true;
+        }
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 25000);
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            signal: controller.signal,
+          });
+
+          clearTimeout(timeout);
+
+          // Redirect to sign-in on successful registration
+          if (response.ok) {
+            window.location.href = '/sign-in/';
+            return;
+          }
+
+          // Show error message on failure
+          const errorText = await response.text();
+
+          errorDisplay.textContent = errorText
+            ? `*${errorText}`
+            : '*Error creating user';
+          errorDisplay.classList.remove('opacity-0');
+        } catch (error: any) {
+          if (error.name === 'AbortError') {
+            errorDisplay.textContent = '*Request timed out. Please try again.';
+          } else {
+            errorDisplay.textContent = '*Error creating user';
+          }
+          errorDisplay.classList.remove('opacity-0');
+        } finally {
+          isSubmitting = false;
+          if (submitButton) submitButton.disabled = false;
+        }
+      });
     }
-  });
-</script>
+  </script>
+</Base>

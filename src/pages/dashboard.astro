@@ -1,6 +1,6 @@
 ---
 import { app } from '../firebase/server';
-import { getAuth } from 'firebase-admin/auth';
+import { getAuth, type UserRecord } from 'firebase-admin/auth';
 import Base from '@layouts/Base.astro';
 
 const auth = getAuth(app);
@@ -11,7 +11,7 @@ if (!Astro.cookies.has('__session')) {
 }
 
 const sessionCookie = Astro.cookies.get('__session')!.value;
-let user;
+let user: UserRecord | null;
 
 try {
   const decodedCookie = await auth.verifySessionCookie(sessionCookie);
@@ -27,12 +27,21 @@ try {
   Astro.cookies.delete('__session', { path: '/' });
   return Astro.redirect('/sign-in/');
 }
+
+// User properties available:
+// email: string;
+// emailVerified: boolean;
+// displayName: string;
+// photoURL?: string;
+// phoneNumber?: string;
 ---
 
 <Base title="dashboard">
   <h1>Welcome {user.displayName}</h1>
+
   <p>We are happy to see you here</p>
-  <form action="/api/auth/sign-out">
+
+  <form id="sign-out-form" action="/api/auth/sign-out">
     <button type="submit">Sign out</button>
   </form>
 </Base>
