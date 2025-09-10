@@ -249,34 +249,51 @@ Astro's ClientRouter provides specific lifecycle events for managing scripts acr
 
 #### Script Categories
 
-**1. Inline Scripts (`<script is:inline>`)**
+**1. Module Scripts (`<script>`) - RECOMMENDED**
 
-- Execute immediately during HTML parsing
-- Run on every page load (including transitions)
-- Used for critical functionality that must execute immediately
-- Example: Theme application in `src/components/MainNav.astro`
+- **Non-render-blocking** - Load asynchronously without blocking HTML parsing
+- Support ES modules with imports/exports and TypeScript
+- Better performance and Core Web Vitals scores
+- Bundled and optimized by Astro during build
+- **Preferred approach** for ClientRouter compatibility
 
 ```javascript
-<script is:inline>
-  function applyTheme(){' '}
-  {
-    // Critical theme logic that must run immediately
+<script>
+  function initializeComponent() {
+    const element = document.getElementById('my-element');
+
+    if (!element) {
+      console.warn('Element not found');
+      return;
+    }
+
+    // Setup event listeners and functionality
+    element.addEventListener('click', handleClick);
   }
-  // Listen for view transition events
-  document.addEventListener('astro:after-swap', applyTheme);
-  document.addEventListener('astro:page-load', () =>{' '}
-  {
-    // Re-bind event listeners after transitions
-  }
-  ); applyTheme(); // Run immediately
+
+  document.addEventListener('astro:page-load', initializeComponent);
+  initializeComponent(); // Run immediately on initial load
 </script>
 ```
 
-**2. Module Scripts (`<script>`)**
+**2. Inline Scripts (`<script is:inline>`) - USE SPARINGLY**
 
-- Load as ES modules with imports/exports
-- Execute once per component/page
-- May not persist across view transitions
+- **Render-blocking** - Execute immediately during HTML parsing
+- No import/export support, no TypeScript
+- Only use for critical functionality that must run before DOM is ready
+- Examples: Theme application, Google Analytics setup
+
+```javascript
+<script is:inline>
+  function applyCriticalFeature() {
+    // Critical functionality that must run immediately
+    document.documentElement.classList.add('theme-applied');
+  }
+
+  document.addEventListener('astro:page-load', applyCriticalFeature);
+  applyCriticalFeature(); // Run immediately
+</script>
+```
 
 ### Best Practices for View Transitions
 
@@ -285,13 +302,17 @@ Astro's ClientRouter provides specific lifecycle events for managing scripts acr
 Always use `astro:page-load` for re-binding event listeners:
 
 ```javascript
-<script is:inline>
-  function bindEventListeners() {
-    document.getElementById('button')?.addEventListener('click', handler);
+<script>
+  function initializeEventListeners() {
+    const button = document.getElementById('button');
+
+    if (!button) return;
+
+    button.addEventListener('click', handleClick);
   }
 
-  document.addEventListener('astro:page-load', bindEventListeners);
-  bindEventListeners(); // Initial bind
+  document.addEventListener('astro:page-load', initializeEventListeners);
+  initializeEventListeners(); // Initial bind
 </script>
 ```
 
@@ -325,7 +346,8 @@ document.getElementById('element').addEventListener('click', handler);
 
 #### 4. Performance Considerations
 
-- Prefer `is:inline` scripts for critical functionality
+- **Prefer module scripts (`<script>`) over `is:inline`** for better performance
+- Use `is:inline` only for truly critical functionality that must run before DOM ready
 - Use event delegation for dynamically changing content
 - Clean up resources in event listeners when possible
 
@@ -349,11 +371,13 @@ See `src/components/MainNav.astro`:
 
 #### Form Interactions
 
-See `src/pages/sign-in.astro`:
+See `src/pages/sign-in.astro` and `src/pages/register.astro`:
 
-- Module script with imports for Firebase auth
+- **Module scripts with imports** for Firebase auth and other dependencies
+- **Non-render-blocking** for better performance
 - Sets up form validation and submission handling
 - Uses optional chaining for element queries
+- Wrapped in initialization functions called on `astro:page-load`
 
 ### Troubleshooting Scripts with View Transitions
 

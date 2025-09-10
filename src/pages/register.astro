@@ -155,14 +155,17 @@ import IconAstroReading from '@images/astro/astro-6.svg';
   </section>
 
   <script>
-    const form = document.getElementById('register-form') as HTMLFormElement;
-    const errorDisplay = document.getElementById(
-      'register-error',
-    ) as HTMLParagraphElement;
+    function initializeRegisterForm() {
+      const form = document.getElementById('register-form') as HTMLFormElement;
+      const errorDisplay = document.getElementById(
+        'register-error',
+      ) as HTMLParagraphElement;
 
-    if (!form || !errorDisplay) {
-      console.warn('Form or error display not found');
-    } else {
+      if (!form || !errorDisplay) {
+        console.warn('Form or error display not found');
+        return;
+      }
+
       const formInputs = form.querySelectorAll(
         'input',
       ) as NodeListOf<HTMLInputElement>;
@@ -272,5 +275,8 @@ import IconAstroReading from '@images/astro/astro-6.svg';
         }
       });
     }
+
+    document.addEventListener('astro:page-load', initializeRegisterForm);
+    initializeRegisterForm();
   </script>
 </Base>

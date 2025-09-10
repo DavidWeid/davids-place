@@ -126,14 +126,17 @@ if (Astro.cookies.has('__session')) {
   // This will prevent the browser from storing session data
   auth.setPersistence(inMemoryPersistence);
 
-  const form = document.getElementById('sign-in-form') as HTMLFormElement;
-  const errorDisplay = document.getElementById(
-    'sign-in-error',
-  ) as HTMLParagraphElement;
+  function initializeSignInForm() {
+    const form = document.getElementById('sign-in-form') as HTMLFormElement;
+    const errorDisplay = document.getElementById(
+      'sign-in-error',
+    ) as HTMLParagraphElement;
 
-  if (!form || !errorDisplay) {
-    console.warn('Sign-in form or error display not found');
-  } else {
+    if (!form || !errorDisplay) {
+      console.warn('Sign-in form or error display not found');
+      return;
+    }
+
     const formInputs = form.querySelectorAll(
       'input',
     ) as NodeListOf<HTMLInputElement>;
@@ -261,4 +264,7 @@ if (Astro.cookies.has('__session')) {
       }
     });
   }
+
+  document.addEventListener('astro:page-load', initializeSignInForm);
+  initializeSignInForm();
 </script>

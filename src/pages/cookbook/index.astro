@@ -64,14 +64,18 @@ const backgroundSvgs = [
   </section>
 </Base>
 
-<script is:inline data-astro-rerun>
-  // Randomly show hero background SVG
-  backgroundSvgs = document
-    .getElementById('hero')
-    ?.querySelectorAll('svg.absolute');
+<script>
+  function initializeRandomBackground() {
+    // Randomly show hero background SVG
+    const hero = document.getElementById('hero');
+    const backgroundSvgs = hero?.querySelectorAll('svg.absolute');
 
-  if (backgroundSvgs?.length) {
-    const randomIndex = Math.floor(Math.random() * backgroundSvgs.length);
-    backgroundSvgs[randomIndex].classList.remove('hidden');
+    if (backgroundSvgs?.length) {
+      const randomIndex = Math.floor(Math.random() * backgroundSvgs.length);
+      backgroundSvgs[randomIndex].classList.remove('hidden');
+    }
   }
+
+  document.addEventListener('astro:page-load', initializeRandomBackground);
+  initializeRandomBackground();
 </script>
