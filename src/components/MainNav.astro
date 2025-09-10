@@ -52,7 +52,8 @@ const navItems: string[] = Object.keys(obj).map(
 ---
 
 <nav
-  class={`bg-dark/80 dark:bg-medium/80 text-light laptop:sticky laptop:top-0 tablet:pb-4 z-30 pt-4 pb-2 backdrop-blur-md ${customNavClasses}`}
+  id="main-nav"
+  class={`bg-blue-darker/80 dark:bg-green-darker/80 text-light font-semibold tracking-wider laptop:rounded-none laptop:sticky laptop:top-0 tablet:pb-4 z-30 pt-4 pb-2 laptop:mx-0 backdrop-blur-md laptop:transition-[border-radius,top,margin] laptop:duration-700 ${customNavClasses}`}
 >
   <div class="container flex flex-wrap items-center justify-between gap-y-2">
     <a href="#main" class="skip-link">Skip to content</a>
@@ -88,7 +89,7 @@ const navItems: string[] = Object.keys(obj).map(
           type="checkbox"
           id="darkModeSwitch"
           checked="true"
-          class="bg-light/75 before:bg-blue-dark checked:bg-blue-dark checked:before:bg-accent-light relative h-6 w-12 appearance-none rounded-full transition-all duration-500 before:absolute before:top-1/2 before:left-1 before:h-4 before:w-4 before:-translate-y-1/2 before:rounded-full before:transition-all before:duration-500 before:content-[''] checked:before:left-7 hover:brightness-125"
+          class="bg-light before:bg-green-dark checked:bg-light checked:before:bg-blue-dark relative h-6 w-12 appearance-none rounded-full transition-all duration-500 before:absolute before:top-1/2 before:left-1 before:h-4 before:w-4 before:-translate-y-1/2 before:rounded-full before:transition-all before:duration-500 before:content-[''] checked:before:left-7 hover:brightness-125"
         />
         <label
           for="darkModeSwitch"
@@ -129,7 +130,7 @@ const navItems: string[] = Object.keys(obj).map(
 <style>
   .skip-link {
     position: absolute;
-    top: calc(var(--spacing) * 5);
+    top: calc(var(--spacing) * 3);
     left: calc(1 / 2 * 100%);
     --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -144,8 +145,7 @@ const navItems: string[] = Object.keys(obj).map(
     align-items: center;
     justify-content: center;
     z-index: 40;
-    border-bottom-right-radius: var(--radius-lg);
-    border-bottom-left-radius: var(--radius-lg);
+    border-radius: var(--radius-lg);
     font-family: var(--font-mono);
     text-transform: uppercase;
     font-size: var(--text-xs);
@@ -161,7 +161,7 @@ const navItems: string[] = Object.keys(obj).map(
   }
 
   .skip-link:focus {
-    --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
+    --tw-translate-y: calc((1 / 6 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
 </style>
@@ -256,4 +256,40 @@ const navItems: string[] = Object.keys(obj).map(
   });
 
   applyFontSize();
+</script>
+
+<!-- Handle nav scroll effect -->
+<script>
+  function initializeNavScrollEffect() {
+    const nav = document.getElementById('main-nav');
+
+    if (!nav) {
+      console.warn('Main nav element not found');
+      return;
+    }
+
+    window.addEventListener('scroll', () => {
+      // If user has scrolled 150px
+      const navScrollActive = window.scrollY > 150;
+
+      if (navScrollActive) {
+        nav.classList.remove('laptop:rounded-none');
+        nav.classList.add('laptop:rounded-[999px]');
+        nav.classList.remove('laptop:top-0');
+        nav.classList.add('laptop:top-4');
+        nav.classList.remove('laptop:mx-0');
+        nav.classList.add('laptop:mx-4');
+      } else {
+        nav.classList.remove('laptop:rounded-[999px]');
+        nav.classList.add('laptop:rounded-none');
+        nav.classList.remove('laptop:top-4');
+        nav.classList.add('laptop:top-0');
+        nav.classList.remove('laptop:mx-4');
+        nav.classList.add('laptop:mx-0');
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initializeNavScrollEffect);
+  initializeNavScrollEffect();
 </script>
