@@ -24,9 +24,9 @@
 .green-shimmer {
   background: linear-gradient(
     -45deg,
-    theme('colors.green.emerald') 40%,
-    theme('colors.green.dark') 50%,
-    theme('colors.green.emerald') 60%
+    theme('colors.green.dark') 40%,
+    theme('colors.green.darker') 50%,
+    theme('colors.green.dark') 60%
   );
   background-size: 300%;
   background-position-x: 100%;
@@ -36,9 +36,9 @@
 @utility green-shimmer-slow {
   background: linear-gradient(
     -45deg,
-    theme('colors.green.emerald') 40%,
-    theme('colors.green.dark') 50%,
-    theme('colors.green.emerald') 60%
+    theme('colors.green.dark') 40%,
+    theme('colors.green.darker') 50%,
+    theme('colors.green.dark') 60%
   );
   background-size: 300%;
   background-position-x: 100%;
@@ -48,9 +48,9 @@
 .blue-shimmer {
   background: linear-gradient(
     -45deg,
-    theme('colors.blue.dark') 40%,
-    theme('colors.blue.light') 50%,
-    theme('colors.blue.dark') 60%
+    theme('colors.blue.darker') 40%,
+    theme('colors.blue.dark') 50%,
+    theme('colors.blue.darker') 60%
   );
   background-size: 300%;
   background-position-x: 100%;
@@ -60,9 +60,9 @@
 @utility blue-shimmer-slow {
   background: linear-gradient(
     -45deg,
-    theme('colors.blue.dark') 40%,
-    theme('colors.blue.light') 50%,
-    theme('colors.blue.dark') 60%
+    theme('colors.blue.darker') 40%,
+    theme('colors.blue.dark') 50%,
+    theme('colors.blue.darker') 60%
   );
   background-size: 300%;
   background-position-x: 100%;

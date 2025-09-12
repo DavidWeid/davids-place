@@ -154,7 +154,7 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
                   <li class="text-violet-600 dark:text-pink-500">
                     Communicator...
                   </li>
-                  <li class="text-green-600">Leader.</li>
+                  <li class="text-green-darker dark:text-green-600">Leader.</li>
                 </ul>
               </div>
             </div>
@@ -509,7 +509,11 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
   let activeFilter = '';
   let counter = 0;
 
-  const adjustImage = (counter: number, headshot: HTMLElement | null, imageCat: HTMLElement | null) => {
+  const adjustImage = (
+    counter: number,
+    headshot: HTMLElement | null,
+    imageCat: HTMLElement | null,
+  ) => {
     if (counter >= 12) {
       headshot?.classList.add('hidden');
       imageCat?.classList.remove('hidden');
