@@ -213,6 +213,8 @@ const heroData = [
 </Base>
 
 <script>
+  import { debounce } from '../utilities/debounce';
+
   document.addEventListener('astro:page-load', () => {
     const ingredientsContainer = document.getElementById(
       'ingredients-container',
@@ -282,7 +284,7 @@ const heroData = [
 
     if (ingredientsContainer && pinButton) {
       pinButton.addEventListener('click', handlePinButtonClick);
-      window.addEventListener('resize', handleScreenResize);
+      window.addEventListener('resize', debounce(handleScreenResize));
     }
   });
 </script>

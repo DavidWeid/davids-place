@@ -18,6 +18,8 @@ import imageWebsiteStackWhite from '@images/general/website-stack-white.png';
 
 import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
 import IconDdIconRgb from '@images/icons/dd_icon_purple.svg';
+import IconArrowBubblesRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
+import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
 const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'David Weid II | Senior Web Development Engineer Portfolio';
@@ -59,21 +61,45 @@ const externalLinks = [
 const internalLinks = [
   {
     link: `${baseURL}about/cookbook/`,
-    title: 'Cookbook',
+    title: 'Marketing Page for Cookbook',
     description: 'Learn about my cookbook app through a custom landing page.',
+    tags: ['marketing', 'fundamentals', 'informational'],
+  },
+  {
+    link: `${baseURL}cookbook/`,
+    title: 'Cookbook App',
+    description: 'Explore my collection of recipes.',
     tags: ['recipes', 'food', 'cooking'],
   },
   {
     link: `${baseURL}about/`,
-    title: 'About',
+    title: 'Fun About Page',
     description: 'My gamified personal bio.',
-    tags: ['about', 'steam', 'api at build'],
+    tags: ['about', 'fun', 'stats'],
+  },
+  {
+    link: `${baseURL}blog/`,
+    title: 'Blog App',
+    description: 'Read articles I have written about various topics.',
+    tags: ['blog', 'articles', 'writing'],
+  },
+  {
+    link: `${baseURL}register/`,
+    title: 'Sign up Page for David’s Place',
+    description: 'Create an account to join the community.',
+    tags: ['authentication', 'firebase', 'accounts'],
+  },
+  {
+    link: `${baseURL}sign-in/`,
+    title: 'Sign in Page for David’s Place',
+    description: 'Log in to access your account and saved content.',
+    tags: ['authentication', 'firebase', 'accounts'],
   },
   {
     link: `${baseURL}style/`,
     title: 'Site Style Visualization',
     description: 'A visual representation of the site’s colors and SVGs',
-    tags: ['styles', 'visuals'],
+    tags: ['styles', 'visuals', 'icons'],
   },
 ];
 
@@ -420,31 +446,72 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
 
       <span class="spacer-40"></span>
 
-      <p class="text-lg">
+      <p class="text-p-main">
         Currently, David’s Place acts as a portfolio and visual representation
         of my resume (everything above if you’ve made it this far). The most
         robust project on this site is the <strong>Cookbook</strong>. I have
         more I want to build, but it’s fun all the same!
       </p>
 
-      <span class="spacer-40"></span>
-
-      <ul
-        class="laptop:max-w-[90ch] laptop:mx-auto tablet:grid-cols-3 grid grid-cols-1 gap-8"
-      >
-        {
-          internalLinks.map((link) => (
-            <Card
-              href={link.link}
-              title={link.title}
-              body={link.description}
-              tags={link.tags}
-            />
-          ))
-        }
-      </ul>
+      <p class="text-p-main">
+        The carousel below showcases some of the other pages and projects on
+        this site.
+        <span class="block text-sm pt-2 ml-4">
+          Super easy carousel functionality provided by <ExternalLink
+            href="https://www.embla-carousel.com/"
+            text="Embla Carousel"
+          />
+        </span>
+      </p>
     </div>
   </section>
+
+  <span class="spacer-40-80-80"></span>
+
+  <div class="embla overflow-hidden select-none">
+    <div
+      class="embla__viewport container laptop:!px-0 laptop:!max-w-[90ch] laptop:!mx-auto"
+    >
+      <div class="embla__container flex gap-5">
+        {
+          internalLinks.map((link) => (
+            <div class="embla__slide w-[90%] tablet:w-[300px] laptop:w-[375px] shrink-0">
+              <Card
+                href={link.link}
+                title={link.title}
+                body={link.description}
+                tags={link.tags}
+                isListItem={false}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="container laptop:!px-0 laptop:!max-w-[90ch] laptop:!mx-auto">
+      <span class="spacer-40"></span>
+      <div class="flex justify-around laptop:justify-center gap-20">
+        <button aria-label="Previous slide" class="embla__prev">
+          <IconArrowBubblesRightBlue
+            class="block dark:hidden transition-[scale] duration-500 h-10 w-10 laptop:h-8 laptop:w-8 hover:scale-150 rotate-180"
+          />
+          <IconArrowBubblesRightGreen
+            class="hidden dark:block transition-[scale] duration-500 h-10 w-10 laptop:h-8 laptop:w-8 hover:scale-150 rotate-180"
+          />
+        </button>
+        <button aria-label="Next slide" class="embla__next">
+          <IconArrowBubblesRightBlue
+            class="block dark:hidden transition-[scale] duration-500 h-10 w-10 laptop:h-8 laptop:w-8 hover:scale-150"
+          />
+          <IconArrowBubblesRightGreen
+            class="hidden dark:block transition-[scale] duration-500 h-10 w-10 laptop:h-8 laptop:w-8 hover:scale-150"
+          />
+        </button>
+      </div>
+      <span class="spacer-40"></span>
+    </div>
+  </div>
 
   <span class="block pb-[200px]"></span>
 </Base>
@@ -561,4 +628,44 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
 
   document.addEventListener('astro:page-load', initializeHeadshotInteraction);
   initializeHeadshotInteraction();
+</script>
+
+<script>
+  import EmblaCarousel, { type EmblaOptionsType } from 'embla-carousel';
+  import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
+
+  const initializeCarousel = () => {
+    const rootNode: HTMLElement | null = document.querySelector('.embla');
+    const viewportNode: HTMLElement | null | undefined =
+      rootNode?.querySelector('.embla__viewport');
+    const prevButtonNode: HTMLElement | null | undefined =
+      rootNode?.querySelector('.embla__prev');
+    const nextButtonNode: HTMLElement | null | undefined =
+      rootNode?.querySelector('.embla__next');
+
+    const options: EmblaOptionsType = {
+      align: 'start',
+      loop: false,
+      skipSnaps: true,
+    };
+
+    if (viewportNode && prevButtonNode && nextButtonNode) {
+      const wheelGesturesPluginOptions = { target: viewportNode };
+      const plugins = [WheelGesturesPlugin(wheelGesturesPluginOptions)];
+      const emblaApi = EmblaCarousel(viewportNode, options, plugins);
+
+      prevButtonNode.addEventListener(
+        'click',
+        () => emblaApi.scrollPrev(),
+        false,
+      );
+      nextButtonNode.addEventListener(
+        'click',
+        () => emblaApi.scrollNext(),
+        false,
+      );
+    }
+  };
+
+  document.addEventListener('astro:page-load', initializeCarousel);
 </script>

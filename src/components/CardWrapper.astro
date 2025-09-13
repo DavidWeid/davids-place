@@ -1,0 +1,44 @@
+---
+interface Props {
+  isListItem: boolean;
+}
+
+const { isListItem = true } = Astro.props;
+---
+
+{
+  isListItem ? (
+    <li class="link-card reveal bg-green-emerald dark:bg-medium group rounded-6-8-12 flex h-full min-h-60 bg-none bg-[size:200%] bg-[100%] p-0.5 shadow-inner transition-[background-position] duration-500">
+      <slot />
+    </li>
+  ) : (
+    <div class="link-card reveal bg-green-emerald dark:bg-medium group rounded-6-8-12 flex h-full min-h-60 bg-none bg-[size:200%] bg-[100%] p-0.5 shadow-inner transition-[background-position] duration-500">
+      <slot />
+    </div>
+  )
+}
+
+<style>
+  .link-card :global(.overflow-x-scroll::-webkit-scrollbar) {
+    display: none;
+  }
+  .link-card :global(.overflow-x-scroll) {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .link-card > :global(a) {
+    user-select: none;
+    padding: calc(1.5rem - 1px);
+  }
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+    background-image: var(--accent-gradient);
+  }
+  .link-card:is(:hover, :focus-within) :global(h2) {
+    color: var(--color-accent-dark);
+  }
+
+  .link-card:is(.dark :hover, .dark :focus-within) :global(h2) {
+    color: var(--color-light);
+  }
+</style>
