@@ -634,34 +634,38 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
   import EmblaCarousel, { type EmblaOptionsType } from 'embla-carousel';
   import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
-  const rootNode: HTMLElement | null = document.querySelector('.embla');
-  const viewportNode: HTMLElement | null | undefined =
-    rootNode?.querySelector('.embla__viewport');
-  const prevButtonNode: HTMLElement | null | undefined =
-    rootNode?.querySelector('.embla__prev');
-  const nextButtonNode: HTMLElement | null | undefined =
-    rootNode?.querySelector('.embla__next');
+  const initializeCarousel = () => {
+    const rootNode: HTMLElement | null = document.querySelector('.embla');
+    const viewportNode: HTMLElement | null | undefined =
+      rootNode?.querySelector('.embla__viewport');
+    const prevButtonNode: HTMLElement | null | undefined =
+      rootNode?.querySelector('.embla__prev');
+    const nextButtonNode: HTMLElement | null | undefined =
+      rootNode?.querySelector('.embla__next');
 
-  const options: EmblaOptionsType = {
-    align: 'start',
-    loop: false,
-    skipSnaps: true,
+    const options: EmblaOptionsType = {
+      align: 'start',
+      loop: false,
+      skipSnaps: true,
+    };
+
+    if (viewportNode && prevButtonNode && nextButtonNode) {
+      const wheelGesturesPluginOptions = { target: viewportNode };
+      const plugins = [WheelGesturesPlugin(wheelGesturesPluginOptions)];
+      const emblaApi = EmblaCarousel(viewportNode, options, plugins);
+
+      prevButtonNode.addEventListener(
+        'click',
+        () => emblaApi.scrollPrev(),
+        false,
+      );
+      nextButtonNode.addEventListener(
+        'click',
+        () => emblaApi.scrollNext(),
+        false,
+      );
+    }
   };
 
-  if (viewportNode && prevButtonNode && nextButtonNode) {
-    const wheelGesturesPluginOptions = { target: viewportNode };
-    const plugins = [WheelGesturesPlugin(wheelGesturesPluginOptions)];
-    const emblaApi = EmblaCarousel(viewportNode, options, plugins);
-
-    prevButtonNode.addEventListener(
-      'click',
-      () => emblaApi.scrollPrev(),
-      false,
-    );
-    nextButtonNode.addEventListener(
-      'click',
-      () => emblaApi.scrollNext(),
-      false,
-    );
-  }
+  document.addEventListener('astro:page-load', initializeCarousel);
 </script>
