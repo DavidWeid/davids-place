@@ -260,7 +260,9 @@ const navItems: string[] = Object.keys(obj).map(
 
 <!-- Handle nav scroll effect -->
 <script>
-  function initializeNavScrollEffect() {
+  import { debounce } from '../utilities/debounce';
+
+  const initializeNavScrollEffect = () => {
     const nav = document.getElementById('main-nav');
 
     if (!nav) {
@@ -268,27 +270,33 @@ const navItems: string[] = Object.keys(obj).map(
       return;
     }
 
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       // If user has scrolled 150px
       const navScrollActive = window.scrollY > 150;
 
       if (navScrollActive) {
-        nav.classList.remove('laptop:rounded-none');
-        nav.classList.add('laptop:rounded-[999px]');
-        nav.classList.remove('laptop:top-0');
-        nav.classList.add('laptop:top-4');
-        nav.classList.remove('laptop:mx-0');
-        nav.classList.add('laptop:mx-4');
+        nav.classList.remove(
+          'laptop:rounded-none',
+          'laptop:top-0',
+          'laptop:mx-0',
+        );
+        nav.classList.add(
+          'laptop:rounded-[999px]',
+          'laptop:top-4',
+          'laptop:mx-4',
+        );
       } else {
-        nav.classList.remove('laptop:rounded-[999px]');
-        nav.classList.add('laptop:rounded-none');
-        nav.classList.remove('laptop:top-4');
-        nav.classList.add('laptop:top-0');
-        nav.classList.remove('laptop:mx-4');
-        nav.classList.add('laptop:mx-0');
+        nav.classList.remove(
+          'laptop:rounded-[999px]',
+          'laptop:top-4',
+          'laptop:mx-4',
+        );
+        nav.classList.add('laptop:rounded-none', 'laptop:top-0', 'laptop:mx-0');
       }
-    });
-  }
+    };
+
+    window.addEventListener('scroll', debounce(handleScroll));
+  };
 
   document.addEventListener('astro:page-load', initializeNavScrollEffect);
   initializeNavScrollEffect();
