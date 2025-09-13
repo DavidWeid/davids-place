@@ -31,8 +31,16 @@ if (pathname.includes('cookbook')) {
   AstroLogo = AstroLogoGame;
 } else if (pathname.includes('blog')) {
   AstroLogo = AstroLogoPencil;
-} else if (pathname.includes('style')) {
+} else if (
+  pathname.includes('style') ||
+  pathname.includes('register') ||
+  pathname.includes('sign-in')
+) {
   AstroLogo = AstroLogoDesk;
+}
+
+if (pathname.includes('cookbook') && !pathname.includes('about')) {
+  obj.cookbook = `${baseURL}cookbook/`;
 }
 
 // If on homepage, don't include the 'href' attribute on the link element
@@ -53,9 +61,11 @@ const navItems: string[] = Object.keys(obj).map(
 
 <nav
   id="main-nav"
-  class={`bg-blue-darkest/80 dark:bg-green-darker/80 text-light font-semibold tracking-wider laptop:rounded-none laptop:sticky laptop:top-0 tablet:pb-4 z-30 pt-4 pb-2 laptop:mx-0 backdrop-blur-md laptop:transition-[border-radius,top,margin] laptop:duration-700 ${customNavClasses}`}
+  class={`bg-blue-darkest/80 dark:bg-green-darker/80 text-light font-semibold tracking-wider rounded-none sticky top-0 tablet:pb-4 z-30 pt-4 pb-2 mx-0 backdrop-blur-md transition-[border-radius,top,margin] duration-700 ${customNavClasses}`}
 >
-  <div class="container flex flex-wrap items-center justify-between gap-y-2">
+  <div
+    class="container flex flex-wrap items-center justify-around tablet:justify-between gap-y-2"
+  >
     <a href="#main" class="skip-link">Skip to content</a>
 
     <div class="group flex items-center">
@@ -66,14 +76,18 @@ const navItems: string[] = Object.keys(obj).map(
       />
       {
         pathname === baseURL ? (
-          <span class="px-4 py-2">David’s Place</span>
+          <span class="px-4 py-2">
+            <span class="tablet:hidden">DP</span>
+            <span class="hidden tablet:block">David’s Place</span>
+          </span>
         ) : (
           <a
             {...homepageLinkAttributes}
             class="group-hover:text-green-emerald px-4 py-2 transition-[color,scale] group-hover:scale-110"
             aria-label="David’s Place Homepage"
           >
-            David’s Place
+            <span class="tablet:hidden">DP</span>
+            <span class="hidden tablet:block">David’s Place</span>
           </a>
         )
       }
@@ -118,7 +132,10 @@ const navItems: string[] = Object.keys(obj).map(
   </div>
 
   <!-- Nav items visible on mobile only -->
-  <div class="laptop:hidden container">
+  <div
+    id="mobile-nav"
+    class="laptop:hidden container h-14 opacity-100 transition-[height,opacity] duration-500"
+  >
     <span class="border-t-green-emerald my-4 block border-t"></span>
     <ul
       class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2"
@@ -264,34 +281,38 @@ const navItems: string[] = Object.keys(obj).map(
 
   const initializeNavScrollEffect = () => {
     const nav = document.getElementById('main-nav');
+    const mobileNav = document.getElementById('mobile-nav');
 
-    if (!nav) {
-      console.warn('Main nav element not found');
+    if (!nav || !mobileNav) {
+      console.warn('Main nav elements not found');
       return;
     }
 
     const handleScroll = () => {
-      // If user has scrolled 250px
       const navScrollActive = window.scrollY > 250;
 
       if (navScrollActive) {
-        nav.classList.remove(
-          'laptop:rounded-none',
-          'laptop:top-0',
-          'laptop:mx-0',
-        );
+        nav.classList.remove('rounded-none', 'top-0', 'mx-0');
         nav.classList.add(
-          'laptop:rounded-[999px]',
-          'laptop:top-4',
-          'laptop:mx-4',
+          'rounded-2xl',
+          'tablet:rounded-[999px]',
+          'top-4',
+          'mx-1',
+          'tablet:mx-4',
         );
+        mobileNav.classList.remove('h-14', 'opacity-100');
+        mobileNav.classList.add('h-0', 'overflow-hidden', 'opacity-0');
       } else {
         nav.classList.remove(
-          'laptop:rounded-[999px]',
-          'laptop:top-4',
-          'laptop:mx-4',
+          'rounded-2xl',
+          'tablet:rounded-[999px]',
+          'top-4',
+          'mx-1',
+          'tablet:mx-4',
         );
-        nav.classList.add('laptop:rounded-none', 'laptop:top-0', 'laptop:mx-0');
+        nav.classList.add('rounded-none', 'top-0', 'mx-0');
+        mobileNav.classList.remove('h-0', 'overflow-hidden', 'opacity-0');
+        mobileNav.classList.add('h-14', 'opacity-100');
       }
     };
 
