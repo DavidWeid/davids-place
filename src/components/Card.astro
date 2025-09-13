@@ -1,4 +1,5 @@
 ---
+import CardWrapper from '@components/CardWrapper.astro';
 import Badge from '@components/Badge.astro';
 import IconExternalLinkBlue from '@images/icons/external-link-blue.svg';
 import IconExternalLinkGreen from '@images/icons/external-link-green.svg';
@@ -10,16 +11,15 @@ interface Props {
   body: string | null;
   href: string;
   tags: string[] | null;
+  isListItem?: boolean;
 }
 
-const { href, title, body, tags } = Astro.props;
+const { href, title, body, tags, isListItem = true } = Astro.props;
 let target =
   href.startsWith('http') || href.includes('mailto') ? '_blank' : '_self';
 ---
 
-<li
-  class="link-card reveal bg-green-emerald dark:bg-medium group rounded-6-8-12 flex min-h-60 bg-none bg-[size:200%] bg-[100%] p-0.5 shadow-inner transition-[background-position] duration-500"
->
+<CardWrapper isListItem={isListItem}>
   <a
     href={href}
     target={target}
@@ -70,29 +70,4 @@ let target =
       )
     }
   </a>
-</li>
-
-<style>
-  .link-card .overflow-x-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  .link-card .overflow-x-scroll {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .link-card > a {
-    user-select: none;
-    padding: calc(1.5rem - 1px);
-  }
-  .link-card:is(:hover, :focus-within) {
-    background-position: 0;
-    background-image: var(--accent-gradient);
-  }
-  .link-card:is(:hover, :focus-within) h2 {
-    color: var(--color-accent-dark);
-  }
-
-  .link-card:is(.dark :hover, .dark :focus-within) h2 {
-    color: var(--color-light);
-  }
-</style>
+</CardWrapper>
