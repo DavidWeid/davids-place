@@ -8,8 +8,8 @@ import IconAstroReading from '@images/astro/astro-6.svg';
 ---
 
 <Base
-  title="Register"
-  description="Create an account to start contributing to David’s Place"
+  title="Register an Account to Join the Community"
+  description="Create an account to start contributing to David’s Place by adding recipes, writing blog posts, and joining discussions."
   classes="flex flex-col justify-between"
 >
   <header class="container relative w-max">
@@ -64,7 +64,7 @@ import IconAstroReading from '@images/astro/astro-6.svg';
   </header>
 
   <section
-    class="container bg-green-dark dark:bg-blue-darker flex-grow rounded-t-4xl laptop:rounded-none"
+    class="container flex-grow rounded-t-4xl laptop:rounded-none bg-blue-darkest/80 dark:bg-green-darker/80"
   >
     <span class="block pb-14 tablet:pb-20"></span>
 
@@ -72,9 +72,9 @@ import IconAstroReading from '@images/astro/astro-6.svg';
       id="register-form"
       action="/api/auth/register"
       method="post"
-      class="relative bg-medium dark:bg-medium/90 text-light tablet:max-w-[768px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)] opacity-95"
+      class="relative bg-light/90 dark:bg-medium/90 dark:text-light border border-light w-full max-w-[475px] tablet:max-w-[600px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)]"
     >
-      <p class="pt-4 font-sans-syne text-lg">
+      <p class="pt-4 font-sans-syne text-xl">
         Fill out the form below to create your account
       </p>
 
@@ -90,7 +90,7 @@ import IconAstroReading from '@images/astro/astro-6.svg';
           id="name"
           required
           autocomplete="username"
-          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+          class="text-lg w-full border-b border-gray-800 dark:border-gray-300 pb-px focus-visible:border-green-dark dark:focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
         />
       </span>
 
@@ -106,7 +106,7 @@ import IconAstroReading from '@images/astro/astro-6.svg';
           id="email"
           required
           autocomplete="email"
-          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+          class="text-lg w-full border-b border-gray-800 dark:border-gray-300 pb-px focus-visible:border-green-dark dark:focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
         />
       </span>
 
@@ -122,13 +122,13 @@ import IconAstroReading from '@images/astro/astro-6.svg';
           id="password"
           required
           autocomplete="new-password"
-          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+          class="text-lg w-full border-b border-gray-800 dark:border-gray-300 pb-px focus-visible:border-green-dark dark:focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
         />
       </span>
 
       <button
         type="submit"
-        class="group inline-block w-max mt-4 font-bold text-lg tracking-wide px-5 py-2 text-light shadow-2xl shadow-dark bg-green-darker hover:bg-blue-darker dark:bg-blue-darker dark:hover:bg-green-darker rounded-4xl active:brightness-75 disabled:brightness-75 disabled:bg-blue-darker dark:disabled:bg-green-darker transition-colors duration-500 outline-1 outline-light"
+        class="group inline-block w-max mt-4 font-bold text-lg tracking-wide px-5 py-2 text-light shadow-2xl shadow-dark bg-green-darker hover:bg-blue-dark dark:bg-blue-darker dark:hover:bg-green-darker rounded-4xl active:brightness-75 disabled:brightness-75 disabled:bg-blue-darker dark:disabled:bg-green-darker transition-colors duration-500 dark:outline-1 dark:outline-light"
       >
         <span class="flex items-center gap-2">
           <span class="block tablet:hidden">SIGN UP</span>
@@ -184,7 +184,8 @@ import IconAstroReading from '@images/astro/astro-6.svg';
           label.classList.add(
             'text-[12px]',
             '-top-4',
-            'text-green-emerald',
+            'text-green-dark',
+            'dark:text-green-emerald',
             'tracking-wider',
             'font-bold',
           );
@@ -193,7 +194,8 @@ import IconAstroReading from '@images/astro/astro-6.svg';
           label.classList.remove(
             'text-[12px]',
             '-top-4',
-            'text-green-emerald',
+            'text-green-dark',
+            'dark:text-green-emerald',
             'tracking-wider',
             'font-bold',
           );

@@ -9,7 +9,7 @@ import { getImage } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 
 import generalOGImage from '@images/og/og-davids-place.png';
-import headshot from '@images/general/david-weid-headshot-3.jpg';
+import imageHeadshot from '@images/general/david-weid-headshot-3.jpg';
 
 import MainNav from '@components/MainNav.astro';
 import MainFooter from '@components/MainFooter.astro';
@@ -40,8 +40,8 @@ const mainElementAttributes: {
   class: `flex-grow ${classes}`.trim(),
 };
 
-const image = await getImage({
-  src: headshot,
+const imageHomepage = await getImage({
+  src: imageHeadshot,
   width: 400,
   height: 400,
   format: 'webp',
@@ -60,7 +60,12 @@ const image = await getImage({
     <!-- Preload Homepage Hero Image -->
     {
       !isDev && baseURL === Astro.url.pathname && (
-        <link rel="preload" as="image" href={image.src} type="image/webp" />
+        <link
+          rel="preload"
+          as="image"
+          href={imageHomepage.src}
+          type="image/webp"
+        />
       )
     }
 
