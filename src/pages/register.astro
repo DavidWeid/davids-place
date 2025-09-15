@@ -126,6 +126,22 @@ import IconAstroReading from '@images/astro/astro-6.svg';
         />
       </span>
 
+      <span class="relative group">
+        <label
+          for="password-confirm"
+          class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          name="password-confirm"
+          id="password-confirm"
+          required
+          autocomplete="new-password"
+          class="text-lg w-full border-b border-gray-800 dark:border-gray-300 pb-px focus-visible:border-green-dark dark:focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+        />
+      </span>
+
       <button
         type="submit"
         class="group inline-block w-max mt-4 font-bold text-lg tracking-wide px-5 py-2 text-light shadow-2xl shadow-dark bg-green-darker hover:bg-blue-dark dark:bg-blue-darker dark:hover:bg-green-darker rounded-4xl active:brightness-75 disabled:brightness-75 disabled:bg-blue-darker dark:disabled:bg-green-darker transition-colors duration-500 dark:outline-1 dark:outline-light"
@@ -234,6 +250,20 @@ import IconAstroReading from '@images/astro/astro-6.svg';
       // Handle form submission
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        // Validate password confirmation
+        const password = form.querySelector(
+          'input[name="password"]',
+        ) as HTMLInputElement;
+        const passwordConfirm = form.querySelector(
+          'input[name="password-confirm"]',
+        ) as HTMLInputElement;
+
+        if (password.value !== passwordConfirm.value) {
+          errorDisplay.textContent = '*Passwords do not match';
+          errorDisplay.classList.remove('opacity-0');
+          return;
+        }
 
         if (isSubmitting) return;
         isSubmitting = true;
