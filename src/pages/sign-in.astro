@@ -49,7 +49,7 @@ if (Astro.cookies.has('__session')) {
       id="sign-in-form"
       action="/api/auth/sign-in"
       method="post"
-      class="bg-medium text-light tablet:max-w-[768px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)] opacity-95"
+      class="relative bg-medium dark:bg-medium/90 text-light tablet:max-w-[768px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)] opacity-95"
     >
       <p class="pt-4 font-sans-syne text-lg">
         Sign in with your email and password
@@ -90,7 +90,7 @@ if (Astro.cookies.has('__session')) {
 
       <button
         type="submit"
-        class="group inline-block w-max mt-4 font-bold text-lg tracking-wide px-5 py-2 text-light shadow-2xl shadow-dark bg-green-dark hover:bg-blue-dark dark:bg-blue-dark dark:hover:bg-green-dark rounded-4xl active:brightness-75 disabled:brightness-75 disabled:bg-blue-dark dark:disabled:bg-green-dark transition-colors duration-500"
+        class="group inline-block w-max mt-4 font-bold text-lg tracking-wide px-5 py-2 text-light shadow-2xl shadow-dark bg-green-darker hover:bg-blue-darker dark:bg-blue-darker dark:hover:bg-green-darker rounded-4xl active:brightness-75 disabled:brightness-75 disabled:bg-blue-darker dark:disabled:bg-green-darker transition-colors duration-500 outline-1 outline-light"
       >
         <span class="flex items-center gap-2">
           <span>LOG IN</span>
