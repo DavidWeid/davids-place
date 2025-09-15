@@ -2,9 +2,16 @@
 import { app } from '../firebase/server';
 import { getAuth } from 'firebase-admin/auth';
 import Base from '@layouts/Base.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 
-import imageFlowerFrame from '@images/general/flower-frame.jpg';
+import imageFlowerFrame from '@images/general/background-flower-frame.jpg';
+import imageLaptop from '@images/general/background-laptop.jpg';
+import imageCatAndPlants from '@images/general/background-cat-and-plants.jpg';
+import imageCatsPeeking from '@images/general/background-cats-peeking.jpg';
+import imageBreakfastTable from '@images/general/background-breakfast-table.jpg';
+import imageEveningTable from '@images/general/background-evening-table.jpg';
+import imageCozyCoupleInside from '@images/general/background-cozy-couple-inside.jpg';
+
 import IconArrowRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
 import IconArrowRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
@@ -23,11 +30,62 @@ if (Astro.cookies.has('__session')) {
     Astro.cookies.delete('__session', { path: '/' });
   }
 }
+
+const imageOptions = [
+  {
+    image: imageFlowerFrame,
+    alt: 'White frame with bright flowers around it - background for sign-in page',
+    source: 'https://pixabay.com/users/hollanddesign-15443332/',
+  },
+  {
+    image: imageLaptop,
+    alt: 'Laptop open on green table with succulents, phone, and stationery - background for sign-in page',
+    source: 'https://pixabay.com/users/nietjuhart-30460544/',
+  },
+  {
+    image: imageCatAndPlants,
+    alt: 'Black cat hiding behind three potted plants - background for sign-in page',
+    source: 'https://pixabay.com/users/biancavandijk-9606149/',
+  },
+  {
+    image: imageCatsPeeking,
+    alt: 'A black cat poking its head around a corner with a white cat below it doing the same - background for sign-in page',
+    source: 'https://pixabay.com/users/biancavandijk-9606149/',
+  },
+  {
+    image: imageBreakfastTable,
+    alt: 'Breakfast table with tea, book, and plant under an archlamp with a desk and plant - background for sign-in page',
+    source: 'https://pixabay.com/users/nietjuhart-30460544/',
+  },
+  {
+    image: imageEveningTable,
+    alt: 'Evening table with a stack of books, tea, and flowers in a vase with a chair and ceiling lamp - background for sign-in page',
+    source: 'https://pixabay.com/users/nietjuhart-30460544/',
+  },
+  {
+    image: imageCozyCoupleInside,
+    alt: 'Cozy couple sitting inside by a window with reading with snow outside - background for sign-in page',
+    source: 'https://pixabay.com/users/ninikvaratskhelia_-15913392/',
+  },
+];
+
+const randomIndex = Math.floor(Math.random() * imageOptions.length);
+const selectedImage = imageOptions[randomIndex];
+const optimizedImage = await getImage({
+  src: selectedImage.image,
+  format: 'webp',
+});
+const preloadImageData = {
+  src: optimizedImage.src,
+  format: 'webp',
+  pathname: Astro.url.pathname,
+};
 ---
 
 <Base
   title="Sign in to Your Account to View Your Content and Contributions"
   description="Sign in to your account at David’s Place to access your content and features. Manage your recipes, blog posts, and discussions all in one place."
+  preloadImage={preloadImageData}
   classes="flex flex-col justify-between"
 >
   <div class="grid grid-cols-1 tablet:grid-cols-5 flex-grow">
@@ -35,7 +93,7 @@ if (Astro.cookies.has('__session')) {
       class="tablet:col-span-2 container relative flex justify-center items-center min-h-[450px] tablet:min-h-full"
     >
       <div
-        class="z-10 max-w-full w-max flex flex-col gap-5 items-center text-center text-green-darker px-8 pt-8 pb-4 bg-light/75 backdrop-blur-sm shadow-[0_0_30px_-5px_rgba(255,255,255,0.75)]"
+        class="z-10 max-w-full w-max flex flex-col gap-5 items-center text-center text-green-darker px-8 pt-8 pb-4 bg-light/80 backdrop-blur-sm shadow-[0_0_30px_-5px_rgba(255,255,255,0.75)]"
       >
         <h1 class="max-w-full w-max font-semibold tracking-tight">
           Sign in to<br />your account
@@ -48,11 +106,18 @@ if (Astro.cookies.has('__session')) {
         >
       </div>
 
+      <a
+        href={selectedImage.source}
+        class="z-10 absolute bottom-2 left-2 text-green-darker/80 text-sm content-link-gradient max-w-full w-max font-sans-syne p-1.5"
+        >Image via Pixabay</a
+      >
+
       <Image
-        src={imageFlowerFrame}
-        alt="Flower Frame"
+        src={selectedImage.image}
+        alt={selectedImage.alt}
         loading="eager"
         fetchpriority="high"
+        decoding="async"
         class="absolute top-0 left-0 w-full h-full object-cover"
       />
     </header>
