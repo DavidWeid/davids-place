@@ -2,11 +2,23 @@
 import { app } from '../firebase/server';
 import { getAuth } from 'firebase-admin/auth';
 import Base from '@layouts/Base.astro';
+import { Image, getImage } from 'astro:assets';
+
+import imageFlowerFrame from '@images/general/background-flower-frame.jpg';
+import imageLaptop from '@images/general/background-laptop.jpg';
+import imageCatAndPlants from '@images/general/background-cat-and-plants.jpg';
+import imageCatsPeeking from '@images/general/background-cats-peeking.jpg';
+import imageBreakfastTable from '@images/general/background-breakfast-table.jpg';
+import imageEveningTable from '@images/general/background-evening-table.jpg';
+import imageCozyCoupleInside from '@images/general/background-cozy-couple-inside.jpg';
+
+import IconEye from '@images/icons/eye.svg';
 import IconArrowRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
 import IconArrowRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
 /* Check if the user is authenticated */
 const auth = getAuth(app);
+
 if (Astro.cookies.has('__session')) {
   const sessionCookie = Astro.cookies.get('__session')!.value;
   try {
@@ -19,100 +31,181 @@ if (Astro.cookies.has('__session')) {
     Astro.cookies.delete('__session', { path: '/' });
   }
 }
+
+const imageOptions = [
+  {
+    image: imageFlowerFrame,
+    alt: 'White frame with bright flowers around it - background for sign-in page',
+    source: 'https://pixabay.com/users/hollanddesign-15443332/',
+  },
+  {
+    image: imageLaptop,
+    alt: 'Laptop open on green table with succulents, phone, and stationery - background for sign-in page',
+    source: 'https://pixabay.com/users/nietjuhart-30460544/',
+  },
+  {
+    image: imageCatAndPlants,
+    alt: 'Black cat hiding behind three potted plants - background for sign-in page',
+    source: 'https://pixabay.com/users/biancavandijk-9606149/',
+  },
+  {
+    image: imageCatsPeeking,
+    alt: 'A black cat poking its head around a corner with a white cat below it doing the same - background for sign-in page',
+    source: 'https://pixabay.com/users/biancavandijk-9606149/',
+  },
+  {
+    image: imageBreakfastTable,
+    alt: 'Breakfast table with tea, book, and plant under an archlamp with a desk and plant - background for sign-in page',
+    source: 'https://pixabay.com/users/nietjuhart-30460544/',
+  },
+  {
+    image: imageEveningTable,
+    alt: 'Evening table with a stack of books, tea, and flowers in a vase with a chair and ceiling lamp - background for sign-in page',
+    source: 'https://pixabay.com/users/nietjuhart-30460544/',
+  },
+  {
+    image: imageCozyCoupleInside,
+    alt: 'Cozy couple sitting inside by a window with reading with snow outside - background for sign-in page',
+    source: 'https://pixabay.com/users/ninikvaratskhelia_-15913392/',
+  },
+];
+
+const randomIndex = Math.floor(Math.random() * imageOptions.length);
+const selectedImage = imageOptions[randomIndex];
+const optimizedImage = await getImage({
+  src: selectedImage.image,
+  format: 'webp',
+});
+const preloadImageData = {
+  src: optimizedImage.src,
+  format: 'webp',
+  pathname: Astro.url.pathname,
+};
 ---
 
 <Base
-  title="Sign in"
-  description="Sign in to your account at David’s Place to access your content and features."
-  classes="flex flex-col justify-center"
+  title="Sign in to Your Account to View Your Content and Contributions"
+  description="Sign in to your account at David’s Place to access your content and features. Manage your recipes, blog posts, and discussions all in one place."
+  preloadImage={preloadImageData}
+  classes="flex flex-col justify-between"
 >
-  <header class="container relative w-max">
-    <span class="spacer-40-80-80"></span>
-
-    <h1>Sign in to your account</h1>
-
-    <p class="text-p-main pt-8 flex flex-wrap gap-4">
-      <span>New here?</span>
-      <a href="/register/" class="content-link-gradient w-max font-sans-syne"
-        >Create an account</a
-      >
-    </p>
-
-    <span class="spacer-40-80-80"></span>
-  </header>
-
-  <section
-    class="container bg-green-dark dark:bg-blue-dark flex-grow rounded-t-4xl laptop:rounded-none"
-  >
-    <span class="block pb-14 tablet:pb-20"></span>
-    <form
-      id="sign-in-form"
-      action="/api/auth/sign-in"
-      method="post"
-      class="relative bg-medium dark:bg-medium/90 text-light tablet:max-w-[768px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)] opacity-95"
+  <div class="grid grid-cols-1 tablet:grid-cols-5 flex-grow">
+    <header
+      class="tablet:col-span-2 container relative flex justify-center items-center min-h-[450px] tablet:min-h-full"
     >
-      <p class="pt-4 font-sans-syne text-lg">
-        Sign in with your email and password
-      </p>
-
-      <span class="relative group">
-        <label
-          for="email"
-          class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
-          >Email</label
-        >
-        <input
-          type="email"
-          name="email"
-          id="email"
-          required
-          autocomplete="email"
-          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
-        />
-      </span>
-
-      <span class="relative group">
-        <label
-          for="password"
-          class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
-          >Password</label
-        >
-        <input
-          type="password"
-          name="password"
-          id="password"
-          required
-          autocomplete="current-password"
-          minlength="6"
-          class="text-lg w-full border-b border-gray-300 pb-px focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
-        />
-      </span>
-
-      <button
-        type="submit"
-        class="group inline-block w-max mt-4 font-bold text-lg tracking-wide px-5 py-2 text-light shadow-2xl shadow-dark bg-green-darker hover:bg-blue-darker dark:bg-blue-darker dark:hover:bg-green-darker rounded-4xl active:brightness-75 disabled:brightness-75 disabled:bg-blue-darker dark:disabled:bg-green-darker transition-colors duration-500 outline-1 outline-light"
+      <div
+        class="z-10 max-w-full w-max flex flex-col gap-5 items-center text-center text-green-darker px-8 pt-8 pb-4 bg-light/80 backdrop-blur-sm shadow-[0_0_30px_-5px_rgba(255,255,255,0.75)]"
       >
-        <span class="flex items-center gap-2">
-          <span>LOG IN</span>
-          <IconArrowRightGreen
-            class="hidden dark:flex relative right-0 h-5 w-5 group-hover:-right-1.5 group-disabled:-right-1.5 transition-[right] duration-500"
-          />
-          <IconArrowRightBlue
-            class="flex dark:hidden relative right-0 h-5 w-5 group-hover:-right-1.5 group-disabled:-right-1.5 transition-[right] duration-500"
+        <h1 class="max-w-full w-max font-semibold tracking-tight">
+          Sign in to<br />your account
+        </h1>
+
+        <a
+          href="/register/"
+          class="text-sm content-link-gradient max-w-full w-max font-sans-syne p-1.5"
+          >Or create an account</a
+        >
+      </div>
+
+      <a
+        href={selectedImage.source}
+        class="z-10 absolute bottom-2 left-2 text-green-darker/80 text-sm content-link-gradient max-w-full w-max font-sans-syne p-1.5"
+        >Image via Pixabay</a
+      >
+
+      <Image
+        src={selectedImage.image}
+        alt={selectedImage.alt}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute top-0 left-0 w-full h-full object-cover"
+      />
+    </header>
+
+    <section
+      class="tablet:col-span-3 container relative flex flex-col justify-center items-center bg-red-dark/90 dark:bg-blue-darkest/90"
+    >
+      <span class="block pb-14 tablet:pb-20"></span>
+      <form
+        id="sign-in-form"
+        action="/api/auth/sign-in"
+        method="post"
+        class="relative bg-light/90 dark:bg-medium/90 dark:text-light border border-light w-full max-w-[475px] tablet:max-w-[600px] tablet:mx-auto p-8 rounded-4xl laptop:rounded-none flex flex-col gap-8 shadow-[0_0_30px_-5px_rgba(0,0,0,0.75)]"
+      >
+        <p class="pt-4 font-sans-syne text-xl">
+          Sign in with your email and password
+        </p>
+
+        <span class="relative group">
+          <label
+            for="email"
+            class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
+            >Email</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            autocomplete="email"
+            class="text-lg w-full border-b border-gray-800 dark:border-gray-300 pb-px focus-visible:border-green-dark dark:focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
           />
         </span>
-      </button>
 
-      <p
-        id="sign-in-error"
-        class="opacity-0 text-red-500 tracking-tight font-mono font-bold text-lg leading-8 transition-opacity duration-500"
-      >
-        *Error signing in
-      </p>
-    </form>
+        <span class="relative group flex gap-4">
+          <label
+            for="password"
+            class="absolute transition-[top,font-size,color,letter-spacing,font-weight] duration-500"
+            >Password</label
+          >
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            autocomplete="new-password"
+            class="text-lg w-full border-b border-gray-800 dark:border-gray-300 pb-px focus-visible:border-green-dark dark:focus-visible:border-green-emerald focus-visible:ring-0 transition-[border-color] duration-500 group-focus-within:border-b-2 group-focus-within:pb-0"
+          />
+          <button
+            id="toggle-password-visibility"
+            aria-pressed="false"
+            class="shrink-0"
+          >
+            <span class="sr-only">Toggle password visibility</span>
+            <IconEye
+              id="toggle-password-visibility-icon"
+              class="w-8 h-8 fill-dark dark:fill-light"
+            />
+          </button>
+        </span>
 
-    <span class="block pb-14 tablet:pb-20"></span>
-  </section>
+        <button
+          type="submit"
+          class="group inline-block w-max mt-4 font-bold text-lg tracking-wide px-5 py-2 text-light shadow-2xl shadow-dark bg-green-darker hover:bg-blue-dark dark:bg-blue-darker dark:hover:bg-green-darker rounded-4xl active:brightness-75 disabled:brightness-75 disabled:bg-blue-darker dark:disabled:bg-green-darker transition-colors duration-500 dark:outline-1 dark:outline-light"
+        >
+          <span class="flex items-center gap-2">
+            <span>LOG IN</span>
+            <IconArrowRightGreen
+              class="hidden dark:flex relative right-0 h-5 w-5 group-hover:-right-1.5 group-disabled:-right-1.5 transition-[right] duration-500"
+            />
+            <IconArrowRightBlue
+              class="flex dark:hidden relative right-0 h-5 w-5 group-hover:-right-1.5 group-disabled:-right-1.5 transition-[right] duration-500"
+            />
+          </span>
+        </button>
+
+        <p
+          id="sign-in-error"
+          class="opacity-0 text-red-500 tracking-tight font-mono font-bold text-lg leading-8 transition-opacity duration-500"
+        >
+          *Error signing in
+        </p>
+      </form>
+
+      <span class="block pb-14 tablet:pb-20"></span>
+    </section>
+  </div>
 </Base>
 
 <script>
@@ -153,7 +246,8 @@ if (Astro.cookies.has('__session')) {
         label.classList.add(
           'text-[12px]',
           '-top-4',
-          'text-green-emerald',
+          'text-green-dark',
+          'dark:text-green-emerald',
           'tracking-wider',
           'font-bold',
         );
@@ -162,7 +256,8 @@ if (Astro.cookies.has('__session')) {
         label.classList.remove(
           'text-[12px]',
           '-top-4',
-          'text-green-emerald',
+          'text-green-dark',
+          'dark:text-green-emerald',
           'tracking-wider',
           'font-bold',
         );
@@ -186,6 +281,39 @@ if (Astro.cookies.has('__session')) {
       // Initialize label from current value
       if (label) styleLabel(label, !!input.value);
     });
+
+    // Toggle password visibility
+    const togglePasswordButton = form.querySelector(
+      '#toggle-password-visibility',
+    ) as HTMLButtonElement;
+
+    if (togglePasswordButton) {
+      const passwordInput = form.querySelector('#password') as HTMLInputElement;
+      const icon = togglePasswordButton.querySelector('svg');
+
+      togglePasswordButton.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (passwordInput && icon) {
+          const isPressed =
+            togglePasswordButton.getAttribute('aria-pressed') === 'true';
+
+          togglePasswordButton.setAttribute('aria-pressed', String(!isPressed));
+
+          passwordInput.type = isPressed ? 'password' : 'text';
+
+          if (isPressed) {
+            icon.classList.remove('fill-green-darker', 'dark:fill-green-dark');
+            icon.classList.add('fill-dark', 'dark:fill-light');
+          } else {
+            icon.classList.remove('fill-dark', 'dark:fill-light');
+            icon.classList.add('fill-green-darker', 'dark:fill-green-dark');
+          }
+
+          passwordInput.focus();
+        }
+      });
+    }
 
     // Hide error message when user starts typing
     form.addEventListener('input', () => {
@@ -267,5 +395,4 @@ if (Astro.cookies.has('__session')) {
   }
 
   document.addEventListener('astro:page-load', initializeSignInForm);
-  initializeSignInForm();
 </script>

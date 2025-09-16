@@ -33,6 +33,12 @@ const headshotImage = await getImage({
   format: 'webp',
 });
 
+const preloadImageData = {
+  src: headshotImage.src,
+  format: 'webp',
+  pathname: Astro.url.pathname,
+};
+
 const heroTitle =
   '<span class="text-gradient">David <span class="whitespace-nowrap">Weid II</span></span>';
 
@@ -140,8 +146,12 @@ const siteUrl = 'https://davids-place-portfolio.web.app';
 const personImageUrl = `${siteUrl}${headshot.src}`;
 ---
 
-<Base title={pageTitle} description={pageDescription}>
-  <div class="dark:bg-medium bg-white">
+<Base
+  title={pageTitle}
+  description={pageDescription}
+  preloadImage={preloadImageData}
+>
+  <div class="dark:bg-medium bg-light">
     <span class="spacer-40-80-80"></span>
 
     <section class="container">

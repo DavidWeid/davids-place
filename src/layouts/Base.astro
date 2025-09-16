@@ -5,11 +5,9 @@ import '@fontsource-variable/reddit-mono';
 import '@fontsource-variable/reddit-sans';
 import '@fontsource-variable/reddit-sans/wght-italic.css';
 
-import { getImage } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 
 import generalOGImage from '@images/og/og-davids-place.png';
-import headshot from '@images/general/david-weid-headshot-3.jpg';
 
 import MainNav from '@components/MainNav.astro';
 import MainFooter from '@components/MainFooter.astro';
@@ -18,6 +16,11 @@ import Analytics from '@components/Analytics.astro';
 interface Props {
   title: string;
   description?: string;
+  preloadImage?: {
+    src: string;
+    format: string;
+    pathname: string;
+  };
   classes?: string | '';
 }
 
@@ -25,7 +28,7 @@ const baseURL = import.meta.env.BASE_URL;
 const isDev = import.meta.env.DEV;
 const urlString: string = new URL(Astro.request.url).href;
 
-const { title, description, classes = '' } = Astro.props;
+const { title, description, preloadImage, classes = '' } = Astro.props;
 
 const metaTitle: string = title ? `${title} | David’s Place` : 'David’s Place';
 const metaDescription: string =
@@ -39,13 +42,6 @@ const mainElementAttributes: {
   id: 'main',
   class: `flex-grow ${classes}`.trim(),
 };
-
-const image = await getImage({
-  src: headshot,
-  width: 400,
-  height: 400,
-  format: 'webp',
-});
 ---
 
 <!doctype html>
@@ -57,11 +53,18 @@ const image = await getImage({
     <link rel="canonical" href={urlString} />
     <link rel="sitemap" href={`${baseURL}sitemap-index.xml`} />
 
-    <!-- Preload Homepage Hero Image -->
+    <!-- Preload Page Specific Image -->
     {
-      !isDev && baseURL === Astro.url.pathname && (
-        <link rel="preload" as="image" href={image.src} type="image/webp" />
-      )
+      !isDev &&
+        preloadImage &&
+        preloadImage.pathname === Astro.url.pathname && (
+          <link
+            rel="preload"
+            as="image"
+            href={preloadImage.src}
+            type={`image/${preloadImage.format}`}
+          />
+        )
     }
 
     <!-- Preload fonts -->

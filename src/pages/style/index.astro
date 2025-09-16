@@ -5,6 +5,7 @@ import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
 import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
+import ExternalLink from '@components/ExternalLink.astro';
 
 const astroImageFiles = import.meta.glob('../../images/astro/*.svg');
 const iconImageFiles = import.meta.glob('../../images/icons/*.svg');
@@ -183,6 +184,12 @@ const orderClasses: { [key: string]: string } = {
           class="h-6 w-6 rotate-90 transition-transform duration-500 group-open/details:-rotate-90 group-hover/summary:scale-125"
         /></summary
       >
+      <p class="text-p-main py-4">
+        Most icons are sourced from <ExternalLink
+          href="https://www.svgrepo.com/"
+          text="SVGRepo"
+        />
+      </p>
       <div
         class="tablet:grid-cols-4 laptop:grid-cols-6 tablet:gap-8 grid grid-cols-2 gap-6 p-6"
       >
