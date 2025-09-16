@@ -16,7 +16,7 @@
         ]
       },
       {
-        "source": "**/*.{js,css,webp,png,jpg,jpeg,svg,gif,avif}",
+        "source": "**/*.{js,css,webp,png,jpg,jpeg,svg,gif,avif,ico,webmanifest}",
         "headers": [
           {
             "key": "Cache-Control",
