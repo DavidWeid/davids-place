@@ -2,7 +2,7 @@
 import { app } from '../firebase/server';
 import { getAuth } from 'firebase-admin/auth';
 import Base from '@layouts/Base.astro';
-import { Image, getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 
 import imageFlowerFrame from '@images/general/background-flower-frame.jpg';
 import imageLaptop from '@images/general/background-laptop.jpg';
@@ -72,21 +72,11 @@ const imageOptions = [
 
 const randomIndex = Math.floor(Math.random() * imageOptions.length);
 const selectedImage = imageOptions[randomIndex];
-const optimizedImage = await getImage({
-  src: selectedImage.image,
-  format: 'webp',
-});
-const preloadImageData = {
-  src: optimizedImage.src,
-  format: 'webp',
-  pathname: Astro.url.pathname,
-};
 ---
 
 <Base
   title="Sign in to Your Account to View Your Content and Contributions"
   description="Sign in to your account at David’s Place to access your content and features. Manage your recipes, blog posts, and discussions all in one place."
-  preloadImage={preloadImageData}
   classes="flex flex-col justify-between"
 >
   <div class="grid grid-cols-1 tablet:grid-cols-5 flex-grow">
@@ -116,9 +106,9 @@ const preloadImageData = {
       <Image
         src={selectedImage.image}
         alt={selectedImage.alt}
+        layout="full-width"
         loading="eager"
         fetchpriority="high"
-        decoding="async"
         class="absolute top-0 left-0 w-full h-full object-cover"
       />
     </header>

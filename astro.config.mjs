@@ -20,6 +20,10 @@ export default defineConfig({
     prefetchAll: true,
   },
 
+  image: {
+    responsiveStyles: false,
+  },
+
   markdown: {
     shikiConfig: {
       themes: {

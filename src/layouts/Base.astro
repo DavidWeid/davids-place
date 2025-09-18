@@ -53,7 +53,22 @@ const mainElementAttributes: {
     <link rel="canonical" href={urlString} />
     <link rel="sitemap" href={`${baseURL}sitemap-index.xml`} />
 
-    <!-- Preload Page Specific Image -->
+    <!-- Preconnect to resources -->
+    {
+      !isDev && (
+        <>
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
+          <link rel="preconnect" href="https://www.google-analytics.com" />
+          <link
+            rel="preconnect"
+            href="https://davids-place-portfolio.firebaseapp.com"
+          />
+          <link rel="preconnect" href="https://apis.google.com" />
+        </>
+      )
+    }
+
+    <!-- Preload page-specific hero image -->
     {
       !isDev &&
         preloadImage &&
