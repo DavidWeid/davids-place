@@ -2,7 +2,6 @@
 .astro
 .firebase
 dist
-i
 node_modules
 public
 .env
