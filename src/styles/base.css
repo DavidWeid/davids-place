@@ -19,6 +19,7 @@
   --font-weight-extrabold: 800;
   --font-weight-black: 900;
 
+  /* Font Sans Noto supports Chinese */
   --font-sans:
     Reddit Sans Variable, ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -28,6 +29,9 @@
   --font-sans-syne:
     Syne Variable, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans-noto:
+    'Noto Sans SC Variable', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   --color-dark: #13151a;
   --color-light: #f5f5f5;

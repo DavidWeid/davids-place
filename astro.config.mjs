@@ -40,6 +40,7 @@ export default defineConfig({
     }),
     showTailwindcssBreakpoint({
       breakpoints: {
+        m: '0px',
         t: '768px',
         l: '1024px',
         d: '1440px',
