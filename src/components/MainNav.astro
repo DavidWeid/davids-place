@@ -237,28 +237,33 @@ const navItems: string[] = Object.keys(obj).map(
     const decreaseBtn = document.getElementById('font-decrease');
     const increaseBtn = document.getElementById('font-increase');
 
+    // Cache the current font size to avoid reading from getComputedStyle
+    let currentFontSize = 16; // Default font size
+
     function updateFontSizeDisplay() {
       // Check if there's a stored font size preference
       const storedFontSize = localStorage.fontSize;
 
       if (storedFontSize) {
         // Apply stored font size to root element and display
-        root.style.fontSize = `${storedFontSize}px`;
+        currentFontSize = parseInt(storedFontSize, 10);
+        root.style.fontSize = `${currentFontSize}px`;
         if (fontSizeElement) {
-          fontSizeElement.textContent = storedFontSize;
+          fontSizeElement.textContent = currentFontSize;
         }
       } else {
-        // No stored preference, read computed size and store it
-        const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
-        const roundedSize = Math.round(currentFontSize);
-        localStorage.fontSize = roundedSize;
+        // No stored preference, read computed size and store it (only once on init)
+        const computedSize = parseFloat(getComputedStyle(root).fontSize);
+        currentFontSize = Math.round(computedSize);
+        localStorage.fontSize = currentFontSize;
         if (fontSizeElement) {
-          fontSizeElement.textContent = roundedSize;
+          fontSizeElement.textContent = currentFontSize;
         }
       }
     }
 
     function setFontSize(newSize) {
+      currentFontSize = newSize;
       root.style.fontSize = `${newSize}px`;
       localStorage.fontSize = newSize;
       if (fontSizeElement) {
@@ -269,17 +274,15 @@ const navItems: string[] = Object.keys(obj).map(
     // Initialize display
     updateFontSizeDisplay();
 
-    // Bind event listeners
+    // Bind event listeners - now using cached value instead of getComputedStyle
     if (decreaseBtn) {
       decreaseBtn.addEventListener('click', function () {
-        const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
         setFontSize(currentFontSize - 1);
       });
     }
 
     if (increaseBtn) {
       increaseBtn.addEventListener('click', function () {
-        const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
         setFontSize(currentFontSize + 1);
       });
     }
