@@ -215,76 +215,72 @@ const heroData = [
 <script>
   import { debounce } from '../utilities/debounce';
 
-  document.addEventListener('astro:page-load', () => {
-    const ingredientsContainer = document.getElementById(
-      'ingredients-container',
-    );
-    const pinButton = document.getElementById('pin-button');
+  const ingredientsContainer = document.getElementById('ingredients-container');
+  const pinButton = document.getElementById('pin-button');
 
-    const pinIngredients = () => {
-      if (ingredientsContainer) {
-        ingredientsContainer.classList.add(
-          'fixed',
-          'z-40',
-          'top-5',
-          'right-5',
-          'bg-opacity-100!',
-          'max-h-[75vh]',
-          'overflow-auto',
-          'border',
-          'border-green-emerald',
-        );
-      }
+  const pinIngredients = () => {
+    if (ingredientsContainer) {
+      ingredientsContainer.classList.add(
+        'fixed',
+        'z-40',
+        'top-5',
+        'right-5',
+        'bg-opacity-100!',
+        'max-h-[75vh]',
+        'overflow-auto',
+        'border',
+        'border-green-emerald',
+      );
+    }
 
+    if (pinButton) {
+      pinButton.dataset.state = 'pinned';
+      pinButton.textContent = 'Unpin Ingredients';
+    }
+  };
+
+  const unpinIngredients = () => {
+    if (ingredientsContainer) {
+      ingredientsContainer.classList.remove(
+        'fixed',
+        'top-5',
+        'right-5',
+        'bg-opacity-100!',
+        'max-h-[75vh]',
+        'overflow-auto',
+        'border',
+        'border-green-emerald',
+      );
+    }
+
+    if (pinButton) {
+      pinButton.dataset.state = 'unpinned';
+      pinButton.textContent = 'Pin Ingredients';
+    }
+  };
+
+  const handlePinButtonClick = (e: Event) => {
+    const target = e.target as HTMLElement;
+    if (target && target.dataset.state === 'unpinned') {
+      // Pin ingredients (plus update button)
+      pinIngredients();
+    } else {
+      // Unpin ingredients (plus update button)
+      unpinIngredients();
+    }
+  };
+
+  const handleScreenResize = () => {
+    if (window.outerWidth >= 1024) {
+      // Unpin ingredients (plus update button)
       if (pinButton) {
-        pinButton.dataset.state = 'pinned';
-        pinButton.textContent = 'Unpin Ingredients';
-      }
-    };
-
-    const unpinIngredients = () => {
-      if (ingredientsContainer) {
-        ingredientsContainer.classList.remove(
-          'fixed',
-          'top-5',
-          'right-5',
-          'bg-opacity-100!',
-          'max-h-[75vh]',
-          'overflow-auto',
-          'border',
-          'border-green-emerald',
-        );
-      }
-
-      if (pinButton) {
-        pinButton.dataset.state = 'unpinned';
-        pinButton.textContent = 'Pin Ingredients';
-      }
-    };
-
-    const handlePinButtonClick = (e: Event) => {
-      const target = e.target as HTMLElement;
-      if (target && target.dataset.state === 'unpinned') {
-        // Pin ingredients (plus update button)
-        pinIngredients();
-      } else {
-        // Unpin ingredients (plus update button)
         unpinIngredients();
       }
-    };
-
-    const handleScreenResize = () => {
-      if (window.outerWidth >= 1024) {
-        // Unpin ingredients (plus update button)
-        if (pinButton) {
-          unpinIngredients();
-        }
-      }
-    };
-
-    if (ingredientsContainer && pinButton) {
-      pinButton.addEventListener('click', handlePinButtonClick);
-      window.addEventListener('resize', debounce(handleScreenResize));
     }
-  });
+  };
+
+  if (ingredientsContainer && pinButton) {
+    pinButton.addEventListener('click', handlePinButtonClick);
+    window.addEventListener('resize', debounce(handleScreenResize));
+  }
 </script>
