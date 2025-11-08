@@ -61,7 +61,7 @@ const navItems: string[] = Object.keys(obj).map(
 
 <nav
   id="main-nav"
-  class={`bg-blue-darkest/80 dark:bg-green-darker/80 text-light font-semibold tracking-wider rounded-none sticky top-0 tablet:pb-4 z-30 pt-4 pb-2 mx-0 backdrop-blur-md transition-[border-radius,top,margin] duration-700 ${customNavClasses}`}
+  class={`bg-blue-darkest/80 dark:bg-green-darker/80 text-light font-semibold tracking-wider rounded-none sticky top-0 tablet:pb-4 z-30 pt-4 pb-2 mx-auto w-full max-w-full backdrop-blur-md transition-[border-radius,top,margin,max-width,width] duration-700 ${customNavClasses}`}
 >
   <div
     class="container flex flex-wrap items-center justify-around tablet:justify-between gap-y-2"
@@ -184,121 +184,129 @@ const navItems: string[] = Object.keys(obj).map(
 </style>
 
 <script is:inline>
-  function applyTheme() {
-    // Set theme based on local storage or prefers-color-scheme
+  // Theme Management
+  (function () {
     const darkModeSwitch = document.getElementById('darkModeSwitch');
     const darkModeLabel = document.querySelector('label[for="darkModeSwitch"]');
-
-    if (
+    const htmlElement = document.documentElement;
+    const isDark =
       localStorage.theme === 'dark' ||
       (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
+        window.matchMedia('(prefers-color-scheme: dark)').matches);
 
+    // Apply theme
+    if (isDark) {
+      htmlElement.classList.add('dark');
       if (darkModeSwitch && darkModeLabel) {
         darkModeSwitch.checked = true;
-        darkModeSwitch.setAttribute('aria-checked', true);
+        darkModeSwitch.setAttribute('aria-checked', 'true');
         darkModeLabel.textContent = 'Dark Mode';
       }
     } else {
-      document.documentElement.classList.remove('dark');
-
+      htmlElement.classList.remove('dark');
       if (darkModeSwitch && darkModeLabel) {
         darkModeSwitch.checked = false;
-        darkModeSwitch.setAttribute('aria-checked', false);
+        darkModeSwitch.setAttribute('aria-checked', 'false');
         darkModeLabel.textContent = 'Light Mode';
       }
     }
-  }
 
-  function setTheme(event) {
-    // Set local storage theme based on checked state of switch
-    localStorage.theme = event.target.checked ? 'dark' : 'light';
-    applyTheme();
-  }
+    // Bind event listener
+    if (darkModeSwitch) {
+      darkModeSwitch.addEventListener('click', function (event) {
+        const isChecked = event.target.checked;
+        localStorage.theme = isChecked ? 'dark' : 'light';
 
-  document.addEventListener('astro:after-swap', applyTheme);
-  document.addEventListener('astro:page-load', () => {
-    document
-      .getElementById('darkModeSwitch')
-      ?.addEventListener('click', setTheme);
-  });
-
-  applyTheme();
-</script>
-
-<script is:inline>
-  function applyFontSize(newDocument) {
-    // Set font size based on local storage or default
-    const root = newDocument?.documentElement || document.documentElement;
-    const targetDocument = newDocument || document;
-    const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
-    const storedFontSize = localStorage.fontSize;
-
-    if (storedFontSize) {
-      root.style.fontSize = `${storedFontSize}px`;
-      targetDocument.getElementById('font-size').textContent = storedFontSize;
-    } else if (currentFontSize) {
-      root.style.fontSize = `${currentFontSize}px`;
-      targetDocument.getElementById('font-size').textContent = currentFontSize;
-      localStorage.fontSize = currentFontSize;
-    } else if (!storedFontSize && !currentFontSize) {
-      root.style.fontSize = '16px';
-      targetDocument.getElementById('font-size').textContent = '16';
-      localStorage.fontSize = '16';
+        if (isChecked) {
+          htmlElement.classList.add('dark');
+          darkModeLabel.textContent = 'Dark Mode';
+          darkModeSwitch.setAttribute('aria-checked', 'true');
+        } else {
+          htmlElement.classList.remove('dark');
+          darkModeLabel.textContent = 'Light Mode';
+          darkModeSwitch.setAttribute('aria-checked', 'false');
+        }
+      });
     }
-  }
+  })();
 
-  document.addEventListener('astro:before-swap', (event) => {
-    applyFontSize(event.newDocument);
-  });
+  // Font Size Management
+  (function () {
+    const root = document.documentElement;
+    const fontSizeElement = document.getElementById('font-size');
+    const decreaseBtn = document.getElementById('font-decrease');
+    const increaseBtn = document.getElementById('font-increase');
 
-  document.addEventListener('astro:page-load', () => {
-    document.getElementById('font-decrease')?.addEventListener('click', () => {
-      const root = document.documentElement;
-      const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
-      const newFontSize = currentFontSize - 1;
-      localStorage.fontSize = newFontSize;
-      applyFontSize();
-    });
+    function updateFontSizeDisplay() {
+      // Check if there's a stored font size preference
+      const storedFontSize = localStorage.fontSize;
 
-    document.getElementById('font-increase')?.addEventListener('click', () => {
-      const root = document.documentElement;
-      const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
-      const newFontSize = currentFontSize + 1;
-      localStorage.fontSize = newFontSize;
-      applyFontSize();
-    });
-  });
+      if (storedFontSize) {
+        // Apply stored font size to root element and display
+        root.style.fontSize = `${storedFontSize}px`;
+        if (fontSizeElement) {
+          fontSizeElement.textContent = storedFontSize;
+        }
+      } else {
+        // No stored preference, read computed size and store it
+        const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
+        const roundedSize = Math.round(currentFontSize);
+        localStorage.fontSize = roundedSize;
+        if (fontSizeElement) {
+          fontSizeElement.textContent = roundedSize;
+        }
+      }
+    }
 
-  applyFontSize();
+    function setFontSize(newSize) {
+      root.style.fontSize = `${newSize}px`;
+      localStorage.fontSize = newSize;
+      if (fontSizeElement) {
+        fontSizeElement.textContent = newSize;
+      }
+    }
+
+    // Initialize display
+    updateFontSizeDisplay();
+
+    // Bind event listeners
+    if (decreaseBtn) {
+      decreaseBtn.addEventListener('click', function () {
+        const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
+        setFontSize(currentFontSize - 1);
+      });
+    }
+
+    if (increaseBtn) {
+      increaseBtn.addEventListener('click', function () {
+        const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
+        setFontSize(currentFontSize + 1);
+      });
+    }
+  })();
 </script>
 
 <!-- Handle nav scroll effect -->
 <script>
-  import { debounce } from '../utilities/debounce';
+  import { rafThrottle } from '../utilities/rafThrottle';
 
-  const initializeNavScrollEffect = () => {
-    const nav = document.getElementById('main-nav');
-    const mobileNav = document.getElementById('mobile-nav');
+  const nav = document.getElementById('main-nav');
+  const mobileNav = document.getElementById('mobile-nav');
 
-    if (!nav || !mobileNav) {
-      console.warn('Main nav elements not found');
-      return;
-    }
-
+  if (!nav || !mobileNav) {
+    console.warn('Main nav elements not found');
+  } else {
     const handleScroll = () => {
       const navScrollActive = window.scrollY > 250;
 
       if (navScrollActive) {
-        nav.classList.remove('rounded-none', 'top-0', 'mx-0');
+        nav.classList.remove('rounded-none', 'top-0', 'w-full', 'max-w-full');
         nav.classList.add(
           'rounded-2xl',
           'tablet:rounded-[999px]',
           'top-4',
-          'mx-1',
-          'tablet:mx-4',
+          'w-[98%]',
+          'max-w-[var(--breakpoint-desktopxl)]',
         );
         mobileNav.classList.remove('h-14', 'opacity-100');
         mobileNav.classList.add('h-0', 'overflow-hidden', 'opacity-0');
@@ -307,18 +315,20 @@ const navItems: string[] = Object.keys(obj).map(
           'rounded-2xl',
           'tablet:rounded-[999px]',
           'top-4',
-          'mx-1',
-          'tablet:mx-4',
+          'w-[98%]',
+          'max-w-[var(--breakpoint-desktopxl)]',
         );
-        nav.classList.add('rounded-none', 'top-0', 'mx-0');
+        nav.classList.add('rounded-none', 'top-0', 'w-full', 'max-w-full');
         mobileNav.classList.remove('h-0', 'overflow-hidden', 'opacity-0');
         mobileNav.classList.add('h-14', 'opacity-100');
       }
     };
 
-    window.addEventListener('scroll', debounce(handleScroll));
-  };
+    const onScroll = rafThrottle(handleScroll);
 
-  document.addEventListener('astro:page-load', initializeNavScrollEffect);
-  initializeNavScrollEffect();
+    // Set initial state on load
+    handleScroll();
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
 </script>

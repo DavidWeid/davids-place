@@ -1,6 +1,9 @@
 #Ignore
-dist
 .astro
+.firebase
+dist
 node_modules
-package-lock.json
 public
+.env
+package-lock.json
+src/components/Analytics.astro

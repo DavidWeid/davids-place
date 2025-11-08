@@ -2,6 +2,10 @@
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:is(.dark *));
 
+@view-transition {
+  navigation: auto;
+}
+
 @theme {
   --breakpoint-*: initial;
   --breakpoint-tablet: 768px;
@@ -19,6 +23,7 @@
   --font-weight-extrabold: 800;
   --font-weight-black: 900;
 
+  /* Font Sans Noto supports Chinese */
   --font-sans:
     Reddit Sans Variable, ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -28,27 +33,30 @@
   --font-sans-syne:
     Syne Variable, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans-noto:
+    'Noto Sans SC Variable', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-  --color-dark: #13151a;
-  --color-light: #f5f5f5;
-  --color-medium: #23262d;
-  --color-accent: #883aea;
-  --color-accent-light: #e0ccfa;
-  --color-accent-dark: #310a65;
+  --color-dark: #13151a; /* Near black */
+  --color-light: #f5f5f5; /* Near white */
+  --color-medium: #23262d; /* Dark gray */
+  --color-accent: #883aea; /* Bright purple */
+  --color-accent-light: #e0ccfa; /* Light purple */
+  --color-accent-dark: #310a65; /* Dark purple */
 
-  --color-red-dark: #c84b44;
-  --color-red-light: #f8756a;
+  --color-red-dark: #c84b44; /* Dark red */
+  --color-red-light: #f8756a; /* Light red */
 
-  --color-blue-dark: #3844c6;
-  --color-blue-darker: #1a237e;
-  --color-blue-darkest: #10185f;
-  --color-blue-light: #5c68f3;
-  --color-blue-lighter: #5abaff;
+  --color-blue-dark: #3844c6; /* Slightly dark blue */
+  --color-blue-darker: #1a237e; /* Dark blue */
+  --color-blue-darkest: #10185f; /* Very dark blue */
+  --color-blue-light: #5c68f3; /* Slightly light blue */
+  --color-blue-lighter: #5abaff; /* Cyan blue */
 
-  --color-green-dark: #2e9c51;
-  --color-green-darker: #1a5a2e;
-  --color-green-emerald: #50c878;
-  --color-green-light: #9fdeb0;
+  --color-green-dark: #2e9c51; /* Slightly dark green */
+  --color-green-darker: #1a5a2e; /* Dark green */
+  --color-green-emerald: #50c878; /* Vivid light green */
+  --color-green-light: #9fdeb0; /* Light green */
 
   --shadow-sharp: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
   --shadow-deep: 0 22px 70px 4px rgba(0, 0, 0, 0.6);

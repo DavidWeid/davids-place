@@ -5,27 +5,36 @@ const isDev = import.meta.env.DEV;
 {
   !isDev && (
     <>
-        <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-P6872JXQ90"/>
-        <script is:inline>
-            const handleGoogleAnalytics = () => {
-                if (window.gaInitialized) {
-                    return;
-                }
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-P6872JXQ90');
-                window.gaInitialized = true;
+      <script
+        is:inline
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-P6872JXQ90"
+      />
+      <script is:inline>
+        (function () {
+          const handleGoogleAnalytics = () => {
+            if (window.gaInitialized) {
+              return;
             }
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function (...args) {
+              window.dataLayer.push(args);
+            };
+            window.gtag('js', new Date());
+            window.gtag('config', 'G-P6872JXQ90');
+            window.gaInitialized = true;
+          };
 
-            document.addEventListener('astro:after-swap', () => {
-                handleGoogleAnalytics();
-            })
-
-            document.addEventListener('astro:page-load', () => {
-                handleGoogleAnalytics();
-            })
-        </script>
+          if (
+            document.readyState === 'complete' ||
+            document.readyState === 'interactive'
+          ) {
+            handleGoogleAnalytics();
+          } else {
+            window.addEventListener('DOMContentLoaded', handleGoogleAnalytics);
+          }
+        })();
+      </script>
     </>
   )
 }
