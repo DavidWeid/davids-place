@@ -152,7 +152,7 @@ const heroData = [
 
         <button
           id="pin-button"
-          class="laptop:hidden bg-green-dark text-light hover:bg-blue-dark tablet:rounded-lg fixed right-5 bottom-5 z-40 rounded-md px-4 py-2 duration-500"
+          class="laptop:hidden bg-green-dark text-light hover:bg-blue-dark tablet:rounded-lg fixed right-5 bottom-10 z-40 rounded-md px-4 py-2 duration-500"
           data-state="unpinned"
         >
           Pin Ingredients
@@ -223,13 +223,16 @@ const heroData = [
       ingredientsContainer.classList.add(
         'fixed',
         'z-40',
-        'top-5',
-        'right-5',
+        'bottom-30',
+        'left-0',
+        'right-0',
         'bg-opacity-100!',
-        'max-h-[75vh]',
+        'max-h-[40vh]',
         'overflow-auto',
         'border',
         'border-green-emerald',
+        'w-5/6',
+        'mx-auto',
       );
     }
 

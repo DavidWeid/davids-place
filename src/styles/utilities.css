@@ -1,5 +1,5 @@
 @utility container {
-  @apply tablet:px-8 laptop:px-9 desktop:px-10 desktopxl:px-12 desktopxl:max-w-(--breakpoint-desktopxl) mx-auto w-full max-w-full! px-4;
+  @apply tablet:px-8 laptop:px-9 desktop:px-10 desktopxl:px-12 desktopxl:max-w-(--breakpoint-desktopxl) mx-auto w-full max-w-full px-4;
 }
 
 @utility rounded-6-8-12 {
