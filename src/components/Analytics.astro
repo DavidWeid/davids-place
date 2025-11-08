@@ -17,8 +17,8 @@ const isDev = import.meta.env.DEV;
               return;
             }
             window.dataLayer = window.dataLayer || [];
-            window.gtag = function () {
-              window.dataLayer.push(arguments);
+            window.gtag = function (...args) {
+              window.dataLayer.push(args);
             };
             window.gtag('js', new Date());
             window.gtag('config', 'G-P6872JXQ90');
