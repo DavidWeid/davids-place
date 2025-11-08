@@ -238,13 +238,23 @@ const navItems: string[] = Object.keys(obj).map(
     const increaseBtn = document.getElementById('font-increase');
 
     function updateFontSizeDisplay() {
-      const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
-      if (fontSizeElement) {
-        fontSizeElement.textContent = Math.round(currentFontSize);
-      }
-      // Store current font size if not already stored
-      if (!localStorage.fontSize) {
-        localStorage.fontSize = Math.round(currentFontSize);
+      // Check if there's a stored font size preference
+      const storedFontSize = localStorage.fontSize;
+
+      if (storedFontSize) {
+        // Apply stored font size to root element and display
+        root.style.fontSize = `${storedFontSize}px`;
+        if (fontSizeElement) {
+          fontSizeElement.textContent = storedFontSize;
+        }
+      } else {
+        // No stored preference, read computed size and store it
+        const currentFontSize = parseFloat(getComputedStyle(root).fontSize);
+        const roundedSize = Math.round(currentFontSize);
+        localStorage.fontSize = roundedSize;
+        if (fontSizeElement) {
+          fontSizeElement.textContent = roundedSize;
+        }
       }
     }
 
