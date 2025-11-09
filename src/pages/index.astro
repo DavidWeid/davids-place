@@ -476,12 +476,10 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
     </div>
   </section>
 
-  <span class="spacer-40-80-80"></span>
+  <span class="spacer-80-112-112"></span>
 
   <div class="embla overflow-hidden select-none">
-    <div
-      class="embla__viewport container laptop:!px-0 laptop:!max-w-[90ch] laptop:!mx-auto"
-    >
+    <div class="embla__viewport container">
       <div class="embla__container flex gap-5">
         {
           internalLinks.map((link) => (
@@ -523,7 +521,7 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
     </div>
   </div>
 
-  <span class="block pb-[200px]"></span>
+  <span class="spacer-80-112-112"></span>
 </Base>
 
 <style>
@@ -629,15 +627,10 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
     headshot?.addEventListener('click', handleClick);
   }
 
-  document.addEventListener('astro:after-swap', () => {
-    const headshot = document.getElementById('headshot');
-    const imageCat = document.getElementById('cat-icon');
-
-    adjustImage(counter, headshot, imageCat);
-  });
-
-  document.addEventListener('astro:page-load', initializeHeadshotInteraction);
-  initializeHeadshotInteraction();
+  const headshot = document.getElementById('headshot');
+  const imageCat = document.getElementById('cat-icon');
+  adjustImage(counter, headshot, imageCat);
+  headshot?.addEventListener('click', handleClick);
 </script>
 
 <script>
@@ -677,5 +670,5 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
     }
   };
 
-  document.addEventListener('astro:page-load', initializeCarousel);
+  initializeCarousel();
 </script>

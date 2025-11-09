@@ -233,21 +233,7 @@ src/pages/
 
 ## Scripts and Client-Side JavaScript
 
-### Astro ClientRouter and View Transitions
-
-This project uses Astro's **ClientRouter** for seamless page transitions. The `ClientRouter` component (imported in `/src/layouts/Base.astro`) enables view transitions between pages without full page reloads, creating a SPA-like experience.
-
 ### Script Execution Patterns
-
-#### Key Lifecycle Events
-
-Astro's ClientRouter provides specific lifecycle events for managing scripts across page transitions:
-
-- `astro:page-load` - Fires on initial page load AND after view transitions
-- `astro:after-swap` - Fires after new page content is swapped in
-- `astro:before-swap` - Fires before new page content is swapped in
-
-#### Script Categories
 
 **1. Module Scripts (`<script>`) - RECOMMENDED**
 
@@ -255,7 +241,7 @@ Astro's ClientRouter provides specific lifecycle events for managing scripts acr
 - Support ES modules with imports/exports and TypeScript
 - Better performance and Core Web Vitals scores
 - Bundled and optimized by Astro during build
-- **Preferred approach** for ClientRouter compatibility
+- Runs correctly without needing to listen for DOMContentLoaded
 
 ```javascript
 <script>
@@ -271,8 +257,8 @@ Astro's ClientRouter provides specific lifecycle events for managing scripts acr
     element.addEventListener('click', handleClick);
   }
 
-  document.addEventListener('astro:page-load', initializeComponent);
-  initializeComponent(); // Run immediately on initial load
+  // No need to listen for DOMContentLoaded
+  initializeComponent();
 </script>
 ```
 
@@ -290,49 +276,13 @@ Astro's ClientRouter provides specific lifecycle events for managing scripts acr
     document.documentElement.classList.add('theme-applied');
   }
 
-  document.addEventListener('astro:page-load', applyCriticalFeature);
   applyCriticalFeature(); // Run immediately
 </script>
 ```
 
-### Best Practices for View Transitions
+### Best Practices for Scripts
 
-#### 1. Event Listener Management
-
-Always use `astro:page-load` for re-binding event listeners:
-
-```javascript
-<script>
-  function initializeEventListeners() {
-    const button = document.getElementById('button');
-
-    if (!button) return;
-
-    button.addEventListener('click', handleClick);
-  }
-
-  document.addEventListener('astro:page-load', initializeEventListeners);
-  initializeEventListeners(); // Initial bind
-</script>
-```
-
-#### 2. State Persistence
-
-Use `astro:after-swap` for maintaining state across transitions:
-
-```javascript
-<script is:inline>
-  function preserveState() {
-    // Apply stored preferences, maintain UI state
-    const theme = localStorage.theme;
-    applyTheme(theme);
-  }
-
-  document.addEventListener('astro:after-swap', preserveState);
-</script>
-```
-
-#### 3. DOM Element Queries
+#### 1. DOM Element Queries
 
 Always use optional chaining when querying DOM elements:
 
@@ -344,7 +294,7 @@ document.getElementById('element')?.addEventListener('click', handler);
 document.getElementById('element').addEventListener('click', handler);
 ```
 
-#### 4. Performance Considerations
+#### 2. Performance Considerations
 
 - **Prefer module scripts (`<script>`) over `is:inline`** for better performance
 - Use `is:inline` only for truly critical functionality that must run before DOM ready
@@ -352,22 +302,6 @@ document.getElementById('element').addEventListener('click', handler);
 - Clean up resources in event listeners when possible
 
 ### Common Patterns for Scripts
-
-#### Theme Management
-
-See `src/components/MainNav.astro`:
-
-- Uses `is:inline` for immediate execution
-- Listens to `astro:after-swap` for theme persistence
-- Re-binds switch events on `astro:page-load`
-
-#### Font Size Control
-
-See `src/components/MainNav.astro`:
-
-- Manages font size persistence across transitions
-- Uses `astro:before-swap` to apply settings to new document
-- Re-binds controls after each transition
 
 #### Form Interactions
 
@@ -377,28 +311,7 @@ See `src/pages/sign-in.astro` and `src/pages/register.astro`:
 - **Non-render-blocking** for better performance
 - Sets up form validation and submission handling
 - Uses optional chaining for element queries
-- Wrapped in initialization functions called on `astro:page-load`
 
-### Troubleshooting Scripts with View Transitions
+## Other Notes
 
-**Script not executing after navigation:**
-
-- Use `astro:page-load` event to re-initialize
-- Ensure element queries use optional chaining
-
-**State lost between pages:**
-
-- Store state in localStorage/sessionStorage
-- Use `astro:after-swap` to restore state
-
-**Event listeners not working:**
-
-- Re-bind listeners in `astro:page-load` handler
-- Check if elements exist before binding
-
-**Scripts running multiple times:**
-
-- Use `is:inline` for scripts that should run on every navigation
-- Use regular `<script>` for one-time initialization per component
-
-This project prioritizes clean architecture, accessibility, and modern web standards while maintaining a focus on content organization and visual design.
+- This project prioritizes clean architecture, accessibility, and modern web standards while maintaining a focus on content organization and visual design.
