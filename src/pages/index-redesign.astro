@@ -150,15 +150,15 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
  title={pageTitle}
  description={pageDescription}
  preloadImage={preloadImageData}
- classes="bg-blue-pastel-light text-dark"
+ classes="bg-blue-pastel-light text-dark dark:bg-green-vibrant/25 dark:text-light"
 >
  <section class="container">
   <span class="spacer-40-80-80"></span>
   <div
-   class="bg-light px-2.5 tablet:px-8 py-12 rounded-16-24-32 grid grid-cols-1 laptop:grid-cols-2 gap-10"
+   class="bg-light dark:bg-medium px-2.5 tablet:px-20 desktop:px-28 py-12 rounded-16-24-32 grid grid-cols-1 laptop:grid-cols-2 gap-10"
   >
    <div>
-    <span class="text-display-eyebrow">
+    <span class="inline-block text-display-eyebrow">
      <EmojiTextWave emoji="👋" text="Hi there" />
     </span>
     <h1>
@@ -174,15 +174,21 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
      >, <span class="whitespace-nowrap">high-performing</span> digital experiences
     </p>
 
-    <span class="spacer-40-80-80"></span>
+    <span class="spacer-40-40-80"></span>
 
-    <span class="text-display-eyebrow">
-     JavaScript • TypeScript • Modern Web Technologies
+    <span
+     class="inline-flex flex-wrap text-display-eyebrow gap-x-2 tablet:gap-x-3"
+    >
+     JavaScript <span
+      class="self-center rounded-full h-2.5 w-2.5 bg-blue-contrast dark:bg-green-contrast"
+     ></span> TypeScript <span
+      class="self-center rounded-full h-2.5 w-2.5 bg-blue-contrast dark:bg-green-contrast"
+     ></span> Modern Web Technologies
     </span>
    </div>
 
    <div
-    class="relative flex justify-center items-center w-[200px] h-max m-auto"
+    class="relative flex justify-center items-center w-[200px] h-max m-auto mt-5 tablet:mt-10 laptop:mt-auto"
    >
     <!-- Image sits on top of 3 colored blobs -->
     <Image
@@ -208,7 +214,7 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
     </div>
     <div
      aria-hidden="true"
-     class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-lavender-pastel rounded-full top-26 left-10 laptop:top-20 opacity-70"
+     class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-lavender-pastel rounded-full top-20 left-10 laptop:top-20 opacity-70"
     >
     </div>
    </div>

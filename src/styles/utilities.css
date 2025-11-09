@@ -22,10 +22,14 @@
  @apply block pb-10;
 }
 
+@utility spacer-40-40-80 {
+ @apply block pb-10 desktop:pb-20;
+}
+
 @utility spacer-40-80-80 {
- @apply tablet:pb-20 block pb-10;
+ @apply block pb-10 tablet:pb-20;
 }
 
 @utility spacer-80-112-112 {
- @apply laptop:pb-28 block pb-20;
+ @apply block pb-20 tablet:pb-28;
 }
