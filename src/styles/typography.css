@@ -1,73 +1,73 @@
 @layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold tracking-wide;
-  }
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+  @apply font-bold tracking-wide;
+ }
 
-  h1,
-  .h1 {
-    @apply laptop:text-6xl text-5xl;
-  }
+ h1,
+ .h1 {
+  @apply laptop:text-6xl text-5xl;
+ }
 
-  h2,
-  .h2 {
-    @apply laptop:text-4xl text-3xl;
-  }
+ h2,
+ .h2 {
+  @apply laptop:text-4xl text-3xl;
+ }
 
-  h3,
-  .h3 {
-    @apply laptop:text-2xl text-xl;
-  }
+ h3,
+ .h3 {
+  @apply laptop:text-2xl text-xl;
+ }
 
-  h4,
-  h5,
-  h6 {
-    @apply text-lg;
-  }
+ h4,
+ h5,
+ h6 {
+  @apply text-lg;
+ }
 
-  a {
-    @apply select-text;
-  }
+ a {
+  @apply select-text;
+ }
 
-  nav * {
-    @apply select-none;
-  }
+ nav * {
+  @apply select-none;
+ }
 
-  code {
-    @apply font-mono;
-  }
+ code {
+  @apply font-mono;
+ }
 
-  code.dark-background {
-    @apply bg-medium text-light dark:bg-light dark:text-medium mx-px rounded-md px-2 py-px;
-  }
+ code.dark-background {
+  @apply bg-medium text-light dark:bg-light dark:text-medium mx-px rounded-md px-2 py-px;
+ }
 
-  mark {
-    @apply bg-green-light dark:bg-blue-dark/75 dark:text-light inline-flex justify-center rounded px-1.5 py-0.5 font-medium tracking-wide;
-  }
+ mark {
+  @apply bg-green-light dark:bg-blue-dark/75 dark:text-light inline-flex justify-center rounded px-1.5 py-0.5 font-medium tracking-wide;
+ }
 
-  .text-display {
-    font-size: clamp(3rem, 5vw, 6rem);
-  }
+ .text-display {
+  font-size: clamp(3rem, 5vw, 6rem);
+ }
 
-  .text-display-eyebrow {
-    @apply font-sans-syne;
+ .text-display-eyebrow {
+  @apply font-sans-syne;
 
-    font-size: clamp(1.5rem, 2vw, 1.75rem);
-  }
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+ }
 
-  .text-display-minor {
-    font-size: clamp(2rem, 2vw, 4rem);
-  }
+ .text-display-minor {
+  font-size: clamp(1.75rem, 2vw, 4rem);
+ }
 
-  .text-p-main {
-    @apply text-lg;
-  }
+ .text-p-main {
+  @apply text-lg;
+ }
 
-  .text-p-main + .text-p-main {
-    @apply pt-5;
-  }
+ .text-p-main + .text-p-main {
+  @apply pt-5;
+ }
 }

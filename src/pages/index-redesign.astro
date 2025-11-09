@@ -1,0 +1,218 @@
+---
+export const prerender = true;
+
+import config from 'package.json';
+import { Image, getImage } from 'astro:assets';
+
+import Base from '@layouts/Base.astro';
+import EmojiTextWave from '@components/EmojiTextWave.astro';
+import ExternalLink from '@components/ExternalLink.astro';
+import Card from '@components/Card.astro';
+import Badge from '@components/Badge.astro';
+import NoteBlock from '@components/NoteBlock.astro';
+import PersonSchema from '@components/PersonSchema.astro';
+
+import headshot from '@images/general/david-weid-headshot-3.jpg';
+import imageCat from '@images/general/flurry.jpg';
+import imageAstroFriendWave from '@images/astro-friend/astro-friend-wave.png';
+import imageWebsiteStackWhite from '@images/general/website-stack-white.png';
+
+import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
+import IconDdIconRgb from '@images/icons/dd_icon_purple.svg';
+import IconArrowBubblesRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
+import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
+
+const baseURL = import.meta.env.BASE_URL;
+const pageTitle = 'David Weid II | Senior Web Development Engineer Portfolio';
+const pageDescription =
+ 'Senior Web Dev Engineer at Datadog with 6+ years JavaScript, TypeScript & modern web development experience. View my portfolio, cookbook, and blog.';
+
+const heroImage = await getImage({
+ src: imageAstroFriendWave,
+ width: 400,
+ height: 400,
+ format: 'webp',
+});
+
+const preloadImageData = {
+ src: heroImage.src,
+ format: 'webp',
+ pathname: Astro.url.pathname,
+};
+
+const heroTitle = 'I’m David Weid</span>';
+
+const externalLinks = [
+ {
+  link: 'https://www.linkedin.com/in/david-weid/',
+  title: 'LinkedIn Profile',
+  description:
+   'View my LinkedIn profile for an idea of my professional background.',
+  tags: ['social'],
+ },
+ {
+  link: 'https://github.com/DavidWeid/',
+  title: 'GitHub Profile',
+  description: 'View my GitHub profile for an idea of my code cadences.',
+  tags: ['technical'],
+ },
+ {
+  link: 'mailto:david.weid.2@gmail.com',
+  title: 'Contact Me',
+  description: 'Email me directly if that is your preference.',
+  tags: ['contact'],
+ },
+];
+
+const internalLinks = [
+ {
+  link: `${baseURL}about/cookbook/`,
+  title: 'Marketing Page for Cookbook',
+  description: 'Learn about my cookbook app through a custom landing page.',
+  tags: ['marketing', 'fundamentals', 'informational'],
+ },
+ {
+  link: `${baseURL}cookbook/`,
+  title: 'Cookbook App',
+  description: 'Explore my collection of recipes.',
+  tags: ['recipes', 'food', 'cooking'],
+ },
+ {
+  link: `${baseURL}about/`,
+  title: 'Fun About Page',
+  description: 'My gamified personal bio.',
+  tags: ['about', 'fun', 'stats'],
+ },
+ {
+  link: `${baseURL}blog/`,
+  title: 'Blog App',
+  description: 'Read articles I have written about various topics.',
+  tags: ['blog', 'articles', 'writing'],
+ },
+ {
+  link: `${baseURL}register/`,
+  title: 'Sign up Page for David’s Place',
+  description: 'Create an account to join the community.',
+  tags: ['authentication', 'firebase', 'accounts'],
+ },
+ {
+  link: `${baseURL}sign-in/`,
+  title: 'Sign in Page for David’s Place',
+  description: 'Log in to access your account and saved content.',
+  tags: ['authentication', 'firebase', 'accounts'],
+ },
+ {
+  link: `${baseURL}style/`,
+  title: 'Site Style Visualization',
+  description: 'A visual representation of the site’s colors and SVGs',
+  tags: ['styles', 'visuals', 'icons'],
+ },
+];
+
+const skills = [
+ 'Javascript',
+ 'HTML5',
+ 'CSS',
+ 'TailwindCSS',
+ 'AlpineJS',
+ 'AstroJS',
+ 'Hugo (SSG)',
+ '11ty',
+ 'Accessibility',
+ 'SEO',
+ 'Design Systems',
+ 'Component Architecture',
+ 'React',
+ 'Bootstrap',
+ 'Materialize',
+ 'Express.js',
+ 'SASS',
+ 'jQuery (+ deprecation)',
+ 'Node.js',
+ 'AJAX',
+ 'WordPress',
+ 'Wix',
+ 'Google Analytics',
+ 'AWS Amplify',
+ 'Datadog RUM',
+ 'DatoCMS',
+];
+
+const astroVersion = config.dependencies.astro.slice(1);
+const tailwindVersion = config.dependencies.tailwindcss.slice(1);
+
+// Person Schema data
+const siteUrl = 'https://davids-place-portfolio.web.app';
+const personImageUrl = `${siteUrl}${headshot.src}`;
+---
+
+<Base
+ title={pageTitle}
+ description={pageDescription}
+ preloadImage={preloadImageData}
+ classes="bg-blue-pastel-light text-dark"
+>
+ <section class="container">
+  <span class="spacer-40-80-80"></span>
+  <div
+   class="bg-light px-2.5 tablet:px-8 py-12 rounded-16-24-32 grid grid-cols-1 laptop:grid-cols-2 gap-10"
+  >
+   <div>
+    <span class="text-display-eyebrow">
+     <EmojiTextWave emoji="👋" text="Hi there" />
+    </span>
+    <h1>
+     <span set:html={heroTitle} class="text-display text-gradient-2" />
+    </h1>
+
+    <span class="spacer-20"></span>
+
+    <p
+     class="text-display-minor text-pretty tablet:max-w-3/4 laptop:max-w-full"
+    >
+     Senior Web Developer building <b class="font-semibold italic">accessible</b
+     >, <span class="whitespace-nowrap">high-performing</span> digital experiences
+    </p>
+
+    <span class="spacer-40-80-80"></span>
+
+    <span class="text-display-eyebrow">
+     JavaScript • TypeScript • Modern Web Technologies
+    </span>
+   </div>
+
+   <div
+    class="relative flex justify-center items-center w-[200px] h-max m-auto"
+   >
+    <!-- Image sits on top of 3 colored blobs -->
+    <Image
+     id="hero-image"
+     loading="eager"
+     fetchpriority="high"
+     src={heroImage.src}
+     alt="Astro mascot's friend waving hello"
+     width={200}
+     height={227}
+     densities={[1.5, 2, 2.5, 3]}
+     class="w-full h-auto z-10"
+    />
+    <div
+     aria-hidden="true"
+     class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-blue-pastel-light rounded-full -top-10 -right-10 laptop:-top-20 laptop:-right-20 opacity-70"
+    >
+    </div>
+    <div
+     aria-hidden="true"
+     class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-green-pastel-light rounded-full top-5 -left-20 laptop:-top-5 laptop:-left-28 opacity-70"
+    >
+    </div>
+    <div
+     aria-hidden="true"
+     class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-lavender-pastel rounded-full top-26 left-10 laptop:top-20 opacity-70"
+    >
+    </div>
+   </div>
+  </div>
+  <span class="spacer-40-80-80"></span>
+ </section>
+</Base>

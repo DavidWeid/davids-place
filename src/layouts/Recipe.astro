@@ -7,43 +7,43 @@ import ExternalLink from '@components/ExternalLink.astro';
 import RecipeSchema from '@components/RecipeSchema.astro';
 
 interface Props {
-  frontmatter: {
-    title: string;
-    description: string;
-    author: string;
-    source: string;
-    image: {
-      url: {
-        src: string;
-        width: number;
-        height: number;
-        format: string;
-      };
-      alt: string;
-    };
-    tags: string[];
-    servings: string;
-    prepTime: string;
-    cookTime: string;
-    totalTime: string;
-    ingredients: { category: string; items: string[] }[];
-    instructions: string[];
+ frontmatter: {
+  title: string;
+  description: string;
+  author: string;
+  source: string;
+  image: {
+   url: {
+    src: string;
+    width: number;
+    height: number;
+    format: string;
+   };
+   alt: string;
   };
+  tags: string[];
+  servings: string;
+  prepTime: string;
+  cookTime: string;
+  totalTime: string;
+  ingredients: { category: string; items: string[] }[];
+  instructions: string[];
+ };
 }
 
 const { frontmatter } = Astro.props;
 const {
-  title,
-  description,
-  source,
-  image,
-  tags,
-  servings,
-  prepTime,
-  cookTime,
-  totalTime,
-  ingredients,
-  instructions,
+ title,
+ description,
+ source,
+ image,
+ tags,
+ servings,
+ prepTime,
+ cookTime,
+ totalTime,
+ ingredients,
+ instructions,
 } = frontmatter;
 
 const baseURL = import.meta.env.BASE_URL;
@@ -54,240 +54,234 @@ const heroDescription = description;
 // For RecipeSchema component
 const currentUrl = new URL(Astro.request.url).href;
 const breadcrumbData = {
-  text: 'back to recipes',
-  link: `${baseURL}cookbook/`,
+ text: 'back to recipes',
+ link: `${baseURL}cookbook/`,
 };
 const heroData = [
-  { label: 'PREP TIME', value: prepTime },
-  { label: 'COOK TIME', value: cookTime },
-  { label: 'TOTAL TIME', value: totalTime },
-  { label: 'SERVINGS', value: servings },
+ { label: 'PREP TIME', value: prepTime },
+ { label: 'COOK TIME', value: cookTime },
+ { label: 'TOTAL TIME', value: totalTime },
+ { label: 'SERVINGS', value: servings },
 ];
 ---
 
 <Base title={pageTitle} description={description}>
-  <Hero
-    title={heroTitle}
-    description={heroDescription}
-    breadcrumb={breadcrumbData}
-  >
-    <span class="block pb-4"></span>
+ <Hero
+  title={heroTitle}
+  description={heroDescription}
+  breadcrumb={breadcrumbData}
+ >
+  <span class="block pb-4"></span>
 
-    <div class="flex flex-wrap justify-center gap-8">
-      {
-        heroData.map(({ label, value }) => (
-          <HeroInfo label={label} value={value} />
-        ))
-      }
-    </div>
-
-    <span class="block pb-8"></span>
-
-    {
-      image && (
-        <ImageRecipe
-          src={image.url}
-          alt={image.alt}
-          class="rounded-6-8-12 h-96 object-cover"
-          loading="eager"
-        />
-      )
-    }
-  </Hero>
-
-  <hr class="green-blue-shimmer-slow h-1 border-0" />
-
-  <div data-tags={`| tags: ${tags.join(', ')}`} class="bg-light dark:bg-medium">
-    <div class="container">
-      <span class="block pb-8"></span>
-
-      <section class="laptop:grid-cols-3 relative grid grid-cols-1 gap-8">
-        {
-          ingredients && (
-            <fieldset class="laptop:overflow-y-auto laptop:max-h-[75vh] laptop:sticky laptop:top-28 rounded-6-8-12">
-              <legend>
-                <h2>Ingredients</h2>
-                <span class="block py-2 pl-1 text-xs tracking-wide opacity-75">
-                  Click to check off
-                </span>
-              </legend>
-              <div
-                id="ingredients-container"
-                class="bg-light bg-opacity-90 dark:bg-dark dark:bg-opacity-50 rounded-6-8-12 flex flex-col gap-8 p-4"
-              >
-                {ingredients.map((data) => {
-                  const { category, items } = data;
-                  return (
-                    <div class="flex flex-col gap-2">
-                      <h3>{category.toUpperCase()}</h3>
-                      <hr class="border-green-emerald w-1/4" />
-                      {items.map((ingredient, index) => {
-                        return (
-                          <div>
-                            <input
-                              id={
-                                category.toLowerCase() + '-ingredient-' + index
-                              }
-                              type="checkbox"
-                              class="peer sr-only"
-                            />
-                            <label
-                              for={
-                                category.toLowerCase() + '-ingredient-' + index
-                              }
-                              class="peer-checked:text-blue-dark/50 dark:peer-checked:text-light/40 hover:text-blue-dark dark:hover:text-green-emerald"
-                            >
-                              {ingredient}
-                            </label>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  );
-                })}
-              </div>
-            </fieldset>
-          )
-        }
-
-        <button
-          id="pin-button"
-          class="laptop:hidden bg-green-dark text-light hover:bg-blue-dark tablet:rounded-lg fixed right-5 bottom-10 z-40 rounded-md px-4 py-2 duration-500"
-          data-state="unpinned"
-        >
-          Pin Ingredients
-        </button>
-
-        {
-          instructions && (
-            <div class="laptop:col-span-2">
-              <h2>Instructions</h2>
-              {/* TODO: Add collapsable item functionality */}
-              <span class="invisible block pb-2 pl-1 text-xs tracking-wide opacity-75">
-                Click to collapse
-              </span>
-              <span class="block pb-8" />
-              <ol class="flex flex-col gap-6">
-                {instructions.map((instruction, index) => (
-                  <li class="flex flex-col gap-2">
-                    <span class="text-dark/75 dark:text-light/85 text-xl font-bold tracking-wider">
-                      Step {index + 1}
-                    </span>
-                    <span class="max-w-prose leading-7">{instruction}</span>
-                    <hr class="border-green-emerald w-1/4" />
-                  </li>
-                ))}
-              </ol>
-            </div>
-          )
-        }
-        <span class="block pb-8"></span>
-      </section>
-
-      <span class="block pb-8"></span>
-
-      <section>
-        <slot />
-      </section>
-
-      {!source && <span class="block pb-[200px]" />}
-
-      {
-        source && (
-          <>
-            <section class="pt-20 opacity-90">
-              <h2>See the original recipe</h2>
-              <span class="block pb-4" />
-              <ExternalLink href={source} text={source} />
-            </section>
-            <span class="block pb-[200px]" />
-          </>
-        )
-      }
-    </div>
+  <div class="flex flex-wrap justify-center gap-8">
+   {
+    heroData.map(({ label, value }) => <HeroInfo label={label} value={value} />)
+   }
   </div>
 
-  <hr class="green-blue-shimmer-slow h-1 border-0" />
+  <span class="block pb-8"></span>
 
-  {frontmatter.image && <RecipeSchema recipe={frontmatter} url={currentUrl} />}
+  {
+   image && (
+    <ImageRecipe
+     src={image.url}
+     alt={image.alt}
+     class="rounded-6-8-12 h-96 object-cover"
+     loading="eager"
+    />
+   )
+  }
+ </Hero>
+
+ <hr class="green-blue-shimmer-slow h-1 border-0" />
+
+ <div data-tags={`| tags: ${tags.join(', ')}`} class="bg-light dark:bg-medium">
+  <div class="container">
+   <span class="block pb-8"></span>
+
+   <section class="laptop:grid-cols-3 relative grid grid-cols-1 gap-8">
+    {
+     ingredients && (
+      <fieldset class="laptop:overflow-y-auto laptop:max-h-[75vh] laptop:sticky laptop:top-28 rounded-6-8-12">
+       <legend>
+        <h2>Ingredients</h2>
+        <span class="block py-2 pl-1 text-xs tracking-wide opacity-75">
+         Click to check off
+        </span>
+       </legend>
+       <div
+        id="ingredients-container"
+        class="bg-light bg-opacity-90 dark:bg-dark dark:bg-opacity-50 rounded-6-8-12 flex flex-col gap-8 p-4"
+       >
+        {ingredients.map((data) => {
+         const { category, items } = data;
+         return (
+          <div class="flex flex-col gap-2">
+           <h3>{category.toUpperCase()}</h3>
+           <hr class="border-green-emerald w-1/4" />
+           {items.map((ingredient, index) => {
+            return (
+             <div>
+              <input
+               id={category.toLowerCase() + '-ingredient-' + index}
+               type="checkbox"
+               class="peer sr-only"
+              />
+              <label
+               for={category.toLowerCase() + '-ingredient-' + index}
+               class="peer-checked:text-blue-dark/50 dark:peer-checked:text-light/40 hover:text-blue-dark dark:hover:text-green-emerald"
+              >
+               {ingredient}
+              </label>
+             </div>
+            );
+           })}
+          </div>
+         );
+        })}
+       </div>
+      </fieldset>
+     )
+    }
+
+    <button
+     id="pin-button"
+     class="laptop:hidden bg-green-dark text-light hover:bg-blue-dark tablet:rounded-lg fixed right-5 bottom-10 z-40 rounded-md px-4 py-2 duration-500"
+     data-state="unpinned"
+    >
+     Pin Ingredients
+    </button>
+
+    {
+     instructions && (
+      <div class="laptop:col-span-2">
+       <h2>Instructions</h2>
+       {/* TODO: Add collapsable item functionality */}
+       <span class="invisible block pb-2 pl-1 text-xs tracking-wide opacity-75">
+        Click to collapse
+       </span>
+       <span class="block pb-8" />
+       <ol class="flex flex-col gap-6">
+        {instructions.map((instruction, index) => (
+         <li class="flex flex-col gap-2">
+          <span class="text-dark/75 dark:text-light/85 text-xl font-bold tracking-wider">
+           Step {index + 1}
+          </span>
+          <span class="max-w-prose leading-7" set:html={instruction} />
+          <hr class="border-green-emerald w-1/4" />
+         </li>
+        ))}
+       </ol>
+      </div>
+     )
+    }
+    <span class="block pb-8"></span>
+   </section>
+
+   <span class="block pb-8"></span>
+
+   <section>
+    <slot />
+   </section>
+
+   {!source && <span class="block pb-[200px]" />}
+
+   {
+    source && (
+     <>
+      <section class="pt-20 opacity-90">
+       <h2>See the original recipe</h2>
+       <span class="block pb-4" />
+       <ExternalLink href={source} text={source} />
+      </section>
+      <span class="block pb-[200px]" />
+     </>
+    )
+   }
+  </div>
+ </div>
+
+ <hr class="green-blue-shimmer-slow h-1 border-0" />
+
+ {frontmatter.image && <RecipeSchema recipe={frontmatter} url={currentUrl} />}
 </Base>
 
 <script>
-  import { debounce } from '../utilities/debounce';
+ import { debounce } from '../utilities/debounce';
 
-  const ingredientsContainer = document.getElementById('ingredients-container');
-  const pinButton = document.getElementById('pin-button');
+ const ingredientsContainer = document.getElementById('ingredients-container');
+ const pinButton = document.getElementById('pin-button');
 
-  const pinIngredients = () => {
-    if (ingredientsContainer) {
-      ingredientsContainer.classList.add(
-        'fixed',
-        'z-40',
-        'bottom-30',
-        'left-0',
-        'right-0',
-        'bg-opacity-100!',
-        'max-h-[40vh]',
-        'overflow-auto',
-        'border',
-        'border-green-emerald',
-        'w-5/6',
-        'mx-auto',
-      );
-    }
-
-    if (pinButton) {
-      pinButton.dataset.state = 'pinned';
-      pinButton.textContent = 'Unpin Ingredients';
-    }
-  };
-
-  const unpinIngredients = () => {
-    if (ingredientsContainer) {
-      ingredientsContainer.classList.remove(
-        'fixed',
-        'z-40',
-        'bottom-30',
-        'left-0',
-        'right-0',
-        'bg-opacity-100!',
-        'max-h-[40vh]',
-        'overflow-auto',
-        'border',
-        'border-green-emerald',
-        'w-5/6',
-        'mx-auto',
-      );
-    }
-
-    if (pinButton) {
-      pinButton.dataset.state = 'unpinned';
-      pinButton.textContent = 'Pin Ingredients';
-    }
-  };
-
-  const handlePinButtonClick = (e: Event) => {
-    const target = e.target as HTMLElement;
-    if (target && target.dataset.state === 'unpinned') {
-      // Pin ingredients (plus update button)
-      pinIngredients();
-    } else {
-      // Unpin ingredients (plus update button)
-      unpinIngredients();
-    }
-  };
-
-  const handleScreenResize = () => {
-    if (window.outerWidth >= 1024) {
-      // Unpin ingredients (plus update button)
-      if (pinButton) {
-        unpinIngredients();
-      }
-    }
-  };
-
-  if (ingredientsContainer && pinButton) {
-    pinButton.addEventListener('click', handlePinButtonClick);
-    window.addEventListener('resize', debounce(handleScreenResize));
+ const pinIngredients = () => {
+  if (ingredientsContainer) {
+   ingredientsContainer.classList.add(
+    'fixed',
+    'z-40',
+    'bottom-30',
+    'left-0',
+    'right-0',
+    'bg-opacity-100!',
+    'max-h-[40vh]',
+    'overflow-auto',
+    'border',
+    'border-green-emerald',
+    'w-5/6',
+    'mx-auto',
+   );
   }
+
+  if (pinButton) {
+   pinButton.dataset.state = 'pinned';
+   pinButton.textContent = 'Unpin Ingredients';
+  }
+ };
+
+ const unpinIngredients = () => {
+  if (ingredientsContainer) {
+   ingredientsContainer.classList.remove(
+    'fixed',
+    'z-40',
+    'bottom-30',
+    'left-0',
+    'right-0',
+    'bg-opacity-100!',
+    'max-h-[40vh]',
+    'overflow-auto',
+    'border',
+    'border-green-emerald',
+    'w-5/6',
+    'mx-auto',
+   );
+  }
+
+  if (pinButton) {
+   pinButton.dataset.state = 'unpinned';
+   pinButton.textContent = 'Pin Ingredients';
+  }
+ };
+
+ const handlePinButtonClick = (e: Event) => {
+  const target = e.target as HTMLElement;
+  if (target && target.dataset.state === 'unpinned') {
+   // Pin ingredients (plus update button)
+   pinIngredients();
+  } else {
+   // Unpin ingredients (plus update button)
+   unpinIngredients();
+  }
+ };
+
+ const handleScreenResize = () => {
+  if (window.outerWidth >= 1024) {
+   // Unpin ingredients (plus update button)
+   if (pinButton) {
+    unpinIngredients();
+   }
+  }
+ };
+
+ if (ingredientsContainer && pinButton) {
+  pinButton.addEventListener('click', handlePinButtonClick);
+  window.addEventListener('resize', debounce(handleScreenResize));
+ }
 </script>
