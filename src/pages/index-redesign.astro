@@ -17,6 +17,8 @@ import imageCat from '@images/general/flurry.jpg';
 import imageAstroFriendWave from '@images/astro-friend/astro-friend-wave.png';
 import imageWebsiteStackWhite from '@images/general/website-stack-white.png';
 
+import IconLinkedin from '@images/icons/linkedin.svg';
+import IconCaretDown from '@images/icons/caret-down.svg';
 import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
 import IconDdIconRgb from '@images/icons/dd_icon_purple.svg';
 import IconArrowBubblesRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
@@ -40,7 +42,7 @@ const preloadImageData = {
  pathname: Astro.url.pathname,
 };
 
-const heroTitle = 'I’m David Weid</span>';
+const heroTitle = 'I’m David Weid';
 
 const externalLinks = [
  {
@@ -185,6 +187,34 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
       class="self-center rounded-full h-2.5 w-2.5 bg-blue-contrast dark:bg-green-contrast"
      ></span> Modern Web Technologies
     </span>
+
+    <span class="spacer-40"></span>
+
+    <div class="flex gap-5">
+     <a
+      aria-label="Reach out on LinkedIn"
+      href="https://www.linkedin.com/in/david-weid/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group flex items-center gap-2 w-max max-w-full px-6 laptop:px-8 py-3 rounded-full bg-green-contrast border-b-4 border-transparent font-semibold text-xl tracking-wide text-light hover:bg-lavender-pastel hover:border-dark transition-[background-color,border-color] duration-500"
+     >
+      <span
+       class="mt-1 group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500"
+       >Reach out</span
+      ><IconLinkedin
+       class="mt-1 w-6 h-6 fill-light group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500"
+      />
+     </a>
+
+     <a
+      href="#"
+      class="group flex items-center gap-2 w-max max-w-full px-6 laptop:px-8 py-3 rounded-full bg-lavender-pastel/50 border-b-4 border-transparent font-semibold text-xl tracking-wide text-medium hover:bg-green-pastel/50 hover:border-dark/50 transition-[background-color,border-color] duration-500"
+     >
+      <span class="mt-1">Learn More</span><IconCaretDown
+       class="mt-1 w-6 h-6 fill-medium group-hover:translate-y-0.5 transition-[translate] duration-500"
+      />
+     </a>
+    </div>
    </div>
 
    <div
@@ -203,17 +233,14 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
      class="w-full h-auto z-10"
     />
     <div
-     aria-hidden="true"
      class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-blue-pastel-light rounded-full -top-10 -right-10 laptop:-top-20 laptop:-right-20 opacity-70"
     >
     </div>
     <div
-     aria-hidden="true"
      class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-green-pastel-light rounded-full top-5 -left-20 laptop:-top-5 laptop:-left-28 opacity-70"
     >
     </div>
     <div
-     aria-hidden="true"
      class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-lavender-pastel rounded-full top-20 left-10 laptop:top-20 opacity-70"
     >
     </div>
