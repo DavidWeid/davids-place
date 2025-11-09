@@ -3,150 +3,150 @@
 @custom-variant dark (&:is(.dark *));
 
 @view-transition {
- navigation: auto;
+  navigation: auto;
 }
 
 @theme {
- --breakpoint-*: initial;
- --breakpoint-tablet: 768px;
- --breakpoint-laptop: 1024px;
- --breakpoint-desktop: 1440px;
- --breakpoint-desktopxl: 1920px;
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1440px;
+  --breakpoint-desktopxl: 1920px;
 
- --font-weight-*: initial;
- --font-weight-extralight: 200;
- --font-weight-light: 300;
- --font-weight-normal: 400;
- --font-weight-medium: 500;
- --font-weight-semibold: 600;
- --font-weight-bold: 700;
- --font-weight-extrabold: 800;
- --font-weight-black: 900;
+  --font-weight-*: initial;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
 
- /* Font Sans Noto supports Chinese */
- --font-sans:
-  Reddit Sans Variable, ui-sans-serif, system-ui, sans-serif,
-  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
- --font-mono:
-  Reddit Mono Variable, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-  'Liberation Mono', 'Courier New', monospace;
- --font-sans-syne:
-  Syne Variable, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
- --font-sans-noto:
-  'Noto Sans SC Variable', ui-sans-serif, system-ui, sans-serif,
-  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  /* Font Sans Noto supports Chinese */
+  --font-sans:
+    Reddit Sans Variable, ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono:
+    Reddit Mono Variable, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --font-sans-syne:
+    Syne Variable, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans-noto:
+    'Noto Sans SC Variable', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
- --color-dark: #13151a; /* Near black */
- --color-light: #f5f5f5; /* Near white */
- --color-medium: #23262d; /* Dark gray */
- --color-accent: #883aea; /* Bright purple */
- --color-accent-light: #e0ccfa; /* Light purple */
- --color-accent-dark: #310a65; /* Dark purple */
+  --color-dark: #13151a; /* Near black */
+  --color-light: #f5f5f5; /* Near white */
+  --color-medium: #23262d; /* Dark gray */
+  --color-accent: #883aea; /* Bright purple */
+  --color-accent-light: #e0ccfa; /* Light purple */
+  --color-accent-dark: #310a65; /* Dark purple */
 
- --color-red-dark: #c84b44; /* Dark red */
- --color-red-light: #f8756a; /* Light red */
+  --color-red-dark: #c84b44; /* Dark red */
+  --color-red-light: #f8756a; /* Light red */
 
- --color-blue-dark: #3844c6; /* Slightly dark blue */
- --color-blue-darker: #1a237e; /* Dark blue */
- --color-blue-darkest: #10185f; /* Very dark blue */
- --color-blue-light: #5c68f3; /* Slightly light blue */
- --color-blue-lighter: #5abaff; /* Cyan blue */
+  --color-blue-dark: #3844c6; /* Slightly dark blue */
+  --color-blue-darker: #1a237e; /* Dark blue */
+  --color-blue-darkest: #10185f; /* Very dark blue */
+  --color-blue-light: #5c68f3; /* Slightly light blue */
+  --color-blue-lighter: #5abaff; /* Cyan blue */
 
- --color-green-dark: #2e9c51; /* Slightly dark green */
- --color-green-darker: #1a5a2e; /* Dark green */
- --color-green-emerald: #50c878; /* Vivid light green */
- --color-green-light: #9fdeb0; /* Light green */
+  --color-green-dark: #2e9c51; /* Slightly dark green */
+  --color-green-darker: #1a5a2e; /* Dark green */
+  --color-green-emerald: #50c878; /* Vivid light green */
+  --color-green-light: #9fdeb0; /* Light green */
 
- /* Redesign Colors */
- --color-blue-vibrant: #2563eb;
- --color-red-vibrant: #f0324e;
- --color-green-vibrant: #23c033;
- --color-purple-vibrant: #9329d9;
- --color-teal-vibrant: #00c0b2;
- --color-blue-contrast: #1641be; /* Darker blue */
- --color-red-contrast: #bd1b2c; /* Darker red */
- --color-green-contrast: #12941a; /* Darker green */
- --color-yellow-contrast: #ed9a00; /* Darker yellow */
- --color-blue-pastel: #8ea2f3;
- --color-blue-pastel-light: #8dbdee;
- --color-green-pastel: #94d997;
- --color-green-pastel-light: #b8e6ba;
- --color-red-pastel: #f7959d;
- --color-red-pastel-light: #fbb9be;
- --color-lavender-pastel: #8e89f1;
- --color-purple-pastel: #bb8de8;
+  /* Redesign Colors */
+  --color-blue-vibrant: #2563eb;
+  --color-red-vibrant: #f0324e;
+  --color-green-vibrant: #23c033;
+  --color-purple-vibrant: #9329d9;
+  --color-teal-vibrant: #00c0b2;
+  --color-blue-contrast: #1641be; /* Darker blue */
+  --color-red-contrast: #bd1b2c; /* Darker red */
+  --color-green-contrast: #12941a; /* Darker green */
+  --color-yellow-contrast: #ed9a00; /* Darker yellow */
+  --color-blue-pastel: #8ea2f3;
+  --color-blue-pastel-light: #8dbdee;
+  --color-green-pastel: #94d997;
+  --color-green-pastel-light: #b8e6ba;
+  --color-red-pastel: #f7959d;
+  --color-red-pastel-light: #fbb9be;
+  --color-lavender-pastel: #8e89f1;
+  --color-purple-pastel: #bb8de8;
 
- --shadow-sharp: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
- --shadow-deep: 0 22px 70px 4px rgba(0, 0, 0, 0.6);
- --shadow-shallow: 0 11px 35px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sharp: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
+  --shadow-deep: 0 22px 70px 4px rgba(0, 0, 0, 0.6);
+  --shadow-shallow: 0 11px 35px 2px rgba(0, 0, 0, 0.3);
 }
 
 @layer base {
- :root {
-  --accent-gradient: linear-gradient(
-   45deg,
-   var(--color-blue-light),
-   var(--color-blue-dark) 30%,
-   var(--color-green-emerald) 60%
-  );
+  :root {
+    --accent-gradient: linear-gradient(
+      45deg,
+      var(--color-blue-light),
+      var(--color-blue-dark) 30%,
+      var(--color-green-emerald) 60%
+    );
 
-  --randomized-animation-time: 0.5s;
- }
-
- *,
- ::after,
- ::before,
- ::backdrop,
- ::file-selector-button {
-  border-color: var(--color-gray-200, currentColor);
- }
-
- html {
-  @apply bg-light text-dark desktop:text-lg desktop:overscroll-y-none scroll-smooth font-sans text-base font-normal lining-nums;
- }
-
- html.dark {
-  @apply bg-dark text-light;
- }
-
- body {
-  @apply flex min-h-screen flex-col justify-between overflow-x-hidden max-w-screen;
- }
-
- main {
-  @apply flex-1;
- }
-
- img,
- video {
-  @apply h-auto w-full select-none;
- }
-
- *:focus-visible {
-  @apply ring-green-dark dark:ring-green-emerald ring-2 ring-offset-0 outline-hidden;
- }
-
- *::selection {
-  @apply bg-green-dark text-light;
- }
-
- input {
-  @apply focus-visible:ring-green-emerald focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:outline-hidden;
- }
-
- button,
- summary,
- input,
- label {
-  @apply cursor-pointer;
- }
-
- .dark {
-  .astro-code,
-  .astro-code span {
-   color: var(--shiki-dark) !important;
-   background-color: var(--shiki-dark-bg) !important;
+    --randomized-animation-time: 0.5s;
   }
- }
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  html {
+    @apply bg-light text-dark desktop:text-lg desktop:overscroll-y-none scroll-smooth font-sans text-base font-normal lining-nums;
+  }
+
+  html.dark {
+    @apply bg-dark text-light;
+  }
+
+  body {
+    @apply flex min-h-screen flex-col justify-between overflow-x-hidden max-w-screen;
+  }
+
+  main {
+    @apply flex-1;
+  }
+
+  img,
+  video {
+    @apply h-auto w-full select-none;
+  }
+
+  *:focus-visible {
+    @apply ring-green-dark dark:ring-green-emerald ring-2 ring-offset-0 outline-hidden;
+  }
+
+  *::selection {
+    @apply bg-green-dark text-light;
+  }
+
+  input {
+    @apply focus-visible:ring-green-emerald focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:outline-hidden;
+  }
+
+  button,
+  summary,
+  input,
+  label {
+    @apply cursor-pointer;
+  }
+
+  .dark {
+    .astro-code,
+    .astro-code span {
+      color: var(--shiki-dark) !important;
+      background-color: var(--shiki-dark-bg) !important;
+    }
+  }
 }

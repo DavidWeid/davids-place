@@ -8,128 +8,131 @@ const year: number = new Date().getFullYear();
 
 const isHomepage = Astro.url.pathname === '/';
 const isAboutPage =
- Astro.url.pathname.includes('about') &&
- !Astro.url.pathname.includes('cookbook');
+  Astro.url.pathname.includes('about') &&
+  !Astro.url.pathname.includes('cookbook');
 const isCookbookAboutPage = Astro.url.pathname.includes('about/cookbook');
 ---
 
 <footer
- class="bg-dark text-light from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 z-30 bg-linear-to-tr py-4"
+  class="bg-dark text-light from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 z-30 bg-linear-to-tr py-4"
 >
- <div class="container flex items-center justify-between">
-  <span class="text-light flex items-center">David Weid | {year}</span>
-  <ul class="flex items-center gap-3">
-   <li>
+  <div class="container flex items-center justify-between">
+    <span class="text-light flex items-center">David Weid | {year}</span>
+    <ul class="flex items-center gap-3">
+      <li>
+        <a
+          href={`${baseURL}style/`}
+          class="hover:text-green-emerald block px-2 py-2 text-xs"
+          >Site Styles</a
+        >
+      </li>
+
+      <li>
+        <a
+          href="https://github.com/DavidWeid/"
+          title="GitHub Profile"
+          class="group block px-2 py-2"
+        >
+          <span class="sr-only"
+            >View my GitHub Profile (Redirects to GitHub.com)</span
+          >
+          <IconGithub
+            class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
+          />
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="https://www.linkedin.com/in/david-weid/"
+          title="LinkedIn Profile"
+          class="group block px-2 py-2"
+        >
+          <span class="sr-only"
+            >View my LinkedIn Profile (Redirects to LinkedIn.com)</span
+          >
+          <IconLinkedin
+            class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
+          />
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="mailto:david.weid.2@gmail.com"
+          title="Email Contact"
+          class="group block px-2 py-2"
+        >
+          <span class="sr-only"
+            >Send me an email (Open email via OS settings)</span
+          >
+          <IconEmail
+            class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <span class="border-t-green-emerald mt-2 mb-1 block border-t"></span>
+  </div>
+
+  <div class="container mt-1 flex items-center justify-center gap-6">
+    {
+      isHomepage && (
+        <a
+          href="https://www.flaticon.com/authors/justicon"
+          class="text-center text-light/50 hover:text-green-emerald/75 text-xs"
+        >
+          JS, HTML, CSS icon by justicon
+          <span class="sr-only">(Redirects to Flaticon.com)</span>
+        </a>
+      )
+    }
+
+    <!-- svg icon source: https://www.svgrepo.com/collection/iconhub-tritone-icons/ -->
+
+    {
+      isAboutPage && (
+        <a
+          href="https://www.canva.com/p/unfold-x/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
+          target="_blank"
+          class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
+        >
+          Cat, drink, and cupcake icons by Unfold X
+          <span class="sr-only">(Redirects to Canva.com)</span>
+        </a>
+      )
+    }
+
+    {
+      isCookbookAboutPage && (
+        <a
+          href="https://www.canva.com/p/trendify/"
+          target="_blank"
+          class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
+        >
+          Content images @trendify
+          <span class="sr-only">(Redirects to Canva.com)</span>
+        </a>
+      )
+    }
+
+    {
+      (isHomepage ?? isAboutPage ?? isCookbookAboutPage) && (
+        <span class="opacity-50" aria-hidden="true">
+          |
+        </span>
+      )
+    }
+
     <a
-     href={`${baseURL}style/`}
-     class="hover:text-green-emerald block px-2 py-2 text-xs">Site Styles</a
+      href="https://www.canva.com/p/dedy-izhams-images/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
+      target="_blank"
+      class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
+      >Astronaut cartoon by Dedy Izham
+      <span class="sr-only">(Redirects to Canva.com)</span></a
     >
-   </li>
-
-   <li>
-    <a
-     href="https://github.com/DavidWeid/"
-     title="GitHub Profile"
-     class="group block px-2 py-2"
-    >
-     <span class="sr-only"
-      >View my GitHub Profile (Redirects to GitHub.com)</span
-     >
-     <IconGithub
-      class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
-     />
-    </a>
-   </li>
-
-   <li>
-    <a
-     href="https://www.linkedin.com/in/david-weid/"
-     title="LinkedIn Profile"
-     class="group block px-2 py-2"
-    >
-     <span class="sr-only"
-      >View my LinkedIn Profile (Redirects to LinkedIn.com)</span
-     >
-     <IconLinkedin
-      class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
-     />
-    </a>
-   </li>
-
-   <li>
-    <a
-     href="mailto:david.weid.2@gmail.com"
-     title="Email Contact"
-     class="group block px-2 py-2"
-    >
-     <span class="sr-only">Send me an email (Open email via OS settings)</span>
-     <IconEmail
-      class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
-     />
-    </a>
-   </li>
-  </ul>
- </div>
-
- <div class="container">
-  <span class="border-t-green-emerald mt-2 mb-1 block border-t"></span>
- </div>
-
- <div class="container mt-1 flex items-center justify-center gap-6">
-  {
-   isHomepage && (
-    <a
-     href="https://www.flaticon.com/authors/justicon"
-     class="text-center text-light/50 hover:text-green-emerald/75 text-xs"
-    >
-     JS, HTML, CSS icon by justicon
-     <span class="sr-only">(Redirects to Flaticon.com)</span>
-    </a>
-   )
-  }
-
-  <!-- svg icon source: https://www.svgrepo.com/collection/iconhub-tritone-icons/ -->
-
-  {
-   isAboutPage && (
-    <a
-     href="https://www.canva.com/p/unfold-x/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
-     target="_blank"
-     class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
-    >
-     Cat, drink, and cupcake icons by Unfold X
-     <span class="sr-only">(Redirects to Canva.com)</span>
-    </a>
-   )
-  }
-
-  {
-   isCookbookAboutPage && (
-    <a
-     href="https://www.canva.com/p/trendify/"
-     target="_blank"
-     class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
-    >
-     Content images @trendify
-     <span class="sr-only">(Redirects to Canva.com)</span>
-    </a>
-   )
-  }
-
-  {
-   (isHomepage ?? isAboutPage ?? isCookbookAboutPage) && (
-    <span class="opacity-50" aria-hidden="true">
-     |
-    </span>
-   )
-  }
-
-  <a
-   href="https://www.canva.com/p/dedy-izhams-images/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
-   target="_blank"
-   class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
-   >Astronaut cartoon by Dedy Izham
-   <span class="sr-only">(Redirects to Canva.com)</span></a
-  >
- </div>
+  </div>
 </footer>

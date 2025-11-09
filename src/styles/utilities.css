@@ -1,35 +1,35 @@
 @utility container {
- @apply tablet:px-8 laptop:px-9 desktop:px-10 desktopxl:px-12 desktopxl:max-w-(--breakpoint-desktopxl) mx-auto w-full max-w-full px-4;
+  @apply tablet:px-8 laptop:px-9 desktop:px-10 desktopxl:px-12 desktopxl:max-w-(--breakpoint-desktopxl) mx-auto w-full max-w-full px-4;
 }
 
 @utility rounded-6-8-12 {
- @apply tablet:rounded-lg desktop:rounded-xl rounded-md;
+  @apply tablet:rounded-lg desktop:rounded-xl rounded-md;
 }
 
 @utility rounded-8-12-16 {
- @apply tablet:rounded-xl desktop:rounded-2xl rounded-lg;
+  @apply tablet:rounded-xl desktop:rounded-2xl rounded-lg;
 }
 
 @utility rounded-16-24-32 {
- @apply rounded-2xl tablet:rounded-3xl desktop:rounded-4xl;
+  @apply rounded-2xl tablet:rounded-3xl desktop:rounded-4xl;
 }
 
 @utility spacer-20 {
- @apply block pb-5;
+  @apply block pb-5;
 }
 
 @utility spacer-40 {
- @apply block pb-10;
+  @apply block pb-10;
 }
 
 @utility spacer-40-40-80 {
- @apply block pb-10 desktop:pb-20;
+  @apply block pb-10 desktop:pb-20;
 }
 
 @utility spacer-40-80-80 {
- @apply block pb-10 tablet:pb-20;
+  @apply block pb-10 tablet:pb-20;
 }
 
 @utility spacer-80-112-112 {
- @apply block pb-20 tablet:pb-28;
+  @apply block pb-20 tablet:pb-28;
 }

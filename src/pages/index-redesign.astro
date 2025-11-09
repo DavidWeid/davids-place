@@ -31,115 +31,115 @@ import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.
 const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'David Weid II | Senior Web Development Engineer Portfolio';
 const pageDescription =
- 'Senior Web Dev Engineer at Datadog with 6+ years JavaScript, TypeScript & modern web development experience. View my portfolio, cookbook, and blog.';
+  'Senior Web Dev Engineer at Datadog with 6+ years JavaScript, TypeScript & modern web development experience. View my portfolio, cookbook, and blog.';
 
 const heroImage = await getImage({
- src: imageAstroFriendWave,
- width: 400,
- height: 400,
- format: 'webp',
+  src: imageAstroFriendWave,
+  width: 400,
+  height: 400,
+  format: 'webp',
 });
 
 const preloadImageData = {
- src: heroImage.src,
- format: 'webp',
- pathname: Astro.url.pathname,
+  src: heroImage.src,
+  format: 'webp',
+  pathname: Astro.url.pathname,
 };
 
 const externalLinks = [
- {
-  link: 'https://www.linkedin.com/in/david-weid/',
-  title: 'LinkedIn Profile',
-  description:
-   'View my LinkedIn profile for an idea of my professional background.',
-  tags: ['social'],
- },
- {
-  link: 'https://github.com/DavidWeid/',
-  title: 'GitHub Profile',
-  description: 'View my GitHub profile for an idea of my code cadences.',
-  tags: ['technical'],
- },
- {
-  link: 'mailto:david.weid.2@gmail.com',
-  title: 'Contact Me',
-  description: 'Email me directly if that is your preference.',
-  tags: ['contact'],
- },
+  {
+    link: 'https://www.linkedin.com/in/david-weid/',
+    title: 'LinkedIn Profile',
+    description:
+      'View my LinkedIn profile for an idea of my professional background.',
+    tags: ['social'],
+  },
+  {
+    link: 'https://github.com/DavidWeid/',
+    title: 'GitHub Profile',
+    description: 'View my GitHub profile for an idea of my code cadences.',
+    tags: ['technical'],
+  },
+  {
+    link: 'mailto:david.weid.2@gmail.com',
+    title: 'Contact Me',
+    description: 'Email me directly if that is your preference.',
+    tags: ['contact'],
+  },
 ];
 
 const internalLinks = [
- {
-  link: `${baseURL}about/cookbook/`,
-  title: 'Marketing Page for Cookbook',
-  description: 'Learn about my cookbook app through a custom landing page.',
-  tags: ['marketing', 'fundamentals', 'informational'],
- },
- {
-  link: `${baseURL}cookbook/`,
-  title: 'Cookbook App',
-  description: 'Explore my collection of recipes.',
-  tags: ['recipes', 'food', 'cooking'],
- },
- {
-  link: `${baseURL}about/`,
-  title: 'Fun About Page',
-  description: 'My gamified personal bio.',
-  tags: ['about', 'fun', 'stats'],
- },
- {
-  link: `${baseURL}blog/`,
-  title: 'Blog App',
-  description: 'Read articles I have written about various topics.',
-  tags: ['blog', 'articles', 'writing'],
- },
- {
-  link: `${baseURL}register/`,
-  title: 'Sign up Page for David’s Place',
-  description: 'Create an account to join the community.',
-  tags: ['authentication', 'firebase', 'accounts'],
- },
- {
-  link: `${baseURL}sign-in/`,
-  title: 'Sign in Page for David’s Place',
-  description: 'Log in to access your account and saved content.',
-  tags: ['authentication', 'firebase', 'accounts'],
- },
- {
-  link: `${baseURL}style/`,
-  title: 'Site Style Visualization',
-  description: 'A visual representation of the site’s colors and SVGs',
-  tags: ['styles', 'visuals', 'icons'],
- },
+  {
+    link: `${baseURL}about/cookbook/`,
+    title: 'Marketing Page for Cookbook',
+    description: 'Learn about my cookbook app through a custom landing page.',
+    tags: ['marketing', 'fundamentals', 'informational'],
+  },
+  {
+    link: `${baseURL}cookbook/`,
+    title: 'Cookbook App',
+    description: 'Explore my collection of recipes.',
+    tags: ['recipes', 'food', 'cooking'],
+  },
+  {
+    link: `${baseURL}about/`,
+    title: 'Fun About Page',
+    description: 'My gamified personal bio.',
+    tags: ['about', 'fun', 'stats'],
+  },
+  {
+    link: `${baseURL}blog/`,
+    title: 'Blog App',
+    description: 'Read articles I have written about various topics.',
+    tags: ['blog', 'articles', 'writing'],
+  },
+  {
+    link: `${baseURL}register/`,
+    title: 'Sign up Page for David’s Place',
+    description: 'Create an account to join the community.',
+    tags: ['authentication', 'firebase', 'accounts'],
+  },
+  {
+    link: `${baseURL}sign-in/`,
+    title: 'Sign in Page for David’s Place',
+    description: 'Log in to access your account and saved content.',
+    tags: ['authentication', 'firebase', 'accounts'],
+  },
+  {
+    link: `${baseURL}style/`,
+    title: 'Site Style Visualization',
+    description: 'A visual representation of the site’s colors and SVGs',
+    tags: ['styles', 'visuals', 'icons'],
+  },
 ];
 
 const skills = [
- 'Javascript',
- 'HTML5',
- 'CSS',
- 'TailwindCSS',
- 'AlpineJS',
- 'AstroJS',
- 'Hugo (SSG)',
- '11ty',
- 'Accessibility',
- 'SEO',
- 'Design Systems',
- 'Component Architecture',
- 'React',
- 'Bootstrap',
- 'Materialize',
- 'Express.js',
- 'SASS',
- 'jQuery (+ deprecation)',
- 'Node.js',
- 'AJAX',
- 'WordPress',
- 'Wix',
- 'Google Analytics',
- 'AWS Amplify',
- 'Datadog RUM',
- 'DatoCMS',
+  'Javascript',
+  'HTML5',
+  'CSS',
+  'TailwindCSS',
+  'AlpineJS',
+  'AstroJS',
+  'Hugo (SSG)',
+  '11ty',
+  'Accessibility',
+  'SEO',
+  'Design Systems',
+  'Component Architecture',
+  'React',
+  'Bootstrap',
+  'Materialize',
+  'Express.js',
+  'SASS',
+  'jQuery (+ deprecation)',
+  'Node.js',
+  'AJAX',
+  'WordPress',
+  'Wix',
+  'Google Analytics',
+  'AWS Amplify',
+  'Datadog RUM',
+  'DatoCMS',
 ];
 
 const astroVersion = config.dependencies.astro.slice(1);
@@ -150,291 +150,297 @@ const siteUrl = 'https://davids-place-portfolio.web.app';
 const personImageUrl = `${siteUrl}${headshot.src}`;
 
 const heroData = {
- eyebrowEmoji: '👋',
- eyebrowText: 'Hi there',
- title: 'I’m David Weid',
- description:
-  'Senior Web Developer building <b class="font-semibold italic">accessible</b>, <span class="whitespace-nowrap">high-performing</span> digital experiences',
- tagLine: ['JavaScript', 'TypeScript', 'Modern Web Technologies'],
- cta1: {
-  ariaLabel: 'Reach out on LinkedIn',
-  text: 'Reach out',
-  link: 'https://www.linkedin.com/in/david-weid/',
-  icon: IconLinkedin,
- },
- cta2: {
-  link: '#',
-  icon: IconCaretDown,
- },
+  eyebrowEmoji: '👋',
+  eyebrowText: 'Hi there',
+  title: 'I’m David Weid',
+  description:
+    'Senior Web Developer building <b class="font-semibold italic">accessible</b>, <span class="whitespace-nowrap">high-performing</span> digital experiences',
+  tagLine: ['JavaScript', 'TypeScript', 'Modern Web Technologies'],
+  cta1: {
+    ariaLabel: 'Reach out on LinkedIn',
+    text: 'Reach out',
+    link: 'https://www.linkedin.com/in/david-weid/',
+    icon: IconLinkedin,
+  },
+  cta2: {
+    link: '#',
+    icon: IconCaretDown,
+  },
 };
 
 const expertiseData = [
- {
-  icon: IconBrowser,
-  title: 'Front-End Web Development',
- },
- {
-  icon: IconComments,
-  title: 'Accessibility & Usability Advocacy',
- },
- {
-  icon: IconFileBoxes,
-  title: 'Design Systems & Component Architecture',
- },
- {
-  icon: IconBarGraph,
-  title: 'Performance, SEO & Optimization',
- },
+  {
+    icon: IconBrowser,
+    title: 'Front-End Web Development',
+  },
+  {
+    icon: IconComments,
+    title: 'Accessibility & Usability Advocacy',
+  },
+  {
+    icon: IconFileBoxes,
+    title: 'Design Systems & Component Architecture',
+  },
+  {
+    icon: IconBarGraph,
+    title: 'Performance, SEO & Optimization',
+  },
 ];
 ---
 
 <Base
- title={pageTitle}
- description={pageDescription}
- preloadImage={preloadImageData}
- classes="bg-blue-pastel-light text-dark dark:bg-green-vibrant/25 dark:text-light"
+  title={pageTitle}
+  description={pageDescription}
+  preloadImage={preloadImageData}
+  classes="bg-blue-pastel-light text-dark dark:bg-green-vibrant/25 dark:text-light"
 >
- <!-- Hero -->
- <section class="container">
-  <span class="spacer-40-80-80"></span>
-  <div
-   class="bg-light dark:bg-medium px-2.5 tablet:px-20 desktop:px-28 py-12 rounded-16-24-32 grid grid-cols-1 laptop:grid-cols-2 gap-10"
-  >
-   <div>
-    <span class="inline-block text-display-eyebrow">
-     <EmojiTextWave emoji={heroData.eyebrowEmoji} text={heroData.eyebrowText} />
-    </span>
-    <h1>
-     <span set:html={heroData.title} class="text-display text-gradient-2" />
-    </h1>
-
-    <span class="spacer-20"></span>
-
-    <p
-     set:html={heroData.description}
-     class="text-display-minor text-pretty tablet:max-w-3/4 laptop:max-w-full"
-    />
-
-    <span class="spacer-40-40-80"></span>
-
-    <span
-     class="inline-flex flex-wrap text-display-eyebrow gap-x-2 tablet:gap-x-3"
-    >
-     {
-      heroData.tagLine.map((tag, index) => (
-       <>
-        {index > 0 && (
-         <span class="self-center rounded-full h-2.5 w-2.5 bg-blue-contrast dark:bg-green-contrast" />
-        )}
-        {tag}
-       </>
-      ))
-     }
-    </span>
-
-    <span class="spacer-40"></span>
-
-    <div class="flex gap-5">
-     {
-      heroData.cta1 && (
-       <a
-        href={heroData.cta1.link}
-        class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-green-contrast border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-light hover:bg-lavender-pastel hover:border-dark transition-[background-color,border-color] duration-500"
-        {...(heroData.cta1.ariaLabel && {
-         'aria-label': heroData.cta1.ariaLabel,
-        })}
-        {...(heroData.cta1.link.includes('https') && {
-         target: '_blank',
-         rel: 'noopener noreferrer',
-        })}
-       >
-        <>
-         <span class="mt-1 tablet:whitespace-nowrap group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500">
-          {heroData.cta1.text}
-         </span>
-         {heroData.cta1.icon && (
-          <heroData.cta1.icon class="mt-1 w-6 h-6 fill-light group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500" />
-         )}
-        </>
-       </a>
-      )
-     }
-
-     {
-      heroData.cta2 && (
-       <a
-        href={heroData.cta2.link}
-        class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-lavender-pastel/50 border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-medium hover:bg-green-pastel/50 hover:border-dark/50 transition-[background-color,border-color] duration-500"
-       >
-        <>
-         <span
-          id="hero-learn-more"
-          class="mt-1 tablet:whitespace-nowrap flex flex-wrap gap-0"
-         >
-          <>
-           <>
-            <span>L</span>
-            <span>e</span>
-            <span>a</span>
-            <span>r</span>
-            <span>n</span>
-            <span class="w-1" />
-            <span>m</span>
-            <span>o</span>
-            <span>r</span>
-            <span>e</span>
-           </>
-          </>
-         </span>
-         {heroData.cta2.icon && (
-          <heroData.cta2.icon class="mt-1 w-6 h-6 fill-medium group-hover:translate-y-1.5 transition-[translate] duration-500" />
-         )}
-        </>
-       </a>
-      )
-     }
-    </div>
-   </div>
-
-   <div
-    class="relative flex justify-center items-center w-[200px] h-max m-auto mt-5 tablet:mt-10 laptop:mt-auto"
-   >
-    <!-- Image sits on top of 3 colored blobs -->
-    <Image
-     id="hero-image"
-     loading="eager"
-     fetchpriority="high"
-     src={heroImage.src}
-     alt="Astro mascot's friend waving hello"
-     width={200}
-     height={227}
-     densities={[1.5, 2, 2.5, 3]}
-     class="w-full h-auto z-10"
-    />
+  <!-- Hero -->
+  <section class="container">
+    <span class="spacer-40-80-80"></span>
     <div
-     id="hero-blob-1"
-     class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-blue-pastel-light rounded-full -top-10 -right-10 laptop:-top-20 laptop:-right-20 opacity-70"
+      class="bg-light dark:bg-medium px-2.5 tablet:px-20 desktop:px-28 py-12 rounded-16-24-32 grid grid-cols-1 laptop:grid-cols-2 gap-10"
     >
+      <div>
+        <span class="inline-block text-display-eyebrow">
+          <EmojiTextWave
+            emoji={heroData.eyebrowEmoji}
+            text={heroData.eyebrowText}
+          />
+        </span>
+        <h1>
+          <span
+            set:html={heroData.title}
+            class="text-display text-gradient-2"
+          />
+        </h1>
+
+        <span class="spacer-20"></span>
+
+        <p
+          set:html={heroData.description}
+          class="text-display-minor text-pretty tablet:max-w-3/4 laptop:max-w-full"
+        />
+
+        <span class="spacer-40-40-80"></span>
+
+        <span
+          class="inline-flex flex-wrap text-display-eyebrow gap-x-2 tablet:gap-x-3"
+        >
+          {
+            heroData.tagLine.map((tag, index) => (
+              <>
+                {index > 0 && (
+                  <span class="self-center rounded-full h-2.5 w-2.5 bg-blue-contrast dark:bg-green-contrast" />
+                )}
+                {tag}
+              </>
+            ))
+          }
+        </span>
+
+        <span class="spacer-40"></span>
+
+        <div class="flex gap-5">
+          {
+            heroData.cta1 && (
+              <a
+                href={heroData.cta1.link}
+                class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-green-contrast border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-light hover:bg-lavender-pastel hover:border-dark transition-[background-color,border-color] duration-500"
+                {...(heroData.cta1.ariaLabel && {
+                  'aria-label': heroData.cta1.ariaLabel,
+                })}
+                {...(heroData.cta1.link.includes('https') && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
+              >
+                <>
+                  <span class="mt-1 tablet:whitespace-nowrap group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500">
+                    {heroData.cta1.text}
+                  </span>
+                  {heroData.cta1.icon && (
+                    <heroData.cta1.icon class="mt-1 w-6 h-6 fill-light group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500" />
+                  )}
+                </>
+              </a>
+            )
+          }
+
+          {
+            heroData.cta2 && (
+              <a
+                href={heroData.cta2.link}
+                class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-lavender-pastel/50 border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-medium hover:bg-green-pastel/50 hover:border-dark/50 transition-[background-color,border-color] duration-500"
+              >
+                <>
+                  <span
+                    id="hero-learn-more"
+                    class="mt-1 tablet:whitespace-nowrap flex flex-wrap gap-0"
+                  >
+                    <>
+                      <>
+                        <span>L</span>
+                        <span>e</span>
+                        <span>a</span>
+                        <span>r</span>
+                        <span>n</span>
+                        <span class="w-1" />
+                        <span>m</span>
+                        <span>o</span>
+                        <span>r</span>
+                        <span>e</span>
+                      </>
+                    </>
+                  </span>
+                  {heroData.cta2.icon && (
+                    <heroData.cta2.icon class="mt-1 w-6 h-6 fill-medium group-hover:translate-y-1.5 transition-[translate] duration-500" />
+                  )}
+                </>
+              </a>
+            )
+          }
+        </div>
+      </div>
+
+      <div
+        class="relative flex justify-center items-center w-[200px] h-max m-auto mt-5 tablet:mt-10 laptop:mt-auto"
+      >
+        <!-- Image sits on top of 3 colored blobs -->
+        <Image
+          id="hero-image"
+          loading="eager"
+          fetchpriority="high"
+          src={heroImage.src}
+          alt="Astro mascot's friend waving hello"
+          width={200}
+          height={227}
+          densities={[1.5, 2, 2.5, 3]}
+          class="w-full h-auto z-10"
+        />
+        <div
+          id="hero-blob-1"
+          class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-blue-pastel-light rounded-full -top-10 -right-10 laptop:-top-20 laptop:-right-20 opacity-70"
+        >
+        </div>
+        <div
+          id="hero-blob-2"
+          class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-green-pastel-light rounded-full top-5 -left-20 laptop:-top-5 laptop:-left-28 opacity-70"
+        >
+        </div>
+        <div
+          id="hero-blob-3"
+          class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-lavender-pastel rounded-full top-20 left-10 laptop:top-20 opacity-70"
+        >
+        </div>
+      </div>
     </div>
+    <span class="spacer-40-80-80"></span>
+  </section>
+
+  <!-- Expertise (x4) -->
+  <section>
+    <span class="spacer-40-80-80"></span>
+
     <div
-     id="hero-blob-2"
-     class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-green-pastel-light rounded-full top-5 -left-20 laptop:-top-5 laptop:-left-28 opacity-70"
+      class="container flex flex-wrap gap-10 tablet:gap-5 laptop:gap-10 desktop:gap-5 justify-around"
     >
+      {
+        expertiseData.map(({ icon: Icon, title }) => (
+          <div class="group flex flex-col items-center gap-5 tablet:gap-10 w-[275px] laptop:w-[250px] desktop:w-[325px]">
+            <Icon class="w-40 h-40 group-hover:scale-110 transition-[scale] duration-500" />
+            <p class="text-center text-lg laptop:text-2xl font-semibold font-sans-syne">
+              {title}
+            </p>
+          </div>
+        ))
+      }
     </div>
-    <div
-     id="hero-blob-3"
-     class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-lavender-pastel rounded-full top-20 left-10 laptop:top-20 opacity-70"
-    >
-    </div>
-   </div>
-  </div>
-  <span class="spacer-40-80-80"></span>
- </section>
 
- <!-- Expertise (x4) -->
- <section>
-  <span class="spacer-40-80-80"></span>
+    <span class="spacer-40-80-80"></span>
+  </section>
 
-  <div
-   class="container flex flex-wrap gap-10 tablet:gap-5 laptop:gap-10 desktop:gap-5 justify-around"
-  >
-   {
-    expertiseData.map(({ icon: Icon, title }) => (
-     <div class="group flex flex-col items-center gap-5 tablet:gap-10 w-[275px] laptop:w-[250px] desktop:w-[325px]">
-      <Icon class="w-40 h-40 group-hover:scale-110 transition-[scale] duration-500" />
-      <p class="text-center text-lg laptop:text-2xl font-semibold font-sans-syne">
-       {title}
-      </p>
-     </div>
-    ))
-   }
-  </div>
+  <style>
+    #hero-blob-1 {
+      animation: blobMove1 8s infinite ease-in-out;
+    }
+    #hero-blob-2 {
+      animation: blobMove2 10s infinite ease-in-out;
+    }
+    #hero-blob-3 {
+      animation: blobMove3 12s infinite ease-in-out;
+    }
 
-  <span class="spacer-40-80-80"></span>
- </section>
+    @media (prefers-reduced-motion: reduce) {
+      #hero-blob-1,
+      #hero-blob-2,
+      #hero-blob-3 {
+        animation: none;
+      }
+    }
 
- <style>
-  #hero-blob-1 {
-   animation: blobMove1 8s infinite ease-in-out;
-  }
-  #hero-blob-2 {
-   animation: blobMove2 10s infinite ease-in-out;
-  }
-  #hero-blob-3 {
-   animation: blobMove3 12s infinite ease-in-out;
-  }
+    @keyframes blobMove1 {
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(10px, -10px) scale(1.1);
+      }
+    }
+    @keyframes blobMove2 {
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(-10px, 10px) scale(1.1);
+      }
+    }
+    @keyframes blobMove3 {
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(10px, 10px) scale(1.1);
+      }
+    }
 
-  @media (prefers-reduced-motion: reduce) {
-   #hero-blob-1,
-   #hero-blob-2,
-   #hero-blob-3 {
-    animation: none;
-   }
-  }
+    /* Create "snake" shaped text on hover - S-shape wave */
+    a:has(#hero-learn-more) span {
+      transition: transform 0.5s ease-in-out;
+    }
 
-  @keyframes blobMove1 {
-   0%,
-   100% {
-    transform: translate(0, 0) scale(1);
-   }
-   50% {
-    transform: translate(10px, -10px) scale(1.1);
-   }
-  }
-  @keyframes blobMove2 {
-   0%,
-   100% {
-    transform: translate(0, 0) scale(1);
-   }
-   50% {
-    transform: translate(-10px, 10px) scale(1.1);
-   }
-  }
-  @keyframes blobMove3 {
-   0%,
-   100% {
-    transform: translate(0, 0) scale(1);
-   }
-   50% {
-    transform: translate(10px, 10px) scale(1.1);
-   }
-  }
-
-  /* Create "snake" shaped text on hover - S-shape wave */
-  a:has(#hero-learn-more) span {
-   transition: transform 0.5s ease-in-out;
-  }
-
-  /* S-curve pattern using sine wave: -sin(x) from 0 to π creates smooth S-shape */
-  a:has(#hero-learn-more):hover span:nth-child(1) {
-   transform: translateY(-0px);
-  }
-  a:has(#hero-learn-more):hover span:nth-child(2) {
-   transform: translateY(-2.4px);
-  }
-  a:has(#hero-learn-more):hover span:nth-child(3) {
-   transform: translateY(-4.3px);
-  }
-  a:has(#hero-learn-more):hover span:nth-child(4) {
-   transform: translateY(-5.4px);
-  }
-  a:has(#hero-learn-more):hover span:nth-child(5) {
-   transform: translateY(-5.4px);
-  }
-  a:has(#hero-learn-more):hover span:nth-child(6) {
-   transform: translateY(-4.3px);
-  }
-  a:has(#hero-learn-more):hover span:nth-child(7) {
-   transform: translateY(-2.4px);
-  }
-  a:has(#hero-learn-more):hover span:nth-child(8) {
-   transform: translateY(-0px);
-  }
-  a:has(#hero-learn-more):hover span:nth-child(9) {
-   transform: translateY(2.4px);
-  }
-  a:has(#hero-learn-more):hover span:nth-child(10) {
-   transform: translateY(4.3px);
-  }
- </style>
+    /* S-curve pattern using sine wave: -sin(x) from 0 to π creates smooth S-shape */
+    a:has(#hero-learn-more):hover span:nth-child(1) {
+      transform: translateY(-0px);
+    }
+    a:has(#hero-learn-more):hover span:nth-child(2) {
+      transform: translateY(-2.4px);
+    }
+    a:has(#hero-learn-more):hover span:nth-child(3) {
+      transform: translateY(-4.3px);
+    }
+    a:has(#hero-learn-more):hover span:nth-child(4) {
+      transform: translateY(-5.4px);
+    }
+    a:has(#hero-learn-more):hover span:nth-child(5) {
+      transform: translateY(-5.4px);
+    }
+    a:has(#hero-learn-more):hover span:nth-child(6) {
+      transform: translateY(-4.3px);
+    }
+    a:has(#hero-learn-more):hover span:nth-child(7) {
+      transform: translateY(-2.4px);
+    }
+    a:has(#hero-learn-more):hover span:nth-child(8) {
+      transform: translateY(-0px);
+    }
+    a:has(#hero-learn-more):hover span:nth-child(9) {
+      transform: translateY(2.4px);
+    }
+    a:has(#hero-learn-more):hover span:nth-child(10) {
+      transform: translateY(4.3px);
+    }
+  </style>
 </Base>

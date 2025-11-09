@@ -1,100 +1,100 @@
 .text-gradient {
- -webkit-text-fill-color: transparent;
- @apply from-blue-darker via-blue-dark to-green-dark dark:from-green-light dark:via-green-emerald dark:to-blue-light bg-gradient-to-br from-10% via-40% to-75% bg-[size:100%] bg-clip-text bg-[position:0%] transition-all duration-500 ease-in-out select-none hover:bg-[size:400%];
+  -webkit-text-fill-color: transparent;
+  @apply from-blue-darker via-blue-dark to-green-dark dark:from-green-light dark:via-green-emerald dark:to-blue-light bg-gradient-to-br from-10% via-40% to-75% bg-[size:100%] bg-clip-text bg-[position:0%] transition-all duration-500 ease-in-out select-none hover:bg-[size:400%];
 }
 
 .text-gradient-2 {
- -webkit-text-fill-color: transparent;
- @apply from-blue-vibrant via-blue-light to-blue-contrast dark:from-green-vibrant dark:via-green-contrast dark:to-green-vibrant bg-linear-to-br from-10% via-40% to-75% bg-size-[100%] bg-clip-text bg-position-[0%] transition-all duration-500 ease-in-out select-none hover:bg-size-[400%];
+  -webkit-text-fill-color: transparent;
+  @apply from-blue-vibrant via-blue-light to-blue-contrast dark:from-green-vibrant dark:via-green-contrast dark:to-green-vibrant bg-linear-to-br from-10% via-40% to-75% bg-size-[100%] bg-clip-text bg-position-[0%] transition-all duration-500 ease-in-out select-none hover:bg-size-[400%];
 }
 
 .border-gradient {
- @apply relative p-0.5 before:absolute before:inset-0 before:border before:border-transparent before:mask-exclude before:content-[''];
+  @apply relative p-0.5 before:absolute before:inset-0 before:border before:border-transparent before:mask-exclude before:content-[''];
 
- background: linear-gradient(
-   140deg,
-   var(--color-blue-light) 0%,
-   var(--color-blue-dark) 25%,
-   var(--color-green-dark) 50%,
-   var(--color-green-emerald) 100%
-  )
-  border-box;
+  background: linear-gradient(
+      140deg,
+      var(--color-blue-light) 0%,
+      var(--color-blue-dark) 25%,
+      var(--color-green-dark) 50%,
+      var(--color-green-emerald) 100%
+    )
+    border-box;
 
- mask:
-  linear-gradient(#fff 0 0) padding-box,
-  linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
 }
 
 .border-gradient-transparent {
- @apply relative;
+  @apply relative;
 }
 
 .border-gradient-transparent::before {
- content: '';
- position: absolute;
- inset: 0;
- border: 2px solid transparent;
- background: linear-gradient(
-   140deg,
-   var(--color-blue-light) 0%,
-   var(--color-blue-dark) 25%,
-   var(--color-green-dark) 50%,
-   var(--color-green-emerald) 100%
-  )
-  border-box;
- mask:
-  linear-gradient(#fff 0 0) padding-box,
-  linear-gradient(#fff 0 0);
- mask-composite: exclude;
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  background: linear-gradient(
+      140deg,
+      var(--color-blue-light) 0%,
+      var(--color-blue-dark) 25%,
+      var(--color-green-dark) 50%,
+      var(--color-green-emerald) 100%
+    )
+    border-box;
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
 }
 
 .content-link {
- @apply text-blue-dark hover:text-green-dark no-underline;
+  @apply text-blue-dark hover:text-green-dark no-underline;
 }
 
 .content-link-gradient,
 .content-link-gradient-reverse {
- word-break: break-word;
- padding-bottom: 4px;
- background:
-  linear-gradient(
-   to right,
-   theme('colors.blue.dark'),
-   theme('colors.blue.dark')
-  ),
-  linear-gradient(
-   to right,
-   theme('colors.green.dark'),
-   theme('colors.green.emerald'),
-   theme('colors.green.light')
-  );
- background-position:
-  100% 100%,
-  0 100%;
- background-repeat: no-repeat;
- transition: background-size 400ms;
+  word-break: break-word;
+  padding-bottom: 4px;
+  background:
+    linear-gradient(
+      to right,
+      theme('colors.blue.dark'),
+      theme('colors.blue.dark')
+    ),
+    linear-gradient(
+      to right,
+      theme('colors.green.dark'),
+      theme('colors.green.emerald'),
+      theme('colors.green.light')
+    );
+  background-position:
+    100% 100%,
+    0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
 }
 
 .content-link-gradient {
- background-size:
-  100% 2px,
-  0 2px;
-
- &:hover {
   background-size:
-   0 2px,
-   100% 2px;
- }
+    100% 2px,
+    0 2px;
+
+  &:hover {
+    background-size:
+      0 2px,
+      100% 2px;
+  }
 }
 
 .content-link-gradient-reverse {
- background-size:
-  0 2px,
-  100% 2px;
-
- &:hover {
   background-size:
-   100% 2px,
-   0 2px;
- }
+    0 2px,
+    100% 2px;
+
+  &:hover {
+    background-size:
+      100% 2px,
+      0 2px;
+  }
 }

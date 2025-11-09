@@ -7,59 +7,65 @@ import IconArrowBubblesRightBlue from '@images/icons/arrow-bubbles-right-blue.sv
 import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
 
 interface Props {
- title: string;
- body: string | null;
- href: string;
- tags: string[] | null;
- isListItem?: boolean;
+  title: string;
+  body: string | null;
+  href: string;
+  tags: string[] | null;
+  isListItem?: boolean;
 }
 
 const { href, title, body, tags, isListItem = true } = Astro.props;
 let target =
- href.startsWith('http') || href.includes('mailto') ? '_blank' : '_self';
+  href.startsWith('http') || href.includes('mailto') ? '_blank' : '_self';
 ---
 
 <CardWrapper isListItem={isListItem}>
- <a
-  href={href}
-  target={target}
-  class="text-dark bg-light dark:text-light dark:bg-medium rounded-6-8-12 flex w-full flex-col justify-between transition-colors duration-500"
- >
-  <div>
-   <h2 class="flex justify-between gap-2 text-2xl">
-    {title}
+  <a
+    href={href}
+    target={target}
+    class="text-dark bg-light dark:text-light dark:bg-medium rounded-6-8-12 flex w-full flex-col justify-between transition-colors duration-500"
+  >
+    <div>
+      <h2 class="flex justify-between gap-2 text-2xl">
+        {title}
+        {
+          target === '_blank' ? (
+            <>
+              <IconExternalLinkBlue class="hidden h-6 w-6 transition-transform duration-500 group-hover:scale-[1.2] dark:block" />
+              <IconExternalLinkGreen class="block h-6 w-6 transition-transform duration-500 group-hover:scale-[1.2] dark:hidden" />
+            </>
+          ) : (
+            <>
+              <IconArrowBubblesRightBlue class="block h-6 w-6 transition-transform duration-500 group-hover:translate-x-2 group-hover:scale-125 dark:hidden" />
+              <IconArrowBubblesRightGreen class="hidden h-6 w-6 transition-transform duration-500 group-hover:translate-x-2 group-hover:scale-125 dark:block" />
+            </>
+          )
+        }
+      </h2>
+      <span class="block pb-4"></span>
+      <p class="font-sans-syne text-lg" set:html={body} />
+    </div>
     {
-     target === '_blank' ? (
-      <>
-       <IconExternalLinkBlue class="hidden h-6 w-6 transition-transform duration-500 group-hover:scale-[1.2] dark:block" />
-       <IconExternalLinkGreen class="block h-6 w-6 transition-transform duration-500 group-hover:scale-[1.2] dark:hidden" />
-      </>
-     ) : (
-      <>
-       <IconArrowBubblesRightBlue class="block h-6 w-6 transition-transform duration-500 group-hover:translate-x-2 group-hover:scale-125 dark:hidden" />
-       <IconArrowBubblesRightGreen class="hidden h-6 w-6 transition-transform duration-500 group-hover:translate-x-2 group-hover:scale-125 dark:block" />
-      </>
-     )
+      tags && tags.length > 0 ? (
+        <>
+          <span class="block pb-4" />
+          <div tabindex="0" class="flex gap-2.5 overflow-x-scroll">
+            <span class="sr-only">Tags include:</span>
+            {tags.slice(0, 4).map((tag) => (
+              <Badge tag={tag} clickable={false} />
+            ))}
+          </div>
+        </>
+      ) : (
+        ''
+      )
     }
-   </h2>
-   <span class="block pb-4"></span>
-   <p class="font-sans-syne text-lg" set:html={body} />
-  </div>
-  {
-   tags && tags.length > 0 ? (
-    <>
-     <span class="block pb-4" />
-     <div tabindex="0" class="flex gap-2.5 overflow-x-scroll">
-      <span class="sr-only">Tags include:</span>
-      {tags.slice(0, 4).map((tag) => (
-       <Badge tag={tag} clickable={false} />
-      ))}
-     </div>
-    </>
-   ) : (
-    ''
-   )
-  }
-  {target === '_blank' ? <span class="sr-only">(Opens in a new tab)</span> : ''}
- </a>
+    {
+      target === '_blank' ? (
+        <span class="sr-only">(Opens in a new tab)</span>
+      ) : (
+        ''
+      )
+    }
+  </a>
 </CardWrapper>
