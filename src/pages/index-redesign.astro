@@ -196,10 +196,10 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
       href="https://www.linkedin.com/in/david-weid/"
       target="_blank"
       rel="noopener noreferrer"
-      class="group flex items-center gap-2 w-max max-w-full px-6 laptop:px-8 py-3 rounded-full bg-green-contrast border-b-4 border-transparent font-semibold text-xl tracking-wide text-light hover:bg-lavender-pastel hover:border-dark transition-[background-color,border-color] duration-500"
+      class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-green-contrast border-b-4 border-transparent font-semibold text-lg tablet:text-xl tracking-wide text-light hover:bg-lavender-pastel hover:border-dark transition-[background-color,border-color] duration-500"
      >
       <span
-       class="mt-1 group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500"
+       class="mt-1 tablet:whitespace-nowrap group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500"
        >Reach out</span
       ><IconLinkedin
        class="mt-1 w-6 h-6 fill-light group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500"
@@ -208,9 +208,10 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
 
      <a
       href="#"
-      class="group flex items-center gap-2 w-max max-w-full px-6 laptop:px-8 py-3 rounded-full bg-lavender-pastel/50 border-b-4 border-transparent font-semibold text-xl tracking-wide text-medium hover:bg-green-pastel/50 hover:border-dark/50 transition-[background-color,border-color] duration-500"
+      class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-lavender-pastel/50 border-b-4 border-transparent font-semibold text-lg tablet:text-xl tracking-wide text-medium hover:bg-green-pastel/50 hover:border-dark/50 transition-[background-color,border-color] duration-500"
      >
-      <span class="mt-1">Learn More</span><IconCaretDown
+      <span class="mt-1 tablet:whitespace-nowrap">Learn More</span
+      ><IconCaretDown
        class="mt-1 w-6 h-6 fill-medium group-hover:translate-y-0.5 transition-[translate] duration-500"
       />
      </a>
@@ -233,14 +234,17 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
      class="w-full h-auto z-10"
     />
     <div
+     id="hero-blob-1"
      class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-blue-pastel-light rounded-full -top-10 -right-10 laptop:-top-20 laptop:-right-20 opacity-70"
     >
     </div>
     <div
+     id="hero-blob-2"
      class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-green-pastel-light rounded-full top-5 -left-20 laptop:-top-5 laptop:-left-28 opacity-70"
     >
     </div>
     <div
+     id="hero-blob-3"
      class="absolute w-48 h-48 laptop:w-64 laptop:h-64 bg-lavender-pastel rounded-full top-20 left-10 laptop:top-20 opacity-70"
     >
     </div>
@@ -248,4 +252,52 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
   </div>
   <span class="spacer-40-80-80"></span>
  </section>
+
+ <style>
+  #hero-blob-1 {
+   animation: blobMove1 8s infinite ease-in-out;
+  }
+  #hero-blob-2 {
+   animation: blobMove2 10s infinite ease-in-out;
+  }
+  #hero-blob-3 {
+   animation: blobMove3 12s infinite ease-in-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+   #hero-blob-1,
+   #hero-blob-2,
+   #hero-blob-3 {
+    animation: none;
+   }
+  }
+
+  @keyframes blobMove1 {
+   0%,
+   100% {
+    transform: translate(0, 0) scale(1);
+   }
+   50% {
+    transform: translate(10px, -10px) scale(1.1);
+   }
+  }
+  @keyframes blobMove2 {
+   0%,
+   100% {
+    transform: translate(0, 0) scale(1);
+   }
+   50% {
+    transform: translate(-10px, 10px) scale(1.1);
+   }
+  }
+  @keyframes blobMove3 {
+   0%,
+   100% {
+    transform: translate(0, 0) scale(1);
+   }
+   50% {
+    transform: translate(10px, 10px) scale(1.1);
+   }
+  }
+ </style>
 </Base>
