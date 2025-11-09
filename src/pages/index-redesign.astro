@@ -19,6 +19,10 @@ import imageWebsiteStackWhite from '@images/general/website-stack-white.png';
 
 import IconLinkedin from '@images/icons/linkedin.svg';
 import IconCaretDown from '@images/icons/caret-down.svg';
+import IconBrowser from '@images/icons/browser.svg';
+import IconComments from '@images/icons/comments.svg';
+import IconFileBoxes from '@images/icons/file-boxes.svg';
+import IconBarGraph from '@images/icons/bar-graph.svg';
 import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
 import IconDdIconRgb from '@images/icons/dd_icon_purple.svg';
 import IconArrowBubblesRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
@@ -41,8 +45,6 @@ const preloadImageData = {
  format: 'webp',
  pathname: Astro.url.pathname,
 };
-
-const heroTitle = 'I’m David Weid';
 
 const externalLinks = [
  {
@@ -146,6 +148,44 @@ const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 // Person Schema data
 const siteUrl = 'https://davids-place-portfolio.web.app';
 const personImageUrl = `${siteUrl}${headshot.src}`;
+
+const heroData = {
+ eyebrowEmoji: '👋',
+ eyebrowText: 'Hi there',
+ title: 'I’m David Weid',
+ description:
+  'Senior Web Developer building <b class="font-semibold italic">accessible</b>, <span class="whitespace-nowrap">high-performing</span> digital experiences',
+ tagLine: ['JavaScript', 'TypeScript', 'Modern Web Technologies'],
+ cta1: {
+  ariaLabel: 'Reach out on LinkedIn',
+  text: 'Reach out',
+  link: 'https://www.linkedin.com/in/david-weid/',
+  icon: IconLinkedin,
+ },
+ cta2: {
+  link: '#',
+  icon: IconCaretDown,
+ },
+};
+
+const expertiseData = [
+ {
+  icon: IconBrowser,
+  title: 'Front-End Web Development',
+ },
+ {
+  icon: IconComments,
+  title: 'Accessibility & Usability Advocacy',
+ },
+ {
+  icon: IconFileBoxes,
+  title: 'Design Systems & Component Architecture',
+ },
+ {
+  icon: IconBarGraph,
+  title: 'Performance, SEO & Optimization',
+ },
+];
 ---
 
 <Base
@@ -154,6 +194,7 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
  preloadImage={preloadImageData}
  classes="bg-blue-pastel-light text-dark dark:bg-green-vibrant/25 dark:text-light"
 >
+ <!-- Hero -->
  <section class="container">
   <span class="spacer-40-80-80"></span>
   <div
@@ -161,60 +202,97 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
   >
    <div>
     <span class="inline-block text-display-eyebrow">
-     <EmojiTextWave emoji="👋" text="Hi there" />
+     <EmojiTextWave emoji={heroData.eyebrowEmoji} text={heroData.eyebrowText} />
     </span>
     <h1>
-     <span set:html={heroTitle} class="text-display text-gradient-2" />
+     <span set:html={heroData.title} class="text-display text-gradient-2" />
     </h1>
 
     <span class="spacer-20"></span>
 
     <p
+     set:html={heroData.description}
      class="text-display-minor text-pretty tablet:max-w-3/4 laptop:max-w-full"
-    >
-     Senior Web Developer building <b class="font-semibold italic">accessible</b
-     >, <span class="whitespace-nowrap">high-performing</span> digital experiences
-    </p>
+    />
 
     <span class="spacer-40-40-80"></span>
 
     <span
      class="inline-flex flex-wrap text-display-eyebrow gap-x-2 tablet:gap-x-3"
     >
-     JavaScript <span
-      class="self-center rounded-full h-2.5 w-2.5 bg-blue-contrast dark:bg-green-contrast"
-     ></span> TypeScript <span
-      class="self-center rounded-full h-2.5 w-2.5 bg-blue-contrast dark:bg-green-contrast"
-     ></span> Modern Web Technologies
+     {
+      heroData.tagLine.map((tag, index) => (
+       <>
+        {index > 0 && (
+         <span class="self-center rounded-full h-2.5 w-2.5 bg-blue-contrast dark:bg-green-contrast" />
+        )}
+        {tag}
+       </>
+      ))
+     }
     </span>
 
     <span class="spacer-40"></span>
 
     <div class="flex gap-5">
-     <a
-      aria-label="Reach out on LinkedIn"
-      href="https://www.linkedin.com/in/david-weid/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-green-contrast border-b-4 border-transparent font-semibold text-lg tablet:text-xl tracking-wide text-light hover:bg-lavender-pastel hover:border-dark transition-[background-color,border-color] duration-500"
-     >
-      <span
-       class="mt-1 tablet:whitespace-nowrap group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500"
-       >Reach out</span
-      ><IconLinkedin
-       class="mt-1 w-6 h-6 fill-light group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500"
-      />
-     </a>
+     {
+      heroData.cta1 && (
+       <a
+        href={heroData.cta1.link}
+        class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-green-contrast border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-light hover:bg-lavender-pastel hover:border-dark transition-[background-color,border-color] duration-500"
+        {...(heroData.cta1.ariaLabel && {
+         'aria-label': heroData.cta1.ariaLabel,
+        })}
+        {...(heroData.cta1.link.includes('https') && {
+         target: '_blank',
+         rel: 'noopener noreferrer',
+        })}
+       >
+        <>
+         <span class="mt-1 tablet:whitespace-nowrap group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500">
+          {heroData.cta1.text}
+         </span>
+         {heroData.cta1.icon && (
+          <heroData.cta1.icon class="mt-1 w-6 h-6 fill-light group-hover:-skew-x-12 group-hover:translate-x-0.5 transition-transform duration-500" />
+         )}
+        </>
+       </a>
+      )
+     }
 
-     <a
-      href="#"
-      class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-lavender-pastel/50 border-b-4 border-transparent font-semibold text-lg tablet:text-xl tracking-wide text-medium hover:bg-green-pastel/50 hover:border-dark/50 transition-[background-color,border-color] duration-500"
-     >
-      <span class="mt-1 tablet:whitespace-nowrap">Learn More</span
-      ><IconCaretDown
-       class="mt-1 w-6 h-6 fill-medium group-hover:translate-y-0.5 transition-[translate] duration-500"
-      />
-     </a>
+     {
+      heroData.cta2 && (
+       <a
+        href={heroData.cta2.link}
+        class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-lavender-pastel/50 border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-medium hover:bg-green-pastel/50 hover:border-dark/50 transition-[background-color,border-color] duration-500"
+       >
+        <>
+         <span
+          id="hero-learn-more"
+          class="mt-1 tablet:whitespace-nowrap flex flex-wrap gap-0"
+         >
+          <>
+           <>
+            <span>L</span>
+            <span>e</span>
+            <span>a</span>
+            <span>r</span>
+            <span>n</span>
+            <span class="w-1" />
+            <span>m</span>
+            <span>o</span>
+            <span>r</span>
+            <span>e</span>
+           </>
+          </>
+         </span>
+         {heroData.cta2.icon && (
+          <heroData.cta2.icon class="mt-1 w-6 h-6 fill-medium group-hover:translate-y-1.5 transition-[translate] duration-500" />
+         )}
+        </>
+       </a>
+      )
+     }
     </div>
    </div>
 
@@ -250,6 +328,28 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
     </div>
    </div>
   </div>
+  <span class="spacer-40-80-80"></span>
+ </section>
+
+ <!-- Expertise (x4) -->
+ <section>
+  <span class="spacer-40-80-80"></span>
+
+  <div
+   class="container flex flex-wrap gap-10 tablet:gap-5 laptop:gap-10 desktop:gap-5 justify-around"
+  >
+   {
+    expertiseData.map(({ icon: Icon, title }) => (
+     <div class="flex flex-col items-center gap-5 tablet:gap-10 w-[275px] laptop:w-[250px] desktop:w-[325px]">
+      <Icon class="w-40 h-40" />
+      <p class="text-center text-lg laptop:text-2xl font-semibold font-sans-syne">
+       {title}
+      </p>
+     </div>
+    ))
+   }
+  </div>
+
   <span class="spacer-40-80-80"></span>
  </section>
 
@@ -298,6 +398,43 @@ const personImageUrl = `${siteUrl}${headshot.src}`;
    50% {
     transform: translate(10px, 10px) scale(1.1);
    }
+  }
+
+  /* Create "snake" shaped text on hover - S-shape wave */
+  a:has(#hero-learn-more) span {
+   transition: transform 0.5s ease-in-out;
+  }
+
+  /* S-curve pattern using sine wave: -sin(x) from 0 to π creates smooth S-shape */
+  a:has(#hero-learn-more):hover span:nth-child(1) {
+   transform: translateY(-0px);
+  }
+  a:has(#hero-learn-more):hover span:nth-child(2) {
+   transform: translateY(-2.4px);
+  }
+  a:has(#hero-learn-more):hover span:nth-child(3) {
+   transform: translateY(-4.3px);
+  }
+  a:has(#hero-learn-more):hover span:nth-child(4) {
+   transform: translateY(-5.4px);
+  }
+  a:has(#hero-learn-more):hover span:nth-child(5) {
+   transform: translateY(-5.4px);
+  }
+  a:has(#hero-learn-more):hover span:nth-child(6) {
+   transform: translateY(-4.3px);
+  }
+  a:has(#hero-learn-more):hover span:nth-child(7) {
+   transform: translateY(-2.4px);
+  }
+  a:has(#hero-learn-more):hover span:nth-child(8) {
+   transform: translateY(-0px);
+  }
+  a:has(#hero-learn-more):hover span:nth-child(9) {
+   transform: translateY(2.4px);
+  }
+  a:has(#hero-learn-more):hover span:nth-child(10) {
+   transform: translateY(4.3px);
   }
  </style>
 </Base>
