@@ -9,9 +9,12 @@ import PersonSchema from '@components/PersonSchema.astro';
 import EmojiTextWave from '@components/EmojiTextWave.astro';
 
 import imageAstroFriendWave from '@images/astro-friend/astro-friend-wave.png';
-import imageDatadogSummits from '@images/general/datadog-summits.png';
-import imageDatadogSecuritylabs from '@images/general/datadog-securitylabs.png';
-import imageDavidsPlaceCookbook from '@images/general/davids-place-cookbook.png';
+import imageDatadogSummits from '@images/general/project-datadog-summits.png';
+import imageDatadogSecuritylabs from '@images/general/project-datadog-securitylabs.png';
+import imageDavidsPlaceCookbook from '@images/general/project-davids-place-cookbook.png';
+import headshot from '@images/general/david-weid-headshot-3.jpg';
+import flurry from '@images/general/cat-flurry.jpg';
+import pekoe from '@images/general/cat-pekoe.jpg';
 
 import IconLinkedin from '@images/icons/linkedin.svg';
 import IconCaretDown from '@images/icons/caret-down.svg';
@@ -20,8 +23,6 @@ import IconComments from '@images/icons/comments.svg';
 import IconFileBoxes from '@images/icons/file-boxes.svg';
 import IconBarGraph from '@images/icons/bar-graph.svg';
 import IconExternalLink from '@images/icons/external-link.svg';
-
-import headshot from '@images/general/david-weid-headshot-3.jpg';
 
 const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'David Weid II | Senior Web Development Engineer Portfolio';
@@ -155,7 +156,7 @@ const heroData = {
     icon: IconLinkedin,
   },
   cta2: {
-    link: '#',
+    link: '#about',
     icon: IconCaretDown,
   },
 };
@@ -181,6 +182,8 @@ const expertiseData = [
 
 const projectData = [
   {
+    eyebrow: 'Work Project',
+    emoji: '💼',
     title: 'Datadog Sites Replatforming',
     description:
       'Advocated, planned, and led the transition from an old technology stack to a modern one, including the adoption of a CMS, increasing team bandwidth and streamlining content workflows',
@@ -190,6 +193,8 @@ const projectData = [
     hoverClass: 'hover:bg-green-pastel-light dark:hover:bg-green-contrast/50',
   },
   {
+    eyebrow: 'Work Project',
+    emoji: '💼',
     title: 'Datadog Security Labs',
     description:
       'As the primary point of contact for content writers for site maintenance, analytics, and feature requests, I built and monitored site analytics with RUM, boosting site insights, performance, and user engagement.',
@@ -199,6 +204,8 @@ const projectData = [
     hoverClass: 'hover:bg-teal-vibrant/40 dark:hover:bg-teal-vibrant/25',
   },
   {
+    eyebrow: 'Personal Project',
+    emoji: '🚀',
     title: 'David’s Place Cookbook App',
     description:
       'Developed a full-stack web application using Astro, TailwindCSS, and Firebase, providing users a one-stop solution for recipe management and meal planning.',
@@ -217,7 +224,7 @@ const projectData = [
   classes="bg-blue-pastel-light text-dark dark:bg-green-vibrant/25 dark:text-light"
 >
   <!-- Hero -->
-  <section class="container">
+  <section id="hero" class="container">
     <span class="spacer-40-80-80"></span>
     <div
       class="bg-light dark:bg-medium px-6 tablet:px-20 desktop:px-28 py-10 tablet:py-12 rounded-16-24-32 grid grid-cols-1 laptop:grid-cols-2 gap-10"
@@ -267,7 +274,7 @@ const projectData = [
             heroData.cta1 && (
               <a
                 href={heroData.cta1.link}
-                class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-green-contrast border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-light hover:bg-lavender-pastel hover:border-dark transition-[background-color,border-color] duration-500"
+                class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-green-contrast border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-white hover:bg-lavender-pastel hover:border-dark transition-[background-color,border-color] duration-500"
                 {...(heroData.cta1.ariaLabel && {
                   'aria-label': heroData.cta1.ariaLabel,
                 })}
@@ -360,7 +367,7 @@ const projectData = [
   </section>
 
   <!-- Expertise (x4) -->
-  <section>
+  <section id="expertise">
     <span class="spacer-40-80-80"></span>
 
     <div
@@ -382,13 +389,16 @@ const projectData = [
   </section>
 
   <!-- Projects -->
-  <section class="container">
+  <section id="projects" class="container">
     <span class="spacer-40-80-80"></span>
 
     <div class="bg-light dark:bg-medium rounded-16-24-32 flex flex-col">
       {
         projectData.map(
-          ({ title, description, image, link, hoverClass }, index) => (
+          (
+            { eyebrow, emoji, title, description, image, link, hoverClass },
+            index,
+          ) => (
             <a
               href={link}
               {...(link.includes('https') && {
@@ -398,6 +408,7 @@ const projectData = [
               class={`group px-6 tablet:px-20 desktop:px-28 py-10 tablet:py-12 ${index === 0 && 'rounded-t-2xl tablet:rounded-t-3xl desktop:rounded-t-4xl'} ${index === projectData.length - 1 && 'rounded-b-2xl tablet:rounded-b-3xl desktop:rounded-b-4xl'} flex flex-col laptop:flex-row gap-5 laptop:gap-10 items-center ${index % 2 === 0 ? '' : 'justify-end'} ${hoverClass} transition-[background-color] duration-500`}
             >
               <Image
+                loading="lazy"
                 src={image}
                 alt={title}
                 width={799}
@@ -407,6 +418,9 @@ const projectData = [
               <div
                 class={`px-6 laptop:px-0 ${index % 2 === 0 ? 'laptop:order-2' : 'laptop:order-0'}`}
               >
+                <span class="block uppercase text-sm font-semibold font-sans-syne">
+                  {eyebrow} {emoji}
+                </span>
                 <h2 class="text-display-eyebrow mb-3 flex items-center">
                   {title}
                   {link.includes('https') && (
@@ -425,6 +439,84 @@ const projectData = [
 
     <span class="spacer-40-80-80"></span>
   </section>
+
+  <!-- About me -->
+  <section id="about" class="desktop:px-28">
+    <span class="spacer-40-80-80"></span>
+
+    <div
+      class="container grid grid-cols-1 laptop:grid-cols-2 gap-10 desktop:gap-20 items-start"
+    >
+      <div
+        class="grid grid-cols-2 gap-4 items-stretch max-w-[700px] laptop:justify-self-end w-full"
+      >
+        <!-- Left: big image spans full height -->
+        <div class="relative aspect-square">
+          <Image
+            loading="lazy"
+            src={headshot}
+            alt="David Weid II"
+            width={400}
+            height={400}
+            densities={[1.5, 2, 2.5, 3]}
+            class="absolute inset-0 w-full h-full object-cover rounded-16-24-32"
+          />
+        </div>
+
+        <!-- Right: two stacked images sharing the same height -->
+        <div class="flex flex-col gap-4 h-full">
+          <div class="relative flex-1">
+            <Image
+              loading="lazy"
+              src={flurry}
+              alt="Flurry the cat"
+              width={400}
+              height={400}
+              densities={[1.5, 2, 2.5, 3]}
+              class="absolute inset-0 w-full h-full object-cover rounded-16-24-32"
+            />
+          </div>
+          <div class="relative flex-1">
+            <Image
+              loading="lazy"
+              src={pekoe}
+              alt="Pekoe the cat"
+              width={400}
+              height={400}
+              densities={[1.5, 2, 2.5, 3]}
+              class="absolute inset-0 w-full h-full object-cover rounded-16-24-32"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="text-pretty">
+        <h2 class="text-display-eyebrow mb-3">About Me</h2>
+        <p class="text-lg laptop:text-xl desktop:max-w-[700px] mb-5">
+          I’m David Weid II, a Senior Web Dev Engineer with 6+ years of
+          experience specializing in high-performance web solutions using
+          JavaScript, TypeScript, and a variety of modern frameworks,
+          comfortable working with both static and server-rendered
+          architectures.
+        </p>
+        <p class="text-lg laptop:text-xl desktop:max-w-[700px] mb-5">
+          I’m passionate about creating accessible, high-performing digital
+          experiences that prioritize user needs and business goals — my focus
+          is always on the end-user, guiding projects from concept to
+          deployment.
+        </p>
+        <p class="text-lg laptop:text-xl desktop:max-w-[700px]">
+          When I’m not coding, I enjoy gaming, reading about all things current,
+          and exploring new technologies. Feel free to check out my portfolio,
+          cookbook app, and blog to learn more about my work and interests.
+        </p>
+      </div>
+    </div>
+
+    <span class="spacer-40-80-80"></span>
+  </section>
+
+  <!-- TODO: 3 Pillars: People, Quality, Impact -->
 
   <style>
     #hero-blob-1 {
