@@ -5,17 +5,13 @@ import config from 'package.json';
 import { Image, getImage } from 'astro:assets';
 
 import Base from '@layouts/Base.astro';
-import EmojiTextWave from '@components/EmojiTextWave.astro';
-import ExternalLink from '@components/ExternalLink.astro';
-import Card from '@components/Card.astro';
-import Badge from '@components/Badge.astro';
-import NoteBlock from '@components/NoteBlock.astro';
 import PersonSchema from '@components/PersonSchema.astro';
+import EmojiTextWave from '@components/EmojiTextWave.astro';
 
-import headshot from '@images/general/david-weid-headshot-3.jpg';
-import imageCat from '@images/general/flurry.jpg';
 import imageAstroFriendWave from '@images/astro-friend/astro-friend-wave.png';
-import imageWebsiteStackWhite from '@images/general/website-stack-white.png';
+import imageDatadogSummits from '@images/general/datadog-summits.png';
+import imageDatadogSecuritylabs from '@images/general/datadog-securitylabs.png';
+import imageDavidsPlaceCookbook from '@images/general/davids-place-cookbook.png';
 
 import IconLinkedin from '@images/icons/linkedin.svg';
 import IconCaretDown from '@images/icons/caret-down.svg';
@@ -23,10 +19,9 @@ import IconBrowser from '@images/icons/browser.svg';
 import IconComments from '@images/icons/comments.svg';
 import IconFileBoxes from '@images/icons/file-boxes.svg';
 import IconBarGraph from '@images/icons/bar-graph.svg';
-import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
-import IconDdIconRgb from '@images/icons/dd_icon_purple.svg';
-import IconArrowBubblesRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
-import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
+import IconExternalLink from '@images/icons/external-link.svg';
+
+import headshot from '@images/general/david-weid-headshot-3.jpg';
 
 const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'David Weid II | Senior Web Development Engineer Portfolio';
@@ -142,9 +137,6 @@ const skills = [
   'DatoCMS',
 ];
 
-const astroVersion = config.dependencies.astro.slice(1);
-const tailwindVersion = config.dependencies.tailwindcss.slice(1);
-
 // Person Schema data
 const siteUrl = 'https://davids-place-portfolio.web.app';
 const personImageUrl = `${siteUrl}${headshot.src}`;
@@ -186,6 +178,36 @@ const expertiseData = [
     title: 'Performance, SEO & Optimization',
   },
 ];
+
+const projectData = [
+  {
+    title: 'Datadog Sites Replatforming',
+    description:
+      'Advocated, planned, and led the transition from an old technology stack to a modern one, including the adoption of a CMS, increasing team bandwidth and streamlining content workflows',
+    image: imageDatadogSummits,
+    link: 'https://events.datadoghq.com/summits/',
+    linkLabel: 'View Datadog Summits',
+    hoverClass: 'hover:bg-green-pastel-light dark:hover:bg-green-contrast/50',
+  },
+  {
+    title: 'Datadog Security Labs',
+    description:
+      'As the primary point of contact for content writers for site maintenance, analytics, and feature requests, I built and monitored site analytics with RUM, boosting site insights, performance, and user engagement.',
+    image: imageDatadogSecuritylabs,
+    link: 'https://securitylabs.datadoghq.com/',
+    linkLabel: 'Visit Datadog Security Labs',
+    hoverClass: 'hover:bg-teal-vibrant/40 dark:hover:bg-teal-vibrant/25',
+  },
+  {
+    title: 'David’s Place Cookbook App',
+    description:
+      'Developed a full-stack web application using Astro, TailwindCSS, and Firebase, providing users a one-stop solution for recipe management and meal planning.',
+    image: imageDavidsPlaceCookbook,
+    link: '/about/cookbook/',
+    linkLabel: 'Learn more about the Cookbook',
+    hoverClass: 'hover:bg-blue-pastel/75 dark:hover:bg-blue-contrast/50',
+  },
+];
 ---
 
 <Base
@@ -198,7 +220,7 @@ const expertiseData = [
   <section class="container">
     <span class="spacer-40-80-80"></span>
     <div
-      class="bg-light dark:bg-medium px-2.5 tablet:px-20 desktop:px-28 py-12 rounded-16-24-32 grid grid-cols-1 laptop:grid-cols-2 gap-10"
+      class="bg-light dark:bg-medium px-6 tablet:px-20 desktop:px-28 py-10 tablet:py-12 rounded-16-24-32 grid grid-cols-1 laptop:grid-cols-2 gap-10"
     >
       <div>
         <span class="inline-block text-display-eyebrow">
@@ -270,7 +292,7 @@ const expertiseData = [
             heroData.cta2 && (
               <a
                 href={heroData.cta2.link}
-                class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-lavender-pastel/50 border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-medium hover:bg-green-pastel/50 hover:border-dark/50 transition-[background-color,border-color] duration-500"
+                class="group flex items-center gap-2 w-max max-w-full px-6 desktop:px-8 py-3 rounded-full bg-lavender-pastel/50 dark:bg-lavender-pastel border-b-4 border-transparent font-semibold text-sm tablet:text-xl tracking-wide text-medium hover:bg-green-pastel/50 dark:hover:bg-green-pastel hover:border-dark/50 transition-[background-color,border-color] duration-500"
               >
                 <>
                   <span
@@ -353,6 +375,51 @@ const expertiseData = [
             </p>
           </div>
         ))
+      }
+    </div>
+
+    <span class="spacer-40-80-80"></span>
+  </section>
+
+  <!-- Projects -->
+  <section class="container">
+    <span class="spacer-40-80-80"></span>
+
+    <div class="bg-light dark:bg-medium rounded-16-24-32 flex flex-col">
+      {
+        projectData.map(
+          ({ title, description, image, link, hoverClass }, index) => (
+            <a
+              href={link}
+              {...(link.includes('https') && {
+                target: '_blank',
+                rel: 'noopener noreferrer',
+              })}
+              class={`group px-6 tablet:px-20 desktop:px-28 py-10 tablet:py-12 ${index === 0 && 'rounded-t-2xl tablet:rounded-t-3xl desktop:rounded-t-4xl'} ${index === projectData.length - 1 && 'rounded-b-2xl tablet:rounded-b-3xl desktop:rounded-b-4xl'} flex flex-col laptop:flex-row gap-5 laptop:gap-10 items-center ${index % 2 === 0 ? '' : 'justify-end'} ${hoverClass} transition-[background-color] duration-500`}
+            >
+              <Image
+                src={image}
+                alt={title}
+                width={799}
+                height={450}
+                class={`w-full laptop:w-[375px] h-auto rounded-16-24-32 laptop:order-1 ${index % 2 === 0 ? 'group-hover:-skew-1' : 'group-hover:skew-1'} transition-transform duration-500`}
+              />
+              <div
+                class={`px-6 laptop:px-0 ${index % 2 === 0 ? 'laptop:order-2' : 'laptop:order-0'}`}
+              >
+                <h2 class="text-display-eyebrow mb-3 flex items-center">
+                  {title}
+                  {link.includes('https') && (
+                    <IconExternalLink class="inline w-5 h-5 ml-2 fill-medium dark:fill-white" />
+                  )}
+                </h2>
+                <p class="text-lg laptop:text-xl laptop:max-w-[700px]">
+                  {description}
+                </p>
+              </div>
+            </a>
+          ),
+        )
       }
     </div>
 
