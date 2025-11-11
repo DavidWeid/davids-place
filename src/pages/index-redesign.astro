@@ -578,6 +578,52 @@ const threePillarsData = [
     <span class="spacer-40-80-80"></span>
   </section>
 
+  <!-- Contact -->
+  <section id="hero" class="container">
+    <span class="spacer-40-80-80"></span>
+    <div
+      class="bg-light dark:bg-medium px-6 tablet:px-20 desktop:px-28 py-10 tablet:py-12 rounded-16-24-32 grid grid-cols-1 laptop:grid-cols-2 gap-10"
+    >
+      <div>
+        <span class="inline-block text-display-eyebrow">
+          <EmojiTextWave emoji="🌐" text="Connect and" />
+        </span>
+        <h2 class="text-display text-gradient-2">Reach Out</h2>
+
+        <span class="spacer-20"></span>
+
+        <p
+          class="text-display-minor text-pretty tablet:max-w-3/4 laptop:max-w-full"
+        >
+          Learn more or get in touch
+        </p>
+      </div>
+
+      <div>
+        <div class="flex flex-col gap-5">
+          {
+            externalLinks.map(({ link, title, description }) => (
+              <a
+                href={link}
+                class="group flex flex-col gap-2 w-full px-6 desktop:px-8 py-4 rounded-16-24-32 text-medium hover:bg-lavender-pastel/50 dark:bg-lavender-pastel border-b-4 border-transparent bg-green-pastel/50 dark:hover:bg-green-pastel hover:border-dark/50 transition-[background-color,border-color] duration-500"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <h3 class="text-lg laptop:text-2xl font-semibold font-sans-syne">
+                  {title}
+                </h3>
+                <p class="text-pretty text-lg laptop:text-xl">{description}</p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <span class="spacer-40-80-80"></span>
+  </section>
+
+  <span class="spacer-80-112-112"></span>
+
   <style>
     #hero-blob-1 {
       animation: blobMove1 8s infinite ease-in-out;
