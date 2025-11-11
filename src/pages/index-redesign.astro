@@ -23,6 +23,9 @@ import IconComments from '@images/icons/comments.svg';
 import IconFileBoxes from '@images/icons/file-boxes.svg';
 import IconBarGraph from '@images/icons/bar-graph.svg';
 import IconExternalLink from '@images/icons/external-link.svg';
+import IconCommunity from '@images/icons/community.svg';
+import IconAnalyticsSearch from '@images/icons/analytics-search.svg';
+import IconWorldReach from '@images/icons/world-reach.svg';
 
 const baseURL = import.meta.env.BASE_URL;
 const pageTitle = 'David Weid II | Senior Web Development Engineer Portfolio';
@@ -213,6 +216,30 @@ const projectData = [
     link: '/about/cookbook/',
     linkLabel: 'Learn more about the Cookbook',
     hoverClass: 'hover:bg-blue-pastel/75 dark:hover:bg-blue-contrast/50',
+  },
+];
+
+const threePillarsData = [
+  {
+    title: 'People',
+    description:
+      'I prioritize collaborative solutions that truly resonate, help, and provide value for the target audience.',
+    icon: IconCommunity,
+    cardClasses: 'bg-red-pastel dark:bg-red-contrast',
+  },
+  {
+    title: 'Quality',
+    description:
+      'I am committed to delivering high-quality code and experiences that are accessible, performant, and maintainable.',
+    icon: IconAnalyticsSearch,
+    cardClasses: 'bg-teal-vibrant dark:bg-teal-vibrant/40',
+  },
+  {
+    title: 'Impact',
+    description:
+      'I focus on driving meaningful results, whether it’s improving user engagement, conversion rates, or overall satisfaction.',
+    icon: IconWorldReach,
+    cardClasses: 'bg-purple-pastel dark:bg-purple-vibrant/90',
   },
 ];
 ---
@@ -491,7 +518,7 @@ const projectData = [
       </div>
 
       <div class="text-pretty">
-        <h2 class="text-display-eyebrow mb-3">About Me</h2>
+        <h2 class="text-display-eyebrow mb-3"><a href="#about">About Me</a></h2>
         <p class="text-lg laptop:text-xl desktop:max-w-[700px] mb-5">
           I’m David Weid II, a Senior Web Dev Engineer with 6+ years of
           experience specializing in high-performance web solutions using
@@ -516,7 +543,40 @@ const projectData = [
     <span class="spacer-40-80-80"></span>
   </section>
 
-  <!-- TODO: 3 Pillars: People, Quality, Impact -->
+  <!-- 3 Pillars: People, Quality, Impact -->
+  <section id="three-pillars">
+    <span class="spacer-40-80-80"></span>
+
+    <h2 class="text-display-eyebrow text-center pb-20">
+      <a href="#three-pillars">My Approach and Philosophy</a>
+    </h2>
+
+    <div
+      class="container flex flex-wrap gap-10 tablet:gap-5 laptop:gap-10 desktop:gap-5 justify-center"
+    >
+      {
+        threePillarsData.map(
+          ({ icon: Icon, title, description, cardClasses }) => (
+            <div
+              class={`group flex flex-col items-center gap-5 tablet:gap-10 w-[275px] laptop:w-[300px] desktop:w-[450px] text-center p-5 rounded-16-24-32 ${cardClasses}`}
+            >
+              <Icon class="w-40 h-40 group-hover:scale-110 transition-[scale] duration-500" />
+              <div>
+                <p class="text-center text-lg laptop:text-2xl font-semibold font-sans-syne mb-1">
+                  — {title} —
+                </p>
+                <p class="text-pretty text-center text-lg laptop:text-xl">
+                  {description}
+                </p>
+              </div>
+            </div>
+          ),
+        )
+      }
+    </div>
+
+    <span class="spacer-40-80-80"></span>
+  </section>
 
   <style>
     #hero-blob-1 {
