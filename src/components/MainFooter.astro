@@ -2,6 +2,7 @@
 import IconGithub from '@images/icons/github.svg';
 import IconLinkedin from '@images/icons/linkedin.svg';
 import IconEmail from '@images/icons/email.svg';
+import IconAstro9 from '@images/astro/astro-9.svg';
 
 const baseURL = import.meta.env.BASE_URL;
 const year: number = new Date().getFullYear();
@@ -14,91 +15,120 @@ const isCookbookAboutPage = Astro.url.pathname.includes('about/cookbook');
 ---
 
 <footer
-  class="bg-blue-contrast/85 dark:bg-green-contrast/75 text-light z-30 py-4 font-sans-syne"
+  class="relative bg-blue-contrast/85 dark:bg-green-contrast/75 text-light z-30 py-4 font-sans-syne"
 >
-  <div class="container flex items-center justify-between">
-    <span class="text-light flex items-center">David Weid | {year}</span>
+  <div class="container flex flex-wrap items-center justify-between">
+    <span class="text-light flex items-center w-full tablet:w-max px-2 py-2"
+      >David Weid | {year}</span
+    >
 
-    <ul class="flex items-center gap-3">
-      <li>
+    {
+      !isHomepage && (
         <a
-          href={`${baseURL}cookbook/`}
-          class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
-          >Cookbook</a
+          href="/"
+          aria-label="Go to homepage"
+          title="Go to homepage"
+          class="group"
         >
-      </li>
-
-      <li>
-        <a
-          href={`${baseURL}about/`}
-          class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
-          >About Me</a
-        >
-      </li>
-
-      <li>
-        <a
-          href={`${baseURL}blog/`}
-          class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
-          >Blog</a
-        >
-      </li>
-    </ul>
-
-    <ul class="flex items-center gap-3">
-      <li>
-        <a
-          href={`${baseURL}style/`}
-          class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
-          >Site Styles</a
-        >
-      </li>
-
-      <li>
-        <a
-          href="https://github.com/DavidWeid/"
-          title="GitHub Profile"
-          class="group block px-2 py-2"
-        >
-          <span class="sr-only"
-            >View my GitHub Profile (Redirects to GitHub.com)</span
-          >
-          <IconGithub
-            class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
+          <IconAstro9
+            id="icon-astro"
+            class="w-12 h-auto hidden tablet:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] group-hover:scale-105 transition-[scale] duration-500"
           />
         </a>
-      </li>
+      )
+    }
 
-      <li>
-        <a
-          href="https://www.linkedin.com/in/david-weid/"
-          title="LinkedIn Profile"
-          class="group block px-2 py-2"
-        >
-          <span class="sr-only"
-            >View my LinkedIn Profile (Redirects to LinkedIn.com)</span
-          >
-          <IconLinkedin
-            class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
-          />
-        </a>
-      </li>
+    {
+      isHomepage && (
+        <IconAstro9
+          id="icon-astro"
+          class="w-12 h-auto hidden tablet:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%]"
+        />
+      )
+    }
 
-      <li>
-        <a
-          href="mailto:david.weid.2@gmail.com"
-          title="Email Contact"
-          class="group block px-2 py-2"
-        >
-          <span class="sr-only"
-            >Send me an email (Open email via OS settings)</span
+    <div class="flex flex-col">
+      <ul class="flex items-center gap-3">
+        <li>
+          <a
+            href={`${baseURL}cookbook/`}
+            class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
+            >Cookbook</a
           >
-          <IconEmail
-            class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
-          />
-        </a>
-      </li>
-    </ul>
+        </li>
+
+        <li>
+          <a
+            href={`${baseURL}about/`}
+            class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
+            >About Me</a
+          >
+        </li>
+
+        <li>
+          <a
+            href={`${baseURL}blog/`}
+            class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
+            >Blog</a
+          >
+        </li>
+      </ul>
+
+      <ul class="flex items-center gap-3">
+        <li>
+          <a
+            href={`${baseURL}style/`}
+            class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
+            >Site Styles</a
+          >
+        </li>
+
+        <li>
+          <a
+            href="https://github.com/DavidWeid/"
+            title="GitHub Profile"
+            class="group block px-2 py-2"
+          >
+            <span class="sr-only"
+              >View my GitHub Profile (Redirects to GitHub.com)</span
+            >
+            <IconGithub
+              class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
+            />
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.linkedin.com/in/david-weid/"
+            title="LinkedIn Profile"
+            class="group block px-2 py-2"
+          >
+            <span class="sr-only"
+              >View my LinkedIn Profile (Redirects to LinkedIn.com)</span
+            >
+            <IconLinkedin
+              class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
+            />
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="mailto:david.weid.2@gmail.com"
+            title="Email Contact"
+            class="group block px-2 py-2"
+          >
+            <span class="sr-only"
+              >Send me an email (Open email via OS settings)</span
+            >
+            <IconEmail
+              class="fill-light group-hover:fill-green-emerald transition-[fill,scale] group-hover:scale-125"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="container">
@@ -163,3 +193,20 @@ const isCookbookAboutPage = Astro.url.pathname.includes('about/cookbook');
     >
   </div>
 </footer>
+
+<style>
+  /* Astro Icon Float animation */
+  #icon-astro {
+    animation: float 10s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+</style>
