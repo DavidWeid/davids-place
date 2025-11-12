@@ -1,7 +1,6 @@
 ---
 export const prerender = true;
 
-import config from 'package.json';
 import { Image, getImage } from 'astro:assets';
 
 import Base from '@layouts/Base.astro';
@@ -396,6 +395,18 @@ const threePillarsData = [
     </div>
     <span class="spacer-40-80-80"></span>
   </section>
+
+  <PersonSchema
+    name="David Weid II"
+    jobTitle="Senior Web Development Engineer"
+    company="Datadog"
+    description="Senior Web Development Engineer at Datadog with 6+ years JavaScript, TypeScript & modern web development experience. Specializes in frontend performance, accessibility, and React/Astro applications."
+    url={siteUrl}
+    imageUrl={personImageUrl}
+    linkedin="https://www.linkedin.com/in/david-weid/"
+    github="https://github.com/DavidWeid/"
+    email="david.weid.2@gmail.com"
+  />
 
   <!-- Expertise (x4) -->
   <section id="expertise">
