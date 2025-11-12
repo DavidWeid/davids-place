@@ -58,6 +58,25 @@
   --color-green-emerald: #50c878; /* Vivid light green */
   --color-green-light: #9fdeb0; /* Light green */
 
+  /* Redesign Colors */
+  --color-blue-vibrant: #2563eb;
+  --color-red-vibrant: #f0324e;
+  --color-green-vibrant: #23c033;
+  --color-purple-vibrant: #9329d9;
+  --color-teal-vibrant: #00c0b2;
+  --color-blue-contrast: #1641be; /* Darker blue */
+  --color-red-contrast: #bd1b2c; /* Darker red */
+  --color-green-contrast: #0c7f13; /* Darker green */
+  --color-yellow-contrast: #ed9a00; /* Darker yellow */
+  --color-blue-pastel: #8ea2f3;
+  --color-blue-pastel-light: #8dbdee;
+  --color-green-pastel: #94d997;
+  --color-green-pastel-light: #b8e6ba;
+  --color-red-pastel: #f7959d;
+  --color-red-pastel-light: #fbb9be;
+  --color-lavender-pastel: #8e89f1;
+  --color-purple-pastel: #bb8de8;
+
   --shadow-sharp: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
   --shadow-deep: 0 22px 70px 4px rgba(0, 0, 0, 0.6);
   --shadow-shallow: 0 11px 35px 2px rgba(0, 0, 0, 0.3);

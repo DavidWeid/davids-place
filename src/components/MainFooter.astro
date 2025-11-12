@@ -14,15 +14,42 @@ const isCookbookAboutPage = Astro.url.pathname.includes('about/cookbook');
 ---
 
 <footer
-  class="bg-dark text-light from-blue-dark/60 to-blue-darfrom-blue-dark/10 hover:from-blue-dark/80 z-30 bg-linear-to-tr py-4"
+  class="bg-blue-contrast/85 dark:bg-green-contrast/75 text-light z-30 py-4 font-sans-syne"
 >
   <div class="container flex items-center justify-between">
-    <span class="text-light flex items-center">David {year}</span>
+    <span class="text-light flex items-center">David Weid | {year}</span>
+
+    <ul class="flex items-center gap-3">
+      <li>
+        <a
+          href={`${baseURL}cookbook/`}
+          class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
+          >Cookbook</a
+        >
+      </li>
+
+      <li>
+        <a
+          href={`${baseURL}about/`}
+          class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
+          >About Me</a
+        >
+      </li>
+
+      <li>
+        <a
+          href={`${baseURL}blog/`}
+          class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
+          >Blog</a
+        >
+      </li>
+    </ul>
+
     <ul class="flex items-center gap-3">
       <li>
         <a
           href={`${baseURL}style/`}
-          class="hover:text-green-emerald block px-2 py-2 text-xs"
+          class="hover:text-green-emerald hover:scale-105 block px-2 py-2 text-base tracking-wider transition-[color,scale]"
           >Site Styles</a
         >
       </li>
@@ -83,7 +110,7 @@ const isCookbookAboutPage = Astro.url.pathname.includes('about/cookbook');
       isHomepage && (
         <a
           href="https://www.flaticon.com/authors/justicon"
-          class="text-center text-light/50 hover:text-green-emerald/75 text-xs"
+          class="text-center text-light/50 hover:text-green-emerald hover:scale-105 text-xs transition-[color,scale]"
         >
           JS, HTML, CSS icon by justicon
           <span class="sr-only">(Redirects to Flaticon.com)</span>
@@ -98,7 +125,7 @@ const isCookbookAboutPage = Astro.url.pathname.includes('about/cookbook');
         <a
           href="https://www.canva.com/p/unfold-x/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
           target="_blank"
-          class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
+          class="text-light/50 hover:text-green-emerald hover:scale-105 text-center text-xs transition-[color,scale]"
         >
           Cat, drink, and cupcake icons by Unfold X
           <span class="sr-only">(Redirects to Canva.com)</span>
@@ -111,7 +138,7 @@ const isCookbookAboutPage = Astro.url.pathname.includes('about/cookbook');
         <a
           href="https://www.canva.com/p/trendify/"
           target="_blank"
-          class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
+          class="text-light/50 hover:text-green-emerald hover:scale-105 text-center text-xs transition-[color,scale]"
         >
           Content images @trendify
           <span class="sr-only">(Redirects to Canva.com)</span>
@@ -130,7 +157,7 @@ const isCookbookAboutPage = Astro.url.pathname.includes('about/cookbook');
     <a
       href="https://www.canva.com/p/dedy-izhams-images/?utm_medium=referral&utm_source=creator_share&utm_campaign=creator_share"
       target="_blank"
-      class="text-light/50 hover:text-green-emerald/75 text-center text-xs"
+      class="text-light/50 hover:text-green-emerald hover:scale-105 text-center text-xs transition-[color,scale]"
       >Astronaut cartoon by Dedy Izham
       <span class="sr-only">(Redirects to Canva.com)</span></a
     >

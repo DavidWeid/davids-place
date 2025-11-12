@@ -173,7 +173,10 @@ const heroData = [
                     <span class="text-dark/75 dark:text-light/85 text-xl font-bold tracking-wider">
                       Step {index + 1}
                     </span>
-                    <span class="max-w-prose leading-7">{instruction}</span>
+                    <span
+                      class="max-w-prose leading-7"
+                      set:html={instruction}
+                    />
                     <hr class="border-green-emerald w-1/4" />
                   </li>
                 ))}

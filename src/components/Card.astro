@@ -43,9 +43,7 @@ let target =
         }
       </h2>
       <span class="block pb-4"></span>
-      <p class="font-sans-syne text-lg">
-        {body}
-      </p>
+      <p class="font-sans-syne text-lg" set:html={body} />
     </div>
     {
       tags && tags.length > 0 ? (

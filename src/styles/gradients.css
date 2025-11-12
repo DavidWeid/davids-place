@@ -3,6 +3,11 @@
   @apply from-blue-darker via-blue-dark to-green-dark dark:from-green-light dark:via-green-emerald dark:to-blue-light bg-gradient-to-br from-10% via-40% to-75% bg-[size:100%] bg-clip-text bg-[position:0%] transition-all duration-500 ease-in-out select-none hover:bg-[size:400%];
 }
 
+.text-gradient-2 {
+  -webkit-text-fill-color: transparent;
+  @apply from-blue-vibrant via-blue-light to-blue-contrast dark:from-green-vibrant dark:via-green-contrast dark:to-green-vibrant bg-linear-to-br from-10% via-40% to-75% bg-size-[100%] bg-clip-text bg-position-[0%] transition-all duration-500 ease-in-out select-none hover:bg-size-[400%];
+}
+
 .border-gradient {
   @apply relative p-0.5 before:absolute before:inset-0 before:border before:border-transparent before:mask-exclude before:content-[''];
 

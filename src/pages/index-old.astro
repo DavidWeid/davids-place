@@ -1,0 +1,674 @@
+---
+export const prerender = true;
+
+import config from 'package.json';
+import { Image, getImage } from 'astro:assets';
+
+import Base from '@layouts/Base.astro';
+import EmojiTextWave from '@components/EmojiTextWave.astro';
+import ExternalLink from '@components/ExternalLink.astro';
+import Card from '@components/Card.astro';
+import Badge from '@components/Badge.astro';
+import NoteBlock from '@components/NoteBlock.astro';
+import PersonSchema from '@components/PersonSchema.astro';
+
+import headshot from '@images/general/david-weid-headshot-3.jpg';
+import imageCat from '@images/general/cat-flurry.jpg';
+import imageWebsiteStackWhite from '@images/general/website-stack-white.png';
+
+import IconDdIconWhite from '@images/icons/dd_icon_white.svg';
+import IconDdIconRgb from '@images/icons/dd_icon_purple.svg';
+import IconArrowBubblesRightBlue from '@images/icons/arrow-bubbles-right-blue.svg';
+import IconArrowBubblesRightGreen from '@images/icons/arrow-bubbles-right-green.svg';
+
+const baseURL = import.meta.env.BASE_URL;
+const pageTitle = 'David Weid II | Senior Web Development Engineer Portfolio';
+const pageDescription =
+  'Senior Web Dev Engineer at Datadog with 6+ years JavaScript, TypeScript & modern web development experience. View my portfolio, cookbook, and blog.';
+
+const headshotImage = await getImage({
+  src: headshot,
+  width: 400,
+  height: 400,
+  format: 'webp',
+});
+
+const preloadImageData = {
+  src: headshotImage.src,
+  format: 'webp',
+  pathname: Astro.url.pathname,
+};
+
+const heroTitle =
+  '<span class="text-gradient">David <span class="whitespace-nowrap">Weid II</span></span>';
+
+const externalLinks = [
+  {
+    link: 'https://www.linkedin.com/in/david-weid/',
+    title: 'LinkedIn Profile',
+    description:
+      'View my LinkedIn profile for an idea of my professional background.',
+    tags: ['social'],
+  },
+  {
+    link: 'https://github.com/DavidWeid/',
+    title: 'GitHub Profile',
+    description: 'View my GitHub profile for an idea of my code cadences.',
+    tags: ['technical'],
+  },
+  {
+    link: 'mailto:david.weid.2@gmail.com',
+    title: 'Contact Me',
+    description: 'Email me directly if that is your preference.',
+    tags: ['contact'],
+  },
+];
+
+const internalLinks = [
+  {
+    link: `${baseURL}about/cookbook/`,
+    title: 'Marketing Page for Cookbook',
+    description: 'Learn about my cookbook app through a custom landing page.',
+    tags: ['marketing', 'fundamentals', 'informational'],
+  },
+  {
+    link: `${baseURL}cookbook/`,
+    title: 'Cookbook App',
+    description: 'Explore my collection of recipes.',
+    tags: ['recipes', 'food', 'cooking'],
+  },
+  {
+    link: `${baseURL}about/`,
+    title: 'Fun About Page',
+    description: 'My gamified personal bio.',
+    tags: ['about', 'fun', 'stats'],
+  },
+  {
+    link: `${baseURL}blog/`,
+    title: 'Blog App',
+    description: 'Read articles I have written about various topics.',
+    tags: ['blog', 'articles', 'writing'],
+  },
+  {
+    link: `${baseURL}register/`,
+    title: 'Sign up Page for David’s Place',
+    description: 'Create an account to join the community.',
+    tags: ['authentication', 'firebase', 'accounts'],
+  },
+  {
+    link: `${baseURL}sign-in/`,
+    title: 'Sign in Page for David’s Place',
+    description: 'Log in to access your account and saved content.',
+    tags: ['authentication', 'firebase', 'accounts'],
+  },
+  {
+    link: `${baseURL}style/`,
+    title: 'Site Style Visualization',
+    description: 'A visual representation of the site’s colors and SVGs',
+    tags: ['styles', 'visuals', 'icons'],
+  },
+];
+
+const skills = [
+  'Javascript',
+  'HTML5',
+  'CSS',
+  'TailwindCSS',
+  'AlpineJS',
+  'AstroJS',
+  'Hugo (SSG)',
+  '11ty',
+  'Accessibility',
+  'SEO',
+  'Design Systems',
+  'Component Architecture',
+  'React',
+  'Bootstrap',
+  'Materialize',
+  'Express.js',
+  'SASS',
+  'jQuery (+ deprecation)',
+  'Node.js',
+  'AJAX',
+  'WordPress',
+  'Wix',
+  'Google Analytics',
+  'AWS Amplify',
+  'Datadog RUM',
+  'DatoCMS',
+];
+
+const astroVersion = config.dependencies.astro.slice(1);
+const tailwindVersion = config.dependencies.tailwindcss.slice(1);
+
+// Person Schema data
+const siteUrl = 'https://davids-place-portfolio.web.app';
+const personImageUrl = `${siteUrl}${headshot.src}`;
+---
+
+<Base
+  title={pageTitle}
+  description={pageDescription}
+  preloadImage={preloadImageData}
+>
+  <div class="dark:bg-medium bg-light">
+    <span class="spacer-40-80-80"></span>
+
+    <section class="container">
+      <div
+        class="tablet:flex tablet:justify-center tablet:items-center desktop:items-start tablet:gap-x-14 desktop:gap-x-20 grid grid-cols-1 gap-x-10 gap-y-5"
+      >
+        <div class="tablet:gap-4 col-span-1 flex flex-col gap-2">
+          <span class="text-display-eyebrow">
+            <EmojiTextWave emoji="👋" text="Hi there" />
+          </span>
+          <h1 set:html={heroTitle} class="text-gradient text-display" />
+
+          <div
+            class="text-container relative h-9 w-full items-center overflow-hidden"
+          >
+            <div
+              id="line-one"
+              class="tablet:text-2xl flex gap-2 text-lg leading-8"
+            >
+              <p class="shrink-0">A proven</p>
+              <div
+                class="text-container tablet:w-[325px] desktop:w-full relative flex h-9 w-full items-center overflow-hidden"
+              >
+                <ul
+                  class="absolute top-0 left-0 font-semibold whitespace-nowrap"
+                >
+                  <li class="text-blue-600 dark:text-teal-500">
+                    Front-End Web Developer...
+                  </li>
+                  <li class="text-purple-600 dark:text-blue-400">
+                    Accessibility Advocate...
+                  </li>
+                  <li class="text-orange-600 dark:text-orange-400">
+                    Problem Solver...
+                  </li>
+                  <li class="text-violet-600 dark:text-pink-500">
+                    Communicator...
+                  </li>
+                  <li class="text-green-darker dark:text-green-600">Leader.</li>
+                </ul>
+              </div>
+            </div>
+            <div id="line-two">
+              <p class="tablet:text-2xl text-lg leading-8">
+                Welcome to my portfolio site
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-gradient rounded-8-12-16 col-span-1 aspect-square w-[400px] max-w-full"
+        >
+          <Image
+            id="headshot"
+            loading="eager"
+            fetchpriority="high"
+            src={headshotImage.src}
+            alt="David Weid II"
+            width={396}
+            height={396}
+            densities={[1.5, 2, 2.5, 3]}
+            class="rounded-8-12-16 relative z-10"
+          />
+          <Image
+            id="cat-icon"
+            src={imageCat}
+            alt="Cat"
+            loading="lazy"
+            width={imageCat.width}
+            height={imageCat.height}
+            class="rounded-8-12-16 hidden"
+          />
+        </div>
+      </div>
+    </section>
+    <span class="spacer-40-80-80"></span>
+
+    <div class="green-blue-shimmer-slow h-4 w-full"></div>
+  </div>
+
+  <PersonSchema
+    name="David Weid II"
+    jobTitle="Senior Web Development Engineer"
+    company="Datadog"
+    description="Senior Web Development Engineer at Datadog with 6+ years JavaScript, TypeScript & modern web development experience. Specializes in frontend performance, accessibility, and React/Astro applications."
+    url={siteUrl}
+    imageUrl={personImageUrl}
+    linkedin="https://www.linkedin.com/in/david-weid/"
+    github="https://github.com/DavidWeid/"
+    email="david.weid.2@gmail.com"
+  />
+
+  <section class="container">
+    <span class="spacer-40-80-80"></span>
+    <div
+      class="tablet:max-w-[85vw] desktopxl:max-w-[65vw] laptop:grid laptop:grid-cols-6 laptop:gap-x-10 mx-auto flex flex-col"
+    >
+      <div class="laptop:col-span-6">
+        <h2 class="text-gradient w-max max-w-full">Learn more about me</h2>
+        <span class="block pb-5"></span>
+      </div>
+
+      <div class="laptop:col-span-2">
+        <h3 class="font-sans-syne h3">
+          <EmojiTextWave emoji="🌐" text="Web Developer" />
+        </h3>
+        <span class="laptop:hidden block pb-5"></span>
+      </div>
+
+      <div class="laptop:col-span-4">
+        <p class="text-p-main">
+          As a Senior Website Development Engineer, I'm passionate about
+          building, maintaining, and improving complex digital experiences. With
+          6+ years of coding experience (since 2019), my focus is always on the
+          end-user, guiding projects from concept to deployment. I specialize in
+          high-performance web solutions using JavaScript, TypeScript, and a
+          variety of modern frameworks, comfortable working with both static and
+          server-rendered architectures. Currently, I bring this expertise to
+          Datadog in New York City as a part of the WebOps team.
+        </p>
+
+        <p class="text-p-main">
+          My approach to web development is driven by three core pillars: the
+          talented people I collaborate with, the unwavering quality of the
+          products I deliver, and the positive impact I can create for users.
+          Performance, accessibility, and usability are not just priorities;
+          they are the foundation of every project I undertake.
+        </p>
+
+        <p class="text-p-main">
+          Here are some quick ways to learn more or get in touch:
+        </p>
+
+        <span class="spacer-40"></span>
+
+        <ul class="tablet:grid-cols-3 grid grid-cols-1 gap-8">
+          {
+            externalLinks.map((link) => (
+              <Card
+                href={link.link}
+                title={link.title}
+                body={link.description}
+                tags={link.tags}
+              />
+            ))
+          }
+        </ul>
+
+        <span class="spacer-80-112-112"></span>
+      </div>
+
+      <div class="laptop:col-span-2">
+        <h3 class="font-sans-syne h3">
+          <EmojiTextWave emoji="💻" text="Coding Skills" />
+        </h3>
+        <span class="laptop:hidden block pb-5"></span>
+      </div>
+
+      <div class="laptop:col-span-4">
+        <p class="text-p-main pb-10">
+          Languages, frameworks, technologies. The front-end landscape is
+          continuously evolving, and that keeps the internet interesting. Things
+          I'm proficient with:
+        </p>
+
+        <div
+          class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5"
+        >
+          {
+            skills.map((skill) => (
+              <Badge
+                tag={skill}
+                clickable={false}
+                variant="large"
+                additionalClasses="green-blue-shimmer-slow"
+              />
+            ))
+          }
+        </div>
+
+        <span class="spacer-80-112-112"></span>
+      </div>
+
+      <div class="laptop:col-span-2">
+        <h3 class="font-sans-syne h3">
+          <EmojiTextWave emoji="💼" text="Work Experience" />
+        </h3>
+        <span class="laptop:hidden block pb-5"></span>
+      </div>
+
+      <div class="laptop:col-span-4">
+        <p
+          class="text-gradient flex w-max max-w-full items-center gap-1.5 py-0.5 text-lg font-semibold"
+        >
+          <IconDdIconWhite
+            id="dd-icon-white"
+            class="hidden h-6 w-6 dark:block"
+          />
+          <IconDdIconRgb
+            id="dd-icon-rgb"
+            class="block h-6 w-6 dark:hidden"
+          />Datadog
+        </p>
+
+        <div class="flex flex-wrap justify-between pb-8">
+          <p class="tablet:text-lg">
+            Senior Web Development Engineer (Front-End)
+          </p>
+          <p class="font-mono text-gray-600 dark:text-gray-300">
+            April 2021 – Present
+          </p>
+        </div>
+
+        <p class="text-p-main">
+          I joined Datadog in early 2021 as a Software Engineer for the Websites
+          team very early in my career. Since then, I grew into a Software
+          Engineer II and now a Senior Web Development Engineer. As the team has
+          grown, so has my role and responsibilities, allowing me to take on
+          more complex projects and lead initiatives that have a significant
+          impact on the company’s web presence.
+        </p>
+
+        <p class="text-p-main">
+          At Datadog, I update, build, and enhance Datadog websites, including <ExternalLink
+            href="https://securitylabs.datadoghq.com/"
+            text="securitylabs.datadoghq.com"
+          />, <ExternalLink
+            href="https://datadoghq.com/"
+            text="datadoghq.com"
+          />, and <ExternalLink
+            href="https://docs.datadoghq.com/"
+            text="docs.datadoghq.com"
+          />. Additionally, I develop tools and processes to help facilitate
+          team efforts, including replatforming Datadog websites from Bootstrap,
+          jQuery, and HugoSSG to TailwindCSS, AstroJS, and DatoCMS.
+        </p>
+
+        <p class="text-p-main">
+          I frequently cross-collaborate with Marketing, Brand Design, Community
+          teams and more across the company to enhance Datadog’s standing as a
+          monitoring and security platform. Some of my favorite interpersonal
+          aspects also include onboarding and mentoring new teammates, helping
+          them to integrate quickly with both meaningful contributions and an
+          enjoyment of their work.
+        </p>
+
+        <span class="block pb-5"></span>
+
+        <p class="text-p-main">
+          <ExternalLink
+            href={`${baseURL}david-weid-resume-2025.pdf`}
+            text="View a PDF of my resume"
+          />
+        </p>
+
+        <span class="spacer-80-112-112"></span>
+      </div>
+    </div>
+  </section>
+
+  <hr
+    class="green-blue-shimmer-slow tablet:max-w-[85vw] desktopxl:max-w-[65vw] mx-auto h-1 border-0"
+  />
+
+  <span class="spacer-80-112-112"></span>
+
+  <section class="container">
+    <div class="laptop:max-w-[90ch] laptop:mx-auto">
+      <span class="font-sans-syne text-lg">
+        <EmojiTextWave emoji="🚀" text="David’s Place" />
+      </span>
+      <h2 class="text-gradient w-max max-w-full">
+        About this project and website
+      </h2>
+
+      <span class="spacer-40"></span>
+
+      <NoteBlock>
+        <div class="desktop:flex-row flex flex-col items-center gap-2">
+          <div>
+            This website is a side project and playground for me to learn <strong
+              >AstroJS</strong
+            >, using <strong>TailwindCSS</strong> and other cool CSS/HTML tricks.
+            It’s hosted on <strong>Firebase</strong> and is currently a static website
+            that makes use of Astro's <strong>View Transitions</strong>. It uses <strong
+              >Astro {astroVersion[0]}</strong
+            > and <strong>Tailwind {tailwindVersion[0]}</strong>. I hope you
+            find something interesting or even useful here.
+          </div>
+
+          <Image
+            loading="lazy"
+            src={imageWebsiteStackWhite}
+            alt="Core web technologies"
+            width={100}
+            height={100}
+            class="h-auto w-[100px]"
+          />
+        </div>
+      </NoteBlock>
+
+      <span class="spacer-40"></span>
+
+      <p class="text-p-main">
+        Currently, David’s Place acts as a portfolio and visual representation
+        of my resume (everything above if you’ve made it this far). The most
+        robust project on this site is the <strong>Cookbook</strong>. I have
+        more I want to build, but it’s fun all the same!
+      </p>
+
+      <p class="text-p-main">
+        The carousel below showcases some of the other pages and projects on
+        this site.
+        <span class="block text-sm pt-2 ml-4">
+          Super easy carousel functionality provided by <ExternalLink
+            href="https://www.embla-carousel.com/"
+            text="Embla Carousel"
+          />
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <span class="spacer-80-112-112"></span>
+
+  <div class="embla overflow-hidden select-none">
+    <div class="embla__viewport container">
+      <div class="embla__container flex gap-5">
+        {
+          internalLinks.map((link) => (
+            <div class="embla__slide w-[90%] tablet:w-[300px] laptop:w-[375px] shrink-0">
+              <Card
+                href={link.link}
+                title={link.title}
+                body={link.description}
+                tags={link.tags}
+                isListItem={false}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="container laptop:!px-0 laptop:!max-w-[90ch] laptop:!mx-auto">
+      <span class="spacer-40"></span>
+      <div class="flex justify-around laptop:justify-center gap-20">
+        <button aria-label="Previous slide" class="embla__prev">
+          <IconArrowBubblesRightBlue
+            class="block dark:hidden transition-[scale] duration-500 h-10 w-10 laptop:h-8 laptop:w-8 hover:scale-150 rotate-180"
+          />
+          <IconArrowBubblesRightGreen
+            class="hidden dark:block transition-[scale] duration-500 h-10 w-10 laptop:h-8 laptop:w-8 hover:scale-150 rotate-180"
+          />
+        </button>
+        <button aria-label="Next slide" class="embla__next">
+          <IconArrowBubblesRightBlue
+            class="block dark:hidden transition-[scale] duration-500 h-10 w-10 laptop:h-8 laptop:w-8 hover:scale-150"
+          />
+          <IconArrowBubblesRightGreen
+            class="hidden dark:block transition-[scale] duration-500 h-10 w-10 laptop:h-8 laptop:w-8 hover:scale-150"
+          />
+        </button>
+      </div>
+      <span class="spacer-40"></span>
+    </div>
+  </div>
+
+  <span class="spacer-80-112-112"></span>
+</Base>
+
+<style>
+  .text-container ul {
+    animation: text-scroll 4s forwards;
+    animation-delay: 1.25s;
+  }
+
+  #line-one {
+    animation: text-scroll-single 1s forwards;
+    animation-delay: 5.75s;
+  }
+
+  #line-two {
+    animation: text-scroll-single 1s forwards;
+    animation-delay: 5.75s;
+  }
+
+  @keyframes text-scroll {
+    15%,
+    25% {
+      transform: translateY(-20%);
+    }
+    40%,
+    50% {
+      transform: translateY(-40%);
+    }
+    65%,
+    75% {
+      transform: translateY(-60%);
+    }
+    90%,
+    100% {
+      transform: translateY(-80%);
+    }
+  }
+
+  @keyframes text-scroll-single {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+</style>
+
+<script>
+  const filterClasses = [
+    'grayscale',
+    'saturate-200',
+    'brightness-150',
+    'hue-rotate-[200deg]',
+    'hue-rotate-[300deg]',
+    'sepia',
+    'invert',
+    'contrast-200',
+  ];
+
+  let activeFilter = '';
+  let counter = 0;
+
+  const adjustImage = (
+    counter: number,
+    headshot: HTMLElement | null,
+    imageCat: HTMLElement | null,
+  ) => {
+    if (counter >= 12) {
+      headshot?.classList.add('hidden');
+      imageCat?.classList.remove('hidden');
+    }
+  };
+
+  const handleClick = () => {
+    const headshot = document.getElementById('headshot');
+    const imageCat = document.getElementById('cat-icon');
+
+    if (activeFilter) {
+      headshot?.classList.remove(activeFilter);
+      activeFilter = '';
+      counter++;
+      return;
+    }
+
+    adjustImage(counter, headshot, imageCat);
+
+    const randomFilter =
+      filterClasses[Math.floor(Math.random() * filterClasses.length)];
+    headshot?.classList.add(randomFilter);
+    activeFilter = randomFilter;
+    counter++;
+  };
+
+  function initializeHeadshotInteraction() {
+    const headshot = document.getElementById('headshot');
+    const imageCat = document.getElementById('cat-icon');
+
+    // Adjust image state on navigation
+    adjustImage(counter, headshot, imageCat);
+
+    // Re-bind click handler
+    headshot?.removeEventListener('click', handleClick);
+    headshot?.addEventListener('click', handleClick);
+  }
+
+  const headshot = document.getElementById('headshot');
+  const imageCat = document.getElementById('cat-icon');
+  adjustImage(counter, headshot, imageCat);
+  headshot?.addEventListener('click', handleClick);
+</script>
+
+<script>
+  import EmblaCarousel, { type EmblaOptionsType } from 'embla-carousel';
+  import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
+
+  const initializeCarousel = () => {
+    const rootNode: HTMLElement | null = document.querySelector('.embla');
+    const viewportNode: HTMLElement | null | undefined =
+      rootNode?.querySelector('.embla__viewport');
+    const prevButtonNode: HTMLElement | null | undefined =
+      rootNode?.querySelector('.embla__prev');
+    const nextButtonNode: HTMLElement | null | undefined =
+      rootNode?.querySelector('.embla__next');
+
+    const options: EmblaOptionsType = {
+      align: 'start',
+      loop: false,
+      skipSnaps: true,
+    };
+
+    if (viewportNode && prevButtonNode && nextButtonNode) {
+      const wheelGesturesPluginOptions = { target: viewportNode };
+      const plugins = [WheelGesturesPlugin(wheelGesturesPluginOptions)];
+      const emblaApi = EmblaCarousel(viewportNode, options, plugins);
+
+      prevButtonNode.addEventListener(
+        'click',
+        () => emblaApi.scrollPrev(),
+        false,
+      );
+      nextButtonNode.addEventListener(
+        'click',
+        () => emblaApi.scrollNext(),
+        false,
+      );
+    }
+  };
+
+  initializeCarousel();
+</script>
