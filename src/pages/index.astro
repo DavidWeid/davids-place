@@ -453,8 +453,8 @@ const threePillarsData = [
                 loading="lazy"
                 src={image}
                 alt={title}
-                width={799}
-                height={450}
+                widths={[375, 581, 750, 799]}
+                sizes="(min-width: 1024px) 375px, 100vw"
                 class={`w-full laptop:w-[375px] h-auto rounded-16-24-32 laptop:order-1 ${index % 2 === 0 ? 'group-hover:-skew-1' : 'group-hover:skew-1'} transition-transform duration-500`}
               />
               <div
@@ -498,9 +498,8 @@ const threePillarsData = [
             loading="lazy"
             src={headshot}
             alt="David Weid II"
-            width={400}
-            height={400}
-            densities={[1.5, 2, 2.5, 3]}
+            widths={[200, 342, 684]}
+            sizes="(min-width: 768px) 342px, 50vw"
             class="absolute inset-0 w-full h-full object-cover rounded-16-24-32"
           />
         </div>
@@ -512,9 +511,8 @@ const threePillarsData = [
               loading="lazy"
               src={flurry}
               alt="Flurry the cat"
-              width={400}
-              height={400}
-              densities={[1.5, 2, 2.5, 3]}
+              widths={[200, 342, 684]}
+              sizes="(min-width: 768px) 342px, 50vw"
               class="absolute inset-0 w-full h-full object-cover rounded-16-24-32"
             />
           </div>
@@ -523,9 +521,8 @@ const threePillarsData = [
               loading="lazy"
               src={pekoe}
               alt="Pekoe the cat"
-              width={400}
-              height={400}
-              densities={[1.5, 2, 2.5, 3]}
+              widths={[200, 342, 684]}
+              sizes="(min-width: 768px) 342px, 50vw"
               class="absolute inset-0 w-full h-full object-cover rounded-16-24-32"
             />
           </div>
