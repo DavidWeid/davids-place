@@ -22,81 +22,166 @@
 }
 
 .green-shimmer {
-  background: linear-gradient(
-    -45deg,
-    theme('colors.green.dark') 40%,
-    theme('colors.green.darker') 50%,
-    theme('colors.green.dark') 60%
-  );
-  background-size: 300%;
-  background-position-x: 100%;
-  animation: shimmer var(--randomized-animation-time) infinite linear;
+  position: relative;
+  overflow: hidden;
+  background: theme('colors.green.dark');
 }
 
-@utility green-shimmer-slow {
+.green-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
   background: linear-gradient(
     -45deg,
-    theme('colors.green.dark') 40%,
+    transparent 40%,
     theme('colors.green.darker') 50%,
-    theme('colors.green.dark') 60%
+    transparent 60%
   );
-  background-size: 300%;
-  background-position-x: 100%;
+  animation: shimmer var(--randomized-animation-time) infinite linear;
+  pointer-events: none;
+}
+
+.green-shimmer-slow {
+  position: relative;
+  overflow: hidden;
+  background: theme('colors.green.dark');
+}
+
+.green-shimmer-slow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    -45deg,
+    transparent 40%,
+    theme('colors.green.darker') 50%,
+    transparent 60%
+  );
   animation: shimmer 5s infinite linear;
+  pointer-events: none;
 }
 
 .blue-shimmer {
-  background: linear-gradient(
-    -45deg,
-    theme('colors.blue.darker') 40%,
-    theme('colors.blue.dark') 50%,
-    theme('colors.blue.darker') 60%
-  );
-  background-size: 300%;
-  background-position-x: 100%;
-  animation: shimmer var(--randomized-animation-time) infinite linear;
+  position: relative;
+  overflow: hidden;
+  background: theme('colors.blue.darker');
 }
 
-@utility blue-shimmer-slow {
+.blue-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
   background: linear-gradient(
     -45deg,
-    theme('colors.blue.darker') 40%,
+    transparent 40%,
     theme('colors.blue.dark') 50%,
-    theme('colors.blue.darker') 60%
+    transparent 60%
   );
-  background-size: 300%;
-  background-position-x: 100%;
+  animation: shimmer var(--randomized-animation-time) infinite linear;
+  pointer-events: none;
+}
+
+.blue-shimmer-slow {
+  position: relative;
+  overflow: hidden;
+  background: theme('colors.blue.darker');
+}
+
+.blue-shimmer-slow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    -45deg,
+    transparent 40%,
+    theme('colors.blue.dark') 50%,
+    transparent 60%
+  );
   animation: shimmer 5s infinite linear;
+  pointer-events: none;
 }
 
 .green-blue-shimmer-slow {
+  position: relative;
+  overflow: hidden;
+  background: theme('colors.green.emerald');
+}
+
+.green-blue-shimmer-slow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
   background: linear-gradient(
     -45deg,
-    theme('colors.green.emerald') 40%,
+    transparent 40%,
     theme('colors.green.dark') 50%,
-    theme('colors.green.emerald') 60%
+    transparent 60%
   );
-  background-size: 300%;
-  background-position-x: 100%;
   animation: shimmer 5s infinite linear;
+  pointer-events: none;
 }
 
 .dark .green-blue-shimmer-slow {
+  background: theme('colors.blue.dark');
+}
+
+.dark .green-blue-shimmer-slow::before {
   background: linear-gradient(
     -45deg,
-    theme('colors.blue.dark') 40%,
+    transparent 40%,
     theme('colors.blue.light') 50%,
-    theme('colors.blue.dark') 60%
+    transparent 60%
   );
-  background-size: 300%;
-  background-position-x: 100%;
-  animation: shimmer 5s infinite linear;
 }
 
 @keyframes shimmer {
   to {
-    background-position-x: 0%;
+    transform: translateX(200%);
   }
+}
+
+/* Hover variant for green-to-blue shimmer transition */
+.green-shimmer-slow.hover\:blue-shimmer-slow::before {
+  background: linear-gradient(
+    -45deg,
+    transparent 40%,
+    theme('colors.green.darker') 50%,
+    transparent 60%
+  );
+  transition: background 0.3s ease;
+}
+
+.green-shimmer-slow.hover\:blue-shimmer-slow:hover::before {
+  background: linear-gradient(
+    -45deg,
+    transparent 40%,
+    theme('colors.blue.dark') 50%,
+    transparent 60%
+  );
+}
+
+.green-shimmer-slow.hover\:blue-shimmer-slow {
+  background: theme('colors.green.dark');
+  transition: background 0.3s ease;
+}
+
+.green-shimmer-slow.hover\:blue-shimmer-slow:hover {
+  background: theme('colors.blue.darker');
 }
 
 .wave {
@@ -126,12 +211,12 @@
 
 @keyframes reveal {
   0% {
-    scale: 0.8;
+    transform: scale(0.8);
     opacity: 0;
   }
 
   100% {
-    scale: 1;
+    transform: scale(1);
     opacity: 1;
   }
 }
