@@ -50,6 +50,10 @@ export default defineConfig({
     compressor(),
   ],
 
+  experimental: {
+    svgo: true,
+  },
+
   server: {
     open: true,
   },
