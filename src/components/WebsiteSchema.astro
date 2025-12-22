@@ -1,0 +1,37 @@
+---
+interface Props {
+  name: string;
+  url: string;
+  description?: string;
+  potentialAction?: {
+    target: string;
+    queryInput: string;
+  };
+}
+
+const { name, url, description = '', potentialAction } = Astro.props;
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: name,
+  url: url,
+  ...(description && { description: description }),
+  ...(potentialAction && {
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: potentialAction.target,
+      },
+      'query-input': potentialAction.queryInput,
+    },
+  }),
+};
+---
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(websiteSchema)}
+/>

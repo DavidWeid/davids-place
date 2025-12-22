@@ -89,24 +89,38 @@ const recipeSchema = {
     (instruction: string, index: number) => ({
       '@type': 'HowToStep',
       position: index + 1,
-      text: instruction,
+      text: instruction.replace(/<[^>]*>/g, ''), // Strip HTML tags
+      name: `Step ${index + 1}`,
     }),
   ),
   keywords: recipe.tags.join(', '),
-  recipeCategory: 'Main Dish',
+  recipeCategory: recipe.tags.includes('dessert')
+    ? 'Dessert'
+    : recipe.tags.includes('breakfast')
+      ? 'Breakfast'
+      : recipe.tags.includes('snack') || recipe.tags.includes('side')
+        ? 'Side Dish'
+        : 'Main Dish',
   recipeCuisine: recipe.tags.includes('chinese')
     ? 'Chinese'
     : recipe.tags.includes('indian')
       ? 'Indian'
       : recipe.tags.includes('thai')
         ? 'Thai'
-        : 'International',
+        : recipe.tags.includes('italian')
+          ? 'Italian'
+          : recipe.tags.includes('mexican')
+            ? 'Mexican'
+            : 'American',
   suitableForDiet: [
     ...(recipe.tags.includes('vegan') || recipe.tags.includes('dairy-free')
       ? ['https://schema.org/VeganDiet']
       : []),
     ...(recipe.tags.includes('vegetarian')
       ? ['https://schema.org/VegetarianDiet']
+      : []),
+    ...(recipe.tags.includes('gluten-free')
+      ? ['https://schema.org/GlutenFreeDiet']
       : []),
   ],
   nutrition: {

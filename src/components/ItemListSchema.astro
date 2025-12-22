@@ -1,0 +1,48 @@
+---
+interface ItemListItem {
+  name: string;
+  url: string;
+  description?: string;
+  image?: string;
+}
+
+interface Props {
+  name: string;
+  description?: string;
+  url: string;
+  items: ItemListItem[];
+}
+
+const { name, description, url, items } = Astro.props;
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: name,
+  ...(description && { description: description }),
+  url: url,
+  numberOfItems: items.length,
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Recipe',
+      name: item.name,
+      url: item.url,
+      ...(item.description && { description: item.description }),
+      ...(item.image && {
+        image: {
+          '@type': 'ImageObject',
+          url: item.image,
+        },
+      }),
+    },
+  })),
+};
+---
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(itemListSchema)}
+/>

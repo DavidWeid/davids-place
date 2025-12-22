@@ -6,15 +6,20 @@ import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
 import Card from '@components/Card.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import ItemListSchema from '@components/ItemListSchema.astro';
 
 const baseURL = import.meta.env.BASE_URL;
+const siteUrl = 'https://davids-place-portfolio.web.app';
+const currentUrl = `${siteUrl}${baseURL}cookbook/`;
 const allCookbookRecipes = await getCollection('cookbook');
 
-const pageTitle = 'Cookbook Home';
-const heroTitle =
-  '<span class="flex gap-3"><span class="wave">🍜</span>Cookbook</span>';
+const pageTitle = 'Vegan & Dairy-Free Recipes | Cookbook';
+const pageDescription =
+  'Browse 15+ vegan and dairy-free recipes including Chinese, Thai, Indian, and American classics. Easy-to-follow instructions for every skill level.';
+const heroTitle = 'Cookbook: Vegan & Dairy-Free Recipes';
 const heroDescription =
-  'Browse my collection of recipes gathered over the years.';
+  'Browse my collection of plant-based recipes gathered over the years. All recipes are dairy-free with many vegan options.';
 const backgroundSvgs = [
   'general/circle-scatter-haikei-1',
   'general/circle-scatter-haikei-2',
@@ -26,7 +31,7 @@ const backgroundSvgs = [
 ];
 ---
 
-<Base title={pageTitle}>
+<Base title={pageTitle} description={pageDescription}>
   <div id="hero" class="dark:bg-medium relative overflow-hidden bg-light">
     <Hero
       title={heroTitle}
@@ -62,6 +67,27 @@ const backgroundSvgs = [
 
     <span class="block pb-[200px]"></span>
   </section>
+
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: `${siteUrl}${baseURL}` },
+      { name: 'Cookbook', url: currentUrl },
+    ]}
+  />
+
+  <ItemListSchema
+    name="David’s Place Cookbook Recipes"
+    description="A collection of vegan and dairy-free recipes from various cuisines"
+    url={currentUrl}
+    items={allCookbookRecipes.map((recipe) => ({
+      name: recipe.data.title,
+      url: `${siteUrl}${baseURL}cookbook/recipes/${recipe.id}/`,
+      description: recipe.data.description,
+      image: recipe.data.image?.url?.src
+        ? `${siteUrl}${recipe.data.image.url.src}`
+        : undefined,
+    }))}
+  />
 </Base>
 
 <script>

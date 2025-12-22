@@ -5,6 +5,7 @@ import HeroInfo from '@components/HeroInfo.astro';
 import ImageRecipe from '@components/ImageRecipe.astro';
 import ExternalLink from '@components/ExternalLink.astro';
 import RecipeSchema from '@components/RecipeSchema.astro';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
 
 interface Props {
   frontmatter: {
@@ -47,7 +48,22 @@ const {
 } = frontmatter;
 
 const baseURL = import.meta.env.BASE_URL;
-const pageTitle = `Cookbook Recipe: ${title}`;
+const siteUrl = 'https://davids-place-portfolio.web.app';
+
+// Determine dietary type for title
+const getDietaryType = (tags: string[]) => {
+  if (tags.includes('vegan')) return 'Vegan';
+  if (tags.includes('dairy-free')) return 'Dairy-Free';
+  if (tags.includes('vegetarian')) return 'Vegetarian';
+  return 'Recipe';
+};
+
+const dietaryType = getDietaryType(tags);
+const pageTitle = `${title}${dietaryType !== 'Recipe' ? ` (${dietaryType})` : ''} | Cookbook`;
+
+// Enhanced meta description
+const metaDescription = `${description} Ready in ${totalTime}. Serves ${servings}. ${tags.includes('vegan') ? 'Vegan' : tags.includes('dairy-free') ? 'Dairy-free' : 'Vegetarian'} recipe with easy-to-follow instructions.`;
+
 const heroTitle = title;
 const heroDescription = description;
 
@@ -65,7 +81,7 @@ const heroData = [
 ];
 ---
 
-<Base title={pageTitle} description={description}>
+<Base title={pageTitle} description={metaDescription}>
   <Hero
     title={heroTitle}
     description={heroDescription}
@@ -213,6 +229,14 @@ const heroData = [
   <hr class="green-blue-shimmer-slow h-1 border-0" />
 
   {frontmatter.image && <RecipeSchema recipe={frontmatter} url={currentUrl} />}
+
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: `${siteUrl}${baseURL}` },
+      { name: 'Cookbook', url: `${siteUrl}${baseURL}cookbook/` },
+      { name: title, url: currentUrl },
+    ]}
+  />
 </Base>
 
 <script>

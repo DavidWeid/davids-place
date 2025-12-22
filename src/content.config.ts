@@ -10,14 +10,14 @@ const cookbookCollection = defineCollection({
       title: z.string(),
       description: z.string(),
       source: z.nullable(z.string()),
-      pubDate: z.nullable(z.date()),
+      pubDate: z.date().optional(),
       author: z.string(),
-      image: z.nullable(
-        z.object({
+      image: z
+        .object({
           url: image(),
           alt: z.string(),
-        }),
-      ),
+        })
+        .optional(),
       tags: z.array(z.string()),
       servings: z.string(),
       prepTime: z.string(),
