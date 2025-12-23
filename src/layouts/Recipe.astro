@@ -62,7 +62,7 @@ const dietaryType = getDietaryType(tags);
 const pageTitle = `${title}${dietaryType !== 'Recipe' ? ` (${dietaryType})` : ''} | Cookbook`;
 
 // Enhanced meta description
-const metaDescription = `${description} Ready in ${totalTime}. Serves ${servings}. ${tags.includes('vegan') ? 'Vegan' : tags.includes('dairy-free') ? 'Dairy-free' : 'Vegetarian'} recipe with easy-to-follow instructions.`;
+const metaDescription = `${description} Ready in ${totalTime}. Serves ${servings}. ${dietaryType !== 'Recipe' ? dietaryType : 'Vegetarian'} recipe with easy-to-follow instructions.`;
 
 const heroTitle = title;
 const heroDescription = description;
