@@ -7,7 +7,7 @@ import Hero from '@components/Hero.astro';
 import SvgGenerator from '@components/SvgGenerator.astro';
 import Card from '@components/Card.astro';
 import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
-import ItemListSchema from '@components/ItemListSchema.astro';
+import RecipeListSchema from '@components/RecipeListSchema.astro';
 
 const baseURL = import.meta.env.BASE_URL;
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
@@ -75,7 +75,7 @@ const backgroundSvgs = [
     ]}
   />
 
-  <ItemListSchema
+  <RecipeListSchema
     name="David’s Place Cookbook Recipes"
     description="A collection of vegan and dairy-free recipes from various cuisines"
     url={currentUrl}
