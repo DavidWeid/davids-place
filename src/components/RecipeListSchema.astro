@@ -19,9 +19,9 @@ const { name, description, url, items } = Astro.props;
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: name,
-  ...(description && { description: description }),
-  url: url,
+  name,
+  ...(description && { description }),
+  url,
   numberOfItems: items.length,
   itemListElement: items.map((item, index) => ({
     '@type': 'ListItem',

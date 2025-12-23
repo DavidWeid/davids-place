@@ -14,9 +14,9 @@ const { name, url, description = '', potentialAction } = Astro.props;
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: name,
-  url: url,
-  ...(description && { description: description }),
+  name,
+  url,
+  ...(description && { description }),
   ...(potentialAction && {
     potentialAction: {
       '@type': 'SearchAction',

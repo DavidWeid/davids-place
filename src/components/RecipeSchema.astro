@@ -57,6 +57,26 @@ const convertToISODuration = (timeStr: string): string => {
   return duration;
 };
 
+// Helper function to determine recipe category from tags
+const getRecipeCategory = (tags: string[]): string => {
+  if (tags.includes('dessert')) return 'Dessert';
+  if (tags.includes('breakfast')) return 'Breakfast';
+  if (tags.includes('snack') || tags.includes('side-dish')) return 'Side Dish';
+  return 'Main Dish';
+};
+
+// Helper function to determine recipe cuisine from tags
+const getRecipeCuisine = (tags: string[]): string => {
+  if (tags.includes('chinese')) return 'Chinese';
+  if (tags.includes('indian')) return 'Indian';
+  if (tags.includes('thai')) return 'Thai';
+  if (tags.includes('italian')) return 'Italian';
+  if (tags.includes('mexican')) return 'Mexican';
+  if (tags.includes('french')) return 'French';
+  if (tags.includes('american')) return 'American';
+  return 'International';
+};
+
 // Flatten ingredients into a simple array
 const allIngredients = recipe.ingredients.flatMap(
   (category: { category: string; items: string[] }) =>
@@ -94,28 +114,8 @@ const recipeSchema = {
     }),
   ),
   keywords: recipe.tags.join(', '),
-  recipeCategory: recipe.tags.includes('dessert')
-    ? 'Dessert'
-    : recipe.tags.includes('breakfast')
-      ? 'Breakfast'
-      : recipe.tags.includes('snack') || recipe.tags.includes('side-dish')
-        ? 'Side Dish'
-        : 'Main Dish',
-  recipeCuisine: recipe.tags.includes('chinese')
-    ? 'Chinese'
-    : recipe.tags.includes('indian')
-      ? 'Indian'
-      : recipe.tags.includes('thai')
-        ? 'Thai'
-        : recipe.tags.includes('italian')
-          ? 'Italian'
-          : recipe.tags.includes('mexican')
-            ? 'Mexican'
-            : recipe.tags.includes('french')
-              ? 'French'
-              : recipe.tags.includes('american')
-                ? 'American'
-                : 'International',
+  recipeCategory: getRecipeCategory(recipe.tags),
+  recipeCuisine: getRecipeCuisine(recipe.tags),
   // Note: Schema.org does not provide a DairyFreeDiet type, so dairy-free recipes are not marked with a suitableForDiet value. The 'dairy-free' tag is still included in keywords for searchability.
   suitableForDiet: [
     ...(recipe.tags.includes('vegan') ? ['https://schema.org/VeganDiet'] : []),
