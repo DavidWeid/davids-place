@@ -116,6 +116,7 @@ const recipeSchema = {
               : recipe.tags.includes('american')
                 ? 'American'
                 : 'International',
+  // Note: Schema.org does not provide a DairyFreeDiet type, so dairy-free recipes are not marked with a suitableForDiet value. The 'dairy-free' tag is still included in keywords for searchability.
   suitableForDiet: [
     ...(recipe.tags.includes('vegan') ? ['https://schema.org/VeganDiet'] : []),
     ...(recipe.tags.includes('vegetarian')
