@@ -98,9 +98,7 @@ const recipeSchema = {
     ? 'Dessert'
     : recipe.tags.includes('breakfast')
       ? 'Breakfast'
-      : recipe.tags.includes('snack') ||
-          recipe.tags.includes('side') ||
-          recipe.tags.includes('side-dish')
+      : recipe.tags.includes('snack') || recipe.tags.includes('side-dish')
         ? 'Side Dish'
         : 'Main Dish',
   recipeCuisine: recipe.tags.includes('chinese')
