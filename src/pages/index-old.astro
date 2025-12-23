@@ -142,7 +142,7 @@ const astroVersion = config.dependencies.astro.slice(1);
 const tailwindVersion = config.dependencies.tailwindcss.slice(1);
 
 // Person Schema data
-const siteUrl = 'https://davids-place-portfolio.web.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
 const personImageUrl = `${siteUrl}${headshot.src}`;
 ---
 

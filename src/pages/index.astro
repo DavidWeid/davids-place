@@ -147,7 +147,7 @@ const skills = [
 ];
 
 // Person Schema data
-const siteUrl = 'https://davids-place-portfolio.web.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
 const personImageUrl = `${siteUrl}${headshot.src}`;
 
 const heroData = {

@@ -35,7 +35,7 @@ import IconKitchenPackPot from '@images/icons/cookbook/kitchen-pack-pot.svg';
 import IconKitchenPackHat from '@images/icons/cookbook/kitchen-pack-hat.svg';
 
 const baseURL = import.meta.env.BASE_URL;
-const siteUrl = 'https://davids-place-portfolio.web.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
 const currentUrl = `${siteUrl}${baseURL}about/cookbook/`;
 
 const title = '15+ Vegan & Dairy-Free Recipes | Cookbook';

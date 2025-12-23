@@ -10,7 +10,7 @@ import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
 import ItemListSchema from '@components/ItemListSchema.astro';
 
 const baseURL = import.meta.env.BASE_URL;
-const siteUrl = 'https://davids-place-portfolio.web.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
 const currentUrl = `${siteUrl}${baseURL}cookbook/`;
 const allCookbookRecipes = await getCollection('cookbook');
 

@@ -16,6 +16,8 @@ interface Props {
 
 const { article, url } = Astro.props;
 
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
+
 // Convert date to ISO string
 const publishedDate =
   article.pubDate instanceof Date
@@ -59,7 +61,7 @@ const articleSchema = {
   publisher: {
     '@type': 'Organization',
     name: "David's Place",
-    url: 'https://davids-place-portfolio.web.app/',
+    url: siteUrl || 'https://davids-place-portfolio.web.app',
   },
   datePublished: publishedDate,
   dateModified: publishedDate,

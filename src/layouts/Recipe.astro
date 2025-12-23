@@ -48,7 +48,7 @@ const {
 } = frontmatter;
 
 const baseURL = import.meta.env.BASE_URL;
-const siteUrl = 'https://davids-place-portfolio.web.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
 
 // Determine dietary type for title
 const getDietaryType = (tags: string[]) => {
