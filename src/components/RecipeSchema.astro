@@ -113,7 +113,11 @@ const recipeSchema = {
           ? 'Italian'
           : recipe.tags.includes('mexican')
             ? 'Mexican'
-            : 'American',
+            : recipe.tags.includes('french')
+              ? 'French'
+              : recipe.tags.includes('american')
+                ? 'American'
+                : 'International',
   suitableForDiet: [
     ...(recipe.tags.includes('vegan') ? ['https://schema.org/VeganDiet'] : []),
     ...(recipe.tags.includes('vegetarian')
