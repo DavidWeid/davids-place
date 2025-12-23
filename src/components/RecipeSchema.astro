@@ -113,9 +113,7 @@ const recipeSchema = {
             ? 'Mexican'
             : 'American',
   suitableForDiet: [
-    ...(recipe.tags.includes('vegan') || recipe.tags.includes('dairy-free')
-      ? ['https://schema.org/VeganDiet']
-      : []),
+    ...(recipe.tags.includes('vegan') ? ['https://schema.org/VeganDiet'] : []),
     ...(recipe.tags.includes('vegetarian')
       ? ['https://schema.org/VegetarianDiet']
       : []),
