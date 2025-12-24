@@ -57,6 +57,26 @@ const convertToISODuration = (timeStr: string): string => {
   return duration;
 };
 
+// Helper function to determine recipe category from tags
+const getRecipeCategory = (tags: string[]): string => {
+  if (tags.includes('dessert')) return 'Dessert';
+  if (tags.includes('breakfast')) return 'Breakfast';
+  if (tags.includes('snack') || tags.includes('side-dish')) return 'Side Dish';
+  return 'Main Dish';
+};
+
+// Helper function to determine recipe cuisine from tags
+const getRecipeCuisine = (tags: string[]): string => {
+  if (tags.includes('chinese')) return 'Chinese';
+  if (tags.includes('indian')) return 'Indian';
+  if (tags.includes('thai')) return 'Thai';
+  if (tags.includes('italian')) return 'Italian';
+  if (tags.includes('mexican')) return 'Mexican';
+  if (tags.includes('french')) return 'French';
+  if (tags.includes('american')) return 'American';
+  return 'International';
+};
+
 // Flatten ingredients into a simple array
 const allIngredients = recipe.ingredients.flatMap(
   (category: { category: string; items: string[] }) =>
@@ -89,24 +109,21 @@ const recipeSchema = {
     (instruction: string, index: number) => ({
       '@type': 'HowToStep',
       position: index + 1,
-      text: instruction,
+      text: instruction.replace(/<[^>]*>/g, ''), // Strip HTML tags
+      name: `Step ${index + 1}`,
     }),
   ),
   keywords: recipe.tags.join(', '),
-  recipeCategory: 'Main Dish',
-  recipeCuisine: recipe.tags.includes('chinese')
-    ? 'Chinese'
-    : recipe.tags.includes('indian')
-      ? 'Indian'
-      : recipe.tags.includes('thai')
-        ? 'Thai'
-        : 'International',
+  recipeCategory: getRecipeCategory(recipe.tags),
+  recipeCuisine: getRecipeCuisine(recipe.tags),
+  // Note: Schema.org does not provide a DairyFreeDiet type, so dairy-free recipes are not marked with a suitableForDiet value. The 'dairy-free' tag is still included in keywords for searchability.
   suitableForDiet: [
-    ...(recipe.tags.includes('vegan') || recipe.tags.includes('dairy-free')
-      ? ['https://schema.org/VeganDiet']
-      : []),
+    ...(recipe.tags.includes('vegan') ? ['https://schema.org/VeganDiet'] : []),
     ...(recipe.tags.includes('vegetarian')
       ? ['https://schema.org/VegetarianDiet']
+      : []),
+    ...(recipe.tags.includes('gluten-free')
+      ? ['https://schema.org/GlutenFreeDiet']
       : []),
   ],
   nutrition: {

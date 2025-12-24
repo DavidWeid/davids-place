@@ -3,6 +3,8 @@ export const prerender = true;
 
 import Base from '@layouts/Base.astro';
 import { Image } from 'astro:assets';
+import BreadcrumbSchema from '@components/BreadcrumbSchema.astro';
+import OrganizationSchema from '@components/OrganizationSchema.astro';
 
 import ImageChoppingBoard from '@images/about/cookbook/chopping-board.png';
 import ImageMeat from '@images/about/cookbook/meat.png';
@@ -33,11 +35,12 @@ import IconKitchenPackPot from '@images/icons/cookbook/kitchen-pack-pot.svg';
 import IconKitchenPackHat from '@images/icons/cookbook/kitchen-pack-hat.svg';
 
 const baseURL = import.meta.env.BASE_URL;
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
+const currentUrl = `${siteUrl}${baseURL}about/cookbook/`;
 
-const title =
-  'Vegan and Vegetarian Inclusive Cookbook | 15+ Recipes Used by David';
+const title = '15+ Vegan & Dairy-Free Recipes | Cookbook';
 const description =
-  'Explore a diverse cookbook with easy-to-follow recipes taken from the web, with a focus on vegan and dairy-free eating. Find your next favorite recipe.';
+  'Discover easy vegan and dairy-free recipes from 8+ world cuisines. Simple instructions, clear dietary tags, and organized ingredients for stress-free cooking.';
 const header = 'Discover Your Next Favorite Recipe';
 const subheader = 'Explore a diverse cookbook with easy-to-follow dishes';
 const cTA = 'START COOKING';
@@ -410,6 +413,19 @@ const cTA = 'START COOKING';
       </div>
     </div>
   </section>
+
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: `${siteUrl}${baseURL}` },
+      { name: 'Cookbook Marketing', url: currentUrl },
+    ]}
+  />
+
+  <OrganizationSchema
+    name="David’s Place Cookbook"
+    url={currentUrl}
+    description="A diverse collection of vegan and dairy-free recipes from around the world, featuring easy-to-follow instructions and clear dietary information."
+  />
 </Base>
 
 <style>

@@ -5,6 +5,8 @@ import { Image, getImage } from 'astro:assets';
 
 import Base from '@layouts/Base.astro';
 import PersonSchema from '@components/PersonSchema.astro';
+import OrganizationSchema from '@components/OrganizationSchema.astro';
+import WebsiteSchema from '@components/WebsiteSchema.astro';
 import EmojiTextWave from '@components/EmojiTextWave.astro';
 
 import imageAstroFriendWave from '@images/astro-friend/astro-friend-wave.png';
@@ -27,9 +29,9 @@ import IconAnalyticsSearch from '@images/icons/analytics-search.svg';
 import IconWorldReach from '@images/icons/world-reach.svg';
 
 const baseURL = import.meta.env.BASE_URL;
-const pageTitle = 'David Weid II | Senior Web Development Engineer Portfolio';
+const pageTitle = 'David Weid | Web Developer & JavaScript Engineer';
 const pageDescription =
-  'Senior Web Dev Engineer at Datadog with 6+ years JavaScript, TypeScript & modern web development experience. View my portfolio, cookbook, and blog.';
+  'Senior Web Development Engineer specializing in JavaScript, TypeScript, React, and Astro. 6+ years building accessible, high-performance web applications at Datadog. View portfolio and projects.';
 
 const heroImage = await getImage({
   src: imageAstroFriendWave,
@@ -61,7 +63,7 @@ const externalLinks = [
   {
     link: 'mailto:david.weid.2@gmail.com',
     title: 'Contact Me',
-    description: 'Email me directly if that is your preference.',
+    description: 'Email me directly if that’s your preference.',
     tags: ['contact'],
   },
 ];
@@ -88,7 +90,7 @@ const internalLinks = [
   {
     link: `${baseURL}blog/`,
     title: 'Blog App',
-    description: 'Read articles I have written about various topics.',
+    description: 'Read articles I’ve written about various topics.',
     tags: ['blog', 'articles', 'writing'],
   },
   {
@@ -145,13 +147,14 @@ const skills = [
 ];
 
 // Person Schema data
-const siteUrl = 'https://davids-place-portfolio.web.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
 const personImageUrl = `${siteUrl}${headshot.src}`;
 
 const heroData = {
   eyebrowEmoji: '👋',
   eyebrowText: 'Hi there',
   title: 'I’m David Weid',
+  h1Text: 'David Weid - Senior Web Development Engineer',
   description:
     'Senior Web Developer building <b><em>accessible</em></b>, <span class="whitespace-nowrap">high-performing</span> digital experiences',
   tagLine: ['JavaScript', 'TypeScript', 'Modern Web Technologies'],
@@ -267,9 +270,11 @@ const threePillarsData = [
           />
         </span>
         <h1>
+          <span class="sr-only">{heroData.h1Text}</span>
           <span
             set:html={heroData.title}
             class="text-display text-gradient-2"
+            aria-hidden="true"
           />
         </h1>
 
@@ -406,6 +411,22 @@ const threePillarsData = [
     linkedin="https://www.linkedin.com/in/david-weid/"
     github="https://github.com/DavidWeid/"
     email="david.weid.2@gmail.com"
+  />
+
+  <OrganizationSchema
+    name="David’s Place"
+    url={siteUrl}
+    description="Personal portfolio and web development projects by David Weid II, featuring modern web applications, recipes, and technical blog posts."
+    sameAs={[
+      'https://www.linkedin.com/in/david-weid/',
+      'https://github.com/DavidWeid/',
+    ]}
+  />
+
+  <WebsiteSchema
+    name="David’s Place - Web Development Portfolio"
+    url={siteUrl}
+    description="Portfolio website showcasing web development projects, vegan recipes, and technical articles by David Weid II."
   />
 
   <!-- Expertise (x4) -->
