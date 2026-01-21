@@ -2,7 +2,7 @@
 import { app } from '../firebase/server';
 import { getAuth } from 'firebase-admin/auth';
 import Base from '@layouts/Base.astro';
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 
 import imageFlowerFrame from '@images/general/background-flower-frame.jpg';
 import imageLaptop from '@images/general/background-laptop.jpg';
@@ -70,8 +70,24 @@ const imageOptions = [
   },
 ];
 
-const randomIndex = Math.floor(Math.random() * imageOptions.length);
-const selectedImage = imageOptions[randomIndex];
+// Pre-optimize all images at build time
+const optimizedImages = await Promise.all(
+  imageOptions.map(async (option) => {
+    const optimized = await getImage({
+      src: option.image,
+      width: 1920,
+      format: 'webp'
+    });
+    return {
+      ...option,
+      optimizedSrc: optimized.src,
+    };
+  })
+);
+
+// Server-side random selection - only one image will be in the DOM
+const randomIndex = Math.floor(Math.random() * optimizedImages.length);
+const selectedImage = optimizedImages[randomIndex];
 ---
 
 <Base
@@ -99,15 +115,14 @@ const selectedImage = imageOptions[randomIndex];
 
       <a
         href={selectedImage.source}
-        class="z-10 absolute bottom-2 left-2 text-green-darker/80 text-sm content-link-gradient max-w-full w-max font-sans-syne p-1.5"
-        >Image via Pixabay</a
+        class="z-10 absolute bottom-2 left-2 text-green-darker/80 text-sm content-link-gradient max-w-full w-max font-sans-syne px-2 py-1.5 bg-light/85!"
+        target="_blank"
+        rel="noopener noreferrer">Image via Pixabay</a
       >
 
-      <Image
-        src={selectedImage.image}
+      <img
+        src={selectedImage.optimizedSrc}
         alt={selectedImage.alt}
-        widths={[640, 768, 1024, 1440, 1920]}
-        sizes="(max-width: 768px) 100vw, 40vw"
         loading="eager"
         fetchpriority="high"
         class="absolute top-0 left-0 w-full h-full object-cover"
