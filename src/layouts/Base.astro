@@ -25,7 +25,7 @@ interface Props {
 
 const baseURL = import.meta.env.BASE_URL;
 const isDev = import.meta.env.DEV;
-const urlString: string = new URL(Astro.request.url).href;
+const urlString: string = new URL(Astro.request.url).href.replace(/\/$/, '');
 
 const { title, description, preloadImage, classes = '' } = Astro.props;
 
