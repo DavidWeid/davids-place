@@ -11,7 +11,7 @@ import RecipeListSchema from '@components/RecipeListSchema.astro';
 
 const baseURL = import.meta.env.BASE_URL;
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
-const currentUrl = `${siteUrl}${baseURL}cookbook/`;
+const currentUrl = `${siteUrl}${baseURL}cookbook`;
 const allCookbookRecipes = await getCollection('cookbook');
 
 const pageTitle = 'Vegan & Dairy-Free Recipes | Cookbook';
@@ -56,7 +56,7 @@ const backgroundSvgs = [
       {
         allCookbookRecipes.map((recipe) => (
           <Card
-            href={`${baseURL}cookbook/recipes/${recipe.id}/`}
+            href={`${baseURL}cookbook/recipes/${recipe.id}`}
             title={recipe.data.title}
             body={recipe.data.description}
             tags={recipe.data.tags}
@@ -81,7 +81,7 @@ const backgroundSvgs = [
     url={currentUrl}
     items={allCookbookRecipes.map((recipe) => ({
       name: recipe.data.title,
-      url: `${siteUrl}${baseURL}cookbook/recipes/${recipe.id}/`,
+      url: `${siteUrl}${baseURL}cookbook/recipes/${recipe.id}`,
       description: recipe.data.description,
       image: recipe.data.image?.url?.src
         ? `${siteUrl}${recipe.data.image.url.src}`
