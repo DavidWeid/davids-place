@@ -70,17 +70,34 @@ const imageOptions = [
   },
 ];
 
-// Pre-optimize all images at build time
+// Pre-optimize all images at build time with multiple sizes for srcset
 const optimizedImages = await Promise.all(
   imageOptions.map(async (option) => {
-    const optimized = await getImage({
+    const sizes = [640, 768, 1024, 1440, 1920];
+    const optimizedSizes = await Promise.all(
+      sizes.map(async (width) => {
+        const img = await getImage({
+          src: option.image,
+          width,
+          format: 'webp'
+        });
+        return { src: img.src, width };
+      })
+    );
+    
+    // Get dimensions from the largest image
+    const largestImage = await getImage({
       src: option.image,
       width: 1920,
       format: 'webp'
     });
+    
     return {
       ...option,
-      optimizedSrc: optimized.src,
+      optimizedSrc: optimizedSizes[optimizedSizes.length - 1].src, // Default to largest
+      srcset: optimizedSizes.map(img => `${img.src} ${img.width}w`).join(', '),
+      width: largestImage.attributes.width,
+      height: largestImage.attributes.height,
     };
   })
 );
@@ -122,6 +139,10 @@ const selectedImage = optimizedImages[randomIndex];
 
       <img
         src={selectedImage.optimizedSrc}
+        srcset={selectedImage.srcset}
+        sizes="(max-width: 768px) 100vw, 40vw"
+        width={selectedImage.width}
+        height={selectedImage.height}
         alt={selectedImage.alt}
         loading="eager"
         fetchpriority="high"
