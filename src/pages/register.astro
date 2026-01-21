@@ -48,7 +48,7 @@ import IconEye from '@images/icons/eye.svg';
 
     <p class="text-p-main pt-8 flex flex-wrap gap-4">
       <span>Already have an account?</span>
-      <a href="/sign-in/" class="content-link-gradient w-max font-sans-syne"
+      <a href="/sign-in" class="content-link-gradient w-max font-sans-syne"
         >Sign in here</a
       >
     </p>
@@ -350,7 +350,7 @@ import IconEye from '@images/icons/eye.svg';
 
           // Redirect to sign-in on successful registration
           if (response.ok) {
-            window.location.href = '/sign-in/';
+            window.location.href = '/sign-in';
             return;
           }
 
