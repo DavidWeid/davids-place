@@ -106,7 +106,8 @@ const selectedImage = imageOptions[randomIndex];
       <Image
         src={selectedImage.image}
         alt={selectedImage.alt}
-        layout="full-width"
+        widths={[400, 800, 1200, 1600]}
+        sizes="(max-width: 768px) 100vw, 40vw"
         loading="eager"
         fetchpriority="high"
         class="absolute top-0 left-0 w-full h-full object-cover"
