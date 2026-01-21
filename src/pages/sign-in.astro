@@ -69,6 +69,9 @@ const imageOptions = [
     source: 'https://pixabay.com/users/ninikvaratskhelia_-15913392/',
   },
 ];
+
+const randomIndex = Math.floor(Math.random() * imageOptions.length);
+const selectedImage = imageOptions[randomIndex];
 ---
 
 <Base
@@ -94,28 +97,20 @@ const imageOptions = [
         >
       </div>
 
-      <div
-        id="image-credits"
-        class="z-10 absolute bottom-2 left-2 text-green-darker/80 text-sm content-link-gradient max-w-full w-max font-sans-syne p-1.5 hidden"
+      <a
+        href={selectedImage.source}
+        class="z-10 absolute bottom-2 left-2 text-green-darker/80 text-sm content-link-gradient max-w-full w-max font-sans-syne p-1.5"
+        >Image via Pixabay</a
       >
-        <a href="#" target="_blank" rel="noopener noreferrer"
-          >Image via Pixabay</a
-        >
-      </div>
 
-      {
-        imageOptions.map((option) => (
-          <Image
-            src={option.image}
-            alt={option.alt}
-            data-source={option.source}
-            layout="full-width"
-            loading="eager"
-            fetchpriority="high"
-            class="sign-in-bg-image absolute top-0 left-0 w-full h-full object-cover hidden"
-          />
-        ))
-      }
+      <Image
+        src={selectedImage.image}
+        alt={selectedImage.alt}
+        layout="full-width"
+        loading="eager"
+        fetchpriority="high"
+        class="absolute top-0 left-0 w-full h-full object-cover"
+      />
     </header>
 
     <section
@@ -390,29 +385,4 @@ const imageOptions = [
   }
 
   initializeSignInForm();
-
-  // Randomly select and show one background image
-  function initializeBackgroundImage() {
-    const images = document.querySelectorAll(
-      '.sign-in-bg-image',
-    ) as NodeListOf<HTMLImageElement>;
-    const credits = document.getElementById('image-credits');
-    const creditsLink = credits?.querySelector('a');
-
-    if (images.length && credits && creditsLink) {
-      const randomIndex = Math.floor(Math.random() * images.length);
-      const selectedImage = images[randomIndex];
-
-      selectedImage.classList.remove('hidden');
-
-      // Update the credits link
-      const source = selectedImage.dataset.source;
-      if (source) {
-        creditsLink.href = source;
-        credits.classList.remove('hidden');
-      }
-    }
-  }
-
-  initializeBackgroundImage();
 </script>
