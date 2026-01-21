@@ -2,7 +2,7 @@
 import { app } from '../firebase/server';
 import { getAuth } from 'firebase-admin/auth';
 import Base from '@layouts/Base.astro';
-import { Image, getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 
 import imageFlowerFrame from '@images/general/background-flower-frame.jpg';
 import imageLaptop from '@images/general/background-laptop.jpg';
@@ -72,28 +72,12 @@ const imageOptions = [
 
 const randomIndex = Math.floor(Math.random() * imageOptions.length);
 const selectedImage = imageOptions[randomIndex];
-
-// Pre-process the selected image for preloading
-// Use 1200px as base - covers tablet landscape (768px * 0.4 * 2 = ~614px for 2x displays)
-const processedImage = await getImage({
-  src: selectedImage.image,
-  width: 1200,
-  format: 'webp',
-});
-
-// Preload the randomly selected image for optimal LCP
-const preloadImageData = {
-  src: processedImage.src,
-  format: 'webp',
-  pathname: Astro.url.pathname,
-};
 ---
 
 <Base
   title="Sign in to Your Account to View Your Content and Contributions"
   description="Sign in to your account at David’s Place to access your content and features. Manage your recipes, blog posts, and discussions all in one place."
   classes="flex flex-col justify-between"
-  preloadImage={preloadImageData}
 >
   <div class="grid grid-cols-1 tablet:grid-cols-5 grow">
     <header
@@ -122,13 +106,10 @@ const preloadImageData = {
       <Image
         src={selectedImage.image}
         alt={selectedImage.alt}
-        width={selectedImage.image.width}
-        height={selectedImage.image.height}
-        widths={[400, 600, 800, 1200, 1600]}
-        sizes="(max-width: 767px) 100vw, 40vw"
+        widths={[400, 800, 1200, 1600]}
+        sizes="(max-width: 768px) 100vw, 40vw"
         loading="eager"
         fetchpriority="high"
-        decoding="async"
         class="absolute top-0 left-0 w-full h-full object-cover"
       />
     </header>
