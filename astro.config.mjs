@@ -12,8 +12,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  site: 'https://davids-place-portfolio.web.app/',
-  trailingSlash: 'ignore',
+  site: 'https://davids-place-portfolio.web.app',
+  trailingSlash: 'never',
   output: 'server',
 
   prefetch: {
