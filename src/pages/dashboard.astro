@@ -7,7 +7,7 @@ const auth = getAuth(app);
 
 /* Check current session */
 if (!Astro.cookies.has('__session')) {
-  return Astro.redirect('/sign-in/');
+  return Astro.redirect('/sign-in');
 }
 
 const sessionCookie = Astro.cookies.get('__session')!.value;
@@ -19,13 +19,13 @@ try {
 
   if (!user) {
     Astro.cookies.delete('__session', { path: '/' });
-    return Astro.redirect('/sign-in/');
+    return Astro.redirect('/sign-in');
   }
 } catch (error) {
   // Invalid session cookie - clear it and redirect to sign in
   console.error('Session verification failed:', error);
   Astro.cookies.delete('__session', { path: '/' });
-  return Astro.redirect('/sign-in/');
+  return Astro.redirect('/sign-in');
 }
 
 // User properties available:

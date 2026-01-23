@@ -2,7 +2,6 @@
 import { app } from '../firebase/server';
 import { getAuth } from 'firebase-admin/auth';
 import Base from '@layouts/Base.astro';
-import { Image } from 'astro:assets';
 
 import imageFlowerFrame from '@images/general/background-flower-frame.jpg';
 import imageLaptop from '@images/general/background-laptop.jpg';
@@ -24,7 +23,7 @@ if (Astro.cookies.has('__session')) {
   try {
     const decodedCookie = await auth.verifySessionCookie(sessionCookie);
     if (decodedCookie) {
-      return Astro.redirect('/dashboard/');
+      return Astro.redirect('/dashboard');
     }
   } catch (error) {
     // Invalid or expired session cookie - clear it and continue to sign in page
@@ -32,44 +31,60 @@ if (Astro.cookies.has('__session')) {
   }
 }
 
+// Use .src from imported images - these are build-time optimized static paths
 const imageOptions = [
   {
-    image: imageFlowerFrame,
+    src: imageFlowerFrame.src,
+    width: imageFlowerFrame.width,
+    height: imageFlowerFrame.height,
     alt: 'White frame with bright flowers around it - background for sign-in page',
     source: 'https://pixabay.com/users/hollanddesign-15443332/',
   },
   {
-    image: imageLaptop,
+    src: imageLaptop.src,
+    width: imageLaptop.width,
+    height: imageLaptop.height,
     alt: 'Laptop open on green table with succulents, phone, and stationery - background for sign-in page',
     source: 'https://pixabay.com/users/nietjuhart-30460544/',
   },
   {
-    image: imageCatAndPlants,
+    src: imageCatAndPlants.src,
+    width: imageCatAndPlants.width,
+    height: imageCatAndPlants.height,
     alt: 'Black cat hiding behind three potted plants - background for sign-in page',
     source: 'https://pixabay.com/users/biancavandijk-9606149/',
   },
   {
-    image: imageCatsPeeking,
+    src: imageCatsPeeking.src,
+    width: imageCatsPeeking.width,
+    height: imageCatsPeeking.height,
     alt: 'A black cat poking its head around a corner with a white cat below it doing the same - background for sign-in page',
     source: 'https://pixabay.com/users/biancavandijk-9606149/',
   },
   {
-    image: imageBreakfastTable,
+    src: imageBreakfastTable.src,
+    width: imageBreakfastTable.width,
+    height: imageBreakfastTable.height,
     alt: 'Breakfast table with tea, book, and plant under an archlamp with a desk and plant - background for sign-in page',
     source: 'https://pixabay.com/users/nietjuhart-30460544/',
   },
   {
-    image: imageEveningTable,
+    src: imageEveningTable.src,
+    width: imageEveningTable.width,
+    height: imageEveningTable.height,
     alt: 'Evening table with a stack of books, tea, and flowers in a vase with a chair and ceiling lamp - background for sign-in page',
     source: 'https://pixabay.com/users/nietjuhart-30460544/',
   },
   {
-    image: imageCozyCoupleInside,
+    src: imageCozyCoupleInside.src,
+    width: imageCozyCoupleInside.width,
+    height: imageCozyCoupleInside.height,
     alt: 'Cozy couple sitting inside by a window with reading with snow outside - background for sign-in page',
     source: 'https://pixabay.com/users/ninikvaratskhelia_-15913392/',
   },
 ];
 
+// Server-side random selection
 const randomIndex = Math.floor(Math.random() * imageOptions.length);
 const selectedImage = imageOptions[randomIndex];
 ---
@@ -91,7 +106,7 @@ const selectedImage = imageOptions[randomIndex];
         </h1>
 
         <a
-          href="/register/"
+          href="/register"
           class="text-sm content-link-gradient max-w-full w-max font-sans-syne p-1.5"
           >Or create an account</a
         >
@@ -99,14 +114,16 @@ const selectedImage = imageOptions[randomIndex];
 
       <a
         href={selectedImage.source}
-        class="z-10 absolute bottom-2 left-2 text-green-darker/80 text-sm content-link-gradient max-w-full w-max font-sans-syne p-1.5"
-        >Image via Pixabay</a
+        class="z-10 absolute bottom-2 left-2 text-green-darker/80 text-sm content-link-gradient max-w-full w-max font-sans-syne px-2 py-1.5 bg-light/85!"
+        target="_blank"
+        rel="noopener noreferrer">Image via Pixabay</a
       >
 
-      <Image
-        src={selectedImage.image}
+      <img
+        src={selectedImage.src}
+        width={selectedImage.width}
+        height={selectedImage.height}
         alt={selectedImage.alt}
-        layout="full-width"
         loading="eager"
         fetchpriority="high"
         class="absolute top-0 left-0 w-full h-full object-cover"
@@ -359,7 +376,7 @@ const selectedImage = imageOptions[randomIndex];
 
         // Redirect to dashboard on successful sign-in
         if (response.ok) {
-          window.location.href = '/dashboard/';
+          window.location.href = '/dashboard';
           return;
         }
 
